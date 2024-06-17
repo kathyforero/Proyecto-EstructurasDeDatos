@@ -12,5 +12,5 @@ public class LoginController {
     private void switchToPrimary() throws IOException {
         System.out.println("PRESIONASTE EL BOTON");
     }
-    
+    //Plataforma.obtenerUsuarios()
 }
