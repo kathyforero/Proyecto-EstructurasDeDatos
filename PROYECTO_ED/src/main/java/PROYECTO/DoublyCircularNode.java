@@ -1,13 +1,38 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package PROYECTO;
 
-/**
- *
- * @author DERS
- */
-public class DoublyCircularNode {
+public class DoublyCircularNode<E> {
+    private E content;
+    private DoublyCircularNode<E> next;
+    private DoublyCircularNode<E> previous;
+    
+    public DoublyCircularNode(E content){
+        this.content=content;
+        this.next=this; // Instancia de un nodo el next ya no apunta a null sino a si mismo
+        this.previous=this;
+    }
+    
+    public E getContent(){
+        return content;
+    }
+    
+    public void setContent(E content){
+        this.content = content;
+    }
+    
+    public DoublyCircularNode<E> getNext(){
+        return next;
+    }
+    
+    public void setNext(DoublyCircularNode<E> next){
+        this.next = next;
+    }
+    
+    public DoublyCircularNode<E> getPrevious(){
+        return previous;
+    }
+    
+    public void setPrevious (DoublyCircularNode<E> next){
+        this.previous = next;
+    }
     
 }
