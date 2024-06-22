@@ -11,12 +11,11 @@ public class Usuario implements Serializable{
     private String contraseña;
     private DoublyCircularList<Auto> autos;
     
-    public Usuario(String nombre, String apellido, String correo, String contraseña, DoublyCircularList<Auto> autos){        
+    public Usuario(String nombre, String apellido, String correo, String contraseña){        
         this.nombre = nombre;
         this.apellido = apellido;        
         this.correo = correo;
         this.contraseña = contraseña;
-        this.autos = autos;
     }
     
     public boolean validarUsuario(String correo, String contraseña){

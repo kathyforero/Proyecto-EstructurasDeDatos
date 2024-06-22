@@ -1,4 +1,4 @@
-package Controladores;
+package PROYECTO;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -21,5 +21,12 @@ public class LoginController {
     @FXML
     private Text txtCrearCuenta;
     
-    
+    @FXML
+    public void crearUsuario() {
+        String correo = tfCorreo.getText();
+        String contraseña = tfContraseña.getStyle();
+        Usuario u = Sistema.crearUsuario("David", "Ramirez", correo, contraseña);
+        System.out.println(Sistema.guardarUsuario(u));
+        Archivos.leerUsuarios();
+    }
 }
