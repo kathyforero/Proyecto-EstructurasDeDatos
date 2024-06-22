@@ -46,6 +46,7 @@ public class LoginController {
                         msgError("Contraseña incorrecta");
                     } else {
                         System.out.println("Inicio de sesión exitoso para " + correo);
+                        mostrarGUI();
                     }
                 }
             }else{
@@ -79,6 +80,22 @@ public class LoginController {
         }
     }
     
-    
+    @FXML
+    public void mostrarGUI() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("usuario.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("GuayacoCar - Autos a tu Alcance");
+            stage.show();
+
+            Stage miStage = (Stage) btCrearCuenta.getScene().getWindow();
+            miStage.close();
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
         
 }
