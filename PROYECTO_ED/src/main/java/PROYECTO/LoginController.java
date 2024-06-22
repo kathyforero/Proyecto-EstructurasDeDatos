@@ -54,6 +54,7 @@ public class LoginController {
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.setTitle("GuayacoCar - Crear Usuario");
             stage.show();
 
             Stage miStage = (Stage) btCrearCuenta.getScene().getWindow();
