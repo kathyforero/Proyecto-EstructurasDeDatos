@@ -2,8 +2,9 @@ package Proyectos;
 
 import Bases.*;
 import Proyectos.*;
+import java.io.Serializable;
 
-public class Usuario {
+public class Usuario implements Serializable{
     private String nombre;
     private String apellido;
     private String correo;

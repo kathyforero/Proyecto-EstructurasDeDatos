@@ -1,8 +1,9 @@
 package Bases;
 
+import java.io.Serializable;
 import java.util.Iterator;
 
-public class DoublyCircularList<E> implements List<E>{
+public class DoublyCircularList<E> implements List<E>,Serializable{
     private DoublyCircularNode<E> last;
 
     public DoublyCircularNode<E> getLast(){
