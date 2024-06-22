@@ -2,20 +2,20 @@ package Proyectos;
 
 import Bases.*;
 import Proyectos.*;
+import java.io.Serializable;
 
-public class Usuario {
+public class Usuario implements Serializable{
     private String nombre;
     private String apellido;
     private String correo;
     private String contraseña;
     private DoublyCircularList<Auto> autos;
     
-    public Usuario(String nombre, String apellido, String correo, String contraseña, DoublyCircularList<Auto> autos){        
+    public Usuario(String nombre, String apellido, String correo, String contraseña){        
         this.nombre = nombre;
         this.apellido = apellido;        
         this.correo = correo;
         this.contraseña = contraseña;
-        this.autos = autos;
     }
     
     public boolean validarUsuario(String correo, String contraseña){

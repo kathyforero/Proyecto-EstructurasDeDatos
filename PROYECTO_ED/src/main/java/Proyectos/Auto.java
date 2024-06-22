@@ -2,8 +2,9 @@ package Proyectos;
 
 import Bases.*;
 import Proyectos.*;
+import java.io.Serializable;
 
-public class Auto {
+public class Auto implements Serializable{
     private float precio;
     private String marca;
     private String modelo;

@@ -1,6 +1,8 @@
 package Bases;
 
-public class DoublyCircularNode<E> {
+import java.io.Serializable;
+
+public class DoublyCircularNode<E> implements Serializable{
     private E content;
     private DoublyCircularNode<E> next;
     private DoublyCircularNode<E> previous;
