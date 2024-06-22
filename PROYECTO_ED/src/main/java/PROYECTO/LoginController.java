@@ -26,23 +26,7 @@ public class LoginController {
     private TextField tfCorreo;
 
     @FXML
-    private Text txtCrearCuenta;
-    
-    @FXML
-    public void crearUsuario() {
-        String correo = tfCorreo.getText();
-        String contraseña = pfContraseña.getText();
-        Usuario u = Sistema.crearUsuario("David", "Ramirez", correo, contraseña);
-        Sistema.guardarUsuario(u);
-        
-        Map<String, Usuario> mapa = Archivos.leerUsuarios();
-
-        for (String clave : mapa.keySet()) {
-            Usuario valor = mapa.get(clave);
-            System.out.println("Clave: " + clave + ", Valor: " + valor);
-        }
-    }
-    
+    private Button btCrearCuenta;
     
     @FXML
     public void iniciarSesion() {
@@ -72,8 +56,7 @@ public class LoginController {
             stage.setScene(new Scene(root));
             stage.show();
 
-            // Opcional: Cerrar la ventana actual de Pantalla1
-            Stage miStage = (Stage) txtCrearCuenta.getScene().getWindow();
+            Stage miStage = (Stage) btCrearCuenta.getScene().getWindow();
             miStage.close();
             
         } catch (IOException e) {

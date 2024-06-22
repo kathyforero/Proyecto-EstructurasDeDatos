@@ -78,7 +78,12 @@
     -fx-prompt-text-fill: #D6EEFF;
 }
 
-.miTexto:hover {
+.links {
+    -fx-underline: true;
+    -fx-background-color: transparent;
+}
+
+.links:hover {
     -fx-underline: false;
     -fx-cursor: hand;
 }

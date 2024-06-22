@@ -17,27 +17,12 @@
             <Font name="Century Gothic" size="12.0" />
          </font>
       </TextField>
-      <Text fill="WHITE" layoutX="255.0" layoutY="551.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿No tienes una cuenta en GuayacoCar?">
-         <font>
-            <Font name="Century Gothic" size="16.0" />
-         </font>
-      </Text>
-      <Text fx:id="txtCrearCuenta" fill="#ffb6b6" layoutX="358.0" layoutY="578.0" onMouseClicked="#mostrarRegister" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="miTexto" text="Crear una cuenta" underline="true">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Text>
       <PasswordField fx:id="pfContraseña" alignment="CENTER" layoutX="302.0" layoutY="415.0" prefHeight="33.0" prefWidth="225.0" promptText="Contraseña">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font>
       </PasswordField>
-      <ImageView fitHeight="236.0" fitWidth="225.0" layoutX="323.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Logo.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="btnIniciarSesion" layoutX="359.0" layoutY="478.0" mnemonicParsing="false" onAction="#iniciarSesion" text="INICIAR SESIÓN">
+      <Button fx:id="btnIniciarSesion" layoutX="359.0" layoutY="478.0" mnemonicParsing="false" onAction="#iniciarSesion" stylesheets="@estilos.css" text="INICIAR SESIÓN">
          <font>
             <Font size="13.0" />
          </font>
@@ -45,5 +30,20 @@
             <Glow />
          </effect>
       </Button>
+      <Button fx:id="btCrearCuenta" layoutX="348.0" layoutY="572.0" mnemonicParsing="false" onAction="#mostrarRegister" styleClass="links" stylesheets="@estilos.css" text="Crear una cuenta" textFill="#ffb6b6" underline="true">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="236.0" fitWidth="225.0" layoutX="323.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Logo.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="255.0" layoutY="551.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿No tienes una cuenta en GuayacoCar?">
+         <font>
+            <Font name="Century Gothic" size="16.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
