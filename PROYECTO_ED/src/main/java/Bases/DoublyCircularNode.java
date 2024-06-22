@@ -1,4 +1,4 @@
-package PROYECTO;
+package Bases;
 
 public class DoublyCircularNode<E> {
     private E content;

@@ -3,6 +3,6 @@ module PROYECTO {
     requires javafx.fxml;
     requires java.base;
 
-    opens PROYECTO to javafx.fxml;
-    exports PROYECTO;
+    opens Proyectos to javafx.fxml;
+    exports Proyectos;
 }

@@ -1,5 +1,7 @@
-package PROYECTO;
+package Controladores;
 
+import Bases.DoublyCircularList;
+import Bases.DoublyCircularNode;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -7,7 +9,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-
+import Bases.*;
+import Proyectos.*;
 
 public class LoginController {
     

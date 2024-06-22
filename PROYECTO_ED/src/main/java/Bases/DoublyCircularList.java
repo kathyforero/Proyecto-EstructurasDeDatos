@@ -1,5 +1,4 @@
-
-package PROYECTO;
+package Bases;
 
 import java.util.Iterator;
 

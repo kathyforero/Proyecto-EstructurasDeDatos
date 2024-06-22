@@ -1,5 +1,5 @@
 
-package PROYECTO;
+package Bases;
 
 
 public interface List<E> extends Iterable<E>{
