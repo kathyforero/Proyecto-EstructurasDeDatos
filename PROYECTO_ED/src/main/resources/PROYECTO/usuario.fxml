@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="830.0" style="-fx-background-color: #0D050E;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
@@ -16,7 +21,7 @@
             <Image url="@Buscar.png" />
          </image>
       </ImageView>
-      <Button layoutX="597.0" layoutY="77.0" mnemonicParsing="false" text="VENDE TU VEHÍCULO">
+      <Button layoutX="578.0" layoutY="77.0" mnemonicParsing="false" text="VENDE TU VEHÍCULO">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font>
@@ -26,5 +31,31 @@
             <Image url="@Logo.png" />
          </image>
       </ImageView>
+      <MenuBar layoutX="739.0" layoutY="76.0" prefHeight="25.0" prefWidth="57.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="MÁS">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="MIS VEHÍCULOS" />
+                  <MenuItem mnemonicParsing="false" text="FAVORITOS" />
+               </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Text fill="WHITE" layoutX="217.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¡Bienvenido," wrappingWidth="164.91015625">
+         <font>
+            <Font name="Kristen ITC" size="25.0" />
+         </font>
+      </Text>
+      <Text fill="#a3445d" layoutX="370.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="a" wrappingWidth="164.91015625">
+         <font>
+            <Font name="Kristen ITC" size="25.0" />
+         </font>
+      </Text>
+      <AnchorPane layoutX="35.0" layoutY="164.0" prefHeight="306.0" prefWidth="273.0" style="-fx-background-color: #2B193E;">
+         <children>
+            <ChoiceBox layoutX="11.0" layoutY="53.0" prefHeight="25.0" prefWidth="122.0" />
+            <ChoiceBox layoutX="140.0" layoutY="53.0" prefHeight="25.0" prefWidth="122.0" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
