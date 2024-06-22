@@ -8,12 +8,14 @@ public class Usuario {
     private String apellido;
     private String correo;
     private String contraseña;
+    private DoublyCircularList<Auto> autos;
     
-    public Usuario(String nombre, String apellido, String correo, String contraseña){        
+    public Usuario(String nombre, String apellido, String correo, String contraseña, DoublyCircularList<Auto> autos){        
         this.nombre = nombre;
         this.apellido = apellido;        
         this.correo = correo;
         this.contraseña = contraseña;
+        this.autos = autos;
     }
     
     public boolean validarUsuario(String correo, String contraseña){
@@ -39,7 +41,11 @@ public class Usuario {
     public String getContraseña() {
         return contraseña;
     }
-    
+
+    public DoublyCircularList<Auto> getAutos() {
+        return autos;
+    }    
+        
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -55,4 +61,8 @@ public class Usuario {
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
+
+    public void setAutos(DoublyCircularList<Auto> autos) {
+        this.autos = autos;
+    }  
 }
