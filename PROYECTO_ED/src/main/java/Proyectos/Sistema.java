@@ -17,6 +17,7 @@ public class Sistema implements Serializable{
         try{
             Map<String, Usuario> usuarios = Archivos.leerUsuarios();
             usuarios.put(u.getCorreo(),u);
+            Archivos.guardarUsuarios(usuarios);
             return true;
         }catch(Exception e) {
             System.err.println("ERROR AL GUARDAR USUARIO!!! " + e.getMessage());

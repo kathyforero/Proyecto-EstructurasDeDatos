@@ -105,7 +105,23 @@ public class DoublyCircularList<E> implements List<E>,Serializable{
     
     @Override
     public int size() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if(last==null){
+            return 0;
+        }else{
+            DoublyCircularNode<E> cursor = last.getNext();
+            int i = 0;
+            boolean firstPass = true;
+
+            while(cursor != last.getNext() || firstPass){
+                i++;
+                cursor = cursor.getNext();
+                    if (cursor == last.getNext()) {
+                        firstPass = false;
+                    }
+            }
+        return i;
+        }
+        
     }
 
     @Override

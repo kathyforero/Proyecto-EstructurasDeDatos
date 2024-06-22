@@ -9,7 +9,7 @@ public class Usuario implements Serializable{
     private String apellido;
     private String correo;
     private String contraseña;
-    private DoublyCircularList<Auto> autos;
+    private DoublyCircularList<Auto> autos = new DoublyCircularList<>();
     
     public Usuario(String nombre, String apellido, String correo, String contraseña){        
         this.nombre = nombre;
@@ -65,4 +65,8 @@ public class Usuario implements Serializable{
     public void setAutos(DoublyCircularList<Auto> autos) {
         this.autos = autos;
     }  
+    
+    public String toString(){
+        return nombre+" "+apellido+" con correo electronico: "+correo+" y tiene "+autos.size()+" carros publicados"; 
+    }
 }
