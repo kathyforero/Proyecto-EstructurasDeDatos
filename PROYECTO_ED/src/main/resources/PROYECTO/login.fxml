@@ -12,7 +12,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="830.0" style="-fx-background-color: #0D050E;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PROYECTO.LoginController">
    <children>
-      <Button fx:id="btnIniciarSesion" layoutX="360.0" layoutY="471.0" mnemonicParsing="false" onAction="#crearUsuario" text="INICIAR SESIÓN">
+      <Button fx:id="btnIniciarSesion" layoutX="360.0" layoutY="416.0" mnemonicParsing="false" onAction="#iniciarSesion" text="INICIAR SESIÓN">
          <effect>
             <Glow />
          </effect>

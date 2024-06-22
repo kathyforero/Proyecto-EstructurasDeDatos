@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import Bases.*;
 import Proyectos.*;
 import java.util.Map;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
@@ -14,7 +15,7 @@ public class LoginController {
     private Button btnIniciarSesion;
 
     @FXML
-    private TextField tfContraseña;
+   private PasswordField pfContraseña;
 
     @FXML
     private TextField tfCorreo;
@@ -25,7 +26,7 @@ public class LoginController {
     @FXML
     public void crearUsuario() {
         String correo = tfCorreo.getText();
-        String contraseña = tfContraseña.getStyle();
+        String contraseña = pfContraseña.getText();
         Usuario u = Sistema.crearUsuario("David", "Ramirez", correo, contraseña);
         Sistema.guardarUsuario(u);
         
@@ -36,4 +37,25 @@ public class LoginController {
             System.out.println("Clave: " + clave + ", Valor: " + valor);
         }
     }
+    
+    
+    @FXML
+    public void iniciarSesion() {
+        String correo = tfCorreo.getText();
+        String contraseña = pfContraseña.getText();
+        Map<String, Usuario> Usuarios = Archivos.leerUsuarios();
+        
+        if (!Usuarios.containsKey(correo)) {
+            System.out.println("Correo no encontrado");
+        } else {
+            Usuario u = Usuarios.get(correo);
+            if (!u.getContraseña().equals(contraseña)) {
+                System.out.println("Contraseña incorrecta");
+            } else {
+                System.out.println("Inicio de sesión exitoso para " + correo);
+                // Aquí puedes continuar con la lógica después de iniciar sesión correctamente
+            }
+        }
+    }
+        
 }
