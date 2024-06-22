@@ -12,17 +12,17 @@
 
 <AnchorPane id="AnchorPane" prefHeight="870.0" prefWidth="1000.0" style="-fx-background-color: #0D050E;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PROYECTO.LoginController">
    <children>
-      <TextField fx:id="tfCorreo" alignment="CENTER" layoutX="388.0" layoutY="473.0" prefHeight="33.0" prefWidth="225.0" promptText="Correo/Usuario">
+      <TextField fx:id="tfCorreo" alignment="CENTER" layoutX="388.0" layoutY="477.0" prefHeight="33.0" prefWidth="225.0" promptText="Correo/Usuario">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="pfContraseña" alignment="CENTER" layoutX="388.0" layoutY="521.0" prefHeight="33.0" prefWidth="225.0" promptText="Contraseña">
+      <PasswordField fx:id="pfContraseña" alignment="CENTER" layoutX="388.0" layoutY="525.0" prefHeight="33.0" prefWidth="225.0" promptText="Contraseña">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font>
       </PasswordField>
-      <Button fx:id="btnIniciarSesion" layoutX="445.0" layoutY="584.0" mnemonicParsing="false" onAction="#iniciarSesion" stylesheets="@estilos.css" text="INICIAR SESIÓN">
+      <Button fx:id="btnIniciarSesion" layoutX="445.0" layoutY="588.0" mnemonicParsing="false" onAction="#iniciarSesion" stylesheets="@estilos.css" text="INICIAR SESIÓN">
          <font>
             <Font size="13.0" />
          </font>
@@ -35,7 +35,7 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <ImageView fitHeight="236.0" fitWidth="225.0" layoutX="409.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="236.0" fitWidth="225.0" layoutX="408.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Logo.png" />
          </image>
@@ -45,10 +45,18 @@
             <Font name="Century Gothic" size="16.0" />
          </font>
       </Text>
-      <ImageView fitHeight="27.0" fitWidth="624.0" layoutX="271.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="27.0" fitWidth="624.0" layoutX="271.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Conduce%20el%20auto%20de%20tus.gif" />
          </image>
       </ImageView>
+      <Button fx:id="btnError" layoutX="364.0" layoutY="448.0" mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="29.0" prefWidth="275.0" styleClass="textError" stylesheets="@estilos.css" text="Correo no encontrado :C" textAlignment="CENTER" textFill="WHITE" visible="false">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+         <effect>
+            <Glow />
+         </effect>
+      </Button>
    </children>
 </AnchorPane>

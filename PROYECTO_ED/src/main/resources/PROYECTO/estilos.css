@@ -87,3 +87,10 @@
     -fx-underline: false;
     -fx-cursor: hand;
 }
+
+.textError {
+    -fx-cursor: default;
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+    -fx-visibility: false;
+}

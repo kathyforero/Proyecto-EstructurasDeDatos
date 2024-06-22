@@ -26,25 +26,39 @@ public class LoginController {
     private TextField tfCorreo;
 
     @FXML
-    private Button btCrearCuenta;
+    private Button btCrearCuenta;    
+    @FXML
+    private Button btnError;
     
     @FXML
     public void iniciarSesion() {
         String correo = tfCorreo.getText();
         String contraseña = pfContraseña.getText();
-        Map<String, Usuario> Usuarios = Archivos.leerUsuarios();
-        
-        if (!Usuarios.containsKey(correo)) {
-            System.out.println("Correo no encontrado");
-        } else {
-            Usuario u = Usuarios.get(correo);
-            if (!u.getContraseña().equals(contraseña)) {
-                System.out.println("Contraseña incorrecta");
-            } else {
-                System.out.println("Inicio de sesión exitoso para " + correo);
-                // Aquí puedes continuar con la lógica después de iniciar sesión correctamente
-            }
+        System.out.println(pfContraseña);
+        if(correo!="" && correo.contains("@")){
+            if(!(contraseña.isEmpty())){
+                Map<String, Usuario> Usuarios = Archivos.leerUsuarios();
+                if (!Usuarios.containsKey(correo)) {
+                    msgError("Correo no encontrado");
+                } else {
+                    Usuario u = Usuarios.get(correo);
+                    if (!u.getContraseña().equals(contraseña)) {
+                        msgError("Contraseña incorrecta");
+                    } else {
+                        System.out.println("Inicio de sesión exitoso para " + correo);
+                    }
+                }
+            }else{
+                msgError("Ingrese una contraseña :/");
+            }    
+        }else{
+            msgError("Ingrese un correo valido");
         }
+    }
+    
+    public void msgError(String msg){
+        btnError.setVisible(true);
+        btnError.setText(msg);
     }
     
     @FXML
