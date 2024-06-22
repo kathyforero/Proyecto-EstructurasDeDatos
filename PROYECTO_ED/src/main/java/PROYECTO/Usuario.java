@@ -9,14 +9,12 @@ package PROYECTO;
  * @author Kathy
  */
 public class Usuario {
-    private String nombreUsuario;
     private String nombre;
     private String apellido;
     private String correo;
     private String contraseña;
     
-    public Usuario(String nombreUsuario, String nombre, String apellido, String correo, String contraseña){
-        this.nombreUsuario = nombreUsuario;
+    public Usuario(String nombre, String apellido, String correo, String contraseña){        
         this.nombre = nombre;
         this.apellido = apellido;        
         this.correo = correo;
@@ -29,10 +27,6 @@ public class Usuario {
         }else{
             return false;
         }
-    }
-
-    public String getNombreUsuario() {
-        return nombreUsuario;
     }
 
     public String getNombre() {
@@ -50,11 +44,7 @@ public class Usuario {
     public String getContraseña() {
         return contraseña;
     }
-
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
-    }
-
+    
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
