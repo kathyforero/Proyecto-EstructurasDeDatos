@@ -77,3 +77,8 @@
     -fx-text-fill: #D6EEFF;
     -fx-prompt-text-fill: #D6EEFF;
 }
+
+.miTexto:hover {
+    -fx-underline: false;
+    -fx-cursor: hand;
+}

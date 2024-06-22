@@ -4,10 +4,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import Bases.*;
 import Proyectos.*;
+import java.io.IOException;
 import java.util.Map;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class LoginController {
     
@@ -57,5 +62,25 @@ public class LoginController {
             }
         }
     }
+    
+    @FXML
+    public void mostrarRegister() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("register.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            // Opcional: Cerrar la ventana actual de Pantalla1
+            Stage miStage = (Stage) txtCrearCuenta.getScene().getWindow();
+            miStage.close();
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
         
 }
