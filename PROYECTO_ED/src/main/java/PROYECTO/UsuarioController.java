@@ -50,7 +50,7 @@ public class UsuarioController{
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-        lblUser.setText(usuario.getNombre()+" "+usuario.getApellido());
+        lblUser.setText(usuario.getNombre()+" "+usuario.getApellido()+"!");
     }
 
     public Usuario getUsuario() {
