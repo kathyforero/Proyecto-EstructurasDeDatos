@@ -213,7 +213,10 @@ public class CrearautoController {
         ivFotoAuto.setImage(Node.getContent());
     }
     
-    public void actualizarContador(){
+    public void actualizarContador(int i){
+        if(i==0){
+            lblImagenes.setText(1+"/"+fotos.size());
+        }else if(i==1){}
         
     }
 }
