@@ -45,18 +45,15 @@ public class RegisterController {
     String nombre = tfNombre.getText();
     String apellido = tfApellido.getText();
     Usuario u = Sistema.crearUsuario(nombre, apellido, correo, contraseña);
-    Sistema.guardarUsuario(u);
-
-    Map<String, Usuario> mapa = Archivos.leerUsuarios();
-
-    for (String clave : mapa.keySet()) {
-        Usuario valor = mapa.get(clave);
-        System.out.println("Clave: " + clave + ", Valor: " + valor);
-        }
+    if (Sistema.guardarUsuario(u)){
+        
+    }
+    
+    
     }
 
     @FXML
-    private void mostrarLogin() {
+    public void mostrarLogin() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
             Parent root = loader.load();
@@ -66,11 +63,13 @@ public class RegisterController {
             stage.show();
             Stage miStage = (Stage) btIniciarSesion.getScene().getWindow(); 
             miStage.close();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
+    
+    public void alertaLogin(){
+        
+    }
 
 }
