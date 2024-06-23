@@ -2,6 +2,7 @@ package PROYECTO;
 
 import Proyectos.*;
 import Bases.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,10 +15,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class CrearautoController {
     private Usuario usuario;
+    private DoublyCircularList<Image> fotos = new DoublyCircularList<>();
+    
     @FXML
     private Label lblUser;
     @FXML
@@ -46,6 +52,19 @@ public class CrearautoController {
     private ComboBox<String> cbEstado;
     @FXML
     private Button btnError;
+    @FXML
+    private TextField tfPlaca;
+    @FXML
+    private Button btnSubirImagen;
+    @FXML
+    private ImageView ivFotoAuto;
+    private DoublyCircularNode<Image> Node;
+    @FXML
+    private ImageView ivAdelante;
+    @FXML
+    private ImageView ivAtras;
+    @FXML
+    private Label lblImagenes;
     
     
     public void setUsuario(Usuario usuario) {
@@ -153,5 +172,48 @@ public class CrearautoController {
     }
     public void msgErrorOff(){
         btnError.setVisible(false);
+    }
+
+    @FXML
+    private void subirImagen() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Seleccionar fotos");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg", "*.gif","*.jpeg")
+        );
+        java.util.List<File> selectedFiles = fileChooser.showOpenMultipleDialog(btnSubirImagen.getScene().getWindow());
+
+        if (selectedFiles != null) {
+            for (File file : selectedFiles) {
+                System.out.println("Archivo seleccionado: " + file.getAbsolutePath());
+                Image image = new Image(file.toURI().toString());
+                fotos.addLast(image);
+            }
+        }
+        
+        if(fotos.size()>0){
+            actualizarImagenes();
+        }
+    }
+    
+    public void actualizarImagenes(){
+        Node = fotos.getHeader();
+        ivFotoAuto.setImage(Node.getContent());
+    }
+    
+    @FXML
+    public void adelanteImagen(){
+        Node = Node.getNext();
+        ivFotoAuto.setImage(Node.getContent());
+    }
+    
+    @FXML
+    public void atrasImagen(){
+        Node = Node.getPrevious();
+        ivFotoAuto.setImage(Node.getContent());
+    }
+    
+    public void actualizarContador(){
+        
     }
 }

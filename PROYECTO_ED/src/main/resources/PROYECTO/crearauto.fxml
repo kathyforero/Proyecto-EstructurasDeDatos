@@ -8,6 +8,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1000.0" style="-fx-background-color: #0D050E;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PROYECTO.CrearautoController">
@@ -29,6 +30,16 @@
       </Label>
       <AnchorPane layoutX="545.0" layoutY="205.0" prefHeight="634.0" prefWidth="422.0" style="-fx-background-color: #2B193E;">
          <children>
+            <TextField fx:id="tfPlaca" alignment="CENTER" layoutX="135.0" layoutY="32.0" prefHeight="29.0" prefWidth="234.0" promptText="Ej: GBC123">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </TextField>
+            <Label layoutX="53.0" layoutY="36.0" text="PLACA:" textFill="WHITE">
+               <font>
+                  <Font name="Century Gothic" size="16.0" />
+               </font>
+            </Label>
             <Label layoutX="53.0" layoutY="78.0" text="PRECIO:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
@@ -89,9 +100,9 @@
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </TextField>
-            <ComboBox fx:id="cbMarca" layoutX="135.0" layoutY="115.0" onAction="#cargarModelo" prefHeight="29.0" prefWidth="234.0" />
-            <ComboBox fx:id="cbModelo" layoutX="144.0" layoutY="157.0" onMouseClicked="#verificarModelo" prefHeight="29.0" prefWidth="225.0" />
-            <ComboBox fx:id="cbTipo" layoutX="111.0" layoutY="199.0" prefHeight="29.0" prefWidth="258.0" />
+            <ComboBox fx:id="cbMarca" layoutX="135.0" layoutY="115.0" onAction="#cargarModelo" prefHeight="29.0" prefWidth="234.0" promptText="Marca" />
+            <ComboBox fx:id="cbModelo" layoutX="144.0" layoutY="157.0" onMouseClicked="#verificarModelo" prefHeight="29.0" prefWidth="225.0" promptText="Modelos" />
+            <ComboBox fx:id="cbTipo" layoutX="111.0" layoutY="199.0" prefHeight="29.0" prefWidth="258.0" promptText="Tipo" />
             <TextField fx:id="tfAnio" alignment="CENTER" layoutX="111.0" layoutY="241.0" prefHeight="29.0" prefWidth="258.0" promptText="Año">
                <font>
                   <Font name="Century Gothic" size="12.0" />
@@ -102,15 +113,15 @@
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </TextField>
-            <ComboBox fx:id="cbMotor" layoutX="135.0" layoutY="325.0" prefHeight="29.0" prefWidth="234.0" />
-            <ComboBox fx:id="cbTransmision" layoutX="175.0" layoutY="367.0" prefHeight="29.0" prefWidth="195.0" />
+            <ComboBox fx:id="cbMotor" layoutX="135.0" layoutY="325.0" prefHeight="29.0" prefWidth="234.0" promptText="Motor" />
+            <ComboBox fx:id="cbTransmision" layoutX="175.0" layoutY="367.0" prefHeight="29.0" prefWidth="195.0" promptText="Transmisión" />
             <TextField fx:id="tfPeso" alignment="CENTER" layoutX="111.0" layoutY="409.0" prefHeight="29.0" prefWidth="258.0" promptText="Peso">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </TextField>
-            <ComboBox fx:id="cbUbicacion" layoutX="164.0" layoutY="451.0" prefHeight="29.0" prefWidth="203.0" />
-            <ComboBox fx:id="cbEstado" layoutX="135.0" layoutY="493.0" prefHeight="29.0" prefWidth="234.0" />
+            <ComboBox fx:id="cbUbicacion" layoutX="164.0" layoutY="451.0" prefHeight="29.0" prefWidth="203.0" promptText="Ubicación" />
+            <ComboBox fx:id="cbEstado" layoutX="135.0" layoutY="493.0" prefHeight="29.0" prefWidth="234.0" promptText="Estado" />
             <Button layoutX="84.0" layoutY="548.0" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="REPORTE DE ACCIDENTES Y REPARACIONES" />
             <Button layoutX="83.0" layoutY="580.0" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="ELIMINAR VEHÍCULO" />
             <Button layoutX="272.0" layoutY="580.0" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="GUARDAR" />
@@ -122,38 +133,33 @@
                   <Glow />
                </effect>
             </Button>
-            <TextField fx:id="tfPlaca" alignment="CENTER" layoutX="135.0" layoutY="31.0" prefHeight="29.0" prefWidth="234.0" promptText="Ej: GBC123">
-               <font>
-                  <Font name="Century Gothic" size="12.0" />
-               </font>
-            </TextField>
-            <Label layoutX="53.0" layoutY="36.0" text="PLACA:" textFill="WHITE">
-               <font>
-                  <Font name="Century Gothic" size="16.0" />
-               </font>
-            </Label>
          </children>
       </AnchorPane>
-      <Button layoutX="213.0" layoutY="272.0" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="CARGA TU IMAGEN" />
+      <Button fx:id="btnSubirImagen" layoutX="213.0" layoutY="272.0" mnemonicParsing="false" onAction="#subirImagen" styleClass="btnGeneral" stylesheets="@estilos.css" text="CARGA TU IMAGEN" />
       <Button fx:id="btnRegresar" layoutX="860.0" layoutY="152.0" mnemonicParsing="false" onAction="#regresar" prefHeight="29.0" prefWidth="107.0" styleClass="btnInit" stylesheets="@estilos.css" text="REGRESAR" />
-      <ImageView fitHeight="417.0" fitWidth="470.0" layoutX="38.0" layoutY="313.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@preview.png" />
-         </image></ImageView>
-      <ImageView fitHeight="55.0" fitWidth="49.0" layoutX="305.0" layoutY="742.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="ivAdelante" fitHeight="55.0" fitWidth="49.0" layoutX="305.0" layoutY="742.0" onMouseClicked="#adelanteImagen" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@derecha.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="65.0" fitWidth="49.0" layoutX="189.0" layoutY="742.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="ivAtras" fitHeight="65.0" fitWidth="49.0" layoutX="189.0" layoutY="742.0" onMouseClicked="#atrasImagen" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@izquierda.png" />
          </image>
       </ImageView>
-      <Label layoutX="258.0" layoutY="755.0" text="0/0" textFill="WHITE">
+      <Label fx:id="lblImagenes" layoutX="258.0" layoutY="755.0" text="0/0" textFill="WHITE">
          <font>
             <Font name="Century Gothic" size="19.0" />
          </font>
       </Label>
+      <StackPane layoutX="38.0" layoutY="313.0" prefHeight="417.0" prefWidth="470.0">
+         <children>
+            <ImageView fx:id="ivFotoAuto" fitHeight="417.0" fitWidth="470.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@preview.png" />
+               </image>
+            </ImageView>
+         </children>
+      </StackPane>
    </children>
 </AnchorPane>
