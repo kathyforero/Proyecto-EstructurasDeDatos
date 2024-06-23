@@ -27,93 +27,93 @@
             <Font name="Kristen ITC" size="25.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="545.0" layoutY="219.0" prefHeight="618.0" prefWidth="422.0" style="-fx-background-color: #2B193E;">
+      <AnchorPane layoutX="545.0" layoutY="205.0" prefHeight="634.0" prefWidth="422.0" style="-fx-background-color: #2B193E;">
          <children>
-            <Label layoutX="54.0" layoutY="35.0" text="PRECIO:" textFill="WHITE">
+            <Label layoutX="53.0" layoutY="78.0" text="PRECIO:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="54.0" layoutY="82.0" text="MARCA:" textFill="WHITE">
+            <Label layoutX="53.0" layoutY="120.0" text="MARCA:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="54.0" layoutY="126.0" text="MODELO:" textFill="WHITE">
+            <Label layoutX="53.0" layoutY="162.0" text="MODELO:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="54.0" layoutY="171.0" text="TIPO:" textFill="WHITE">
+            <Label layoutX="53.0" layoutY="204.0" text="TIPO:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="54.0" layoutY="217.0" text="AÑO:" textFill="WHITE">
+            <Label layoutX="53.0" layoutY="246.0" text="AÑO:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="54.0" layoutY="265.0" text="KILOMETRAJE:" textFill="WHITE">
+            <Label layoutX="53.0" layoutY="288.0" text="KILOMETRAJE:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="54.0" layoutY="310.0" text="MOTOR:" textFill="WHITE">
+            <Label layoutX="53.0" layoutY="330.0" text="MOTOR:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="54.0" layoutY="354.0" text="TRANSMISIÓN:" textFill="WHITE">
+            <Label layoutX="53.0" layoutY="372.0" text="TRANSMISIÓN:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="54.0" layoutY="400.0" text="PESO:" textFill="WHITE">
+            <Label layoutX="53.0" layoutY="414.0" text="PESO:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="54.0" layoutY="445.0" text="UBICACIÓN:" textFill="WHITE">
+            <Label layoutX="53.0" layoutY="456.0" text="UBICACIÓN:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="54.0" layoutY="487.0" text="ESTADO:" textFill="WHITE">
+            <Label layoutX="53.0" layoutY="498.0" text="ESTADO:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="tfPrecio" alignment="CENTER" layoutX="135.0" layoutY="28.0" prefHeight="33.0" prefWidth="234.0" promptText="Precio">
+            <TextField fx:id="tfPrecio" alignment="CENTER" layoutX="135.0" layoutY="73.0" prefHeight="29.0" prefWidth="234.0" promptText="Precio">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </TextField>
-            <ComboBox fx:id="cbMarca" layoutX="135.0" layoutY="77.0" onAction="#cargarModelo" prefHeight="29.0" prefWidth="234.0" />
-            <ComboBox fx:id="cbModelo" layoutX="144.0" layoutY="121.0" prefHeight="29.0" prefWidth="225.0" />
-            <ComboBox fx:id="cbTipo" layoutX="111.0" layoutY="166.0" prefHeight="29.0" prefWidth="258.0" />
-            <TextField fx:id="tfAnio" alignment="CENTER" layoutX="111.0" layoutY="210.0" prefHeight="33.0" prefWidth="258.0" promptText="Año">
+            <ComboBox fx:id="cbMarca" layoutX="135.0" layoutY="115.0" onAction="#cargarModelo" prefHeight="29.0" prefWidth="234.0" />
+            <ComboBox fx:id="cbModelo" layoutX="144.0" layoutY="157.0" prefHeight="29.0" prefWidth="225.0" />
+            <ComboBox fx:id="cbTipo" layoutX="111.0" layoutY="199.0" prefHeight="29.0" prefWidth="258.0" />
+            <TextField fx:id="tfAnio" alignment="CENTER" layoutX="111.0" layoutY="241.0" prefHeight="29.0" prefWidth="258.0" promptText="Año">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </TextField>
-            <TextField fx:id="tfKM" alignment="CENTER" layoutX="174.0" layoutY="258.0" prefHeight="33.0" prefWidth="195.0" promptText="Kilometraje">
+            <TextField fx:id="tfKM" alignment="CENTER" layoutX="175.0" layoutY="283.0" prefHeight="29.0" prefWidth="195.0" promptText="Kilometraje">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </TextField>
-            <ComboBox fx:id="cbMotor" layoutX="135.0" layoutY="305.0" prefHeight="29.0" prefWidth="234.0" />
-            <ComboBox fx:id="cbTransmision" layoutX="174.0" layoutY="349.0" prefHeight="29.0" prefWidth="195.0" />
-            <TextField fx:id="tfPeso" alignment="CENTER" layoutX="111.0" layoutY="393.0" prefHeight="33.0" prefWidth="258.0" promptText="Peso">
+            <ComboBox fx:id="cbMotor" layoutX="135.0" layoutY="325.0" prefHeight="29.0" prefWidth="234.0" />
+            <ComboBox fx:id="cbTransmision" layoutX="175.0" layoutY="367.0" prefHeight="29.0" prefWidth="195.0" />
+            <TextField fx:id="tfPeso" alignment="CENTER" layoutX="111.0" layoutY="409.0" prefHeight="29.0" prefWidth="258.0" promptText="Peso">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </TextField>
-            <ComboBox fx:id="cbUbicacion" layoutX="166.0" layoutY="440.0" prefHeight="29.0" prefWidth="203.0" />
-            <ComboBox fx:id="cbEstado" layoutX="135.0" layoutY="483.0" prefHeight="29.0" prefWidth="234.0" />
-            <Button layoutX="86.0" layoutY="534.0" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="REPORTE DE ACCIDENTES Y REPARACIONES" />
-            <Button layoutX="85.0" layoutY="572.0" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="ELIMINAR VEHÍCULO" />
-            <Button layoutX="275.0" layoutY="572.0" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="GUARDAR" />
+            <ComboBox fx:id="cbUbicacion" layoutX="164.0" layoutY="451.0" prefHeight="29.0" prefWidth="203.0" />
+            <ComboBox fx:id="cbEstado" layoutX="135.0" layoutY="493.0" prefHeight="29.0" prefWidth="234.0" />
+            <Button layoutX="84.0" layoutY="548.0" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="REPORTE DE ACCIDENTES Y REPARACIONES" />
+            <Button layoutX="83.0" layoutY="580.0" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="ELIMINAR VEHÍCULO" />
+            <Button layoutX="272.0" layoutY="580.0" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="GUARDAR" />
             <Button fx:id="btnError" layoutX="27.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="395.0" styleClass="textError" stylesheets="@estilos.css" text="Correo no encontrado :C" textAlignment="CENTER" textFill="WHITE" visible="false">
                <font>
                   <Font name="System Bold Italic" size="13.0" />
@@ -122,6 +122,16 @@
                   <Glow />
                </effect>
             </Button>
+            <TextField fx:id="tfPlaca" alignment="CENTER" layoutX="135.0" layoutY="31.0" prefHeight="29.0" prefWidth="234.0" promptText="Ej: GBC123">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </TextField>
+            <Label layoutX="53.0" layoutY="36.0" text="PLACA:" textFill="WHITE">
+               <font>
+                  <Font name="Century Gothic" size="16.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <Button layoutX="213.0" layoutY="272.0" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="CARGA TU IMAGEN" />
