@@ -37,12 +37,10 @@ public class LoginController {
         System.out.println(pfContraseña);
         if(correo!="" && correo.contains("@")){
             if(!(contraseña.isEmpty())){
-                Map<String, Usuario> Usuarios = Archivos.leerUsuarios();
-                if (!Usuarios.containsKey(correo)) {
+                if (!(Sistema.existeUser(correo))) {
                     msgError("Correo no encontrado");
                 } else {
-                    Usuario u = Usuarios.get(correo);
-                    if (!u.getContraseña().equals(contraseña)) {
+                    if (!Sistema.logearUser(correo, contraseña)) {
                         msgError("Contraseña incorrecta");
                     } else {
                         System.out.println("Inicio de sesión exitoso para " + correo);

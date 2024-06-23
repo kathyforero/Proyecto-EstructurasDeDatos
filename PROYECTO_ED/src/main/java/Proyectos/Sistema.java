@@ -25,5 +25,14 @@ public class Sistema implements Serializable{
         }
     }
     
+    public static boolean existeUser(String correo){
+        Map<String, Usuario> Usuarios = Archivos.leerUsuarios();
+        return Usuarios.containsKey(correo);
+    }
     
+    public static boolean logearUser(String correo,String contraseña){
+        Map<String, Usuario> Usuarios = Archivos.leerUsuarios();
+        Usuario u = Usuarios.get(correo);
+        return u.getContraseña().equals(contraseña);
+    }
 }

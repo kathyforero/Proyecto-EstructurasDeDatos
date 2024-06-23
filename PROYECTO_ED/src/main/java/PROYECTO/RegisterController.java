@@ -6,6 +6,7 @@ import Proyectos.Usuario;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Map;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,7 +14,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -46,7 +50,7 @@ public class RegisterController {
     String apellido = tfApellido.getText();
     Usuario u = Sistema.crearUsuario(nombre, apellido, correo, contraseña);
     if (Sistema.guardarUsuario(u)){
-        
+        alertaCuentaCreada();
     }
     
     
@@ -68,8 +72,16 @@ public class RegisterController {
         }
     }
     
-    public void alertaLogin(){
-        
+    public void alertaCuentaCreada(){
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Cuenta Creada");
+        alert.setHeaderText("Excelente, ya eres parte de nuestra comunidad");
+        alert.setContentText("Cuenta creada con éxito.");
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                mostrarLogin();
+            }
+        });
     }
 
 }
