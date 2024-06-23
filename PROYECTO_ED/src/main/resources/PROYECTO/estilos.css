@@ -94,3 +94,8 @@
     -fx-background-color: transparent;
     -fx-visibility: false;
 }
+
+.lbl {
+    -fx-font-family: "Hug Me Tight";
+    -fx-font-size: 25px;    
+}
