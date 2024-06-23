@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1000.0" style="-fx-background-color: #0D050E;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1000.0" style="-fx-background-color: #0D050E;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PROYECTO.CrearautoController">
    <children>
       <ImageView fitHeight="137.0" fitWidth="111.0" layoutX="47.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -21,7 +21,7 @@
             <Font name="Kristen ITC" size="25.0" />
          </font>
       </Label>
-      <Label layoutX="223.0" layoutY="94.0" prefHeight="41.0" prefWidth="544.0" text="a" textFill="#a3445d">
+      <Label fx:id="lblUser" layoutX="223.0" layoutY="94.0" prefHeight="41.0" prefWidth="544.0" text="a" textFill="#a3445d">
          <font>
             <Font name="Kristen ITC" size="25.0" />
          </font>
@@ -116,7 +116,7 @@
          </children>
       </AnchorPane>
       <Button layoutX="213.0" layoutY="272.0" mnemonicParsing="false" text="CARGA TU IMAGEN" />
-      <Button layoutX="860.0" layoutY="152.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="107.0" text="REGRESAR" />
+      <Button fx:id="btnRegresar" layoutX="860.0" layoutY="152.0" mnemonicParsing="false" onAction="#regresar" prefHeight="29.0" prefWidth="107.0" text="REGRESAR" />
       <ImageView fitHeight="417.0" fitWidth="470.0" layoutX="38.0" layoutY="313.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@preview.png" />

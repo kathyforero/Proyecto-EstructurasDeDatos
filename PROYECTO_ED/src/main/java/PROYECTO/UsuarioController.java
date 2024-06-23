@@ -10,9 +10,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import Bases.*;
+import Proyectos.*;
 
 public class UsuarioController{
 
@@ -21,8 +24,6 @@ public class UsuarioController{
     private TextField tfBusqueda;
     @FXML
     private Button btnCrearAuto;
-    @FXML
-    private Text txtUsuario;
     @FXML
     private ComboBox<?> cmMarca;
     @FXML
@@ -43,6 +44,18 @@ public class UsuarioController{
     private ComboBox<?> cbOrdenar;
     @FXML
     private Button btnAplicar;
+    @FXML
+    private Label lblUser;
+    private Usuario usuario;
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+        lblUser.setText(usuario.getNombre()+" "+usuario.getApellido());
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
     
     @FXML
     private void cerrarSesion() {
@@ -61,5 +74,24 @@ public class UsuarioController{
             e.printStackTrace();
         }
     }
+    
+    public void mostrarCrearAuto() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("crearauto.fxml"));
+            Parent root = loader.load();
+            CrearautoController CrearAutoController = loader.getController();
+            CrearAutoController.setUsuario(usuario);
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("GuayacoCar - Autos a tu Alcance");
+            stage.show();
 
+            Stage miStage = (Stage) btnCrearAuto.getScene().getWindow();
+            miStage.close();
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
 }

@@ -35,4 +35,10 @@ public class Sistema implements Serializable{
         Usuario u = Usuarios.get(correo);
         return u.getContraseña().equals(contraseña);
     }
+    
+    public static Usuario getUsuario(String correo){
+        Map<String, Usuario> Usuarios = Archivos.leerUsuarios();
+        Usuario u = Usuarios.get(correo);
+        return u;
+    }
 }

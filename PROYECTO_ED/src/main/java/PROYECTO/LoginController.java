@@ -44,8 +44,9 @@ public class LoginController {
                         msgError("Contraseña incorrecta");
                         pfContraseña.requestFocus();
                     } else {
-                        System.out.println("Inicio de sesión exitoso para " + correo);
-                        mostrarGUI();
+                        System.out.println("Inicio de sesión exitoso para " + correo+"!");
+                        Usuario u = Sistema.getUsuario(correo);
+                        mostrarGUI(u);
                     }
                 }
             }else{
@@ -81,10 +82,12 @@ public class LoginController {
         }
     }
     
-    public void mostrarGUI() {
+    public void mostrarGUI(Usuario u) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("usuario.fxml"));
             Parent root = loader.load();
+            UsuarioController usuarioController = loader.getController();
+            usuarioController.setUsuario(u);
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("GuayacoCar - Autos a tu Alcance");
