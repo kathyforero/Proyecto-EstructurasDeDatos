@@ -3,30 +3,57 @@ package Bases;
 import java.io.Serializable;
 import java.util.Iterator;
 
+/**
+ * Clase que representa una lista doblemente enlazada y que es circular; ideal para carrusel de imágenes.
+ *
+ * @param <E> el tipo de elementos contenidos en la lista
+ */
 public class DoublyCircularList<E> implements List<E>,Serializable{
     private DoublyCircularNode<E> last;
 
+    /**
+     * Devuelve el último nodo de la lista.
+     *
+     * @return el último nodo de la lista
+     */
     public DoublyCircularNode<E> getLast(){
         return last;
     }
     
+    /**
+     * Devuelve el nodo cabecera de la lista.
+     *
+     * @return el nodo cabecera de la lista
+     */
      public DoublyCircularNode<E> getHeader(){
         return last.getNext();
     }
     
+    /**
+     * Establece el último nodo de la lista.
+     *
+     * @param last el nuevo último nodo de la lista
+     */
     public void setLast(DoublyCircularNode<E> last){
-        this.last = last;//NO USAR!
+        this.last = last;
     }
     
+    /**
+     * Establece el nodo cabecera de la lista.
+     *
+     * @param last el nuevo nodo cabecera de la lista
+     */
     public void setHeader(DoublyCircularNode<E> last){
-        this.last.setNext(last);//NO USAR!
+        this.last.setNext(last);
     }
     
-    @Override
-    public boolean addFirst(E e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
+    /**
+     * Agrega un elemento al final de la lista.
+     *
+     * @param e el elemento a agregar
+     * @return true si se logró insertar el elemento, false si el objeto es nulo
+     */
     @Override
     public boolean addLast(E e) {
         if(e!=null){ // No añadimos nulos.
@@ -55,11 +82,12 @@ public class DoublyCircularList<E> implements List<E>,Serializable{
         return false;
     }  
 
-    @Override
-    public E removeFirst() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
+    /**
+     * Elimina el último elemento de la lista.
+     *
+     * @return el elemento eliminado, o null si la lista está vacía
+     */
     @Override
     public E removeLast() {
         if(last.getNext()!=null){ // Comprobar si hay más de un elemento.
@@ -81,15 +109,30 @@ public class DoublyCircularList<E> implements List<E>,Serializable{
         return null; // Si no se cumple ningún caso, quiere decir que no hay elementos, retornamos null.
     }
 
+    /**
+     * Devuelve un iterador sobre los elementos de la lista en el orden correcto.
+     *
+     * @return un iterador sobre los elementos de la lista
+     */    
     public Iterator<E> iterator(){
         Iterator<E> it=new Iterator<E>() {
             DoublyCircularNode<E> cursor = last.getNext();
             boolean firstPass = true;
             
+            /**
+             * Verifica si hay más elementos en la lista.
+             *
+             * @return true si hay más elementos, false en caso contrario
+             */
             @Override
             public boolean hasNext() {
                 return cursor != last.getNext() || firstPass;         
             }
+            /**
+             * Devuelve el siguiente elemento en la lista.
+             *
+             * @return el siguiente elemento en la lista
+             */
             @Override
             public E next() {
                 E e = cursor.getContent();
@@ -103,6 +146,11 @@ public class DoublyCircularList<E> implements List<E>,Serializable{
         return it;
     } 
     
+    /**
+    * Devuelve la cantidad de elementos en la lista.
+     *
+    * @return la cantidad de elementos en la lista
+    */
     @Override
     public int size() {
         if(last==null){
@@ -122,6 +170,16 @@ public class DoublyCircularList<E> implements List<E>,Serializable{
         return i;
         }
         
+    }
+
+    @Override
+    public boolean addFirst(E e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public E removeFirst() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
@@ -158,8 +216,4 @@ public class DoublyCircularList<E> implements List<E>,Serializable{
     public List<E> findIntersection(List<E> another) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
-
-    
 }
-

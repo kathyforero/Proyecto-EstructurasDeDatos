@@ -2,6 +2,11 @@ package Bases;
 
 import java.util.Iterator;
 
+/**
+ * Clase que representa una lista indexada.
+ *
+ * @param <E> el tipo de elementos contenidos en la lista
+ */
 public class ArrayList<E> implements List<E>{
 
     private E[] elements = null; //arreglo de elementos genericos
