@@ -54,14 +54,38 @@
     
 }
 
-.btnWallet{
-    -fx-background-color:  #708B75;
+.btnGeneral{
+    -fx-background-color:  #9475D8;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "Century Gothic";    
+    -fx-font-size: 12px;
+    
     
 }
 
-.btnWallet:hover{
-    -fx-background-color: #DBF4AD;
+.btnGeneral:hover{
+    -fx-background-color: #AF93EB;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
     
+}
+
+.btnInit{
+    -fx-background-color:  #D53C3C;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "Century Gothic";    
+    -fx-font-size: 12px;
+        
+}
+
+.btnInit:hover{
+    -fx-background-color:  #E56161;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "Century Gothic";    
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+        
 }
 
 .scroll-bar:vertical{
@@ -96,6 +120,48 @@
 }
 
 .lbl {
-    -fx-font-family: "Hug Me Tight";
+    -fx-font-family: "Hug Me Tight - TTF";
     -fx-font-size: 25px;    
+}
+
+.menu-bar{
+    -fx-background-color: #FFFFFF;
+    -fx-font-family: "Century Gothic";    
+}
+
+.menu-bar:active{
+    -fx-background-color: #AF93EB;
+    -fx-text-fill: #FFFFFF;     
+}
+.menu-bar:hover{
+    -fx-background-color: #AF93EB;
+    -fx-text-fill: #FFFFFF;     
+}
+
+.menu-bar:showing{
+    -fx-background-color: #AF93EB;
+    -fx-text-fill: #FFFFFF;     
+}
+
+.menu{
+    -fx-font-family: "Century Gothic";
+}
+
+.menu:showing{
+    -fx-background-color: #AF93EB;
+    -fx-text-fill: #FFFFFF;
+}
+
+.menu-item{
+    -fx-font-family: "Century Gothic";
+}
+
+.menu-item:hover{
+    -fx-background-color: #AF93EB;
+    -fx-text-fill: #FFFFFF;
+}
+
+.menu-item:active{
+    -fx-background-color: #AF93EB;
+    -fx-text-fill: #FFFFFF;
 }
