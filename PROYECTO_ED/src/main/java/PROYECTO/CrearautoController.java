@@ -44,6 +44,8 @@ public class CrearautoController {
     private ComboBox<String> cbUbicacion;
     @FXML
     private ComboBox<String> cbEstado;
+    @FXML
+    private Button btnError;
     
     
     public void setUsuario(Usuario usuario) {
@@ -96,12 +98,26 @@ public class CrearautoController {
         }
     }
     
+    @FXML
     public void cargarModelo(){
-        for (Tipo tipo : Tipo.values()) {
-            cbModelo.getItems().add(tipo.getDisplayName());
+        if(cbMarca.getValue()==null){
+            msgError("Primero tienes que escoger una marca");
+        }else{
+            cbModelo.getSelectionModel().clearSelection();
+            cbModelo.getItems().clear();
+            cbModelo.setValue(null);
+            msgErrorOff();
+            String txtMarca = cbMarca.getValue();
+            for(MarcaDeAuto marca:MarcaDeAuto.values()){
+                if(marca.getName().equals(txtMarca)){
+                    ArrayList<String> modelos = marca.getModels();
+                    for (int i=1; i<modelos.size(); i++){
+                        cbModelo.getItems().add(modelos.get(i));
+                    }
+                }
+            }
         }
     }
-    
     public void cargarMotor(){
         for (Motor motor : Motor.values()) {
             cbMotor.getItems().add(motor.getDisplayName());
@@ -124,5 +140,13 @@ public class CrearautoController {
         for (Estado estado : Estado.values()) {
             cbEstado.getItems().add(estado.getDisplayName());
         }
+    }
+    
+    public void msgError(String msg){
+        btnError.setVisible(true);
+        btnError.setText(msg);
+    }
+    public void msgErrorOff(){
+        btnError.setVisible(false);
     }
 }

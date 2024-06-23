@@ -117,7 +117,8 @@ public class ArrayList<E> implements List<E>{
 
     @Override
     public E get(int index) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        //comienza a contar desde el 1
+        return elements[index-1];
     }
 
     @Override

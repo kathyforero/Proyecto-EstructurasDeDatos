@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -88,7 +89,7 @@
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </TextField>
-            <ComboBox fx:id="cbMarca" layoutX="135.0" layoutY="77.0" prefHeight="29.0" prefWidth="234.0" />
+            <ComboBox fx:id="cbMarca" layoutX="135.0" layoutY="77.0" onAction="#cargarModelo" prefHeight="29.0" prefWidth="234.0" />
             <ComboBox fx:id="cbModelo" layoutX="144.0" layoutY="121.0" prefHeight="29.0" prefWidth="225.0" />
             <ComboBox fx:id="cbTipo" layoutX="111.0" layoutY="166.0" prefHeight="29.0" prefWidth="258.0" />
             <TextField fx:id="tfAnio" alignment="CENTER" layoutX="111.0" layoutY="210.0" prefHeight="33.0" prefWidth="258.0" promptText="Año">
@@ -113,6 +114,14 @@
             <Button layoutX="86.0" layoutY="534.0" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="REPORTE DE ACCIDENTES Y REPARACIONES" />
             <Button layoutX="85.0" layoutY="572.0" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="ELIMINAR VEHÍCULO" />
             <Button layoutX="275.0" layoutY="572.0" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="GUARDAR" />
+            <Button fx:id="btnError" layoutX="27.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="395.0" styleClass="textError" stylesheets="@estilos.css" text="Correo no encontrado :C" textAlignment="CENTER" textFill="WHITE" visible="false">
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect>
+            </Button>
          </children>
       </AnchorPane>
       <Button layoutX="213.0" layoutY="272.0" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="CARGA TU IMAGEN" />
