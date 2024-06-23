@@ -215,5 +215,13 @@ public class DoublyCircularList<E> implements List<E>,Serializable{
     @Override
     public List<E> findIntersection(List<E> another) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }    
+    
+    public int getIndex(DoublyCircularNode<E> n) {
+        int indice = 0;        
+        for(DoublyCircularNode<E> cursor = last.getNext(); cursor != n; cursor = cursor.getNext()){
+            indice++;
+        }
+        return indice;
     }
-}
+    }
