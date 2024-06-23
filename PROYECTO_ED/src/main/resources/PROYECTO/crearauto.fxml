@@ -29,7 +29,7 @@
       <Button layoutX="860.0" layoutY="152.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="107.0" text="REGRESAR" />
       <AnchorPane layoutX="545.0" layoutY="219.0" prefHeight="604.0" prefWidth="422.0" style="-fx-background-color: #2B193E;">
          <children>
-            <TextField alignment="CENTER" layoutX="111.0" layoutY="401.0" prefHeight="33.0" prefWidth="258.0" promptText="Nombre">
+            <TextField alignment="CENTER" layoutX="111.0" layoutY="401.0" prefHeight="33.0" prefWidth="258.0" promptText="Peso">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
@@ -37,12 +37,12 @@
             <ComboBox layoutX="166.0" layoutY="448.0" prefHeight="29.0" prefWidth="203.0" />
             <ComboBox layoutX="174.0" layoutY="357.0" prefHeight="29.0" prefWidth="195.0" />
             <ComboBox layoutX="135.0" layoutY="313.0" prefHeight="29.0" prefWidth="234.0" />
-            <TextField alignment="CENTER" layoutX="174.0" layoutY="266.0" prefHeight="33.0" prefWidth="195.0" promptText="Nombre">
+            <TextField alignment="CENTER" layoutX="174.0" layoutY="266.0" prefHeight="33.0" prefWidth="195.0" promptText="Kilometraje">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" layoutX="111.0" layoutY="218.0" prefHeight="33.0" prefWidth="258.0" promptText="Nombre">
+            <TextField alignment="CENTER" layoutX="111.0" layoutY="218.0" prefHeight="33.0" prefWidth="258.0" promptText="Año">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
@@ -50,7 +50,7 @@
             <ComboBox layoutX="111.0" layoutY="174.0" prefHeight="29.0" prefWidth="258.0" />
             <ComboBox layoutX="144.0" layoutY="129.0" prefHeight="29.0" prefWidth="225.0" />
             <ComboBox layoutX="135.0" layoutY="85.0" prefHeight="29.0" prefWidth="234.0" />
-            <TextField alignment="CENTER" layoutX="135.0" layoutY="36.0" prefHeight="33.0" prefWidth="234.0" promptText="Nombre">
+            <TextField alignment="CENTER" layoutX="135.0" layoutY="36.0" prefHeight="33.0" prefWidth="234.0" promptText="Precio">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
@@ -106,7 +106,7 @@
                </font>
             </Text>
             <Button layoutX="86.0" layoutY="510.0" mnemonicParsing="false" text="REPORTE DE ACCIDENTES Y REPARACIONES" />
-            <Button layoutX="80.0" layoutY="547.0" mnemonicParsing="false" text="ELIMINAR VEHÍCULO" />
+            <Button layoutX="86.0" layoutY="547.0" mnemonicParsing="false" text="ELIMINAR VEHÍCULO" />
             <Button layoutX="268.0" layoutY="547.0" mnemonicParsing="false" text="GUARDAR" />
          </children>
       </AnchorPane>

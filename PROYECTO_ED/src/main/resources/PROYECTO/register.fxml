@@ -74,7 +74,7 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <ImageView fitHeight="122.0" fitWidth="516.0" layoutX="459.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="111.0" fitWidth="559.0" layoutX="437.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Encuentra-tu-auto-ideal-con-no.gif" />
          </image>
