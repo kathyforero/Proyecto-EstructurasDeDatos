@@ -15,9 +15,10 @@ public class Auto implements Serializable{
     private String transmisión;
     private float peso;
     private String ubicacion;
+    private String estado;
     private Usuario usuario;
     
-    public Auto(float precio, String marca, String modelo, String tipo, int año, int kilometraje, String motor, String transmisión, float peso, String ubicacion, Usuario usuario){
+    public Auto(float precio, String marca, String modelo, String tipo, int año, int kilometraje, String motor, String transmisión, float peso, String ubicacion, Usuario usuario, String estado){
         this.precio = precio;
         this.marca = marca;
         this.modelo = modelo;        
@@ -29,6 +30,7 @@ public class Auto implements Serializable{
         this.peso = peso;
         this.ubicacion = ubicacion;
         this.usuario = usuario;
+        this.estado = estado;
     }
 
     public float getPrecio() {
@@ -75,6 +77,10 @@ public class Auto implements Serializable{
         return usuario;
     }
 
+    public String getEstado() {
+        return estado;
+    }
+
     public void setPrecio(float precio) {
         this.precio = precio;
     }
@@ -117,6 +123,10 @@ public class Auto implements Serializable{
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-    }        
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
     
 }
