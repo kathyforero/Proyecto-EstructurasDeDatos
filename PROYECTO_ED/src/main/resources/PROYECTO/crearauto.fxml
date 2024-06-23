@@ -116,7 +116,7 @@
          </children>
       </AnchorPane>
       <Button layoutX="213.0" layoutY="272.0" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="CARGA TU IMAGEN" />
-      <Button layoutX="860.0" layoutY="152.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="107.0" styleClass="btnInit" stylesheets="@estilos.css" text="REGRESAR" />
+      <Button fx:id="btnRegresar" layoutX="860.0" layoutY="152.0" mnemonicParsing="false" onAction="#regresar" prefHeight="29.0" prefWidth="107.0" styleClass="btnInit" stylesheets="@estilos.css" text="REGRESAR" />
       <ImageView fitHeight="417.0" fitWidth="470.0" layoutX="38.0" layoutY="313.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@preview.png" />

@@ -1,12 +1,17 @@
 package PROYECTO;
 
 import Proyectos.*;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 public class CrearautoController {
     private Usuario usuario;
@@ -24,9 +29,24 @@ public class CrearautoController {
     public Usuario getUsuario() {
         return usuario;
     }
+    
+    public void regresar() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("usuario.fxml"));
+            Parent root = loader.load();
+            UsuarioController usuarioController = loader.getController();
+            usuarioController.setUsuario(usuario);
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("GuayacoCar - Autos a tu Alcance");
+            stage.show();
 
-    @FXML
-    private void regresar(ActionEvent event) {
+            Stage miStage = (Stage) btnRegresar.getScene().getWindow();
+            miStage.close();
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
    
     

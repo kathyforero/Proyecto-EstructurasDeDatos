@@ -67,7 +67,7 @@
             <Image url="@Buscar.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnCrearAuto" layoutX="698.0" layoutY="92.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="141.0" styleClass="btnGeneral" stylesheets="@estilos.css" text="VENDE TU VEHÍCULO">
+      <Button fx:id="btnCrearAuto" layoutX="698.0" layoutY="92.0" mnemonicParsing="false" onAction="#mostrarCrearAuto" prefHeight="34.0" prefWidth="141.0" styleClass="btnGeneral" stylesheets="@estilos.css" text="VENDE TU VEHÍCULO">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font>
