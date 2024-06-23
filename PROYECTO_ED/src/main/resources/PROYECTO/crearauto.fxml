@@ -21,43 +21,13 @@
             <Font name="Kristen ITC" size="25.0" />
          </font>
       </Label>
-      <Label layoutX="223.0" layoutY="94.0" text="a" textFill="#a3445d">
+      <Label layoutX="223.0" layoutY="94.0" prefHeight="41.0" prefWidth="544.0" text="a" textFill="#a3445d">
          <font>
             <Font name="Kristen ITC" size="25.0" />
          </font>
       </Label>
-      <Button layoutX="860.0" layoutY="152.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="107.0" text="REGRESAR" />
       <AnchorPane layoutX="545.0" layoutY="219.0" prefHeight="618.0" prefWidth="422.0" style="-fx-background-color: #2B193E;">
          <children>
-            <TextField alignment="CENTER" layoutX="111.0" layoutY="393.0" prefHeight="33.0" prefWidth="258.0" promptText="Nombre">
-               <font>
-                  <Font name="Century Gothic" size="12.0" />
-               </font>
-            </TextField>
-            <ComboBox layoutX="166.0" layoutY="440.0" prefHeight="29.0" prefWidth="203.0" />
-            <ComboBox layoutX="174.0" layoutY="349.0" prefHeight="29.0" prefWidth="195.0" />
-            <ComboBox layoutX="135.0" layoutY="305.0" prefHeight="29.0" prefWidth="234.0" />
-            <TextField alignment="CENTER" layoutX="174.0" layoutY="258.0" prefHeight="33.0" prefWidth="195.0" promptText="Nombre">
-               <font>
-                  <Font name="Century Gothic" size="12.0" />
-               </font>
-            </TextField>
-            <TextField alignment="CENTER" layoutX="111.0" layoutY="210.0" prefHeight="33.0" prefWidth="258.0" promptText="Nombre">
-               <font>
-                  <Font name="Century Gothic" size="12.0" />
-               </font>
-            </TextField>
-            <ComboBox layoutX="111.0" layoutY="166.0" prefHeight="29.0" prefWidth="258.0" />
-            <ComboBox layoutX="144.0" layoutY="121.0" prefHeight="29.0" prefWidth="225.0" />
-            <ComboBox layoutX="135.0" layoutY="77.0" prefHeight="29.0" prefWidth="234.0" />
-            <TextField alignment="CENTER" layoutX="135.0" layoutY="28.0" prefHeight="33.0" prefWidth="234.0" promptText="Nombre">
-               <font>
-                  <Font name="Century Gothic" size="12.0" />
-               </font>
-            </TextField>
-            <Button layoutX="86.0" layoutY="534.0" mnemonicParsing="false" text="REPORTE DE ACCIDENTES Y REPARACIONES" />
-            <Button layoutX="85.0" layoutY="572.0" mnemonicParsing="false" text="ELIMINAR VEHÍCULO" />
-            <Button layoutX="268.0" layoutY="572.0" mnemonicParsing="false" text="GUARDAR" />
             <Label layoutX="54.0" layoutY="35.0" text="PRECIO:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
@@ -113,11 +83,44 @@
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
+            <TextField alignment="CENTER" layoutX="135.0" layoutY="28.0" prefHeight="33.0" prefWidth="234.0" promptText="Precio">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </TextField>
+            <ComboBox layoutX="135.0" layoutY="77.0" prefHeight="29.0" prefWidth="234.0" />
+            <ComboBox layoutX="144.0" layoutY="121.0" prefHeight="29.0" prefWidth="225.0" />
+            <ComboBox layoutX="111.0" layoutY="166.0" prefHeight="29.0" prefWidth="258.0" />
+            <TextField alignment="CENTER" layoutX="111.0" layoutY="210.0" prefHeight="33.0" prefWidth="258.0" promptText="Año">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </TextField>
+            <TextField alignment="CENTER" layoutX="174.0" layoutY="258.0" prefHeight="33.0" prefWidth="195.0" promptText="Kilometraje">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </TextField>
+            <ComboBox layoutX="135.0" layoutY="305.0" prefHeight="29.0" prefWidth="234.0" />
+            <ComboBox layoutX="174.0" layoutY="349.0" prefHeight="29.0" prefWidth="195.0" />
+            <TextField alignment="CENTER" layoutX="111.0" layoutY="393.0" prefHeight="33.0" prefWidth="258.0" promptText="Peso">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </TextField>
+            <ComboBox layoutX="166.0" layoutY="440.0" prefHeight="29.0" prefWidth="203.0" />
             <ComboBox layoutX="135.0" layoutY="483.0" prefHeight="29.0" prefWidth="234.0" />
+            <Button layoutX="86.0" layoutY="534.0" mnemonicParsing="false" stylesheets="@estilos.css" text="REPORTE DE ACCIDENTES Y REPARACIONES" />
+            <Button layoutX="85.0" layoutY="572.0" mnemonicParsing="false" text="ELIMINAR VEHÍCULO" />
+            <Button layoutX="268.0" layoutY="572.0" mnemonicParsing="false" text="GUARDAR" />
          </children>
       </AnchorPane>
-      <ImageView fitHeight="417.0" fitWidth="470.0" layoutX="38.0" layoutY="313.0" pickOnBounds="true" preserveRatio="true" />
       <Button layoutX="213.0" layoutY="272.0" mnemonicParsing="false" text="CARGA TU IMAGEN" />
+      <Button layoutX="860.0" layoutY="152.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="107.0" text="REGRESAR" />
+      <ImageView fitHeight="417.0" fitWidth="470.0" layoutX="38.0" layoutY="313.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@preview.png" />
+         </image></ImageView>
       <ImageView fitHeight="55.0" fitWidth="49.0" layoutX="305.0" layoutY="742.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@derecha.png" />
