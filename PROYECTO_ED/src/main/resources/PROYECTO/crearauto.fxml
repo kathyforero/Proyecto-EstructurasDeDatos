@@ -90,7 +90,7 @@
                </font>
             </TextField>
             <ComboBox fx:id="cbMarca" layoutX="135.0" layoutY="77.0" onAction="#cargarModelo" prefHeight="29.0" prefWidth="234.0" />
-            <ComboBox fx:id="cbModelo" layoutX="144.0" layoutY="121.0" prefHeight="29.0" prefWidth="225.0" />
+            <ComboBox fx:id="cbModelo" layoutX="144.0" layoutY="121.0" onMouseClicked="#verificarModelo" prefHeight="29.0" prefWidth="225.0" />
             <ComboBox fx:id="cbTipo" layoutX="111.0" layoutY="166.0" prefHeight="29.0" prefWidth="258.0" />
             <TextField fx:id="tfAnio" alignment="CENTER" layoutX="111.0" layoutY="210.0" prefHeight="33.0" prefWidth="258.0" promptText="Año">
                <font>

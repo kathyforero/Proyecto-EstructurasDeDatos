@@ -100,24 +100,29 @@ public class CrearautoController {
     
     @FXML
     public void cargarModelo(){
-        if(cbMarca.getValue()==null){
-            msgError("Primero tienes que escoger una marca");
-        }else{
+            msgErrorOff();
             cbModelo.getSelectionModel().clearSelection();
             cbModelo.getItems().clear();
             cbModelo.setValue(null);
-            msgErrorOff();
             String txtMarca = cbMarca.getValue();
             for(MarcaDeAuto marca:MarcaDeAuto.values()){
                 if(marca.getName().equals(txtMarca)){
                     ArrayList<String> modelos = marca.getModels();
-                    for (int i=1; i<modelos.size(); i++){
+                    for (int i=1; i<=modelos.size(); i++){
                         cbModelo.getItems().add(modelos.get(i));
                     }
                 }
-            }
+            
         }
     }
+    
+    @FXML
+    public void verificarModelo(){
+        if(cbMarca.getValue()==null){
+            msgError("Primero tienes que escoger una marca");
+        }
+    }
+    
     public void cargarMotor(){
         for (Motor motor : Motor.values()) {
             cbMotor.getItems().add(motor.getDisplayName());
