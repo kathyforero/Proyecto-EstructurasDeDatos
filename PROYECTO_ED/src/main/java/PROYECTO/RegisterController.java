@@ -18,6 +18,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -39,19 +40,34 @@ public class RegisterController {
     private PasswordField pfConfirmarcontraseña;
     @FXML
     private Button btIniciarSesion;
+    @FXML
+    private Button btnError;
+    @FXML
+    private CheckBox cbTerminos;
     /**
      * Initializes the controller class.
      */
   
+    @FXML
     public void crearUsuario() {
     String correo = tfCorreo.getText();
     String contraseña = pfContraseña.getText();
+    String confContraseña = pfConfirmarcontraseña.getText();
     String nombre = tfNombre.getText();
     String apellido = tfApellido.getText();
-    Usuario u = Sistema.crearUsuario(nombre, apellido, correo, contraseña);
-    if (Sistema.guardarUsuario(u)){
-        alertaCuentaCreada();
-    }
+    if(verificarCorreo(correo)){
+        if(verificarContraseña(contraseña, confContraseña)){
+            if(verificarCampos(nombre,apellido)){
+                Usuario u = Sistema.crearUsuario(nombre, apellido, correo, contraseña);
+                Sistema.guardarUsuario(u);
+                alertaCuentaCreada();
+            }
+        }else{
+            pfContraseña.requestFocus();
+        }
+    }else{
+        tfCorreo.requestFocus();
+    } 
     }
 
     @FXML
@@ -82,8 +98,49 @@ public class RegisterController {
         });
     }
     
+    public boolean verificarCampos(String nombre,String apellido){
+        if(nombre.equals("")){
+           msgError("El nombre no debe estar vacio!");
+           tfNombre.requestFocus();
+           return false; 
+        }else if(apellido.equals("")){
+            msgError("El apellido no debe estar vacio!");
+            tfApellido.requestFocus();
+           return false; 
+        }else if(!cbTerminos.isSelected()){
+            msgError("Debes aceptar los terminos y condiciones");
+            cbTerminos.requestFocus();
+           return false; 
+        }
+        return true;
+    }
+    
     public boolean verificarCorreo(String correo){
-        return Sistema.existeUser(correo);
+        if(!(correo.contains("@")) || correo.length()<3){
+            msgError("Ingresa un correo valido :( ");
+            return false;
+        }else if(Sistema.existeUser(correo)){
+            msgError("¡El correo ya esta registrado!");
+            return false;
+        }
+        return true;
+    }
+    
+    public boolean verificarContraseña(String ccntraseña, String confContraseña){
+        if(! ccntraseña.equals(confContraseña)){
+            msgError("¡Las contraseñas no son iguales!");
+            return false;
+        }else if(ccntraseña.equals(confContraseña) && ccntraseña.length()<3){
+            msgError("La ccntraseña debe ser de más de 8 caracteres");
+            return false;
+        }
+        return true;
+    }
+    
+    public void msgError(String msg){
+        btnError.setVisible(true);
+        btnError.setText(msg);
     }
 
+   
 }

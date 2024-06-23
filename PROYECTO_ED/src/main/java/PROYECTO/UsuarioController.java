@@ -45,7 +45,7 @@ public class UsuarioController{
     private Button btnAplicar;
     
     @FXML
-    private void cerrarSesion(ActionEvent event) {
+    private void cerrarSesion() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
             Parent root = loader.load();

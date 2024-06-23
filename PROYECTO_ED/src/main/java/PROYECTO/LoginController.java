@@ -34,14 +34,15 @@ public class LoginController {
     public void iniciarSesion() {
         String correo = tfCorreo.getText();
         String contraseña = pfContraseña.getText();
-        System.out.println(pfContraseña);
         if(correo!="" && correo.contains("@")){
             if(!(contraseña.isEmpty())){
                 if (!(Sistema.existeUser(correo))) {
                     msgError("Correo no encontrado");
+                    tfCorreo.requestFocus();
                 } else {
                     if (!Sistema.logearUser(correo, contraseña)) {
                         msgError("Contraseña incorrecta");
+                        pfContraseña.requestFocus();
                     } else {
                         System.out.println("Inicio de sesión exitoso para " + correo);
                         mostrarGUI();
@@ -49,9 +50,11 @@ public class LoginController {
                 }
             }else{
                 msgError("Ingrese una contraseña :/");
+                pfContraseña.requestFocus();
             }    
         }else{
             msgError("Ingrese un correo valido");
+            tfCorreo.requestFocus();
         }
     }
     
@@ -78,7 +81,6 @@ public class LoginController {
         }
     }
     
-    @FXML
     public void mostrarGUI() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("usuario.fxml"));
