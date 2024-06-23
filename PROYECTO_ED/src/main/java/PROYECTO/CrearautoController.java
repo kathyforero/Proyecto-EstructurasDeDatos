@@ -220,4 +220,97 @@ public class CrearautoController {
         int index = fotos.getIndex(Node);
         lblImagenes.setText((index + 1) + "/" + fotos.size());
     }
+    
+    public boolean verificarPlaca(){
+        String placa = tfPlaca.getText();
+        int numLetras = 0;
+        int numNum = 0;
+        if(placa!=null){
+            for(char c: placa.toCharArray()){
+                if(Character.isLetter(c)){
+                    numLetras++;
+                } else if(Character.isDigit(c)){
+                    numNum++;
+                }
+            }
+        }
+        if(numLetras!=3 && numNum<3 && numNum>4 && placa==null){
+            msgError("Ingrese una placa válida.");
+            return false;
+        } else {
+            msgErrorOff();
+            return true;            
+        }
+    }
+    
+    public boolean verificarAño(){
+        String año = tfAnio.getText();
+        int numNum = 0;
+        if(año!=null){
+            for(char c: año.toCharArray()){
+                if(Character.isLetter(c)){
+                    msgError("Ingrese un año válido.");
+                    return false;
+                } else if(Character.isDigit(c)){
+                    numNum++;
+                    continue;
+                }
+            }            
+        }
+        if(numNum!=4 || año==null){
+            msgError("Ingrese un año válido.");
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    public boolean verificarKilometraje(){
+        String kilometraje = tfKM.getText();
+        if(kilometraje!=null){
+            for(char c : kilometraje.toCharArray()){
+                if(Character.isDigit(c)){
+                    continue;
+                } else {
+                    msgError("Ingrese un kilometraje válido.");
+                    return false;
+                }
+            }
+        } else {
+            return false;
+        }
+        return true;        
+    }
+    
+    public boolean verificarPeso(){
+        String peso = tfPeso.getText();
+        if(peso!=null){
+            try {
+                Float.parseFloat(peso);                
+            } catch (NumberFormatException e){
+                msgError("Ingrese un peso válido.");
+                return false;
+            }
+        } else {
+            msgError("Ingrese un peso válido.");
+            return false;
+        }
+        return true;
+    }
+    
+    public boolean verificarPrecio(){
+        String precio = tfPrecio.getText();        
+        if(precio!=null){
+            try {
+                Float.parseFloat(precio);                
+            } catch (NumberFormatException e){
+                msgError("Ingrese un precio válido.");
+                return false;
+            }
+        } else {
+            msgError("Ingrese un precio válido.");
+            return false;
+        }
+        return true;
+    }
 }
