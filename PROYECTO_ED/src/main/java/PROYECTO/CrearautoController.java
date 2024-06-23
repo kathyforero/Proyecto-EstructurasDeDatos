@@ -199,24 +199,25 @@ public class CrearautoController {
     public void actualizarImagenes(){
         Node = fotos.getHeader();
         ivFotoAuto.setImage(Node.getContent());
+        actualizarContador();
     }
     
     @FXML
     public void adelanteImagen(){
         Node = Node.getNext();
         ivFotoAuto.setImage(Node.getContent());
+        actualizarContador();
     }
     
     @FXML
     public void atrasImagen(){
         Node = Node.getPrevious();
         ivFotoAuto.setImage(Node.getContent());
+        actualizarContador();
     }
     
-    public void actualizarContador(int i){
-        if(i==0){
-            lblImagenes.setText(1+"/"+fotos.size());
-        }else if(i==1){}
-        
+    public void actualizarContador(){
+        int index = fotos.getIndex(Node);
+        lblImagenes.setText((index + 1) + "/" + fotos.size());
     }
 }
