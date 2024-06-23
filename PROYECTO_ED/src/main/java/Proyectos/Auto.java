@@ -8,18 +8,18 @@ public class Auto implements Serializable{
     private float precio;
     private MarcaDeAuto marca;
     private Modelo modelo;
-    private String tipo;
+    private Tipo tipo;
     private int año;
     private String placa;    
     private int kilometraje;
-    private String motor;
-    private String transmisión;
+    private Motor motor;
+    private Transmision transmisión;
     private float peso;
-    private String ubicacion;
-    private String estado;
+    private Ubicacion ubicacion;
+    private Estado estado;
     private Usuario usuario;
     
-    public Auto(float precio, MarcaDeAuto marca, Modelo modelo, String tipo, int año, String placa, int kilometraje, String motor, String transmisión, float peso, String ubicacion, Usuario usuario, String estado){
+    public Auto(float precio, MarcaDeAuto marca, Modelo modelo, Tipo tipo, int año, String placa, int kilometraje, Motor motor, Transmision transmisión, float peso, Ubicacion ubicacion, Usuario usuario, Estado estado){
         this.precio = precio;
         this.marca = marca;
         this.modelo = modelo;        
@@ -47,7 +47,7 @@ public class Auto implements Serializable{
         return modelo;
     }
 
-    public String getTipo() {
+    public Tipo getTipo() {
         return tipo;
     }
 
@@ -59,11 +59,11 @@ public class Auto implements Serializable{
         return kilometraje;
     }
 
-    public String getMotor() {
+    public Motor getMotor() {
         return motor;
     }
 
-    public String getTransmisión() {
+    public Transmision getTransmisión() {
         return transmisión;
     }
 
@@ -71,7 +71,7 @@ public class Auto implements Serializable{
         return peso;
     }
 
-    public String getUbicacion() {
+    public Ubicacion getUbicacion() {
         return ubicacion;
     }
 
@@ -79,7 +79,7 @@ public class Auto implements Serializable{
         return usuario;
     }
 
-    public String getEstado() {
+    public Estado getEstado() {
         return estado;
     }
 
@@ -95,7 +95,7 @@ public class Auto implements Serializable{
         this.modelo = modelo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(Tipo tipo) {
         this.tipo = tipo;
     }
 
@@ -107,11 +107,11 @@ public class Auto implements Serializable{
         this.kilometraje = kilometraje;
     }
 
-    public void setMotor(String motor) {
+    public void setMotor(Motor motor) {
         this.motor = motor;
     }
 
-    public void setTransmisión(String transmisión) {
+    public void setTransmisión(Transmision transmisión) {
         this.transmisión = transmisión;
     }
 
@@ -119,7 +119,7 @@ public class Auto implements Serializable{
         this.peso = peso;
     }
 
-    public void setUbicacion(String ubicacion) {
+    public void setUbicacion(Ubicacion ubicacion) {
         this.ubicacion = ubicacion;
     }
 
@@ -127,7 +127,7 @@ public class Auto implements Serializable{
         this.usuario = usuario;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(Estado estado) {
         this.estado = estado;
     }
     
