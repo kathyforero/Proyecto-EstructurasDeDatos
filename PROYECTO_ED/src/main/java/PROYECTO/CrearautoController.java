@@ -1,6 +1,7 @@
 package PROYECTO;
 
 import Proyectos.*;
+import Bases.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -10,7 +11,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class CrearautoController {
@@ -19,6 +22,28 @@ public class CrearautoController {
     private Label lblUser;
     @FXML
     private Button btnRegresar;
+    @FXML
+    private TextField tfPrecio;
+    @FXML
+    private ComboBox<String> cbMarca;
+    @FXML
+    private ComboBox<String> cbModelo;
+    @FXML
+    private ComboBox<String> cbTipo;
+    @FXML
+    private TextField tfAnio;
+    @FXML
+    private TextField tfKM;
+    @FXML
+    private ComboBox<String> cbMotor;
+    @FXML
+    private ComboBox<String> cbTransmision;
+    @FXML
+    private TextField tfPeso;
+    @FXML
+    private ComboBox<String> cbUbicacion;
+    @FXML
+    private ComboBox<String> cbEstado;
     
     
     public void setUsuario(Usuario usuario) {
@@ -30,6 +55,7 @@ public class CrearautoController {
         return usuario;
     }
     
+    @FXML
     public void regresar() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("usuario.fxml"));
@@ -49,5 +75,54 @@ public class CrearautoController {
         }
     }
    
+    public void cargarCampos(){
+        cargarTipos();
+        cargarMarca();
+        cargarMotor();
+        cargarTransmision();
+        cargarUbicacion();
+        cargarEstado();
+    }
     
+    public void cargarTipos(){
+        for (Tipo tipo : Tipo.values()) {
+            cbTipo.getItems().add(tipo.getDisplayName());
+        }
+    }
+    
+    public void cargarMarca(){
+        for (MarcaDeAuto marca : MarcaDeAuto.values()) {
+            cbMarca.getItems().add(marca.getName());
+        }
+    }
+    
+    public void cargarModelo(){
+        for (Tipo tipo : Tipo.values()) {
+            cbModelo.getItems().add(tipo.getDisplayName());
+        }
+    }
+    
+    public void cargarMotor(){
+        for (Motor motor : Motor.values()) {
+            cbMotor.getItems().add(motor.getDisplayName());
+        }
+    }
+    
+    public void cargarTransmision(){
+        for (Transmision transmision : Transmision.values()) {
+            cbTransmision.getItems().add(transmision.getDisplayName());
+        }
+    }
+    
+    public void cargarUbicacion(){
+        for (Ubicacion ubicacion : Ubicacion.values()) {
+            cbUbicacion.getItems().add(ubicacion.getDisplayName());
+        }
+    }
+    
+    public void cargarEstado(){
+        for (Estado estado : Estado.values()) {
+            cbEstado.getItems().add(estado.getDisplayName());
+        }
+    }
 }

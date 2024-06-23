@@ -83,33 +83,33 @@
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <TextField alignment="CENTER" layoutX="135.0" layoutY="28.0" prefHeight="33.0" prefWidth="234.0" promptText="Precio">
+            <TextField fx:id="tfPrecio" alignment="CENTER" layoutX="135.0" layoutY="28.0" prefHeight="33.0" prefWidth="234.0" promptText="Precio">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </TextField>
-            <ComboBox layoutX="135.0" layoutY="77.0" prefHeight="29.0" prefWidth="234.0" />
-            <ComboBox layoutX="144.0" layoutY="121.0" prefHeight="29.0" prefWidth="225.0" />
-            <ComboBox layoutX="111.0" layoutY="166.0" prefHeight="29.0" prefWidth="258.0" />
-            <TextField alignment="CENTER" layoutX="111.0" layoutY="210.0" prefHeight="33.0" prefWidth="258.0" promptText="Año">
+            <ComboBox fx:id="cbMarca" layoutX="135.0" layoutY="77.0" prefHeight="29.0" prefWidth="234.0" />
+            <ComboBox fx:id="cbModelo" layoutX="144.0" layoutY="121.0" prefHeight="29.0" prefWidth="225.0" />
+            <ComboBox fx:id="cbTipo" layoutX="111.0" layoutY="166.0" prefHeight="29.0" prefWidth="258.0" />
+            <TextField fx:id="tfAnio" alignment="CENTER" layoutX="111.0" layoutY="210.0" prefHeight="33.0" prefWidth="258.0" promptText="Año">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" layoutX="174.0" layoutY="258.0" prefHeight="33.0" prefWidth="195.0" promptText="Kilometraje">
+            <TextField fx:id="tfKM" alignment="CENTER" layoutX="174.0" layoutY="258.0" prefHeight="33.0" prefWidth="195.0" promptText="Kilometraje">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </TextField>
-            <ComboBox layoutX="135.0" layoutY="305.0" prefHeight="29.0" prefWidth="234.0" />
-            <ComboBox layoutX="174.0" layoutY="349.0" prefHeight="29.0" prefWidth="195.0" />
-            <TextField alignment="CENTER" layoutX="111.0" layoutY="393.0" prefHeight="33.0" prefWidth="258.0" promptText="Peso">
+            <ComboBox fx:id="cbMotor" layoutX="135.0" layoutY="305.0" prefHeight="29.0" prefWidth="234.0" />
+            <ComboBox fx:id="cbTransmision" layoutX="174.0" layoutY="349.0" prefHeight="29.0" prefWidth="195.0" />
+            <TextField fx:id="tfPeso" alignment="CENTER" layoutX="111.0" layoutY="393.0" prefHeight="33.0" prefWidth="258.0" promptText="Peso">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </TextField>
-            <ComboBox layoutX="166.0" layoutY="440.0" prefHeight="29.0" prefWidth="203.0" />
-            <ComboBox layoutX="135.0" layoutY="483.0" prefHeight="29.0" prefWidth="234.0" />
+            <ComboBox fx:id="cbUbicacion" layoutX="166.0" layoutY="440.0" prefHeight="29.0" prefWidth="203.0" />
+            <ComboBox fx:id="cbEstado" layoutX="135.0" layoutY="483.0" prefHeight="29.0" prefWidth="234.0" />
             <Button layoutX="86.0" layoutY="534.0" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="REPORTE DE ACCIDENTES Y REPARACIONES" />
             <Button layoutX="85.0" layoutY="572.0" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="ELIMINAR VEHÍCULO" />
             <Button layoutX="275.0" layoutY="572.0" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="GUARDAR" />

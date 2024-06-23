@@ -81,6 +81,7 @@ public class UsuarioController{
             Parent root = loader.load();
             CrearautoController CrearAutoController = loader.getController();
             CrearAutoController.setUsuario(usuario);
+            CrearAutoController.cargarCampos();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("GuayacoCar - Autos a tu Alcance");

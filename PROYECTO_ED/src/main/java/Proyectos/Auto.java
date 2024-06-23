@@ -7,7 +7,7 @@ import java.io.Serializable;
 public class Auto implements Serializable{
     private float precio;
     private MarcaDeAuto marca;
-    private Modelo modelo;
+    private String modelo;
     private Tipo tipo;
     private int año;
     private String placa;    
@@ -19,7 +19,7 @@ public class Auto implements Serializable{
     private Estado estado;
     private Usuario usuario;
     
-    public Auto(float precio, MarcaDeAuto marca, Modelo modelo, Tipo tipo, int año, String placa, int kilometraje, Motor motor, Transmision transmisión, float peso, Ubicacion ubicacion, Usuario usuario, Estado estado){
+    public Auto(float precio, MarcaDeAuto marca, String modelo, Tipo tipo, int año, String placa, int kilometraje, Motor motor, Transmision transmisión, float peso, Ubicacion ubicacion, Usuario usuario, Estado estado){
         this.precio = precio;
         this.marca = marca;
         this.modelo = modelo;        
@@ -43,7 +43,7 @@ public class Auto implements Serializable{
         return marca;
     }
 
-    public Modelo getModelo() {
+    public String getModelo() {
         return modelo;
     }
 
@@ -91,7 +91,7 @@ public class Auto implements Serializable{
         this.marca = marca;
     }
 
-    public void setModelo(Modelo modelo) {
+    public void setModelo(String modelo) {
         this.modelo = modelo;
     }
 
