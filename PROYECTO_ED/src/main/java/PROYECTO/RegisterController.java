@@ -52,8 +52,6 @@ public class RegisterController {
     if (Sistema.guardarUsuario(u)){
         alertaCuentaCreada();
     }
-    
-    
     }
 
     @FXML
@@ -82,6 +80,10 @@ public class RegisterController {
                 mostrarLogin();
             }
         });
+    }
+    
+    public boolean verificarCorreo(String correo){
+        return Sistema.existeUser(correo);
     }
 
 }
