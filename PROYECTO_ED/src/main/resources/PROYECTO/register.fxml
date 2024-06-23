@@ -48,7 +48,7 @@
             <Font name="Century Gothic" size="12.0" />
          </font>
       </CheckBox>
-      <Button fx:id="logeo" layoutX="199.0" layoutY="565.0" mnemonicParsing="false" onAction="#crearUsuario" text="CREAR CUENTA">
+      <Button fx:id="logeo" layoutX="199.0" layoutY="565.0" mnemonicParsing="false" onAction="#crearUsuario" prefHeight="27.0" prefWidth="110.0" styleClass="btnInit" stylesheets="@estilos.css" text="CREAR CUENTA">
          <effect>
             <Glow />
          </effect>

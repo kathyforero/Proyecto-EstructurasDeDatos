@@ -22,7 +22,7 @@
             <Font name="Century Gothic" size="12.0" />
          </font>
       </PasswordField>
-      <Button fx:id="btnIniciarSesion" layoutX="445.0" layoutY="588.0" mnemonicParsing="false" onAction="#iniciarSesion" stylesheets="@estilos.css" text="INICIAR SESIÓN">
+      <Button fx:id="btnIniciarSesion" layoutX="447.0" layoutY="584.0" mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="27.0" prefWidth="110.0" styleClass="btnInit" stylesheets="@estilos.css" text="INICIAR SESIÓN">
          <font>
             <Font size="13.0" />
          </font>

@@ -110,13 +110,13 @@
             </TextField>
             <ComboBox layoutX="166.0" layoutY="440.0" prefHeight="29.0" prefWidth="203.0" />
             <ComboBox layoutX="135.0" layoutY="483.0" prefHeight="29.0" prefWidth="234.0" />
-            <Button layoutX="86.0" layoutY="534.0" mnemonicParsing="false" stylesheets="@estilos.css" text="REPORTE DE ACCIDENTES Y REPARACIONES" />
-            <Button layoutX="85.0" layoutY="572.0" mnemonicParsing="false" text="ELIMINAR VEHÍCULO" />
-            <Button layoutX="268.0" layoutY="572.0" mnemonicParsing="false" text="GUARDAR" />
+            <Button layoutX="86.0" layoutY="534.0" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="REPORTE DE ACCIDENTES Y REPARACIONES" />
+            <Button layoutX="85.0" layoutY="572.0" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="ELIMINAR VEHÍCULO" />
+            <Button layoutX="275.0" layoutY="572.0" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="GUARDAR" />
          </children>
       </AnchorPane>
-      <Button layoutX="213.0" layoutY="272.0" mnemonicParsing="false" text="CARGA TU IMAGEN" />
-      <Button layoutX="860.0" layoutY="152.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="107.0" text="REGRESAR" />
+      <Button layoutX="213.0" layoutY="272.0" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="CARGA TU IMAGEN" />
+      <Button layoutX="860.0" layoutY="152.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="107.0" styleClass="btnInit" stylesheets="@estilos.css" text="REGRESAR" />
       <ImageView fitHeight="417.0" fitWidth="470.0" layoutX="38.0" layoutY="313.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@preview.png" />
