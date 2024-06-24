@@ -11,10 +11,13 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1000.0" style="-fx-background-color: #0D050E;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PROYECTO.UsuarioController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1000.0" style="-fx-background-color: #0D050E;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PROYECTO.UsuarioController">
    <children>
       <ImageView fitHeight="137.0" fitWidth="111.0" layoutX="47.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -31,7 +34,7 @@
             <Font name="Kristen ITC" size="25.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="44.0" layoutY="380.0" prefHeight="245.0" prefWidth="306.0" style="-fx-background-color: #2B193E;">
+      <AnchorPane layoutX="8.0" layoutY="380.0" prefHeight="245.0" prefWidth="306.0" style="-fx-background-color: #2B193E;">
          <children>
             <Text fill="WHITE" layoutX="10.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¡Encuentre un auto según sus necesidades!" textAlignment="CENTER" wrappingWidth="280.0859375">
                <font>
@@ -56,8 +59,8 @@
             <Button fx:id="btnBuscar" layoutX="118.0" layoutY="195.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="65.0" styleClass="btnGeneral" stylesheets="@estilos.css" text="BUSCAR" />
          </children>
       </AnchorPane>
-      <ComboBox fx:id="cbOrdenar" layoutX="715.0" layoutY="190.0" prefHeight="25.0" prefWidth="151.0" promptText="Ordenar por" />
-      <Button fx:id="btnAplicar" layoutX="866.0" layoutY="190.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" styleClass="btnGeneral" stylesheets="@estilos.css" text="APLICAR" textAlignment="CENTER" />
+      <ComboBox fx:id="cbOrdenar" layoutX="715.0" layoutY="166.0" prefHeight="25.0" prefWidth="151.0" promptText="Ordenar por" />
+      <Button fx:id="btnAplicar" layoutX="866.0" layoutY="166.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" styleClass="btnGeneral" stylesheets="@estilos.css" text="APLICAR" textAlignment="CENTER" />
       <TextField fx:id="tfBusqueda" layoutX="223.0" layoutY="95.0" prefHeight="29.0" prefWidth="403.0" promptText="Buscar por ejemplo: Chevrolet Sail 2012">
          <font>
             <Font name="Century Gothic" size="12.0" />
@@ -92,5 +95,328 @@
             <String fx:value="btnGeneral" />
             <String fx:value="btnInit" />
          </styleClass></Button>
+      <VBox layoutX="416.0" layoutY="229.0" prefHeight="541.0" prefWidth="510.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox alignment="CENTER">
+                     <children>
+                        <StackPane>
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@preview.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </StackPane>
+                        <Label text="Marca Modelo" textFill="WHITE">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Label text="Año " textFill="WHITE">
+                                 <font>
+                                    <Font name="Century Gothic" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label text=" 0 Kms • Provincia" textFill="WHITE">
+                                 <font>
+                                    <Font name="Century Gothic" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Label text="\$PRECIO" textFill="WHITE" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="229.0" layoutY="10.0">
+                     <children>
+                        <StackPane>
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@preview.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </StackPane>
+                        <Label text="Marca Modelo" textFill="WHITE">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Label text="Año " textFill="WHITE">
+                                 <font>
+                                    <Font name="Century Gothic" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label text=" 0 Kms • Provincia" textFill="WHITE">
+                                 <font>
+                                    <Font name="Century Gothic" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Label text="\$PRECIO" textFill="WHITE" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="314.0" layoutY="10.0">
+                     <children>
+                        <StackPane>
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@preview.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </StackPane>
+                        <Label text="Marca Modelo" textFill="WHITE">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Label text="Año " textFill="WHITE">
+                                 <font>
+                                    <Font name="Century Gothic" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label text=" 0 Kms • Provincia" textFill="WHITE">
+                                 <font>
+                                    <Font name="Century Gothic" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Label text="\$PRECIO" textFill="WHITE" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox alignment="CENTER">
+                     <children>
+                        <StackPane>
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@preview.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </StackPane>
+                        <Label text="Marca Modelo" textFill="WHITE">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Label text="Año " textFill="WHITE">
+                                 <font>
+                                    <Font name="Century Gothic" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label text=" 0 Kms • Provincia" textFill="WHITE">
+                                 <font>
+                                    <Font name="Century Gothic" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Label text="\$PRECIO" textFill="WHITE" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="229.0" layoutY="10.0">
+                     <children>
+                        <StackPane>
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@preview.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </StackPane>
+                        <Label text="Marca Modelo" textFill="WHITE">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Label text="Año " textFill="WHITE">
+                                 <font>
+                                    <Font name="Century Gothic" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label text=" 0 Kms • Provincia" textFill="WHITE">
+                                 <font>
+                                    <Font name="Century Gothic" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Label text="\$PRECIO" textFill="WHITE" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="314.0" layoutY="10.0">
+                     <children>
+                        <StackPane>
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@preview.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </StackPane>
+                        <Label text="Marca Modelo" textFill="WHITE">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Label text="Año " textFill="WHITE">
+                                 <font>
+                                    <Font name="Century Gothic" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label text=" 0 Kms • Provincia" textFill="WHITE">
+                                 <font>
+                                    <Font name="Century Gothic" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Label text="\$PRECIO" textFill="WHITE" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="207.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox alignment="CENTER">
+                     <children>
+                        <StackPane>
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@preview.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </StackPane>
+                        <Label text="Marca Modelo" textFill="WHITE">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Label text="Año " textFill="WHITE">
+                                 <font>
+                                    <Font name="Century Gothic" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label text=" 0 Kms • Provincia" textFill="WHITE">
+                                 <font>
+                                    <Font name="Century Gothic" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Label text="\$PRECIO" textFill="WHITE" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="229.0" layoutY="10.0">
+                     <children>
+                        <StackPane>
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@preview.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </StackPane>
+                        <Label text="Marca Modelo" textFill="WHITE">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Label text="Año " textFill="WHITE">
+                                 <font>
+                                    <Font name="Century Gothic" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label text=" 0 Kms • Provincia" textFill="WHITE">
+                                 <font>
+                                    <Font name="Century Gothic" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Label text="\$PRECIO" textFill="WHITE" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="314.0" layoutY="10.0">
+                     <children>
+                        <StackPane>
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@preview.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </StackPane>
+                        <Label text="Marca Modelo" textFill="WHITE">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Label text="Año " textFill="WHITE">
+                                 <font>
+                                    <Font name="Century Gothic" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label text=" 0 Kms • Provincia" textFill="WHITE">
+                                 <font>
+                                    <Font name="Century Gothic" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Label text="\$PRECIO" textFill="WHITE" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <ImageView fitHeight="68.0" fitWidth="65.0" layoutX="931.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@derecha.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="68.0" fitWidth="65.0" layoutX="337.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@izquierda.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
