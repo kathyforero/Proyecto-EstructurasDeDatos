@@ -2,6 +2,7 @@ package Proyectos;
 
 import Bases.*;
 import Proyectos.*;
+import java.io.File;
 import javafx.scene.image.Image;
 
 import java.io.IOException;
@@ -17,7 +18,7 @@ public class Sistema implements Serializable{
 
     public static Auto crearAuto(float precio, MarcaDeAuto marca, String modelo, Tipo tipo, int año, String placa,
                                  int kilometraje, Motor motor, Transmision transmisión, float peso,
-                                 Ubicacion ubicacion, Usuario usuario, Estado estado, DoublyCircularList<Image> fotos){
+                                 Ubicacion ubicacion, Usuario usuario, Estado estado, DoublyCircularList<File> fotos){
         Auto auto = new Auto( precio,  marca,  modelo,  tipo,  año,  placa,  kilometraje,  motor,  transmisión, 
                               peso,  ubicacion,  usuario,  estado,  fotos);
         return auto;

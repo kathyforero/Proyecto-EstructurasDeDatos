@@ -1,11 +1,13 @@
 
 package Bases;
 
+import java.io.Serializable;
+
 /**
  * Interfaz para una lista genérica.
  * @param <E> Tipo de elemento en la lista.
  */
-public interface List<E> extends Iterable<E>{
+public interface List<E> extends Serializable,Iterable<E> {
 
     /**
      * Inserta el elemento al inicio de la lista.

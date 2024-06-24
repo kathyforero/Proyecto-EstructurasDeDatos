@@ -3,6 +3,7 @@ package Proyectos;
 import javafx.scene.image.Image;
 import Bases.*;
 import Proyectos.*;
+import java.io.File;
 import java.io.Serializable;
 
 public class Auto implements Serializable{
@@ -19,9 +20,9 @@ public class Auto implements Serializable{
     private Ubicacion ubicacion;
     private Estado estado;
     private Usuario usuario;
-    private DoublyCircularList<Image> fotos;
+    private DoublyCircularList<File> fotos;
     
-    public Auto(float precio, MarcaDeAuto marca, String modelo, Tipo tipo, int año, String placa, int kilometraje, Motor motor, Transmision transmisión, float peso, Ubicacion ubicacion, Usuario usuario, Estado estado, DoublyCircularList<Image> fotos){
+    public Auto(float precio, MarcaDeAuto marca, String modelo, Tipo tipo, int año, String placa, int kilometraje, Motor motor, Transmision transmisión, float peso, Ubicacion ubicacion, Usuario usuario, Estado estado, DoublyCircularList<File> fotos){
         this.precio = precio;
         this.marca = marca;
         this.modelo = modelo;        
@@ -86,7 +87,7 @@ public class Auto implements Serializable{
         return estado;
     }
     
-    public DoublyCircularList<Image> getFotos() {
+    public DoublyCircularList<File> getFotos() {
         return fotos;
     }
 
@@ -138,7 +139,7 @@ public class Auto implements Serializable{
         this.estado = estado;
     }
     
-    public void setFotos(DoublyCircularList<Image> fotos){
+    public void setFotos(DoublyCircularList<File> fotos){
         this.fotos = fotos;
     }
 

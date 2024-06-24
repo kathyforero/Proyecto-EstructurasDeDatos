@@ -27,7 +27,7 @@ import javafx.stage.Stage;
 
 public class CrearautoController {
     private Usuario usuario;
-    private DoublyCircularList<Image> fotos = new DoublyCircularList<>();
+    private DoublyCircularList<File> fotos = new DoublyCircularList<>();
     
     @FXML
     private Label lblUser;
@@ -63,7 +63,7 @@ public class CrearautoController {
     private Button btnSubirImagen;
     @FXML
     private ImageView ivFotoAuto;
-    private DoublyCircularNode<Image> Node;
+    private DoublyCircularNode<File> Node;
     @FXML
     private ImageView ivAdelante;
     @FXML
@@ -193,9 +193,10 @@ public class CrearautoController {
         if (selectedFiles != null) {
             for (File file : selectedFiles) {
                 System.out.println("Archivo seleccionado: " + file.getAbsolutePath());
+                fotos.addLast(file);
                 Image image = new Image(file.toURI().toString());
-                fotos.addLast(image);
-                copiarImagen(file.getAbsolutePath(), "Proyecto-EstructurasDeDatos/PROYECTO_ED/src/main/resources/PROYECTO/" + file.getName());
+                
+                //copiarImagen(file.getAbsolutePath(), "Proyecto-EstructurasDeDatos/PROYECTO_ED/src/main/resources/PROYECTO/" + file.getName());
             }
         }
         
@@ -220,21 +221,24 @@ public class CrearautoController {
     
     public void actualizarImagenes(){
         Node = fotos.getHeader();
-        ivFotoAuto.setImage(Node.getContent());
+        Image image = new Image(Node.getContent().toURI().toString());
+        ivFotoAuto.setImage(image);
         actualizarContador();
     }
     
     @FXML
     public void adelanteImagen(){
         Node = Node.getNext();
-        ivFotoAuto.setImage(Node.getContent());
+        Image image = new Image(Node.getContent().toURI().toString());
+        ivFotoAuto.setImage(image);
         actualizarContador();
     }
     
     @FXML
     public void atrasImagen(){
         Node = Node.getPrevious();
-        ivFotoAuto.setImage(Node.getContent());
+        Image image = new Image(Node.getContent().toURI().toString());
+        ivFotoAuto.setImage(image);
         actualizarContador();
     }
     
