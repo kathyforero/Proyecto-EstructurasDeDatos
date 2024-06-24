@@ -196,7 +196,6 @@ public class CrearautoController {
                 fotos.addLast(file);
                 Image image = new Image(file.toURI().toString());
                 
-                //copiarImagen(file.getAbsolutePath(), "Proyecto-EstructurasDeDatos/PROYECTO_ED/src/main/resources/PROYECTO/" + file.getName());
             }
         }
         
@@ -205,19 +204,6 @@ public class CrearautoController {
         }
     }
 
-        public void copiarImagen(String srcOrigen, String srcDestino) {
-        try {
-            File origen = new File(srcOrigen);
-            File destino = new File(srcDestino);
-
-            // Copiar el archivo de origen al destino
-            Files.copy(origen.toPath(), destino.toPath(), StandardCopyOption.REPLACE_EXISTING);
-
-            System.out.println("Imagen copiada exitosamente.");
-        } catch (IOException e) {
-            System.err.println("Error al copiar la imagen: " + e.getMessage());
-        }
-    }
     
     public void actualizarImagenes(){
         Node = fotos.getHeader();
@@ -342,9 +328,10 @@ public class CrearautoController {
 
     private boolean verificarTodo(){
 
-        return verificarPlaca() & verificarPrecio() &/*verificarmarca & verificarModelo() que este lleno*/ 
-        /*verificar tipo*/verificarAño()&verificarKilometraje()&/*verificar motor & verificar transmision*/
-        verificarPeso() /*verificar ubicacion & verificarestado*/;
+        return verificarPlaca() && verificarPrecio() && verificarAño()&&verificarKilometraje()&&verificarPeso();
+        /*verificarmarca & verificarModelo() que este lleno*/ 
+        /*verificar tipo*//*verificar motor & verificar transmision*/
+        /*verificar ubicacion & verificarestado*/
     }
 
     private void alertaAutoGuardado(){
