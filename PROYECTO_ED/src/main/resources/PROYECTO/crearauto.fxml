@@ -124,7 +124,7 @@
             <ComboBox fx:id="cbEstado" layoutX="135.0" layoutY="493.0" prefHeight="29.0" prefWidth="234.0" promptText="Estado" />
             <Button layoutX="84.0" layoutY="548.0" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="REPORTE DE ACCIDENTES Y REPARACIONES" />
             <Button layoutX="83.0" layoutY="580.0" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="ELIMINAR VEHÍCULO" />
-            <Button layoutX="272.0" layoutY="580.0" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="GUARDAR" />
+            <Button fx:id="btonGuardar" layoutX="272.0" layoutY="580.0" onMouseClicked="#guardarAuto" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="GUARDAR" />
             <Button fx:id="btnError" layoutX="27.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="395.0" styleClass="textError" stylesheets="@estilos.css" text="Correo no encontrado :C" textAlignment="CENTER" textFill="WHITE" visible="false">
                <font>
                   <Font name="System Bold Italic" size="13.0" />

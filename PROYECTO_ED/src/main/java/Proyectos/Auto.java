@@ -141,5 +141,23 @@ public class Auto implements Serializable{
     public void setFotos(DoublyCircularList<Image> fotos){
         this.fotos = fotos;
     }
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
+    @Override
+    public String toString() {
+        return "Auto [precio=" + precio + ", marca=" + marca + ", modelo=" + modelo + ", tipo=" + tipo + ", año=" + año
+                + ", placa=" + placa + ", kilometraje=" + kilometraje + ", motor=" + motor + ", transmisión="
+                + transmisión + ", peso=" + peso + ", ubicacion=" + ubicacion + ", estado=" + estado + ", usuario="
+                + usuario + "]";
+    }
+
+    
     
 }
