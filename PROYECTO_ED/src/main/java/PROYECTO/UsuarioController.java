@@ -16,6 +16,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import Bases.*;
 import Proyectos.*;
+import java.util.Map;
 
 public class UsuarioController{
 
@@ -85,6 +86,7 @@ public class UsuarioController{
         }
     }
     
+    @FXML
     public void mostrarCrearAuto() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("crearauto.fxml"));
@@ -96,7 +98,7 @@ public class UsuarioController{
             stage.setScene(new Scene(root));
             stage.setTitle("GuayacoCar - Autos a tu Alcance");
             stage.show();
-
+            
             Stage miStage = (Stage) btnCrearAuto.getScene().getWindow();
             miStage.close();
             
@@ -105,4 +107,9 @@ public class UsuarioController{
         }
     }
     
+    @FXML
+    public void cargarAutos(){
+        Map<String, Auto> autos = Archivos.leerAutos();
+        
+    }
 }
