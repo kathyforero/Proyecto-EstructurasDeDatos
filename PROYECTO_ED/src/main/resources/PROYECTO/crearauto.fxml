@@ -161,7 +161,7 @@
             </ImageView>
          </children>
       </StackPane>
-      <ImageView fitHeight="60.0" fitWidth="58.0" layoutX="38.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="ivQuitarImagen" fitHeight="60.0" fitWidth="58.0" layoutX="38.0" layoutY="243.0" onMouseClicked="#eliminarFoto" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Trash.png" />
          </image>

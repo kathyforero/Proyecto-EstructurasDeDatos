@@ -25,6 +25,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+
 public class CrearautoController {
     private Usuario usuario;
     private DoublyCircularList<File> fotos = new DoublyCircularList<>();
@@ -212,10 +213,19 @@ public class CrearautoController {
 
     
     public void actualizarImagenes(){
-        Node = fotos.getHeader();
-        Image image = new Image(Node.getContent().toURI().toString());
-        ivFotoAuto.setImage(image);
-        actualizarContador();
+        if(fotos.size()>0){
+            Node = fotos.getHeader();
+            Image image = new Image(Node.getContent().toURI().toString());
+            ivFotoAuto.setImage(image);
+            actualizarContador();
+        }else{
+            String rutaRelativa = "/PROYECTO/preview.png";
+            String rutaCompleta = getClass().getResource(rutaRelativa).toExternalForm();
+            Image image = new Image(rutaCompleta);
+            ivFotoAuto.setImage(image);
+            actualizarContador();
+            
+        }
     }
     
     @FXML
@@ -235,8 +245,12 @@ public class CrearautoController {
     }
     
     public void actualizarContador(){
-        int index = fotos.getIndex(Node);
-        lblImagenes.setText((index + 1) + "/" + fotos.size());
+        if(fotos.size()>0){
+            int index = fotos.getIndex(Node);
+            lblImagenes.setText((index + 1) + "/" + fotos.size());
+        }else{
+            lblImagenes.setText("0/0");
+        }
     }
     
     public boolean verificarPlaca(){
