@@ -19,63 +19,63 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1000.0" style="-fx-background-color: #0D050E;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PROYECTO.UsuarioController">
    <children>
-      <ImageView fitHeight="137.0" fitWidth="111.0" layoutX="47.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="137.0" fitWidth="111.0" layoutX="275.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Logo.png" />
          </image>
       </ImageView>
-      <Label layoutX="223.0" layoutY="32.0" stylesheets="@estilos.css" text="¡Bienvenido," textFill="WHITE">
+      <Label layoutX="398.0" layoutY="52.0" stylesheets="@estilos.css" text="¡Bienvenido," textFill="WHITE">
          <font>
-            <Font name="Kristen ITC" size="25.0" />
+            <Font name="Kristen ITC" size="19.0" />
          </font>
       </Label>
-      <Label fx:id="lblUser" layoutX="379.0" layoutY="31.0" prefHeight="41.0" prefWidth="460.0" text="a" textFill="#a3445d">
+      <Label fx:id="lblUser" layoutX="517.0" layoutY="47.0" prefHeight="41.0" prefWidth="351.0" text="a" textFill="#a3445d">
          <font>
-            <Font name="Kristen ITC" size="25.0" />
+            <Font name="Kristen ITC" size="19.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="8.0" layoutY="380.0" prefHeight="245.0" prefWidth="306.0" style="-fx-background-color: #2B193E;">
+      <AnchorPane layoutX="14.0" layoutY="41.0" prefHeight="224.0" prefWidth="256.0" style="-fx-background-color: #2B193E;">
          <children>
-            <Text fill="WHITE" layoutX="10.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¡Encuentre un auto según sus necesidades!" textAlignment="CENTER" wrappingWidth="280.0859375">
+            <Text fill="WHITE" layoutX="17.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¡Encuentre un auto según sus necesidades!" textAlignment="CENTER" wrappingWidth="213.0859375">
                <font>
-                  <Font name="Kristen ITC" size="21.0" />
+                  <Font name="Kristen ITC" size="17.0" />
                </font></Text>
-            <ComboBox fx:id="cmMarca" layoutX="28.0" layoutY="83.0" prefHeight="25.0" prefWidth="122.0" promptText="Marca" />
-            <ComboBox fx:id="cmModelo" layoutX="157.0" layoutY="83.0" prefHeight="25.0" prefWidth="122.0" promptText="Modelo" />
-            <TextField fx:id="tfPrecioDesde" layoutX="28.0" layoutY="120.0" prefHeight="25.0" prefWidth="122.0" promptText="Precio desde">
+            <ComboBox fx:id="cmMarca" layoutX="2.0" layoutY="80.0" prefHeight="25.0" prefWidth="122.0" promptText="Marca" />
+            <ComboBox fx:id="cmModelo" layoutX="131.0" layoutY="80.0" prefHeight="25.0" prefWidth="122.0" promptText="Modelo" />
+            <TextField fx:id="tfPrecioDesde" layoutX="2.0" layoutY="117.0" prefHeight="25.0" prefWidth="122.0" promptText="Precio desde">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </TextField>
-            <TextField fx:id="tfPrecioHasta" layoutX="157.0" layoutY="120.0" prefHeight="25.0" prefWidth="122.0" promptText="Precio hasta">
+            <TextField fx:id="tfPrecioHasta" layoutX="131.0" layoutY="117.0" prefHeight="25.0" prefWidth="122.0" promptText="Precio hasta">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font></TextField>
-            <TextField fx:id="tfKMDesde" layoutX="28.0" layoutY="157.0" prefHeight="25.0" prefWidth="122.0" promptText="Kilometraje desde">
+            <TextField fx:id="tfKMDesde" layoutX="2.0" layoutY="154.0" prefHeight="25.0" prefWidth="122.0" promptText="Kilometraje desde">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font></TextField>
-            <TextField fx:id="tfKMHasta" layoutX="157.0" layoutY="157.0" prefHeight="25.0" prefWidth="122.0" promptText="Kilometraje hasta" />
-            <Button fx:id="btnBuscar" layoutX="118.0" layoutY="195.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="65.0" styleClass="btnGeneral" stylesheets="@estilos.css" text="BUSCAR" />
+            <TextField fx:id="tfKMHasta" layoutX="131.0" layoutY="154.0" prefHeight="25.0" prefWidth="122.0" promptText="Kilometraje hasta" />
+            <Button fx:id="btnBuscar" layoutX="95.0" layoutY="190.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="65.0" styleClass="btnGeneral" stylesheets="@estilos.css" text="BUSCAR" />
          </children>
       </AnchorPane>
-      <ComboBox fx:id="cbOrdenar" layoutX="715.0" layoutY="166.0" prefHeight="25.0" prefWidth="151.0" promptText="Ordenar por" />
-      <Button fx:id="btnAplicar" layoutX="866.0" layoutY="166.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" styleClass="btnGeneral" stylesheets="@estilos.css" text="APLICAR" textAlignment="CENTER" />
-      <TextField fx:id="tfBusqueda" layoutX="223.0" layoutY="95.0" prefHeight="29.0" prefWidth="403.0" promptText="Buscar por ejemplo: Chevrolet Sail 2012">
+      <ComboBox fx:id="cbOrdenar" layoutX="753.0" layoutY="166.0" prefHeight="25.0" prefWidth="151.0" promptText="Ordenar por" />
+      <Button fx:id="btnAplicar" layoutX="904.0" layoutY="166.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" styleClass="btnGeneral" stylesheets="@estilos.css" text="APLICAR" textAlignment="CENTER" />
+      <TextField fx:id="tfBusqueda" layoutX="398.0" layoutY="93.0" prefHeight="29.0" prefWidth="316.0" promptText="Buscar por ejemplo: Chevrolet Sail 2012">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font></TextField>
-      <ImageView fitHeight="45.0" fitWidth="35.0" layoutX="626.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="45.0" fitWidth="35.0" layoutX="712.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Buscar.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnCrearAuto" layoutX="698.0" layoutY="92.0" mnemonicParsing="false" onAction="#mostrarCrearAuto" prefHeight="34.0" prefWidth="141.0" styleClass="btnGeneral" stylesheets="@estilos.css" text="VENDE TU VEHÍCULO">
+      <Button fx:id="btnCrearAuto" layoutX="762.0" layoutY="93.0" mnemonicParsing="false" onAction="#mostrarCrearAuto" prefHeight="34.0" prefWidth="141.0" styleClass="btnGeneral" stylesheets="@estilos.css" text="VENDE TU VEHÍCULO">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font>
       </Button>
-      <MenuBar layoutX="866.0" layoutY="93.0" prefHeight="34.0" prefWidth="65.0" stylesheets="@estilos.css">
+      <MenuBar layoutX="913.0" layoutY="93.0" prefHeight="34.0" prefWidth="65.0" stylesheets="@estilos.css">
         <menus>
           <Menu mnemonicParsing="false" text="MÁS">
                <items>
@@ -90,14 +90,14 @@
             <String fx:value="menu-bar" />
          </styleClass>
       </MenuBar>
-      <Button fx:id="btnCerrarSesion" layoutX="44.0" layoutY="810.0" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="29.0" prefWidth="107.0" stylesheets="@estilos.css" text="CERRAR SESIÓN">
+      <Button fx:id="btnCerrarSesion" layoutX="37.0" layoutY="816.0" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="29.0" prefWidth="107.0" stylesheets="@estilos.css" text="CERRAR SESIÓN">
          <styleClass>
             <String fx:value="btnGeneral" />
             <String fx:value="btnInit" />
          </styleClass></Button>
-      <VBox layoutX="416.0" layoutY="229.0" prefHeight="541.0" prefWidth="510.0">
+      <VBox layoutX="59.0" layoutY="317.0" prefHeight="424.0" prefWidth="883.0" spacing="10.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
                   <VBox alignment="CENTER">
                      <children>
@@ -122,7 +122,7 @@
                                     <Font name="Century Gothic" size="12.0" />
                                  </font>
                               </Label>
-                              <Label text=" 0 Kms • Provincia" textFill="WHITE">
+                              <Label text=" 15000 Kms • Provincia" textFill="WHITE">
                                  <font>
                                     <Font name="Century Gothic" size="12.0" />
                                  </font>
@@ -155,7 +155,7 @@
                                     <Font name="Century Gothic" size="12.0" />
                                  </font>
                               </Label>
-                              <Label text=" 0 Kms • Provincia" textFill="WHITE">
+                              <Label text=" 155555555550 Kms • Provincia" textFill="WHITE">
                                  <font>
                                     <Font name="Century Gothic" size="12.0" />
                                  </font>
@@ -188,7 +188,7 @@
                                     <Font name="Century Gothic" size="12.0" />
                                  </font>
                               </Label>
-                              <Label text=" 0 Kms • Provincia" textFill="WHITE">
+                              <Label text=" 15000000000 Kms • Provincia" textFill="WHITE">
                                  <font>
                                     <Font name="Century Gothic" size="12.0" />
                                  </font>
@@ -200,110 +200,7 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <VBox alignment="CENTER">
-                     <children>
-                        <StackPane>
-                           <children>
-                              <ImageView fitHeight="150.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@preview.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </StackPane>
-                        <Label text="Marca - Modelo" textFill="WHITE">
-                           <font>
-                              <Font name="Century Gothic" size="12.0" />
-                           </font>
-                        </Label>
-                        <HBox alignment="CENTER">
-                           <children>
-                              <Label text="Año " textFill="WHITE">
-                                 <font>
-                                    <Font name="Century Gothic" size="12.0" />
-                                 </font>
-                              </Label>
-                              <Label text=" 0 Kms • Provincia" textFill="WHITE">
-                                 <font>
-                                    <Font name="Century Gothic" size="12.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <Label text="\$PRECIO" textFill="WHITE" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="229.0" layoutY="10.0">
-                     <children>
-                        <StackPane>
-                           <children>
-                              <ImageView fitHeight="150.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@preview.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </StackPane>
-                        <Label text="Marca - Modelo" textFill="WHITE">
-                           <font>
-                              <Font name="Century Gothic" size="12.0" />
-                           </font>
-                        </Label>
-                        <HBox alignment="CENTER">
-                           <children>
-                              <Label text="Año " textFill="WHITE">
-                                 <font>
-                                    <Font name="Century Gothic" size="12.0" />
-                                 </font>
-                              </Label>
-                              <Label text=" 0 Kms • Provincia" textFill="WHITE">
-                                 <font>
-                                    <Font name="Century Gothic" size="12.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <Label text="\$PRECIO" textFill="WHITE" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="314.0" layoutY="10.0">
-                     <children>
-                        <StackPane>
-                           <children>
-                              <ImageView fitHeight="150.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@preview.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </StackPane>
-                        <Label text="Marca - Modelo" textFill="WHITE">
-                           <font>
-                              <Font name="Century Gothic" size="12.0" />
-                           </font>
-                        </Label>
-                        <HBox alignment="CENTER">
-                           <children>
-                              <Label text="Año " textFill="WHITE">
-                                 <font>
-                                    <Font name="Century Gothic" size="12.0" />
-                                 </font>
-                              </Label>
-                              <Label text=" 0 Kms • Provincia" textFill="WHITE">
-                                 <font>
-                                    <Font name="Century Gothic" size="12.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <Label text="\$PRECIO" textFill="WHITE" />
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="207.0" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="591.0" spacing="10.0">
                <children>
                   <VBox alignment="CENTER">
                      <children>
@@ -408,12 +305,12 @@
             </HBox>
          </children>
       </VBox>
-      <ImageView fitHeight="68.0" fitWidth="65.0" layoutX="931.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="47.0" fitWidth="45.0" layoutX="940.0" layoutY="506.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@derecha.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="68.0" fitWidth="65.0" layoutX="337.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="47.0" fitWidth="45.0" layoutX="14.0" layoutY="506.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@izquierda.png" />
          </image>
