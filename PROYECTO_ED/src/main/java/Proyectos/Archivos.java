@@ -67,7 +67,7 @@ public class Archivos {
                 System.out.println("ARCHIVO DE AUTOS CREADO CON EXITO");
             }
 
-            // Escribir el mapa de usuarios en el archivo
+            // Escribir el mapa de Autos en el archivo
             try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(archivo))) {
                 out.writeObject(autos);
                 System.out.println("Autos GUARDADOS CON EXITO!");

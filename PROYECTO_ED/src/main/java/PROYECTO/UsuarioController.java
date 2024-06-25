@@ -47,6 +47,7 @@ public class UsuarioController{
     @FXML
     private Label lblUser;
     private Usuario usuario;
+    private DoublyCircularList<Auto> autos = new DoublyCircularList<>();
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
@@ -55,6 +56,15 @@ public class UsuarioController{
 
     public Usuario getUsuario() {
         return usuario;
+    }
+    
+    public void setAutos(DoublyCircularList<Auto> autos) {
+        this.autos = autos;
+        
+    }
+
+    public DoublyCircularList<Auto> getAutos() {
+        return autos;
     }
     
     @FXML
