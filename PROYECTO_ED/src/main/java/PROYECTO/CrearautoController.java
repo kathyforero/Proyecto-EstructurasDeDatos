@@ -103,6 +103,12 @@ public class CrearautoController {
         }
     }
    
+    @FXML
+    public void eliminarFoto() {
+        fotos.removeNode(Node);
+        actualizarImagenes();
+    }
+    
     public void cargarCampos(){
         cargarTipos();
         cargarMarca();
