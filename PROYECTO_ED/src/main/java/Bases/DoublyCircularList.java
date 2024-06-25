@@ -202,21 +202,26 @@ public class DoublyCircularList<E> implements List<E>,Serializable{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
-    public E removeNode(int index) {
-        if (index < 0 || index >= size()) {
-            throw new IndexOutOfBoundsException("El indice esta fuera de rango!");
-        }
-        if (size()==0) {
+    public E removeNode(DoublyCircularNode<E> n) {
+        if(n!=null){
+            if(this.size()>2){
+                n.getNext().setPrevious(n.getPrevious());
+                n.getPrevious().setNext(n.getNext());
+                if(n==last){
+                    last = n.getPrevious();
+                }               
+            }
+            else if(this.size()==2){
+                n.getNext().setNext(n.getNext());
+                n.getPrevious().setPrevious(n.getPrevious());
+                last = n.getNext();
+            } else if(this.size()==1){
+                last = null;
+            }
+            return n.getContent();
+        } else {
             return null;
-        }
-        if (size() == 1) {
-            E content = last.getContent();
-            last = null;
-            return content;
-        }
-        DoublyCircularNode<E> nodo;
-        
-        
+        }        
     }
 
 
