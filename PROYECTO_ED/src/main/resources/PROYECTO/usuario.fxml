@@ -67,7 +67,7 @@
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font></TextField>
-      <ImageView fitHeight="45.0" fitWidth="35.0" layoutX="712.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="buscar" fitHeight="45.0" fitWidth="35.0" layoutX="712.0" layoutY="91.0" onMouseClicked="#buscar" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Buscar.png" />
          </image>
@@ -82,7 +82,7 @@
           <Menu mnemonicParsing="false" text="MÁS">
                <items>
                   <MenuItem fx:id="menuMisAutos" mnemonicParsing="false" onAction="#mostrarMisAutos" text="MIS VEHÍCULOS" />
-                  <MenuItem fx:id="menuMisAutos" mnemonicParsing="false" text="FAVORITOS" />
+                  <MenuItem fx:id="menuFav" mnemonicParsing="false" onAction="#mostrarMisFavoritos" text="FAVORITOS" />
                </items>
           </Menu>
         </menus>
