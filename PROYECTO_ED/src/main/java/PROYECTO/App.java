@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.Map;
 
 import Bases.*;
 import Proyectos.*;
@@ -35,6 +36,20 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        /*Imprimir usuarios */
+        Map<String, Usuario> users = Archivos.leerUsuarios();
+
+        for (Map.Entry<String, Usuario> entry : users.entrySet()) {
+            String correo = entry.getKey();        // Obtener el correo (clave)
+            Usuario usuario = entry.getValue();    // Obtener el usuario (valor)
+        
+            String nombre = usuario.getNombre();   // Obtener el nombre del usuario
+        
+            // Imprimir el correo y el nombre
+            System.out.println("Correo: " + correo + ", Nombre: " + nombre);
+        }
+        
+
         /*
         
         
