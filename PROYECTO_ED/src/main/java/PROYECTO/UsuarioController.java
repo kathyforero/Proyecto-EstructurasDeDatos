@@ -152,7 +152,7 @@ public class UsuarioController{
     private MenuItem menuFav;
     private ArrayList<ImageView> imagenes=new ArrayList<>();
     private DoublyCircularList<Auto> autos = Archivos.leerAutos();
-    private DoublyCircularNode<Auto> autoNodo=autos.getHeader();
+    private DoublyCircularNode<Auto> autoNodo;
     private DoublyCircularNode<File> foto;
     
 
@@ -160,7 +160,13 @@ public class UsuarioController{
         this.usuario = usuario;
         lblUser.setText(usuario.getNombre()+" "+usuario.getApellido()+"!");
         //cargarControladores();
+        if (autos.size()>0){
+            autoNodo=autos.getHeader();
+        }
         cargarAutos();
+        
+        
+        
     }
 
     public Usuario getUsuario() {
@@ -274,8 +280,10 @@ public class UsuarioController{
     */
     public void cargarAutos(){
         
-        if (!(autos.size()==0)){
+        if (autos.size()>0){
             mostrarAutosAdelante();
+        }else{
+            ponerBlanco(1);
         }
     }
     
