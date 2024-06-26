@@ -154,6 +154,8 @@ public class UsuarioController{
     private DoublyCircularList<Auto> autos = Archivos.leerAutos();
     private DoublyCircularNode<Auto> autoNodo;
     private DoublyCircularNode<File> foto;
+    private int autosMostrados;
+
     
 
     public void setUsuario(Usuario usuario) {
@@ -286,7 +288,6 @@ public class UsuarioController{
     
     public void mostrarAutosAdelante(){
             int index = 1;
-            int autosMostrados=0;
             do {
                 Auto auto = autoNodo.getContent();
                  try {
@@ -336,6 +337,9 @@ public class UsuarioController{
                 index++; 
                 autosMostrados++; 
                 autoNodo = autoNodo.getNext();
+                if(autoNodo.equals(autos.getHeader())){
+                    autosMostrados=1;
+                    }
                 
             } while (autoNodo != autos.getHeader() && index<=6);
             if(autoNodo.equals(autos.getHeader())){
@@ -346,21 +350,16 @@ public class UsuarioController{
     
     @FXML
     public void mostrarAutosAtras() {
-    int autosMostrados = 0;
-    int currentIndex = autos.getIndex(autoNodo);  // Obtener el índice actual del nodo
-
-    // Retroceder la página
-    currentIndex -= 6;
-    if (currentIndex < 0) {
-        currentIndex += autos.size();  // Asegurar que el índice sea válido en la lista circular
+    if (autos.getIndex(autoNodo)==6) {
+        int indice=autos.size()-(autos.size()%6);
+        autoNodo=autos.getNodo(indice);  // Asegurar que el índice sea válido en la lista circular
     }
 
-    autoNodo = autos.getNodo(currentIndex);  // Obtener el nodo desde el nuevo índice
 
     // Mostrar autos retrocediendo
     do {
         Auto auto = autoNodo.getContent();
-        int index = (autosMostrados % 6) + 1;  // Asegurar que el índice sea entre 1 y 6
+        int index = 1;  // Asegurar que el índice sea entre 1 y 6
 
         try {
             // Obtener y configurar ImageView
@@ -407,7 +406,6 @@ public class UsuarioController{
             e.printStackTrace();
         }
 
-        autosMostrados++;
         autoNodo = autoNodo.getNext();
 
     } while (autosMostrados < 6 && autoNodo != autos.getHeader());
