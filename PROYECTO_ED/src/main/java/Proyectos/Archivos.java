@@ -1,5 +1,6 @@
 package Proyectos;
 
+import Bases.DoublyCircularList;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -57,7 +58,7 @@ public class Archivos {
         return usuarios;
     }
 
-    public static void guardarAutos(Map<String, Auto> autos) {
+    public static void guardarAutos(DoublyCircularList<Auto> autos) {
         File archivo = new File("Autos.dat");
 
         try {
@@ -79,14 +80,14 @@ public class Archivos {
         }
     }    
 
-    public static Map<String, Auto> leerAutos() {
-        Map<String, Auto> autos = null;
+    public static DoublyCircularList<Auto> leerAutos() {
+        DoublyCircularList<Auto> autos = null;
         File archivo = new File("Autos.dat");
 
         try {
             // Leer el mapa de usuarios del archivo
             try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(archivo))) {
-                autos = (Map<String, Auto>) in.readObject();
+                autos = (DoublyCircularList<Auto>) in.readObject();
                 System.out.println("AUTOS LEIDOS CON EXITO!");
             } catch (IOException | ClassNotFoundException e) {
                 System.err.println("ERROR AL LEER!!! " + e.getMessage()+" ocurrio en clase archivos, metodo leerAutos");
@@ -96,7 +97,7 @@ public class Archivos {
         }
 
         if (autos == null) {
-            autos = new HashMap<>(); // Si no se pudo leer, retornar mapa vacío
+            autos = new DoublyCircularList<>(); // Si no se pudo leer, retornar mapa vacío
         }
         return autos;
     }

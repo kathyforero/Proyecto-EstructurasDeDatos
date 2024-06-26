@@ -109,7 +109,7 @@ public class UsuarioController{
     
     @FXML
     public void cargarAutos(){
-        Map<String, Auto> autos = Archivos.leerAutos();
+        DoublyCircularList<Auto> autos = Archivos.leerAutos();
         
     }
 }

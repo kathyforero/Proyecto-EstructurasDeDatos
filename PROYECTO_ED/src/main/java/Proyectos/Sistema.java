@@ -55,8 +55,8 @@ public class Sistema implements Serializable{
 
     public static boolean guardarAuto(Auto auto){
         try{
-            Map<String, Auto> autos = Archivos.leerAutos();
-            autos.put(auto.getPlaca(),auto);
+            DoublyCircularList<Auto> autos = Archivos.leerAutos();
+            autos.addLast(auto);
             System.out.println("antes de ir a Archivos.guardarAutos");
             Archivos.guardarAutos(autos);
             System.out.println("despues de ir a Archivos.guardarAutos");
