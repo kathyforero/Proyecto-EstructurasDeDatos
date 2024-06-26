@@ -104,6 +104,46 @@ public class UsuarioController{
     private Label provAuto3;
     private ArrayList<ImageView> imagenes=new ArrayList<>();
     private DoublyCircularNode<File> Node;
+    @FXML
+    private ImageView imgAuto4;
+    @FXML
+    private Label tituloAuto4;
+    @FXML
+    private Label anioAuto4;
+    @FXML
+    private Label kmAutos4;
+    @FXML
+    private Label precioAuto4;
+    @FXML
+    private ImageView imgAuto5;
+    @FXML
+    private Label tituloAuto5;
+    @FXML
+    private Label precioAuto5;
+    @FXML
+    private Label precioAuto6;
+    @FXML
+    private ImageView imgAuto6;
+    @FXML
+    private Label provAuto4;
+    @FXML
+    private Label tituloAuto6;
+    @FXML
+    private Label anioAuto5;
+    @FXML
+    private Label anioAuto1111;
+    @FXML
+    private Label kmAutos5;
+    @FXML
+    private Label anioAuto6;
+    @FXML
+    private Label anioAuto1121;
+    @FXML
+    private Label kmAutos6;
+    @FXML
+    private Label provAuto5;
+    @FXML
+    private Label provAuto6;
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
@@ -164,6 +204,7 @@ public class UsuarioController{
         }
     }
     
+    @FXML
     public void mostrarMisAutos() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("misautos.fxml"));
