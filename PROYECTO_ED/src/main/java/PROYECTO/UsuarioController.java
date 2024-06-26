@@ -164,9 +164,6 @@ public class UsuarioController{
             autoNodo=autos.getHeader();
         }
         cargarAutos();
-        
-        
-        
     }
 
     public Usuario getUsuario() {
@@ -340,7 +337,7 @@ public class UsuarioController{
                 autosMostrados++; 
                 autoNodo = autoNodo.getNext();
                 
-            } while (autoNodo != autos.getHeader());
+            } while (autoNodo != autos.getHeader() && index<=6);
             if(autoNodo.equals(autos.getHeader())){
                     ponerBlanco(index);
                    
