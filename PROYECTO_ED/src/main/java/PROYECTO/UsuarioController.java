@@ -191,31 +191,29 @@ public class UsuarioController{
     
     
     public void cargarAutos(){
-        
         DoublyCircularList<Auto> autos = Archivos.leerAutos();
         if (!(autos.size()==0)){
-        DoublyCircularNode<Auto> autoNodo=autos.getHeader();
-        DoublyCircularNode<File> foto;
-        int index = 1;
-        int autosMostrados=0;
-        do {
-            Auto auto = autoNodo.getContent();
+            DoublyCircularNode<Auto> autoNodo=autos.getHeader();
+            DoublyCircularNode<File> foto;
+            int index = 1;
+            int autosMostrados=0;
+            do {
+                Auto auto = autoNodo.getContent();
+                if (index <= imagenes.size()) {
+                    ImageView imgView = imagenes.get(index);
+                    foto=auto.getFotos().getHeader();
+                    Image image = new Image(foto.getContent().toURI().toString());
+                    imgView.setImage(image);
 
-            if (index <= imagenes.size()) {
-                ImageView imgView = imagenes.get(index);
-                foto=auto.getFotos().getHeader();
-                Image image = new Image(foto.getContent().toURI().toString());
-                imgView.setImage(image);
+                    // Añadir evento de clic
+                    imgView.setOnMouseClicked(event -> mostraAuto(auto));
+                    
+                }
 
-                // Añadir evento de clic
-                imgView.setOnMouseClicked(event -> mostraAuto(auto));
-            }
-
-            index++; 
-            autosMostrados++; 
-            autoNodo = autoNodo.getNext();
-        } while (autoNodo != autos.getHeader());
-        
+                index++; 
+                autosMostrados++; 
+                autoNodo = autoNodo.getNext();
+            } while (autoNodo != autos.getHeader());
         }
     }
     

@@ -35,6 +35,9 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        /*
+        
+        
         System.out.println("Mis autos:");
         DoublyCircularList<Auto> autos = Archivos.leerAutos();
         System.out.println("¿Cuántos autos hay en la lista? " + autos.size() );
@@ -47,7 +50,7 @@ public class App extends Application {
             System.out.println("Informacion del auto: "+auto);
 
         }
-
+        */
         
         launch();       
 
