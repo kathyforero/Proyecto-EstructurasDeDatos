@@ -21,6 +21,7 @@ public class Auto implements Serializable{
     private Estado estado;
     private Usuario usuario;
     private DoublyCircularList<File> fotos;
+    private static final long serialVersionUID = 2004140222041502L;
     
     public Auto(float precio, MarcaDeAuto marca, String modelo, Tipo tipo, int año, String placa, int kilometraje, Motor motor, Transmision transmisión, float peso, Ubicacion ubicacion, Usuario usuario, Estado estado, DoublyCircularList<File> fotos){
         this.precio = precio;

@@ -11,6 +11,7 @@ public class DoublyCircularNode<E> implements Serializable{
     private E content;
     private DoublyCircularNode<E> next;
     private DoublyCircularNode<E> previous;
+    private static final long serialVersionUID = 2004140222041502L;
     
     /**
      * Constructor que crea un nodo con el contenido especificado.

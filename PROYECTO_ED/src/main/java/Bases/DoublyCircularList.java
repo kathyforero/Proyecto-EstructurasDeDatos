@@ -10,6 +10,7 @@ import java.util.Iterator;
  */
 public class DoublyCircularList<E> implements List<E>,Serializable{
     private DoublyCircularNode<E> last;
+    private static final long serialVersionUID = 2004140222041502L;
 
     /**
      * Devuelve el último nodo de la lista.
@@ -247,4 +248,19 @@ public class DoublyCircularList<E> implements List<E>,Serializable{
         }
         return indice;
     }
+    
+    public DoublyCircularNode<E> getNodo(int index) {
+    if (!(index < 0 || index >= size())) {
+        DoublyCircularNode<E> currentNode = last.getNext(); // Comenzar desde el nodo cabecera
+        for (int i = 0; i < index; i++) {
+            currentNode = currentNode.getNext(); // Avanzar al siguiente nodo
+        }
+            return currentNode;
+        }else{
+            return null;
+        }
+        
+    }
+
+        
     }

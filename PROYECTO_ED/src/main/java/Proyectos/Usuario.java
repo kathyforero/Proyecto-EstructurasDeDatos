@@ -5,6 +5,7 @@ import Proyectos.*;
 import java.io.Serializable;
 
 public class Usuario implements Serializable{
+    private static final long serialVersionUID = 2004140222041502L;
     private String nombre;
     private String apellido;
     private String correo;

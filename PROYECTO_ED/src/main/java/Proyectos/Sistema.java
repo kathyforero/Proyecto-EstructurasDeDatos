@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Sistema implements Serializable{
+    private static final long serialVersionUID = 2004140222041502L;
     public static Usuario crearUsuario(String nombre, String apellido, String correo, String contraseña){
         Usuario u = new Usuario(nombre, apellido, correo, contraseña);
         return u;

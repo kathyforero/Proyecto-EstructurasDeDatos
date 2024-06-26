@@ -344,10 +344,83 @@ public class UsuarioController{
                 }
     }
     
+    public void mostrarAutosAtras() {
+    int autosMostrados = 0;
+    int currentIndex = autos.getIndex(autoNodo);  // Obtener el índice actual del nodo
+
+    // Retroceder la página
+    currentIndex -= 6;
+    if (currentIndex < 0) {
+        currentIndex += autos.size();  // Asegurar que el índice sea válido en la lista circular
+    }
+
+    autoNodo = autos.getNodo(currentIndex);  // Obtener el nodo desde el nuevo índice
+
+    // Mostrar autos retrocediendo
+    do {
+        Auto auto = autoNodo.getContent();
+        int index = (autosMostrados % 6) + 1;  // Asegurar que el índice sea entre 1 y 6
+
+        try {
+            // Obtener y configurar ImageView
+            Field imgField = getClass().getDeclaredField("imgAuto" + index);
+            imgField.setAccessible(true);
+            ImageView imgView = (ImageView) imgField.get(this);   
+            foto = auto.getFotos().getHeader();
+            Image image = new Image(foto.getContent().toURI().toString());
+            imgView.setImage(image);
+            imgView.setOpacity(1);
+            imgView.setOnMouseClicked(event -> mostrarAuto(auto));
+
+            Field FtituloAuto = getClass().getDeclaredField("tituloAuto" + index);
+            FtituloAuto.setAccessible(true);
+            Label tituloAuto = (Label) FtituloAuto.get(this); 
+            tituloAuto.setText(auto.getMarca().getName() + " - " + auto.getModelo());
+            tituloAuto.setOpacity(1);
+
+            Field FanioAuto1 = getClass().getDeclaredField("anioAuto" + index);
+            FanioAuto1.setAccessible(true);
+            Label anioAuto1 = (Label) FanioAuto1.get(this); 
+            anioAuto1.setText(Integer.toString(auto.getAño()) + " •");
+            anioAuto1.setOpacity(1);
+
+            Field FkmAutos = getClass().getDeclaredField("kmAutos" + index);
+            FkmAutos.setAccessible(true);
+            Label kmAutos = (Label) FkmAutos.get(this); 
+            kmAutos.setText(Integer.toString(auto.getKilometraje()) + " km");
+            kmAutos.setOpacity(1);
+
+            Field FprovAuto = getClass().getDeclaredField("provAuto" + index);
+            FprovAuto.setAccessible(true);
+            Label provAuto = (Label) FprovAuto.get(this); 
+            provAuto.setText(auto.getUbicacion().getDisplayName());
+            provAuto.setOpacity(1);
+
+            Field FprecioAuto1 = getClass().getDeclaredField("precioAuto" + index);
+            FprecioAuto1.setAccessible(true);
+            Label precioAuto1 = (Label) FprecioAuto1.get(this); 
+            precioAuto1.setText("$" + auto.getPrecio());
+            precioAuto1.setOpacity(1);
+
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        autosMostrados++;
+        autoNodo = autoNodo.getNext();
+
+    } while (autosMostrados < 6 && autoNodo != autos.getHeader());
+
+    if (autosMostrados < 6) {
+        ponerBlanco(autosMostrados + 1);
+    }
+}
+
+    
     public void ponerBlanco(int index){
         
         while(index<=6) {
-                 try {
+            try {
                 Field imgField = getClass().getDeclaredField("imgAuto" + index);
                 imgField.setAccessible(true);
                 ImageView imgView = (ImageView) imgField.get(this);

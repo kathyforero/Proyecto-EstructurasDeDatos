@@ -12,6 +12,7 @@ public class ArrayList<E> implements List<E>{
     private E[] elements = null; //arreglo de elementos genericos
     private int capacity = 100;
     private int effectiveSize;
+    private static final long serialVersionUID = 2004140222041502L;
     
     /**
      * Constructor crea una lista de genéricos con una capacidad maxima de 100
