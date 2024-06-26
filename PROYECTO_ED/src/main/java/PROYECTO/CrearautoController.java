@@ -154,7 +154,7 @@ public class CrearautoController {
     @FXML
     public void verificarModelo(){
         if(cbMarca.getValue()==null){
-            msgError("Primero tienes que escoger una marca");
+            msgError("Primero tienes que escoger una marca.");
         }
     }
     
@@ -368,10 +368,73 @@ public class CrearautoController {
             return true;
         }
     }
+    
+    public boolean verificarMarca(){
+        if(cbMarca.getValue()==null){
+            msgError("Seleccione una marca.");
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    public boolean verificarModeloII(){
+        if(cbModelo.getValue()==null){
+            msgError("Seleccione un modelo.");
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    public boolean verificarTipo(){
+        if(cbTipo.getValue()==null){
+            msgError("Seleccione un tipo.");
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    public boolean verificarMotor(){
+        if(cbMotor.getValue()==null){
+            msgError("Seleccione un motor.");
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    public boolean verificarTransmision(){
+        if(cbTransmision.getValue()==null){
+            msgError("Seleccione una transmisión.");
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    public boolean verificarUbicacion(){
+        if(cbUbicacion.getValue()==null){
+            msgError("Seleccione una ubicación.");
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    public boolean verificarEstado(){
+        if(cbEstado.getValue()==null){
+            msgError("Seleccione un estado.");
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     private boolean verificarTodo(){
 
-        return verificarPlaca() && verificarPrecio() && verificarAño() && verificarKilometraje() && verificarPeso() && verificarImagen();
+        return verificarPlaca() && verificarPrecio() && verificarAño() && verificarKilometraje() && verificarPeso() && verificarImagen() && verificarMarca() && verificarModeloII() && verificarTipo() && verificarMotor() && verificarTransmision() && verificarUbicacion() && verificarEstado();
         /*verificarmarca & verificarModelo() que este lleno*/ 
         /*verificar tipo*//*verificar motor & verificar transmision*/
         /*verificar ubicacion & verificarestado*/
