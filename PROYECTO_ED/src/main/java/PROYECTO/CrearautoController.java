@@ -93,6 +93,7 @@ public class CrearautoController {
             Parent root = loader.load();
             UsuarioController usuarioController = loader.getController();
             usuarioController.setUsuario(usuario);
+            System.out.println(ivFotoAuto.getImage().getUrl());
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("GuayacoCar - Autos a tu Alcance");
@@ -360,9 +361,8 @@ public class CrearautoController {
         return true;
     }
     
-    public boolean verificarImagen(){
-        Image img = new Image("file:src/main/resources/PROYECTO/preview.png");
-        if(ivFotoAuto.getImage().equals(img)){
+    public boolean verificarImagen(){        
+        if(fotos.size()==0){
             msgError("Ingrese al menos una imagen!");
             return false;
         } else {
