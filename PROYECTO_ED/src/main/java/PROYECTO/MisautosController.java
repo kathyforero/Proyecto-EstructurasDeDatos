@@ -32,7 +32,7 @@ public class MisautosController {
     @FXML
     private Label lblUser;
     
-    private Usuario usuario;
+    private Usuario usuario;        
     
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
@@ -41,7 +41,7 @@ public class MisautosController {
     
     public Usuario getUsuario() {
         return usuario;
-    }
+    }       
     
     public void regresar() {
         try {

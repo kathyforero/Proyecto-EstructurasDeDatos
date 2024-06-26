@@ -268,7 +268,6 @@ public class UsuarioController{
         KMS.addLast(provAuto1);
     }
     */
->>>>>>> Stashed changes
     public void cargarAutos(){
         DoublyCircularList<Auto> autos = Archivos.leerAutos();
         if (!(autos.size()==0)){
@@ -305,6 +304,23 @@ public class UsuarioController{
     }
     
     public void mostrarAuto(Auto auto){
+        try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("vistaauto.fxml"));
+                Parent root = loader.load();
+                VistaautoController VistaautoController = loader.getController();
+                VistaautoController.setUsuario(usuario);
+                VistaautoController.setAuto(auto);
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.setTitle("GuayacoCar - Autos a tu Alcance");
+                stage.show();
+
+                Stage miStage = (Stage) menuBar.getScene().getWindow();
+                miStage.close();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
     }
     
     @FXML
