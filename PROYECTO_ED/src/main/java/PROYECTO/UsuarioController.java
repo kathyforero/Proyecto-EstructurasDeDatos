@@ -166,10 +166,13 @@ public class UsuarioController{
     
     
     public void cargarAutos(){
+        
         DoublyCircularList<Auto> autos = Archivos.leerAutos();
+        if (!(autos.size()==0)){
         DoublyCircularNode<Auto> autoNodo=autos.getHeader();
         DoublyCircularNode<File> foto;
         int index = 1;
+        int autosMostrados=0;
         do {
             Auto auto = autoNodo.getContent();
 
@@ -183,11 +186,12 @@ public class UsuarioController{
                 imgView.setOnMouseClicked(event -> mostraAuto(auto));
             }
 
-            index++;
+            index++; 
+            autosMostrados++; 
             autoNodo = autoNodo.getNext();
         } while (autoNodo != autos.getHeader());
         
-        
+        }
     }
     
     public void mostraAuto(Auto auto){
