@@ -6,6 +6,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1000.0" style="-fx-background-color: #0D050E;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PROYECTO.VistaautoController">
@@ -141,13 +142,21 @@
             </Label>
          </children>
       </AnchorPane>
-      <ImageView fitHeight="417.0" fitWidth="470.0" layoutX="41.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="btnDerecha" fitHeight="55.0" fitWidth="49.0" layoutX="308.0" layoutY="711.0" pickOnBounds="true" preserveRatio="true">
+      <StackPane layoutX="38.0" layoutY="285.0" prefHeight="417.0" prefWidth="470.0">
+         <children>
+            <ImageView fx:id="imgViewCar" fitHeight="417.0" fitWidth="470.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@preview.png" />
+               </image>
+            </ImageView>
+         </children>
+      </StackPane>
+      <ImageView fx:id="btnDerecha" fitHeight="55.0" fitWidth="49.0" layoutX="308.0" layoutY="711.0" onMouseClicked="#adelanteImagen" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@derecha.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="btnIzquierda" fitHeight="65.0" fitWidth="49.0" layoutX="192.0" layoutY="711.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="btnIzquierda" fitHeight="65.0" fitWidth="49.0" layoutX="192.0" layoutY="711.0" onMouseClicked="#atrasImagen" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@izquierda.png" />
          </image>

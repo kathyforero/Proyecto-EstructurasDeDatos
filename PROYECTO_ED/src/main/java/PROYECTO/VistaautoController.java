@@ -4,8 +4,11 @@
  */
 package PROYECTO;
 
+import Bases.DoublyCircularList;
+import Bases.DoublyCircularNode;
 import Proyectos.Auto;
 import Proyectos.Usuario;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -71,6 +75,12 @@ public class VistaautoController {
     private Usuario usuario;
     
     private Auto auto;
+    @FXML
+    private ImageView imgViewCar;
+    
+    private DoublyCircularNode<File> Node;
+    
+    private DoublyCircularList<File> fotos;
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
@@ -103,7 +113,50 @@ public class VistaautoController {
         lblPeso.setText(Float.toString(auto.getPeso()));
         lblUbi.setText(auto.getUbicacion().getDisplayName());
         lblEstado.setText(auto.getEstado().getDisplayName());
-        lblVendedor.setText(auto.getUsuario().getNombre()+ " " + auto.getUsuario().getApellido());        
+        lblVendedor.setText(auto.getUsuario().getNombre()+ " " + auto.getUsuario().getApellido());
+        actualizarImagenes();
+        adelanteImagen();
+        atrasImagen();
+    }
+    
+    public void actualizarImagenes(){
+        fotos = auto.getFotos();
+        if(fotos.size()>0){
+            Node = fotos.getHeader();
+            Image image = new Image(Node.getContent().toURI().toString());
+            imgViewCar.setImage(image);
+            actualizarContador();
+        }else{
+            String rutaRelativa = "/PROYECTO/preview.png";
+            String rutaCompleta = getClass().getResource(rutaRelativa).toExternalForm();
+            Image image = new Image(rutaCompleta);
+            imgViewCar.setImage(image);
+            actualizarContador();
+            
+        }
+    }
+    
+    public void adelanteImagen(){
+        Node = Node.getNext();
+        Image image = new Image(Node.getContent().toURI().toString());
+        imgViewCar.setImage(image);
+        actualizarContador();
+    }
+    
+    public void atrasImagen(){
+        Node = Node.getPrevious();
+        Image image = new Image(Node.getContent().toURI().toString());
+        imgViewCar.setImage(image);
+        actualizarContador();
+    }
+    
+    public void actualizarContador(){
+        if(fotos.size()>0){
+            int index = fotos.getIndex(Node);
+            lblContador.setText((index + 1) + "/" + fotos.size());
+        }else{
+            lblContador.setText("0/0");
+        }
     }
     
     @FXML
@@ -124,6 +177,7 @@ public class VistaautoController {
         alert.showAndWait();
     }
     
+    @FXML
     public void regresar() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("usuario.fxml"));
