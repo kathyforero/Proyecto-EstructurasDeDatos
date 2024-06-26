@@ -60,6 +60,7 @@ public class UsuarioController{
     private MenuItem menuMisAutos;
     @FXML
     private MenuBar menuBar;
+    @FXML        
     private ImageView imgAuto1;
     @FXML
     private Label tituloAuto1;
@@ -200,6 +201,8 @@ public class UsuarioController{
             do {
                 Auto auto = autoNodo.getContent();
                 if (index <= imagenes.size()) {
+                    System.out.println(imagenes.size());
+                    System.out.println(index);
                     ImageView imgView = imagenes.get(index);
                     foto=auto.getFotos().getHeader();
                     Image image = new Image(foto.getContent().toURI().toString());

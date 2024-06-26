@@ -61,6 +61,7 @@ public class ArrayList<E> implements List<E>{
     @Override
     public boolean addLast(E e) {
         if (e == null) {
+            System.out.println("No agregado");
             return false;
         }
         if (isFull()) {
@@ -183,7 +184,7 @@ public class ArrayList<E> implements List<E>{
      */
     @Override
     public E get(int index) {
-        if (index < 1 || index > effectiveSize) {
+        if (index < 0 || index > effectiveSize) {
             throw new IndexOutOfBoundsException("Índice fuera de rango: " + index);
         }
         return elements[index - 1];
