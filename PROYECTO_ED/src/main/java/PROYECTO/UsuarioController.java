@@ -105,6 +105,9 @@ public class UsuarioController{
     @FXML
     private Label provAuto3;
     private ArrayList<ImageView> imagenes=new ArrayList<>();
+    private ArrayList<Label> titulos=new ArrayList<>();
+    private ArrayList<Label> anios=new ArrayList<>();
+    private ArrayList<Label> KMS=new ArrayList<>();
     private DoublyCircularNode<File> Node;
     @FXML
     private ImageView imgAuto4;
@@ -231,12 +234,56 @@ public class UsuarioController{
     }
 
     public void cargarControladores(){
+        controladoresImagenes();
+         controladoresTitulos();
+         controladoresAnios();
+         controladoresKM();
+    }
+    
+    public void controladoresImagenes(){
         imagenes.addLast(imgAuto1);
         imagenes.addLast(imgAuto2);
         imagenes.addLast(imgAuto3);
+        imagenes.addLast(imgAuto4);
+        imagenes.addLast(imgAuto5);
+        imagenes.addLast(imgAuto6);
     }
     
+    public void controladoresTitulos(){
+        titulos.addLast(tituloAuto1);
+        titulos.addLast(tituloAuto2);
+        titulos.addLast(tituloAuto3);
+        titulos.addLast(tituloAuto4);
+        titulos.addLast(tituloAuto5);
+        titulos.addLast(tituloAuto6);
+    }
     
+    public void controladoresAnios(){
+        anios.addLast(anioAuto1);
+        anios.addLast(anioAuto2);
+        anios.addLast(anioAuto3);
+        anios.addLast(anioAuto4);
+        anios.addLast(anioAuto5);
+        anios.addLast(anioAuto6);
+    }
+    
+    public void controladoresKM(){
+        KMS.addLast(kmAutos1);
+        KMS.addLast(kmAutos2);
+        KMS.addLast(kmAutos3);
+        KMS.addLast(kmAutos4);
+        KMS.addLast(kmAutos5);
+        KMS.addLast(kmAutos6);
+    }
+    
+    public void controladoresProvincia(){
+        KMS.addLast(provAuto1);
+        KMS.addLast(provAuto1);
+        KMS.addLast(provAuto1);
+        KMS.addLast(provAuto1);
+        KMS.addLast(provAuto1);
+        KMS.addLast(provAuto1);
+    }
     
     public void cargarAutos(){
         DoublyCircularList<Auto> autos = Archivos.leerAutos();
