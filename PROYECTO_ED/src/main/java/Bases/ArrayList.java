@@ -185,7 +185,7 @@ public class ArrayList<E> implements List<E>{
      */
     @Override
     public E get(int index) {
-        if (index < 0 || index > effectiveSize) {
+        if (index < 1 || index > effectiveSize) {
             throw new IndexOutOfBoundsException("Índice fuera de rango: " + index);
         }
         return elements[index - 1];

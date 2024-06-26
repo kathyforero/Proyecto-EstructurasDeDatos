@@ -150,36 +150,25 @@ public class UsuarioController{
     private ImageView buscar;
     @FXML
     private MenuItem menuFav;
-    private ArrayList<ImageView> imagenes=new ArrayList<>();
-    private DoublyCircularList<Auto> autos = Archivos.leerAutos();
-    private DoublyCircularNode<Auto> autoNodo;
-    private DoublyCircularNode<File> foto;
-    private int autosMostrados;
+    private DoublyCircularList<ArrayList<Auto>> paginas=new DoublyCircularList<>();
+    private DoublyCircularNode<ArrayList<Auto>> paginaActual;
+    private DoublyCircularList<Auto> autos;
 
     
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
         lblUser.setText(usuario.getNombre()+" "+usuario.getApellido()+"!");
-        //cargarControladores();
-        if (autos.size()>0){
-            autoNodo=autos.getHeader();
-        }
+        //cargarAutos();
         cargarAutos();
+
+        
     }
 
     public Usuario getUsuario() {
         return usuario;
     }
     
-    public void setAutos(DoublyCircularList<Auto> autos) {
-        this.autos = autos;
-        
-    }
-
-    public DoublyCircularList<Auto> getAutos() {
-        return autos;
-    }
     
     @FXML
     private void cerrarSesion() {
@@ -278,25 +267,47 @@ public class UsuarioController{
     }
     */
     public void cargarAutos(){
-        
+        autos=Archivos.leerAutos();
         if (autos.size()>0){
-            mostrarAutosAdelante();
+            paginarAutos();
         }else{
             ponerBlanco(1);
         }
     }
     
+    public void paginarAutos(){
+        Iterator<Auto> it=autos.iterator();
+        int index=1;
+        ArrayList pagAutos=new ArrayList<>();
+        while(it.hasNext()){
+            if(index==6 || index==autos.size()){
+                paginas.addLast(pagAutos);
+                for (int i=0;i<pagAutos.size();i++){
+                    pagAutos.remove(pagAutos.size());
+                }
+            }
+            pagAutos.addLast(it.next());
+            index++;
+        }
+        paginaActual=paginas.getHeader().getNext();
+        System.out.println(autos.size());
+        System.out.println(paginas.size());
+    }
+    
     public void mostrarAutosAdelante(){
-            int index = 1;
+            
+                   
+            ArrayList<Auto> listaAutos = paginaActual.getContent();
+            int index=1;
             do {
-                Auto auto = autoNodo.getContent();
+                Auto auto = listaAutos.get(index);
                  try {
                 // Obtener y configurar ImageView
                 Field imgField = getClass().getDeclaredField("imgAuto" + index);
                 imgField.setAccessible(true);
                 ImageView imgView = (ImageView) imgField.get(this);   
-                foto = auto.getFotos().getHeader();
-                Image image = new Image(foto.getContent().toURI().toString());
+                File foto = auto.getFotos().getHeader().getContent();
+                Image image = new Image(foto.toURI().toString());
                 imgView.setImage(image);
                 imgView.setOpacity(1);
                 imgView.setOnMouseClicked(event -> mostrarAuto(auto));
@@ -335,84 +346,15 @@ public class UsuarioController{
                 e.printStackTrace();
             }
                 index++; 
-                autosMostrados++; 
-                autoNodo = autoNodo.getNext();
-                if(autoNodo.equals(autos.getHeader())){
-                    autosMostrados=1;
-                    }
                 
-            } while (autoNodo != autos.getHeader() && index<=6);
-            if(autoNodo.equals(autos.getHeader())){
-                    ponerBlanco(index);
-                   
-                }
+                
+            } while (index<listaAutos.size());
+            
+        
     }
     
     @FXML
     public void mostrarAutosAtras() {
-    if (autos.getIndex(autoNodo)==6) {
-        int indice=autos.size()-(autos.size()%6);
-        autoNodo=autos.getNodo(indice);  // Asegurar que el índice sea válido en la lista circular
-    }
-    int index = 1;  // Asegurar que el índice sea entre 1 y 6
-
-    // Mostrar autos retrocediendo
-    do {
-        Auto auto = autoNodo.getContent();
-        
-
-        try {
-            // Obtener y configurar ImageView
-            Field imgField = getClass().getDeclaredField("imgAuto" + index);
-            imgField.setAccessible(true);
-            ImageView imgView = (ImageView) imgField.get(this);   
-            foto = auto.getFotos().getHeader();
-            Image image = new Image(foto.getContent().toURI().toString());
-            imgView.setImage(image);
-            imgView.setOpacity(1);
-            imgView.setOnMouseClicked(event -> mostrarAuto(auto));
-
-            Field FtituloAuto = getClass().getDeclaredField("tituloAuto" + index);
-            FtituloAuto.setAccessible(true);
-            Label tituloAuto = (Label) FtituloAuto.get(this); 
-            tituloAuto.setText(auto.getMarca().getName() + " - " + auto.getModelo());
-            tituloAuto.setOpacity(1);
-
-            Field FanioAuto1 = getClass().getDeclaredField("anioAuto" + index);
-            FanioAuto1.setAccessible(true);
-            Label anioAuto1 = (Label) FanioAuto1.get(this); 
-            anioAuto1.setText(Integer.toString(auto.getAño()) + " •");
-            anioAuto1.setOpacity(1);
-
-            Field FkmAutos = getClass().getDeclaredField("kmAutos" + index);
-            FkmAutos.setAccessible(true);
-            Label kmAutos = (Label) FkmAutos.get(this); 
-            kmAutos.setText(Integer.toString(auto.getKilometraje()) + " km");
-            kmAutos.setOpacity(1);
-
-            Field FprovAuto = getClass().getDeclaredField("provAuto" + index);
-            FprovAuto.setAccessible(true);
-            Label provAuto = (Label) FprovAuto.get(this); 
-            provAuto.setText(auto.getUbicacion().getDisplayName());
-            provAuto.setOpacity(1);
-
-            Field FprecioAuto1 = getClass().getDeclaredField("precioAuto" + index);
-            FprecioAuto1.setAccessible(true);
-            Label precioAuto1 = (Label) FprecioAuto1.get(this); 
-            precioAuto1.setText("$" + auto.getPrecio());
-            precioAuto1.setOpacity(1);
-
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        index++;
-        autoNodo = autoNodo.getNext();
-
-    } while (autosMostrados < 6 && autoNodo != autos.getHeader());
-
-    if (index < 6) {
-        ponerBlanco(index);
-    }
 }
 
     
