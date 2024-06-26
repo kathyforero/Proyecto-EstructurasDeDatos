@@ -226,6 +226,7 @@ public class UsuarioController{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("misautos.fxml"));
             Parent root = loader.load();
             MisautosController MisautosController = loader.getController();
+            MisautosController.setAutos(autos);
             MisautosController.setUsuario(usuario);            
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
