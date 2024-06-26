@@ -130,8 +130,8 @@ public class RegisterController {
         if(! ccntraseña.equals(confContraseña)){
             msgError("¡Las contraseñas no son iguales!");
             return false;
-        }else if(ccntraseña.equals(confContraseña) && ccntraseña.length()<3){
-            msgError("La ccntraseña debe ser de más de 8 caracteres");
+        }else if(ccntraseña.length()<3){
+            msgError("La ccntraseña debe ser de más de 3 caracteres");
             return false;
         }
         return true;
