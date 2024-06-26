@@ -354,12 +354,12 @@ public class UsuarioController{
         int indice=autos.size()-(autos.size()%6);
         autoNodo=autos.getNodo(indice);  // Asegurar que el índice sea válido en la lista circular
     }
-
+    int index = 1;  // Asegurar que el índice sea entre 1 y 6
 
     // Mostrar autos retrocediendo
     do {
         Auto auto = autoNodo.getContent();
-        int index = 1;  // Asegurar que el índice sea entre 1 y 6
+        
 
         try {
             // Obtener y configurar ImageView
@@ -405,13 +405,13 @@ public class UsuarioController{
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
         }
-
+        index++;
         autoNodo = autoNodo.getNext();
 
     } while (autosMostrados < 6 && autoNodo != autos.getHeader());
 
-    if (autosMostrados < 6) {
-        ponerBlanco(autosMostrados + 1);
+    if (index < 6) {
+        ponerBlanco(index);
     }
 }
 
