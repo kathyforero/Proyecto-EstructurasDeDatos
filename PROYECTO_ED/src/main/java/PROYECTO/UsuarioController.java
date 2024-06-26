@@ -163,12 +163,6 @@ public class UsuarioController{
         }
     }
     
-
-    public void cargarAutos(){
-        DoublyCircularList<Auto> autos = Archivos.leerAutos();
-        
-    }
-    
     public void mostrarMisAutos() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("misautos.fxml"));
