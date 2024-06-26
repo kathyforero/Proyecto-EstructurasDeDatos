@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import Bases.*;
 import Proyectos.*;
 import java.io.File;
+import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.Map;
 import javafx.scene.control.Alert;
@@ -154,7 +155,7 @@ public class UsuarioController{
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
         lblUser.setText(usuario.getNombre()+" "+usuario.getApellido()+"!");
-        cargarControladores();
+        //cargarControladores();
         cargarAutos();
     }
 
@@ -229,7 +230,7 @@ public class UsuarioController{
             e.printStackTrace();
         }
     }
-
+    /*
     public void cargarControladores(){
         imagenes.addLast(imgAuto1);
         imagenes.addLast(imgAuto2);
@@ -237,7 +238,37 @@ public class UsuarioController{
     }
     
     
+<<<<<<< Updated upstream
     
+=======
+    public void controladoresAnios(){
+        anios.addLast(anioAuto1);
+        anios.addLast(anioAuto2);
+        anios.addLast(anioAuto3);
+        anios.addLast(anioAuto4);
+        anios.addLast(anioAuto5);
+        anios.addLast(anioAuto6);
+    }
+    
+    public void controladoresKM(){
+        KMS.addLast(kmAutos1);
+        KMS.addLast(kmAutos2);
+        KMS.addLast(kmAutos3);
+        KMS.addLast(kmAutos4);
+        KMS.addLast(kmAutos5);
+        KMS.addLast(kmAutos6);
+    }
+    
+    public void controladoresProvincia(){
+        KMS.addLast(provAuto1);
+        KMS.addLast(provAuto1);
+        KMS.addLast(provAuto1);
+        KMS.addLast(provAuto1);
+        KMS.addLast(provAuto1);
+        KMS.addLast(provAuto1);
+    }
+    */
+>>>>>>> Stashed changes
     public void cargarAutos(){
         DoublyCircularList<Auto> autos = Archivos.leerAutos();
         if (!(autos.size()==0)){
@@ -247,18 +278,24 @@ public class UsuarioController{
             int autosMostrados=0;
             do {
                 Auto auto = autoNodo.getContent();
-                if (index <= imagenes.size()) {
-                    System.out.println(imagenes.size());
-                    System.out.println(index);
-                    ImageView imgView = imagenes.get(index);
-                    foto=auto.getFotos().getHeader();
-                    Image image = new Image(foto.getContent().toURI().toString());
-                    imgView.setImage(image);
+                 try {
+                // Obtener y configurar ImageView
+                Field imgField = getClass().getDeclaredField("imgAuto" + index);
+                imgField.setAccessible(true);
+                ImageView imgView = (ImageView) imgField.get(this);
+                
+                foto = auto.getFotos().getHeader();
+                Image image = new Image(foto.getContent().toURI().toString());
+                imgView.setImage(image);
 
-                    // Añadir evento de clic
-                    imgView.setOnMouseClicked(event -> mostrarAuto(auto));
-                    
-                }
+                // Añadir evento de clic
+                imgView.setOnMouseClicked(event -> mostrarAuto(auto));
+
+                
+
+            } catch (NoSuchFieldException | IllegalAccessException e) {
+                e.printStackTrace();
+            }
 
                 index++; 
                 autosMostrados++; 
@@ -268,7 +305,6 @@ public class UsuarioController{
     }
     
     public void mostrarAuto(Auto auto){
-    
     }
     
     @FXML
