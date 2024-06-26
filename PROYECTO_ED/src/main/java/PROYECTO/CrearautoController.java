@@ -93,7 +93,6 @@ public class CrearautoController {
             Parent root = loader.load();
             UsuarioController usuarioController = loader.getController();
             usuarioController.setUsuario(usuario);
-            System.out.println(ivFotoAuto.getImage().getUrl());
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("GuayacoCar - Autos a tu Alcance");

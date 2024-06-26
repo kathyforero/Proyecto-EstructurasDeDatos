@@ -15,7 +15,9 @@ import Proyectos.*;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
@@ -41,7 +43,16 @@ public class MisautosController {
     
     public Usuario getUsuario() {
         return usuario;
-    }       
+    }
+    
+    @FXML
+    private void alertaInfo(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Información");
+        alert.setHeaderText("¿Como editar o remover un vehículo?");
+        alert.setContentText("Presiona un auto para poder editar sus características o eliminarlo!");
+        alert.showAndWait();    
+    }
     
     public void regresar() {
         try {

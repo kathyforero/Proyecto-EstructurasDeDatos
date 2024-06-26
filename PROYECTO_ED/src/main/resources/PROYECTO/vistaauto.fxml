@@ -151,17 +151,17 @@
             </ImageView>
          </children>
       </StackPane>
-      <ImageView fx:id="btnDerecha" fitHeight="55.0" fitWidth="49.0" layoutX="308.0" layoutY="711.0" onMouseClicked="#adelanteImagen" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="btnDerecha" fitHeight="55.0" fitWidth="49.0" layoutX="308.0" layoutY="711.0" onMouseClicked="#adelanteImagen" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
          <image>
             <Image url="@derecha.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="btnIzquierda" fitHeight="65.0" fitWidth="49.0" layoutX="192.0" layoutY="711.0" onMouseClicked="#atrasImagen" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="btnIzquierda" fitHeight="65.0" fitWidth="49.0" layoutX="192.0" layoutY="711.0" onMouseClicked="#atrasImagen" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
          <image>
             <Image url="@izquierda.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="btnFav" fitHeight="150.0" fitWidth="200.0" layoutX="176.0" layoutY="780.0" onMouseClicked="#añadirFav" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="btnFav" fitHeight="150.0" fitWidth="200.0" layoutX="176.0" layoutY="780.0" onMouseClicked="#añadirFav" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
          <image>
             <Image url="@añadirafav.png" />
          </image>
