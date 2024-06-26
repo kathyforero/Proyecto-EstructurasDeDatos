@@ -359,10 +359,20 @@ public class CrearautoController {
         }
         return true;
     }
+    
+    public boolean verificarImagen(){
+        Image img = new Image("file:src/main/resources/PROYECTO/preview.png");
+        if(ivFotoAuto.getImage().equals(img)){
+            msgError("Ingrese al menos una imagen!");
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     private boolean verificarTodo(){
 
-        return verificarPlaca() && verificarPrecio() && verificarAño()&&verificarKilometraje()&&verificarPeso();
+        return verificarPlaca() && verificarPrecio() && verificarAño() && verificarKilometraje() && verificarPeso() && verificarImagen();
         /*verificarmarca & verificarModelo() que este lleno*/ 
         /*verificar tipo*//*verificar motor & verificar transmision*/
         /*verificar ubicacion & verificarestado*/
