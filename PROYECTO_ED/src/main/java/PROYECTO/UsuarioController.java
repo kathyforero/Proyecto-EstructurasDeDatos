@@ -17,6 +17,8 @@ import javafx.stage.Stage;
 import Bases.*;
 import Proyectos.*;
 import java.util.Map;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 
 public class UsuarioController{
 
@@ -47,8 +49,13 @@ public class UsuarioController{
     private Button btnAplicar;
     @FXML
     private Label lblUser;
+    
     private Usuario usuario;
     private DoublyCircularList<Auto> autos = new DoublyCircularList<>();
+    @FXML
+    private MenuItem menuMisAutos;
+    @FXML
+    private MenuBar menuBar;
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
@@ -107,9 +114,27 @@ public class UsuarioController{
         }
     }
     
-    @FXML
     public void cargarAutos(){
         DoublyCircularList<Auto> autos = Archivos.leerAutos();
         
+    }
+    
+    public void mostrarMisAutos() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("misautos.fxml"));
+            Parent root = loader.load();
+            MisautosController MisautosController = loader.getController();
+            MisautosController.setUsuario(usuario);            
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("GuayacoCar - Autos a tu Alcance");
+            stage.show();
+            
+            Stage miStage = (Stage) menuBar.getScene().getWindow();
+            miStage.close();
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

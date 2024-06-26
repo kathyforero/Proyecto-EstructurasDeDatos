@@ -75,12 +75,12 @@
             <Font name="Century Gothic" size="12.0" />
          </font>
       </Button>
-      <MenuBar layoutX="913.0" layoutY="93.0" prefHeight="34.0" prefWidth="65.0" stylesheets="@estilos.css">
+      <MenuBar fx:id="menuBar" layoutX="913.0" layoutY="93.0" prefHeight="34.0" prefWidth="65.0" stylesheets="@estilos.css">
         <menus>
           <Menu mnemonicParsing="false" text="MÁS">
                <items>
-                  <MenuItem mnemonicParsing="false" text="MIS VEHÍCULOS" />
-                  <MenuItem mnemonicParsing="false" text="FAVORITOS" />
+                  <MenuItem fx:id="menuMisAutos" mnemonicParsing="false" onAction="#mostrarMisAutos" text="MIS VEHÍCULOS" />
+                  <MenuItem fx:id="menuMisAutos" mnemonicParsing="false" text="FAVORITOS" />
                </items>
           </Menu>
         </menus>

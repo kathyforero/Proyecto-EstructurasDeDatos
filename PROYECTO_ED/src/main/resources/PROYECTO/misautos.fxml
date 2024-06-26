@@ -21,7 +21,7 @@
             <Font name="Kristen ITC" size="25.0" />
          </font>
       </Text>
-      <Button layoutX="47.0" layoutY="188.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="107.0" stylesheets="@estilos.css" text="REGRESAR">
+      <Button fx:id="btnRegresar" layoutX="47.0" layoutY="188.0" mnemonicParsing="false" onAction="#regresar" prefHeight="29.0" prefWidth="107.0" stylesheets="@estilos.css" text="REGRESAR">
          <styleClass>
             <String fx:value="btnGeneral" />
             <String fx:value="btnInit" />
@@ -31,7 +31,7 @@
             <Font name="Kristen ITC" size="25.0" />
          </font>
       </Text>
-      <Label layoutX="376.0" layoutY="77.0" text="a" textFill="#a3445d">
+      <Label fx:id="lblUser" layoutX="376.0" layoutY="77.0" text="a" textFill="#a3445d">
          <font>
             <Font name="Kristen ITC" size="25.0" />
          </font>

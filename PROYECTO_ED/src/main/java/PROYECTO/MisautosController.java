@@ -4,23 +4,61 @@
  */
 package PROYECTO;
 
+import Proyectos.Usuario;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
  * @author DERS
  */
-public class MisautosController implements Initializable {
+public class MisautosController {
+    
+    @FXML
+    private Button btnRegresar;
+    
+    @FXML
+    private Label lblUser;
+    
+    private Usuario usuario;
+    
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+        lblUser.setText(usuario.getNombre()+" "+usuario.getApellido()+"!");
+    }
+    
+    public Usuario getUsuario() {
+        return usuario;
+    }
+    
+    public void regresar() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("usuario.fxml"));
+            Parent root = loader.load();
+            UsuarioController usuarioController = loader.getController();
+            usuarioController.setUsuario(usuario);
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("GuayacoCar - Autos a tu Alcance");
+            stage.show();
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+            Stage miStage = (Stage) btnRegresar.getScene().getWindow();
+            miStage.close();
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     
 }
