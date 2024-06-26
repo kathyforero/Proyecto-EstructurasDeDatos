@@ -19,6 +19,8 @@ import Proyectos.*;
 import java.io.File;
 import java.util.Iterator;
 import java.util.Map;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
@@ -144,6 +146,10 @@ public class UsuarioController{
     private Label provAuto5;
     @FXML
     private Label provAuto6;
+    @FXML
+    private ImageView buscar;
+    @FXML
+    private MenuItem menuFav;
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
@@ -250,7 +256,7 @@ public class UsuarioController{
                     imgView.setImage(image);
 
                     // Añadir evento de clic
-                    imgView.setOnMouseClicked(event -> mostraAuto(auto));
+                    imgView.setOnMouseClicked(event -> mostrarAuto(auto));
                     
                 }
 
@@ -261,7 +267,25 @@ public class UsuarioController{
         }
     }
     
-    public void mostraAuto(Auto auto){
+    public void mostrarAuto(Auto auto){
     
+    }
+    
+    @FXML
+    public void mostrarMisFavoritos() {
+        Alert alert = new Alert(AlertType.WARNING);
+        alert.setTitle("Lo sentimos");
+        alert.setHeaderText("Opción no disponible.");
+        alert.setContentText("Esta opción aún está en desarrollo! :(");
+        alert.showAndWait();
+    }
+    
+    @FXML
+    public void buscar() {
+        Alert alert = new Alert(AlertType.WARNING);
+        alert.setTitle("Lo sentimos");
+        alert.setHeaderText("Opción no disponible.");
+        alert.setContentText("Esta opción aún está en desarrollo! :(");
+        alert.showAndWait();
     }
 }
