@@ -97,7 +97,7 @@ public class Archivos {
         }
 
         if (autos == null) {
-            autos = new DoublyCircularList<>(); // Si no se pudo leer, retornar mapa vacío
+            autos = new DoublyCircularList<>(); // Si no se pudo leer, retornar circularlist vacío
         }
         return autos;
     }

@@ -72,7 +72,9 @@ public class CrearautoController {
     @FXML
     private Label lblImagenes;
     @FXML
-    private Button btnGuardar;
+    private Button btonGuardar;
+    @FXML
+    private ImageView ivQuitarImagen;
     
     
     public void setUsuario(Usuario usuario) {
