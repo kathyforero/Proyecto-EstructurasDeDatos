@@ -11,9 +11,11 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -95,216 +97,6 @@
             <String fx:value="btnGeneral" />
             <String fx:value="btnInit" />
          </styleClass></Button>
-      <VBox layoutX="59.0" layoutY="317.0" prefHeight="424.0" prefWidth="883.0" spacing="10.0">
-         <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-               <children>
-                  <VBox alignment="CENTER">
-                     <children>
-                        <StackPane>
-                           <children>
-                              <ImageView fitHeight="150.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@preview.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </StackPane>
-                        <Label text="Marca - Modelo" textFill="WHITE">
-                           <font>
-                              <Font name="Century Gothic" size="12.0" />
-                           </font>
-                        </Label>
-                        <HBox alignment="CENTER">
-                           <children>
-                              <Label text="Año " textFill="WHITE">
-                                 <font>
-                                    <Font name="Century Gothic" size="12.0" />
-                                 </font>
-                              </Label>
-                              <Label text=" 15000 Kms • Provincia" textFill="WHITE">
-                                 <font>
-                                    <Font name="Century Gothic" size="12.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <Label text="\$PRECIO" textFill="WHITE" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="229.0" layoutY="10.0">
-                     <children>
-                        <StackPane>
-                           <children>
-                              <ImageView fitHeight="150.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@preview.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </StackPane>
-                        <Label text="Marca - Modelo" textFill="WHITE">
-                           <font>
-                              <Font name="Century Gothic" size="12.0" />
-                           </font>
-                        </Label>
-                        <HBox alignment="CENTER">
-                           <children>
-                              <Label text="Año " textFill="WHITE">
-                                 <font>
-                                    <Font name="Century Gothic" size="12.0" />
-                                 </font>
-                              </Label>
-                              <Label text=" 155555555550 Kms • Provincia" textFill="WHITE">
-                                 <font>
-                                    <Font name="Century Gothic" size="12.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <Label text="\$PRECIO" textFill="WHITE" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="314.0" layoutY="10.0">
-                     <children>
-                        <StackPane>
-                           <children>
-                              <ImageView fitHeight="150.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@preview.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </StackPane>
-                        <Label text="Marca - Modelo" textFill="WHITE">
-                           <font>
-                              <Font name="Century Gothic" size="12.0" />
-                           </font>
-                        </Label>
-                        <HBox alignment="CENTER">
-                           <children>
-                              <Label text="Año " textFill="WHITE">
-                                 <font>
-                                    <Font name="Century Gothic" size="12.0" />
-                                 </font>
-                              </Label>
-                              <Label text=" 15000000000 Kms • Provincia" textFill="WHITE">
-                                 <font>
-                                    <Font name="Century Gothic" size="12.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <Label text="\$PRECIO" textFill="WHITE" />
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="591.0" spacing="10.0">
-               <children>
-                  <VBox alignment="CENTER">
-                     <children>
-                        <StackPane>
-                           <children>
-                              <ImageView fitHeight="150.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@preview.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </StackPane>
-                        <Label text="Marca - Modelo" textFill="WHITE">
-                           <font>
-                              <Font name="Century Gothic" size="12.0" />
-                           </font>
-                        </Label>
-                        <HBox alignment="CENTER">
-                           <children>
-                              <Label text="Año " textFill="WHITE">
-                                 <font>
-                                    <Font name="Century Gothic" size="12.0" />
-                                 </font>
-                              </Label>
-                              <Label text=" 0 Kms • Provincia" textFill="WHITE">
-                                 <font>
-                                    <Font name="Century Gothic" size="12.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <Label text="\$PRECIO" textFill="WHITE" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="229.0" layoutY="10.0">
-                     <children>
-                        <StackPane>
-                           <children>
-                              <ImageView fitHeight="150.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@preview.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </StackPane>
-                        <Label text="Marca - Modelo" textFill="WHITE">
-                           <font>
-                              <Font name="Century Gothic" size="12.0" />
-                           </font>
-                        </Label>
-                        <HBox alignment="CENTER">
-                           <children>
-                              <Label text="Año " textFill="WHITE">
-                                 <font>
-                                    <Font name="Century Gothic" size="12.0" />
-                                 </font>
-                              </Label>
-                              <Label text=" 0 Kms • Provincia" textFill="WHITE">
-                                 <font>
-                                    <Font name="Century Gothic" size="12.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <Label text="\$PRECIO" textFill="WHITE" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="314.0" layoutY="10.0">
-                     <children>
-                        <StackPane>
-                           <children>
-                              <ImageView fitHeight="150.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@preview.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </StackPane>
-                        <Label text="Marca - Modelo" textFill="WHITE">
-                           <font>
-                              <Font name="Century Gothic" size="12.0" />
-                           </font>
-                        </Label>
-                        <HBox alignment="CENTER">
-                           <children>
-                              <Label text="Año " textFill="WHITE">
-                                 <font>
-                                    <Font name="Century Gothic" size="12.0" />
-                                 </font>
-                              </Label>
-                              <Label text=" 0 Kms • Provincia" textFill="WHITE">
-                                 <font>
-                                    <Font name="Century Gothic" size="12.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <Label text="\$PRECIO" textFill="WHITE" />
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-         </children>
-      </VBox>
       <ImageView fitHeight="47.0" fitWidth="45.0" layoutX="940.0" layoutY="506.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@derecha.png" />
@@ -315,5 +107,191 @@
             <Image url="@izquierda.png" />
          </image>
       </ImageView>
+      <GridPane layoutX="98.0" layoutY="324.0" prefHeight="209.0" prefWidth="770.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="127.0" minHeight="10.0" prefHeight="127.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="66.0" minHeight="0.0" prefHeight="25.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="36.0" minHeight="0.0" prefHeight="22.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="36.0" minHeight="10.0" prefHeight="21.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="36.0" minHeight="0.0" prefHeight="19.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <StackPane prefHeight="150.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="imgAuto1" fitHeight="150.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@preview.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </StackPane>
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="1">
+               <children>
+                  <Label fx:id="tituloAuto1" text="Marca - Modelo" textFill="WHITE">
+                     <font>
+                        <Font name="Century Gothic" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="2">
+               <children>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Label fx:id="anioAuto1" text="Año " textFill="WHITE">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="anioAuto11" text="•" textFill="WHITE">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="kmAutos1" text=" 0 Kms " textFill="WHITE">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </StackPane>
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="4">
+               <children>
+                  <Label fx:id="precioAuto1" text="\$PRECIO" textFill="WHITE" />
+               </children>
+            </StackPane>
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@preview.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imgAuto2" fitHeight="150.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@preview.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </StackPane>
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <Label fx:id="tituloAuto2" text="Marca - Modelo" textFill="WHITE">
+                     <font>
+                        <Font name="Century Gothic" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <children>
+                  <Label fx:id="precioAuto2" text="\$PRECIO" textFill="WHITE" />
+               </children>
+            </StackPane>
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+               <children>
+                  <Label fx:id="precioAuto3" text="\$PRECIO" textFill="WHITE" />
+               </children>
+            </StackPane>
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2">
+               <children>
+                  <ImageView fx:id="imgAuto3" fitHeight="150.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@preview.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </StackPane>
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="3">
+               <children>
+                  <Label fx:id="provAuto1" text="Provincia" textFill="WHITE">
+                     <font>
+                        <Font name="Century Gothic" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <children>
+                  <Label fx:id="tituloAuto3" text="Marca - Modelo" textFill="WHITE">
+                     <font>
+                        <Font name="Century Gothic" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Label fx:id="anioAuto2" text="Año " textFill="WHITE">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="anioAuto111" text="•" textFill="WHITE">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="kmAutos2" text=" 0 Kms " textFill="WHITE">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </StackPane>
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <children>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Label fx:id="anioAuto3" text="Año " textFill="WHITE">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="anioAuto112" text="•" textFill="WHITE">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="kmAutos3" text=" 0 Kms " textFill="WHITE">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </StackPane>
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <children>
+                  <Label fx:id="provAuto2" text="Provincia" textFill="WHITE">
+                     <font>
+                        <Font name="Century Gothic" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <children>
+                  <Label fx:id="provAuto3" text="Provincia" textFill="WHITE">
+                     <font>
+                        <Font name="Century Gothic" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>

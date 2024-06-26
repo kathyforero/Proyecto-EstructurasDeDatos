@@ -202,7 +202,19 @@ public class CrearautoController {
         if (selectedFiles != null) {
             for (File file : selectedFiles) {
                 System.out.println("Archivo seleccionado: " + file.getAbsolutePath());
-                fotos.addLast(file);
+            
+                File destDir = new File("src/main/resources/imagenes");
+                if (!destDir.exists()) {
+                    destDir.mkdirs();
+                }
+
+                File destFile = new File(destDir, file.getName());
+                try {
+                    Files.copy(file.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                fotos.addLast(destFile);
                 Image image = new Image(file.toURI().toString());
                 
             }
