@@ -6,6 +6,10 @@ package PROYECTO;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import Bases.DoublyCircularList;
+import Proyectos.Archivos;
+import Proyectos.Auto;
 import javafx.fxml.Initializable;
 
 /**
@@ -20,7 +24,8 @@ public class MisautosController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+      
     }    
     
 }

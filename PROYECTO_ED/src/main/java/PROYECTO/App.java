@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.Iterator;
+
 import Bases.*;
 import Proyectos.*;
 
@@ -33,7 +35,22 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        System.out.println("Mis autos:");
+        DoublyCircularList<Auto> autos = Archivos.leerAutos();
+        System.out.println("¿Cuántos autos hay en la lista? " + autos.size() );
+        Iterator<Auto> it = autos.iterator();
+
+        while(it.hasNext()) {
+            Auto auto = it.next();
+            String propietario = auto.getUsuario().getNombre();
+            System.out.println("El propietario del auto con placa "+auto.getPlaca()+ "  es : "+propietario);
+            System.out.println("Informacion del auto: "+auto);
+
+        }
+
+        
         launch();       
+
         
     }
     
