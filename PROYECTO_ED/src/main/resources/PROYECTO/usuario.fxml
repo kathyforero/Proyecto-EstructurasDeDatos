@@ -148,11 +148,6 @@
                               <Font name="Century Gothic" size="12.0" />
                            </font>
                         </Label>
-                        <Label fx:id="anioAuto11" text="•" textFill="WHITE">
-                           <font>
-                              <Font name="Century Gothic" size="12.0" />
-                           </font>
-                        </Label>
                         <Label fx:id="kmAutos1" text=" 0 Kms " textFill="WHITE">
                            <font>
                               <Font name="Century Gothic" size="12.0" />
@@ -236,11 +231,6 @@
                               <Font name="Century Gothic" size="12.0" />
                            </font>
                         </Label>
-                        <Label fx:id="anioAuto111" text="•" textFill="WHITE">
-                           <font>
-                              <Font name="Century Gothic" size="12.0" />
-                           </font>
-                        </Label>
                         <Label fx:id="kmAutos2" text=" 0 Kms " textFill="WHITE">
                            <font>
                               <Font name="Century Gothic" size="12.0" />
@@ -255,11 +245,6 @@
                   <HBox alignment="CENTER">
                      <children>
                         <Label fx:id="anioAuto3" text="Año " textFill="WHITE">
-                           <font>
-                              <Font name="Century Gothic" size="12.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="anioAuto112" text="•" textFill="WHITE">
                            <font>
                               <Font name="Century Gothic" size="12.0" />
                            </font>
@@ -330,11 +315,6 @@
                   <HBox alignment="CENTER">
                      <children>
                         <Label fx:id="anioAuto4" text="Año " textFill="WHITE">
-                           <font>
-                              <Font name="Century Gothic" size="12.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="anioAuto111" text="•" textFill="WHITE">
                            <font>
                               <Font name="Century Gothic" size="12.0" />
                            </font>
@@ -422,11 +402,6 @@
                               <Font name="Century Gothic" size="12.0" />
                            </font>
                         </Label>
-                        <Label fx:id="anioAuto1111" text="•" textFill="WHITE">
-                           <font>
-                              <Font name="Century Gothic" size="12.0" />
-                           </font>
-                        </Label>
                         <Label fx:id="kmAutos5" text=" 0 Kms " textFill="WHITE">
                            <font>
                               <Font name="Century Gothic" size="12.0" />
@@ -441,11 +416,6 @@
                   <HBox alignment="CENTER">
                      <children>
                         <Label fx:id="anioAuto6" text="Año " textFill="WHITE">
-                           <font>
-                              <Font name="Century Gothic" size="12.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="anioAuto1121" text="•" textFill="WHITE">
                            <font>
                               <Font name="Century Gothic" size="12.0" />
                            </font>

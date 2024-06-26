@@ -292,13 +292,38 @@ public class UsuarioController{
                 foto = auto.getFotos().getHeader();
                 Image image = new Image(foto.getContent().toURI().toString());
                 imgView.setImage(image);
-                // Añadir evento de clic
+                imgView.setOpacity(1);
                 imgView.setOnMouseClicked(event -> mostrarAuto(auto));
                 
                 Field FtituloAuto = getClass().getDeclaredField("tituloAuto" + index);
                 FtituloAuto.setAccessible(true);
                 Label tituloAuto = (Label) FtituloAuto.get(this); 
                 tituloAuto.setText(auto.getMarca().getName()+" - "+auto.getModelo());
+                tituloAuto.setOpacity(1);
+                
+                Field FanioAuto1 = getClass().getDeclaredField("anioAuto" + index);
+                FanioAuto1.setAccessible(true);
+                Label anioAuto1 = (Label) FanioAuto1.get(this); 
+                anioAuto1.setText(Integer.toString(auto.getAño())+" •");
+                anioAuto1.setOpacity(1);
+                
+                Field FkmAutos = getClass().getDeclaredField("kmAutos" + index);
+                FkmAutos.setAccessible(true);
+                Label kmAutos = (Label) FkmAutos.get(this); 
+                kmAutos.setText(Integer.toString(auto.getKilometraje())+" km");
+                kmAutos.setOpacity(1);
+                
+                Field FprovAuto = getClass().getDeclaredField("provAuto" + index);
+                FprovAuto.setAccessible(true);
+                Label provAuto = (Label) FprovAuto.get(this); 
+                provAuto.setText(auto.getUbicacion().getDisplayName());
+                provAuto.setOpacity(1);
+                
+                Field FprecioAuto1 = getClass().getDeclaredField("precioAuto" + index);
+                FprecioAuto1.setAccessible(true);
+                Label precioAuto1 = (Label) FprecioAuto1.get(this); 
+                precioAuto1.setText("$"+auto.getPrecio());
+                precioAuto1.setOpacity(1);
                 
             } catch (NoSuchFieldException | IllegalAccessException e) {
                 e.printStackTrace();
@@ -306,7 +331,53 @@ public class UsuarioController{
                 index++; 
                 autosMostrados++; 
                 autoNodo = autoNodo.getNext();
+                
             } while (autoNodo != autos.getHeader());
+            if(autoNodo.equals(autos.getHeader())){
+                    ponerBlanco(index);
+                   
+                }
+    }
+    
+    public void ponerBlanco(int index){
+        
+        while(index<=6) {
+                 try {
+                Field imgField = getClass().getDeclaredField("imgAuto" + index);
+                imgField.setAccessible(true);
+                ImageView imgView = (ImageView) imgField.get(this);
+                imgView.setOpacity(0);
+                
+                Field FtituloAuto = getClass().getDeclaredField("tituloAuto" + index);
+                FtituloAuto.setAccessible(true);
+                Label tituloAuto = (Label) FtituloAuto.get(this); 
+                tituloAuto.setOpacity(0);
+                
+                Field FkmAutos = getClass().getDeclaredField("kmAutos" + index);
+                FkmAutos.setAccessible(true);
+                Label kmAutos = (Label) FkmAutos.get(this); 
+                kmAutos.setOpacity(0);
+                
+                Field FprovAuto = getClass().getDeclaredField("provAuto" + index);
+                FprovAuto.setAccessible(true);
+                Label provAuto = (Label) FprovAuto.get(this); 
+                provAuto.setOpacity(0);
+                
+                Field FanioAuto1 = getClass().getDeclaredField("anioAuto" + index);
+                FanioAuto1.setAccessible(true);
+                Label anioAuto1 = (Label) FanioAuto1.get(this); 
+                anioAuto1.setOpacity(0);
+                
+                Field FprecioAuto1 = getClass().getDeclaredField("precioAuto" + index);
+                FprecioAuto1.setAccessible(true);
+                Label precioAuto1 = (Label) FprecioAuto1.get(this); 
+                precioAuto1.setOpacity(0);
+                
+            } catch (NoSuchFieldException | IllegalAccessException e) {
+                e.printStackTrace();
+            }
+                index++; 
+            }
     }
     
     public void mostrarAuto(Auto auto){
