@@ -308,8 +308,8 @@ public class UsuarioController{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("vistaauto.fxml"));
                 Parent root = loader.load();
                 VistaautoController VistaautoController = loader.getController();
-                VistaautoController.setUsuario(usuario);
                 VistaautoController.setAuto(auto);
+                VistaautoController.setUsuario(usuario);                
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
                 stage.setTitle("GuayacoCar - Autos a tu Alcance");

@@ -15,10 +15,10 @@
             <Image url="@Logo.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnRegresar" layoutX="860.0" layoutY="152.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="107.0" styleClass="btnInit" stylesheets="@estilos.css" text="REGRESAR" />
-      <AnchorPane layoutX="546.0" layoutY="213.0" prefHeight="622.0" prefWidth="454.0" style="-fx-background-color: #2B193E;">
+      <Button fx:id="btnRegresar" layoutX="860.0" layoutY="152.0" mnemonicParsing="false" onAction="#regresar" prefHeight="29.0" prefWidth="107.0" styleClass="btnInit" stylesheets="@estilos.css" text="REGRESAR" />
+      <AnchorPane layoutX="532.0" layoutY="213.0" prefHeight="622.0" prefWidth="454.0" style="-fx-background-color: #2B193E;">
          <children>
-            <Button fx:id="btnReporte" layoutX="82.0" layoutY="565.0" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="VER REPORTE DE ACCIDENTES Y REPARACIONES" />
+            <Button fx:id="btnReporte" layoutX="82.0" layoutY="565.0" mnemonicParsing="false" onAction="#mostrarReportes" styleClass="btnGeneral" stylesheets="@estilos.css" text="VER REPORTE DE ACCIDENTES Y REPARACIONES" />
             <Label layoutX="50.0" layoutY="83.0" text="PRECIO:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
@@ -147,12 +147,12 @@
             <Image url="@derecha.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="lblIzquierda" fitHeight="65.0" fitWidth="49.0" layoutX="192.0" layoutY="711.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="btnIzquierda" fitHeight="65.0" fitWidth="49.0" layoutX="192.0" layoutY="711.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@izquierda.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="btnFav" fitHeight="150.0" fitWidth="200.0" layoutX="176.0" layoutY="780.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="btnFav" fitHeight="150.0" fitWidth="200.0" layoutX="176.0" layoutY="780.0" onMouseClicked="#añadirFav" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@añadirafav.png" />
          </image>

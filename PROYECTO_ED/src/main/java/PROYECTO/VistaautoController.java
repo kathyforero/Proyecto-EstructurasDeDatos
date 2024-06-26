@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -57,7 +58,7 @@ public class VistaautoController {
     @FXML
     private ImageView btnDerecha;
     @FXML
-    private ImageView lblIzquierda;
+    private ImageView btnIzquierda;
     @FXML
     private ImageView btnFav;
     @FXML
@@ -74,6 +75,7 @@ public class VistaautoController {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
         lblUsuario.setText(usuario.getNombre()+" "+usuario.getApellido()+"!");
+        cargarAuto();
     }
     
     public Usuario getUsuario() {
@@ -86,6 +88,40 @@ public class VistaautoController {
     
     public Auto getAuto() {
         return auto;
+    }
+    
+    public void cargarAuto(){
+        lblPlaca.setText(auto.getPlaca().toUpperCase());
+        lblPrecio.setText(Float.toString(auto.getPrecio()));
+        lblMarca.setText(auto.getMarca().getName());
+        lblModelo.setText(auto.getModelo());
+        lblTipo.setText(auto.getTipo().getDisplayName());
+        lblAño.setText(Integer.toString(auto.getAño()));
+        lblKilom.setText(Integer.toString(auto.getKilometraje()));
+        lblMotor.setText(auto.getMotor().getDisplayName());
+        lblTrans.setText(auto.getTransmisión().getDisplayName());
+        lblPeso.setText(Float.toString(auto.getPeso()));
+        lblUbi.setText(auto.getUbicacion().getDisplayName());
+        lblEstado.setText(auto.getEstado().getDisplayName());
+        lblVendedor.setText(auto.getUsuario().getNombre()+ " " + auto.getUsuario().getApellido());        
+    }
+    
+    @FXML
+    public void mostrarReportes() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Lo sentimos");
+        alert.setHeaderText("Opción no disponible.");
+        alert.setContentText("Esta opción aún está en desarrollo! :(");
+        alert.showAndWait();
+    }
+    
+    @FXML
+    public void añadirFav() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Lo sentimos");
+        alert.setHeaderText("Opción no disponible.");
+        alert.setContentText("Esta opción aún está en desarrollo! :(");
+        alert.showAndWait();
     }
     
     public void regresar() {
