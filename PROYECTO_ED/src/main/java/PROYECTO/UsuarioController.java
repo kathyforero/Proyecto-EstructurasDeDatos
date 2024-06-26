@@ -344,6 +344,7 @@ public class UsuarioController{
                 }
     }
     
+    @FXML
     public void mostrarAutosAtras() {
     int autosMostrados = 0;
     int currentIndex = autos.getIndex(autoNodo);  // Obtener el índice actual del nodo
