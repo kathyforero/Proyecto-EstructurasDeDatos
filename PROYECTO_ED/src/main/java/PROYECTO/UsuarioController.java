@@ -58,7 +58,7 @@ public class UsuarioController{
     private Label lblUser;
     
     private Usuario usuario;
-    private DoublyCircularList<Auto> autos = new DoublyCircularList<>();
+    
     @FXML
     private MenuItem menuMisAutos;
     @FXML
@@ -105,8 +105,7 @@ public class UsuarioController{
     private Label provAuto2;
     @FXML
     private Label provAuto3;
-    private ArrayList<ImageView> imagenes=new ArrayList<>();
-    private DoublyCircularNode<File> Node;
+    
     @FXML
     private ImageView imgAuto4;
     @FXML
@@ -151,6 +150,11 @@ public class UsuarioController{
     private ImageView buscar;
     @FXML
     private MenuItem menuFav;
+    private ArrayList<ImageView> imagenes=new ArrayList<>();
+    private DoublyCircularList<Auto> autos = Archivos.leerAutos();
+    private DoublyCircularNode<Auto> autoNodo=autos.getHeader();
+    private DoublyCircularNode<File> foto;
+    
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
@@ -269,10 +273,13 @@ public class UsuarioController{
     }
     */
     public void cargarAutos(){
-        DoublyCircularList<Auto> autos = Archivos.leerAutos();
+        
         if (!(autos.size()==0)){
-            DoublyCircularNode<Auto> autoNodo=autos.getHeader();
-            DoublyCircularNode<File> foto;
+            mostrarAutosAdelante();
+        }
+    }
+    
+    public void mostrarAutosAdelante(){
             int index = 1;
             int autosMostrados=0;
             do {
@@ -281,26 +288,25 @@ public class UsuarioController{
                 // Obtener y configurar ImageView
                 Field imgField = getClass().getDeclaredField("imgAuto" + index);
                 imgField.setAccessible(true);
-                ImageView imgView = (ImageView) imgField.get(this);
-                
+                ImageView imgView = (ImageView) imgField.get(this);   
                 foto = auto.getFotos().getHeader();
                 Image image = new Image(foto.getContent().toURI().toString());
                 imgView.setImage(image);
-
                 // Añadir evento de clic
                 imgView.setOnMouseClicked(event -> mostrarAuto(auto));
-
                 
-
+                Field FtituloAuto = getClass().getDeclaredField("tituloAuto" + index);
+                FtituloAuto.setAccessible(true);
+                Label tituloAuto = (Label) FtituloAuto.get(this); 
+                tituloAuto.setText(auto.getMarca().getName()+" - "+auto.getModelo());
+                
             } catch (NoSuchFieldException | IllegalAccessException e) {
                 e.printStackTrace();
             }
-
                 index++; 
                 autosMostrados++; 
                 autoNodo = autoNodo.getNext();
             } while (autoNodo != autos.getHeader());
-        }
     }
     
     public void mostrarAuto(Auto auto){
