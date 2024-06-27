@@ -68,6 +68,6 @@ public class Usuario implements Serializable{
     }  
     
     public String toString(){
-        return nombre+" "+apellido+" con correo electronico: "+correo+" y tiene "+favoritos.size()+" carros publicados"; 
+        return nombre+" "+apellido+" con correo electronico: "+correo+" y tiene "+favoritos.size()+" carros favoritos"; 
     }
 }
