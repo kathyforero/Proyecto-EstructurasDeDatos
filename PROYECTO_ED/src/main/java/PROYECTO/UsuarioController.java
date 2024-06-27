@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -27,7 +28,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class UsuarioController{
+public class UsuarioController implements Initializable{
 
 
     @FXML
@@ -35,9 +36,9 @@ public class UsuarioController{
     @FXML
     private Button btnCrearAuto;
     @FXML
-    private ComboBox<?> cmMarca;
+    private ComboBox<String> cmMarca;
     @FXML
-    private ComboBox<?> cmModelo;
+    private ComboBox<String> cmModelo;
     @FXML
     private TextField tfPrecioDesde;
     @FXML
@@ -465,4 +466,40 @@ public class UsuarioController{
         alert.setContentText("Esta opción aún está en desarrollo! :(");
         alert.showAndWait();
     }
+
+
+    @FXML
+    public void VerificarModelo(){
+        if(cmMarca.getValue()==null){
+            msgError("Primero tienes que escoger una marca.");
+        }
+    }
+
+    @FXML
+    public void cargarModelo(){
+            msgErrorOff();
+            cmModelo.getSelectionModel().clearSelection();
+            cmModelo.getItems().clear();
+            cmModelo.setValue(null);
+            String txtMarca = cmMarca.getValue();
+            for(MarcaDeAuto marca:MarcaDeAuto.values()){
+                if(marca.getName().equals(txtMarca)){
+                    ArrayList<String> modelos = marca.getModels();
+                    for (int i=1; i<=modelos.size(); i++){
+                        cmModelo.getItems().add(modelos.get(i));
+                    }
+                }
+            
+        }
+    }
+    public void cargarMarca(){
+        for (MarcaDeAuto marca : MarcaDeAuto.values()) {
+            cmMarca.getItems().add(marca.getName());
+        }
+    }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        cargarMarca(); // Llama a cargarCampos al inicializar el controlador
+    }
+    
 }
