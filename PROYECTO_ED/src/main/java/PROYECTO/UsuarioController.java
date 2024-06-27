@@ -70,8 +70,6 @@ public class UsuarioController{
     @FXML
     private Label anioAuto1;
     @FXML
-    private Label anioAuto11;
-    @FXML
     private Label kmAutos1;
     @FXML
     private Label precioAuto1;
@@ -92,13 +90,9 @@ public class UsuarioController{
     @FXML
     private Label anioAuto2;
     @FXML
-    private Label anioAuto111;
-    @FXML
     private Label kmAutos2;
     @FXML
     private Label anioAuto3;
-    @FXML
-    private Label anioAuto112;
     @FXML
     private Label kmAutos3;
     @FXML
@@ -133,13 +127,9 @@ public class UsuarioController{
     @FXML
     private Label anioAuto5;
     @FXML
-    private Label anioAuto1111;
-    @FXML
     private Label kmAutos5;
     @FXML
     private Label anioAuto6;
-    @FXML
-    private Label anioAuto1121;
     @FXML
     private Label kmAutos6;
     @FXML
@@ -155,6 +145,10 @@ public class UsuarioController{
     private DoublyCircularNode<Auto> autoNodo;
     private DoublyCircularNode<File> foto;
     private int autosMostrados;
+    @FXML
+    private Button btnError;
+    @FXML
+    private ImageView mostrarAutosAdelante;
 
     
 
@@ -286,7 +280,9 @@ public class UsuarioController{
         }
     }
     
+    @FXML
     public void mostrarAutosAdelante(){
+        if(verificarPaginas()){
             int index = 1;
             do {
                 Auto auto = autoNodo.getContent();
@@ -346,36 +342,49 @@ public class UsuarioController{
                     ponerBlanco(index);
                    
                 }
+            }
     }
     
     @FXML
     public void mostrarAutosAtras() {
-        int indicePRB=0;
-    if (autos.getIndex(autoNodo)==6 && (autos.size()%6)!=0) {
-        int indice=autos.size()-(autos.size()%6);
-        System.out.println("primer if");
-        autoNodo=autos.getNodo(indice);  // Asegurar que el índice sea válido en la lista circular
-    } else if(autoNodo.equals(autos.getHeader())){
-        if(autos.size()%6==0){
-            indicePRB=6+6;
-        }else{
-        indicePRB=6+(autos.size()%6);
-        System.out.println("autos mostrados");
+        if(verificarPaginas()){
+            int indicePRB=0;
+            if (autos.getIndex(autoNodo)==6 && (autos.size()%6)!=0) {
+                int indice=autos.size()-(autos.size()%6);
+                autoNodo=autos.getNodo(indice);  // Asegurar que el índice sea válido en la lista circular
+            } else if(autoNodo.equals(autos.getHeader())){
+                if(autos.size()%6==0){
+                    indicePRB=6+6;
+                }else{
+                    indicePRB=6+(autos.size()%6);
+                    }
+                } else{
+                    indicePRB=12;
+                    System.out.println(autos.getIndex(autoNodo));
+                }
+                    for(int i =1;i<=indicePRB;i++){
+                       autoNodo=autoNodo.getPrevious();
+                }
+            mostrarAutosAdelante();
         }
-        
-        
-        
-    } else{
-        indicePRB=12;
-        System.out.println("else");
-        System.out.println(autos.getIndex(autoNodo));
-    }
-        for(int i =1;i<=indicePRB;i++){
-            System.out.println("retrocede");
-           autoNodo=autoNodo.getPrevious();
-        }
-    mostrarAutosAdelante();
 }
+    
+    public boolean verificarPaginas(){
+        if(autos.size()<6){
+            msgError("No hay paginas que mostrar");
+        }else{
+            msgErrorOff();
+        }
+        return true;
+    }
+    
+    public void msgError(String msg){
+        btnError.setVisible(true);
+        btnError.setText(msg);
+    }
+    public void msgErrorOff(){
+        btnError.setVisible(false);
+    }
 
     
     public void ponerBlanco(int index){

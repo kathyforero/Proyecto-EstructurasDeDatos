@@ -8,6 +8,7 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -21,6 +22,14 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1000.0" style="-fx-background-color: #0D050E;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PROYECTO.UsuarioController">
    <children>
+      <Button fx:id="btnError" layoutX="136.0" layoutY="302.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="750.0" styleClass="textError" stylesheets="@estilos.css" text="No hay paginas que mostrar" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+         <effect>
+            <Glow />
+         </effect>
+      </Button>
       <ImageView fitHeight="137.0" fitWidth="111.0" layoutX="275.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Logo.png" />
