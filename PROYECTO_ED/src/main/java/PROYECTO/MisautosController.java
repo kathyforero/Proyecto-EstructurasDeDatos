@@ -4,9 +4,9 @@
  */
 package PROYECTO;
 
-import Proyectos.Usuario;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -44,16 +44,41 @@ public class MisautosController {
     public Usuario getUsuario() {
         return usuario;
     }
+
     
     @FXML
     private void alertaInfo(){
+        misAutos(usuario);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Información");
         alert.setHeaderText("¿Como editar o remover un vehículo?");
         alert.setContentText("Presiona un auto para poder editar sus características o eliminarlo!");
         alert.showAndWait();    
+
     }
-    
+
+
+    public void misAutos(Usuario usuario){
+        System.out.println("Mis autos:");
+        DoublyCircularList<Auto> autos = Archivos.leerAutos();
+        System.out.println("¿Cuántos autos hay en la lista? " + autos.size());
+        Iterator<Auto> it = autos.iterator();
+
+        int iterationCount = 0;
+        while(it.hasNext()) {
+            Auto auto = it.next();
+            String propietario = auto.getUsuario().getNombre();
+            System.out.println("Iteración " + iterationCount + ":");
+            System.out.println("Propietario del auto: " + propietario);
+            System.out.println("Nombre del usuario actual: " + usuario.getNombre());
+            if(propietario.equals(usuario.getNombre())){
+                System.out.println("El auto de " + propietario + " es " + auto.toString());
+            } else {
+                System.out.println("El auto no pertenece a " + usuario.getNombre());
+            }
+            iterationCount++;
+        }
+    }
     public void regresar() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("usuario.fxml"));
