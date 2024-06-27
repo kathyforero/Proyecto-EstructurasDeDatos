@@ -110,7 +110,7 @@ public class VistaautoController {
         lblKilom.setText(Integer.toString(auto.getKilometraje()));
         lblMotor.setText(auto.getMotor().getDisplayName());
         lblTrans.setText(auto.getTransmisión().getDisplayName());
-        lblPeso.setText(Float.toString(auto.getPeso()));
+        lblPeso.setText(Float.toString(auto.getPeso()) + " kg");
         lblUbi.setText(auto.getUbicacion().getDisplayName());
         lblEstado.setText(auto.getEstado().getDisplayName());
         lblVendedor.setText(auto.getUsuario().getNombre()+ " " + auto.getUsuario().getApellido());
