@@ -3,10 +3,13 @@ package PROYECTO;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.print.Collation;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -19,6 +22,9 @@ import Bases.*;
 import Proyectos.*;
 import java.io.File;
 import java.lang.reflect.Field;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Map;
 import javafx.scene.control.Alert;
@@ -497,9 +503,78 @@ public class UsuarioController implements Initializable{
             cmMarca.getItems().add(marca.getName());
         }
     }
+
+    @FXML
+    public void ordenarAutoPorMarca() {
+        Comparator<Auto> marcaComparator = new Comparator<Auto>() {
+            @Override
+            public int compare(Auto auto1, Auto auto2) {
+                String marca1 = auto1.getMarca().getName();
+                String marca2 = auto2.getMarca().getName();
+                if(marca1.compareTo(marca2)!=0 ){
+                return marca1.compareTo(marca2);
+                }else{
+                    String modelo1 = auto1.getModelo();
+                    String modelo2 = auto2.getModelo();
+                    System.out.println("---------------------------------");
+                    System.out.println(modelo1+"    "+modelo2);
+                    System.out.println("-----------------------------------");
+                    return  modelo1.compareTo(modelo2);
+                }
+            }
+        };
+
+        Platform.runLater(() -> {
+
+            ordenar(autos, marcaComparator);
+
+            Iterator<Auto> it = autos.iterator();
+            while (it.hasNext()) {
+                Auto auto = it.next();
+                System.out.println("Marca: " + auto.getMarca().getName());
+                System.out.println("Modelo: " + auto.getModelo());
+                System.out.println("Año: " + auto.getAño());
+                System.out.println("Kilometraje: " + auto.getKilometraje() + " km");
+                System.out.println("Precio: $" + auto.getPrecio());
+                System.out.println("Ubicación: " + auto.getUbicacion().getDisplayName());
+                System.out.println("-----------------------");
+            }
+
+            
+        });
+
+    }
+
+    private void ordenar(DoublyCircularList<Auto> lista, Comparator<Auto> comp) {
+        if (lista.getLast() == null || lista.getLast().getNext() == lista.getLast()) {
+            // Si la lista está vacía o tiene un solo elemento, no se hace nada
+            return;
+        }
+    
+        boolean swapped;
+        do {
+            swapped = false;
+            DoublyCircularNode<Auto> current = lista.getLast().getNext();
+            do {
+                DoublyCircularNode<Auto> nextNode = current.getNext();
+                if (comp.compare(current.getContent(), nextNode.getContent()) > 0) {
+                    // Intercambiar contenidos de los nodos en lugar de los nodos mismos
+                    Auto tempContent = current.getContent();
+                    current.setContent(nextNode.getContent());
+                    nextNode.setContent(tempContent);
+                    swapped = true;
+                }
+                current = nextNode;
+            } while (current != lista.getLast());
+        } while (swapped);
+    }
+    
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         cargarMarca(); // Llama a cargarCampos al inicializar el controlador
+        
     }
     
 }
