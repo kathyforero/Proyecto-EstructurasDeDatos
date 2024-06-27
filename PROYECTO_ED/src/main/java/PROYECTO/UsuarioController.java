@@ -58,7 +58,7 @@ public class UsuarioController implements Initializable{
     @FXML
     private Button btnCerrarSesion;
     @FXML
-    private ComboBox<?> cbOrdenar;
+    private ComboBox<String> cbOrdenar;
     @FXML
     private Button btnAplicar;
     @FXML
@@ -516,9 +516,7 @@ public class UsuarioController implements Initializable{
                 }else{
                     String modelo1 = auto1.getModelo();
                     String modelo2 = auto2.getModelo();
-                    System.out.println("---------------------------------");
                     System.out.println(modelo1+"    "+modelo2);
-                    System.out.println("-----------------------------------");
                     return  modelo1.compareTo(modelo2);
                 }
             }
@@ -544,6 +542,56 @@ public class UsuarioController implements Initializable{
         });
 
     }
+    public Comparator<Auto> ordenarPorComp() {
+        String criterio = cbOrdenar.getValue();
+        if (criterio.equals("Marca y Modelo")) {
+            return new Comparator<Auto>() {
+                @Override
+                public int compare(Auto auto1, Auto auto2) {
+                    String marca1 = auto1.getMarca().getName();
+                    String marca2 = auto2.getMarca().getName();
+                    if (!marca1.equals(marca2)) {
+                        return marca1.compareTo(marca2);
+                    } else {
+                        return auto1.getModelo().compareTo(auto2.getModelo());
+                    }
+                }
+            };
+        } else if (criterio.equals("Precio")) {
+            return Comparator.comparingDouble(Auto::getPrecio);
+        } else if (criterio.equals("Año del Auto")) {
+            return Comparator.comparingInt(Auto::getAño).reversed(); // Ordenar por año en orden descendente
+        }
+        return null;
+    }
+    
+
+    @FXML
+public void ordenarAutoPorXCriterio() {
+    Platform.runLater(()->{
+        Comparator<Auto> comp = ordenarPorComp();
+        if (comp != null) {
+            ordenar(autos, comp);
+            
+            Iterator<Auto> it = autos.iterator();
+            while (it.hasNext()) {
+                Auto auto = it.next();
+                System.out.println("Marca: " + auto.getMarca().getName());
+                System.out.println("Modelo: " + auto.getModelo());
+                System.out.println("Año: " + auto.getAño());
+                System.out.println("Kilometraje: " + auto.getKilometraje() + " km");
+                System.out.println("Precio: $" + auto.getPrecio());
+                System.out.println("Ubicación: " + auto.getUbicacion().getDisplayName());
+                System.out.println("-----------------------");
+            }
+            cargarAutos(); 
+        } else {
+            System.out.println("No se seleccionó un criterio de ordenación válido.");
+        }
+    });
+
+}
+
 
     private void ordenar(DoublyCircularList<Auto> lista, Comparator<Auto> comp) {
         if (lista.getLast() == null || lista.getLast().getNext() == lista.getLast()) {
@@ -574,7 +622,7 @@ public class UsuarioController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         cargarMarca(); // Llama a cargarCampos al inicializar el controlador
-        
+        cbOrdenar.getItems().addAll("Marca y Modelo", "Año del Auto", "Precio");
     }
     
 }
