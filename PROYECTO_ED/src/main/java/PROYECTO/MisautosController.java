@@ -319,11 +319,9 @@ public class MisautosController {
         try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("editarauto.fxml"));
                 Parent root = loader.load();
-                /*
                 EditarautoController EditarautoController = loader.getController();
                 EditarautoController.setAuto(auto);
                 EditarautoController.setUsuario(usuario);
-                */
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
                 stage.setTitle("GuayacoCar - Autos a tu Alcance");

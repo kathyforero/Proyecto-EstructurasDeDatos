@@ -371,7 +371,7 @@ public class UsuarioController implements Initializable{
 }
     
     public boolean verificarPaginas(){
-        if(autos.size()<6){
+        if(autos.size()<7){
             msgError("No hay paginas que mostrar");
         }else{
             msgErrorOff();
