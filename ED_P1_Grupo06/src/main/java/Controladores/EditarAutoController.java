@@ -194,7 +194,7 @@ public class EditarAutoController {
             ivFotoAuto.setImage(image);
             actualizarContador();
         }else{
-            String rutaRelativa = "/PROYECTO/preview.png";
+            String rutaRelativa = "/Controladores/preview.png";
             String rutaCompleta = getClass().getResource(rutaRelativa).toExternalForm();
             Image image = new Image(rutaCompleta);
             ivFotoAuto.setImage(image);
