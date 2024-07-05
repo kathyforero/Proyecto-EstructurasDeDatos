@@ -68,12 +68,17 @@
                </font></TextField>
             <TextField fx:id="tfKMHasta" layoutX="131.0" layoutY="134.0" prefHeight="25.0" prefWidth="122.0" promptText="Kilometraje hasta" />
             <Button fx:id="btnBuscar" layoutX="92.0" layoutY="207.0" mnemonicParsing="false" onAction="#filtroAvanzado" prefHeight="29.0" prefWidth="65.0" styleClass="btnGeneral" stylesheets="@estilos.css" text="BUSCAR" />
-            <ImageView fitHeight="34.0" fitWidth="40.0" layoutX="213.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="borrarFiltro" fitHeight="34.0" fitWidth="40.0" layoutX="213.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@borrarfiltro.png" />
                </image>
             </ImageView>
             <ComboBox fx:id="cmTipo" layoutX="63.0" layoutY="171.0" onAction="#cargarModelo" prefHeight="25.0" prefWidth="122.0" promptText="Tipo" />
+            <ImageView fx:id="filtroAvanzado" fitHeight="34.0" fitWidth="40.0" layoutX="8.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@filtroavanzado.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
       <ComboBox fx:id="cbOrdenar" layoutX="753.0" layoutY="166.0" prefHeight="25.0" prefWidth="151.0" promptText="Ordenar por" />

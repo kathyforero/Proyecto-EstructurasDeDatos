@@ -158,6 +158,10 @@ public class UsuarioController implements Initializable{
     private ImageView mostrarAutosAdelante;
     @FXML
     private ComboBox<String> cmTipo;
+    @FXML
+    private ImageView borrarFiltro;
+    @FXML
+    private ImageView filtroAvanzado;
 
     
 
