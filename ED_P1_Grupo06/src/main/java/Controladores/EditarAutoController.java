@@ -24,7 +24,7 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-public class EditarAutoController1 {
+public class EditarAutoController {
 
     @FXML
     private Label lblUser;

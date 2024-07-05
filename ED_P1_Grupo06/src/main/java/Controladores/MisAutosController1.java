@@ -318,7 +318,7 @@ public class MisAutosController1 {
         try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("editarauto.fxml"));
                 Parent root = loader.load();
-                EditarAutoController1 EditarautoController = loader.getController();
+                EditarAutoController EditarautoController = loader.getController();
                 EditarautoController.setAuto(auto);
                 EditarautoController.setUsuario(usuario);
                 Stage stage = new Stage();
