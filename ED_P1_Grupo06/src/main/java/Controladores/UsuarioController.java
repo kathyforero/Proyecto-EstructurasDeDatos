@@ -162,6 +162,8 @@ public class UsuarioController implements Initializable{
     private ImageView filtroAvanzado;
     @FXML
     private ComboBox<String> cbTipo;
+    @FXML
+    private ImageView mostrarAutosAtras;
 
     
 
@@ -308,6 +310,14 @@ public class UsuarioController implements Initializable{
         
         if (autos.size()>0){
             mostrarAutosAdelante();
+            if(autos.size()<7){
+                mostrarAutosAdelante.setVisible(false);
+                mostrarAutosAtras.setVisible(false);
+            }else{
+                mostrarAutosAdelante.setVisible(true);
+                mostrarAutosAtras.setVisible(true);
+            }
+            
             msgErrorOff();
         }else{
             ponerBlanco(1);
@@ -569,8 +579,10 @@ public class UsuarioController implements Initializable{
                     String marca2 = auto2.getMarca().getName();
                     if (!marca1.equals(marca2)) {
                         return marca1.compareTo(marca2);
-                    } else {
+                    } else if(!auto1.getModelo().equals(auto2.getModelo())) {
                         return auto1.getModelo().compareTo(auto2.getModelo());
+                    }else{
+                        return Double.compare(auto1.getPrecio(), auto2.getPrecio());
                     }
                 }
             };
@@ -685,17 +697,12 @@ public void ordenarAutoPorXCriterio() {
     public boolean filtrado(Auto auto){
         boolean bandera = true;
         bandera = bandera&&marcaFiltro(auto);
-        System.out.println("Bandera marca: "+bandera);
         bandera = bandera&&modeloFiltro(auto);
-        System.out.println("Bandera modelo: "+bandera);
         bandera = bandera&&precioDesdeFiltro(auto);
-        System.out.println("Bandera precio Desde: "+bandera);
         bandera = bandera&&precioHastaFiltro(auto);
-        System.out.println("Bandera precio Hasta: "+bandera);
         bandera = bandera&&KMDesdeFiltro(auto);
-        System.out.println("Bandera KM DESDE: "+bandera);
         bandera = bandera&&KMHastaFiltro(auto);
-        System.out.println("Bandera KM Hasta: "+bandera);
+        bandera = bandera&&tipoFiltro(auto);
         return bandera;
     }
     
@@ -707,7 +714,6 @@ public void ordenarAutoPorXCriterio() {
             bandera=cmMarca.getValue().equals(auto.getMarca().getName());
             cbOrdenar.setValue("Marca y Modelo");
         }
-        
         return bandera;
         
     }
@@ -718,7 +724,6 @@ public void ordenarAutoPorXCriterio() {
             bandera=cmModelo.getValue().equals(auto.getModelo());
             cbOrdenar.setValue("Marca y Modelo");
         }
-        
         return bandera;
     }
     
@@ -731,7 +736,6 @@ public void ordenarAutoPorXCriterio() {
             bandera = Float.parseFloat(precioDesde)<auto.getPrecio();
             cbOrdenar.setValue("Precio");
         }
-        
         return bandera;
     }
     
@@ -742,7 +746,6 @@ public void ordenarAutoPorXCriterio() {
             bandera=Float.parseFloat(precioHasta)>auto.getPrecio();
             cbOrdenar.setValue("Precio");
         }
-        
         return bandera;
     }
     
@@ -753,7 +756,6 @@ public void ordenarAutoPorXCriterio() {
             bandera=Integer.parseInt(KMDesde)<auto.getKilometraje();
             cbOrdenar.setValue("Kilometraje");
         }
-        
         return bandera;
     }
     
@@ -764,20 +766,24 @@ public void ordenarAutoPorXCriterio() {
             bandera=Integer.parseInt(KMHasta)>auto.getKilometraje();
             cbOrdenar.setValue("Kilometraje");
         }
-        
         return bandera;
     }
     
+    public boolean tipoFiltro(Auto auto){
+        boolean bandera=true;
+        if(cbTipo.getValue()!=null){
+            bandera=cbTipo.getValue().equals(auto.getTipo().getDisplayName());
+            cbOrdenar.setValue("Marca y Modelo");
+        }
+        return bandera;
+    }
+    
+    @FXML
     public void limpiarCampos(){
         
         cmMarca.setValue(null);
-        
-        
         cmModelo.setValue(null);
-        
-        
         cbTipo.setValue(null);
-        
         tfPrecioDesde.setText("");
         tfPrecioHasta.setText("");
         tfKMDesde.setText("");
