@@ -51,7 +51,7 @@
                <font>
                   <Font name="Kristen ITC" size="17.0" />
                </font></Text>
-            <ComboBox fx:id="cmMarca"  layoutX="2.0" layoutY="80.0" prefHeight="25.0" onAction="#cargarModelo" prefWidth="122.0" promptText="Marca" />
+            <ComboBox fx:id="cmMarca" layoutX="2.0" layoutY="80.0" onAction="#cargarModelo" prefHeight="25.0" prefWidth="122.0" promptText="Marca" />
             <ComboBox fx:id="cmModelo" layoutX="131.0" layoutY="80.0" onMouseClicked="#VerificarModelo" prefHeight="25.0" prefWidth="122.0" promptText="Modelo" />
             <TextField fx:id="tfPrecioDesde" layoutX="2.0" layoutY="117.0" prefHeight="25.0" prefWidth="122.0" promptText="Precio desde">
                <font>
@@ -67,11 +67,11 @@
                   <Font name="Century Gothic" size="12.0" />
                </font></TextField>
             <TextField fx:id="tfKMHasta" layoutX="131.0" layoutY="154.0" prefHeight="25.0" prefWidth="122.0" promptText="Kilometraje hasta" />
-            <Button fx:id="btnBuscar" onMouseClicked="#ordenarAutoPorMarca" layoutX="95.0" layoutY="190.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="65.0" styleClass="btnGeneral" stylesheets="@estilos.css" text="BUSCAR" />
+            <Button fx:id="btnBuscar" layoutX="95.0" layoutY="190.0" mnemonicParsing="false" onAction="#filtroAvanzado" onMouseClicked="#ordenarAutoPorMarca" prefHeight="29.0" prefWidth="65.0" styleClass="btnGeneral" stylesheets="@estilos.css" text="BUSCAR" />
          </children>
       </AnchorPane>
-      <ComboBox fx:id="cbOrdenar"  layoutX="753.0" layoutY="166.0" prefHeight="25.0" prefWidth="151.0" promptText="Ordenar por" />
-      <Button fx:id="btnAplicar" onMouseClicked="#ordenarAutoPorXCriterio" layoutX="904.0" layoutY="166.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" styleClass="btnGeneral" stylesheets="@estilos.css" text="APLICAR" textAlignment="CENTER" />
+      <ComboBox fx:id="cbOrdenar" layoutX="753.0" layoutY="166.0" prefHeight="25.0" prefWidth="151.0" promptText="Ordenar por" />
+      <Button fx:id="btnAplicar" layoutX="904.0" layoutY="166.0" mnemonicParsing="false" onAction="#ordenarAutoPorXCriterio" prefHeight="25.0" prefWidth="74.0" styleClass="btnGeneral" stylesheets="@estilos.css" text="APLICAR" textAlignment="CENTER" />
       <TextField fx:id="tfBusqueda" layoutX="398.0" layoutY="93.0" prefHeight="29.0" prefWidth="316.0" promptText="Buscar por ejemplo: Chevrolet Sail 2012">
          <font>
             <Font name="Century Gothic" size="12.0" />

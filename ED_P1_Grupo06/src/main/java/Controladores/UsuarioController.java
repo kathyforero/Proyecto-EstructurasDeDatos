@@ -627,5 +627,34 @@ public void ordenarAutoPorXCriterio() {
         cargarMarca(); // Llama a cargarCampos al inicializar el controlador
         cbOrdenar.getItems().addAll("Marca y Modelo", "Año del Auto", "Precio", "Kilometraje");
     }
+
+    @FXML
+    private void filtroAvanzado() {
+        DoublyCircularList<Auto> filtrados=new DoublyCircularList<>();
+        Iterator<Auto> it = autos.iterator();
+            while (it.hasNext()) {
+                Auto auto = it.next();
+                if(filtrado(auto)){
+                    filtrados.addLast(auto);
+                }
+            }
+        
+    }
     
+    public boolean filtrado(Auto auto){
+        boolean bandera=true;
+        bandera=bandera&&marcaFiltro(auto);
+        return bandera;
+    }
+    
+    public boolean marcaFiltro(Auto auto){
+        boolean bandera=true;
+        System.out.println("1"+cmMarca.getValue()+"1");
+        System.out.println("2"+cmModelo.getValue()+"2");
+        System.out.println("3"+tfPrecioDesde.getText()+"3");
+        System.out.println("4"+tfPrecioHasta.getText()+"4");
+        System.out.println("5"+tfKMDesde.getText()+"5");
+        System.out.println("6"+tfKMHasta.getText()+"6");
+        return bandera;
+    }
 }
