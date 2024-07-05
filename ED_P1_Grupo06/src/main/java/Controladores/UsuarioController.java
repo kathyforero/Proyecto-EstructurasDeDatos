@@ -240,7 +240,7 @@ public class UsuarioController implements Initializable{
             MisautosController.setUsuario(usuario);            
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.setTitle("GuayacoCar - Autos a tu Alcance");
+            stage.setTitle("GuayacoCar - Mis Autos");
             stage.show();
             
             Stage miStage = (Stage) menuBar.getScene().getWindow();

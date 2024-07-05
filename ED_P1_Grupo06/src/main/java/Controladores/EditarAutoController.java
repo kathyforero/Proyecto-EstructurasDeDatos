@@ -106,15 +106,15 @@ public class EditarAutoController {
     @FXML
     public void regresar() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("usuario.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("misautos.fxml"));
             Parent root = loader.load();
-            UsuarioController usuarioController = loader.getController();
-            usuarioController.setUsuario(usuario);
+            MisAutosController MisautosController = loader.getController();
+            MisautosController.setUsuario(usuario);            
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.setTitle("GuayacoCar - Autos a tu Alcance");
+            stage.setTitle("GuayacoCar - Mis Autos");
             stage.show();
-
+            
             Stage miStage = (Stage) btnRegresar.getScene().getWindow();
             miStage.close();
             
@@ -239,7 +239,6 @@ public class EditarAutoController {
         }
     }
     
-    @FXML
     public void cargarModelo(){
             msgErrorOff();
             cbModelo.getSelectionModel().clearSelection();

@@ -328,7 +328,7 @@ public class MisAutosController {
                 EditarautoController.setUsuario(usuario);
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
-                stage.setTitle("GuayacoCar - Autos a tu Alcance");
+                stage.setTitle("GuayacoCar - Editar Auto");
                 stage.show();
 
                 Stage miStage = (Stage) imgAuto1.getScene().getWindow();
