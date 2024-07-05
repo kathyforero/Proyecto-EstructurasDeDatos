@@ -28,7 +28,7 @@ import javafx.stage.Stage;
  *
  * @author DERS
  */
-public class VistaAutoController {
+public class VistaAutoController1 {
 
     @FXML
     private Button btnRegresar;
