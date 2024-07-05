@@ -84,24 +84,14 @@ public class EditarAutoController {
         this.auto = auto;
         fotos=auto.getFotos();
         Node=fotos.getHeader();
+        cargarCampos();
         actualizarImagenes();
     }
     
     
-    
     @FXML
-    private void cargarModelo(ActionEvent event) {
+    private void guardarAuto() {
     }
-
-    @FXML
-    private void verificarModelo(MouseEvent event) {
-    }
-
-    @FXML
-    private void guardarAuto(MouseEvent event) {
-    }
-
-   
 
     @FXML
     public void regresar() {
@@ -217,6 +207,7 @@ public class EditarAutoController {
         cargarTipos();
         cargarMarca();
         cargarMotor();
+        cargarModeloInicio();
         cargarTransmision();
         cargarUbicacion();
         cargarEstado();
@@ -231,53 +222,73 @@ public class EditarAutoController {
         for (Tipo tipo : Tipo.values()) {
             cbTipo.getItems().add(tipo.getDisplayName());
         }
+        cbTipo.setValue(auto.getTipo().getDisplayName());
     }
     
     public void cargarMarca(){
         for (MarcaDeAuto marca : MarcaDeAuto.values()) {
             cbMarca.getItems().add(marca.getName());
         }
+        cbMarca.setValue(auto.getMarca().getName());
     }
     
     public void cargarModelo(){
-            msgErrorOff();
-            cbModelo.getSelectionModel().clearSelection();
-            cbModelo.getItems().clear();
-            cbModelo.setValue(null);
-            String txtMarca = cbMarca.getValue();
-            for(MarcaDeAuto marca:MarcaDeAuto.values()){
-                if(marca.getName().equals(txtMarca)){
-                    ArrayList<String> modelos = marca.getModels();
-                    for (int i=1; i<=modelos.size(); i++){
-                        cbModelo.getItems().add(modelos.get(i));
-                    }
+        msgErrorOff();
+        cbModelo.getSelectionModel().clearSelection();
+        cbModelo.getItems().clear();
+        cbModelo.setValue(null);
+        String txtMarca = cbMarca.getValue();
+        for(MarcaDeAuto marca:MarcaDeAuto.values()){
+            if(marca.getName().equals(txtMarca)){
+                ArrayList<String> modelos = marca.getModels();
+                for (int i=1; i<=modelos.size(); i++){
+                    cbModelo.getItems().add(modelos.get(i));
                 }
+            }
             
         }
+    }
+    
+    public void cargarModeloInicio(){
+        String txtMarca = cbMarca.getValue();
+        for(MarcaDeAuto marca:MarcaDeAuto.values()){
+            if(marca.getName().equals(txtMarca)){
+                ArrayList<String> modelos = marca.getModels();
+                for (int i=1; i<=modelos.size(); i++){
+                    cbModelo.getItems().add(modelos.get(i));
+                }
+            }
+            
+        }
+        cbModelo.setValue(auto.getModelo());
     }
     
     public void cargarMotor(){
         for (Motor motor : Motor.values()) {
             cbMotor.getItems().add(motor.getDisplayName());
         }
+        cbMotor.setValue(auto.getMotor().getDisplayName());
     }
     
     public void cargarTransmision(){
         for (Transmision transmision : Transmision.values()) {
             cbTransmision.getItems().add(transmision.getDisplayName());
         }
+        cbTransmision.setValue(auto.getTransmisión().getDisplayName());
     }
     
     public void cargarUbicacion(){
         for (Ubicacion ubicacion : Ubicacion.values()) {
             cbUbicacion.getItems().add(ubicacion.getDisplayName());
         }
+        cbUbicacion.setValue(auto.getUbicacion().getDisplayName());
     }
     
     public void cargarEstado(){
         for (Estado estado : Estado.values()) {
             cbEstado.getItems().add(estado.getDisplayName());
         }
+        cbEstado.setValue(auto.getEstado().getDisplayName());
         
     }
     
