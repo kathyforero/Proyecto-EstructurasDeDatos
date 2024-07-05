@@ -26,7 +26,7 @@ import javafx.stage.Stage;
  *
  * @author DERS
  */
-public class MisAutosController {
+public class MisAutosController1 {
     
     @FXML
     private Button btnRegresar;
