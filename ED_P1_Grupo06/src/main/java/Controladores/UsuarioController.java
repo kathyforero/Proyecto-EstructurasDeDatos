@@ -205,7 +205,7 @@ public class UsuarioController implements Initializable{
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("crearauto.fxml"));
             Parent root = loader.load();
-            CrearAutoController1 CrearAutoController = loader.getController();
+            CrearAutoController CrearAutoController = loader.getController();
             CrearAutoController.setUsuario(usuario);
             CrearAutoController.cargarCampos();
             Stage stage = new Stage();

@@ -26,7 +26,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 
-public class CrearAutoController1 {
+public class CrearAutoController {
     private Usuario usuario;
     private DoublyCircularList<File> fotos = new DoublyCircularList<>();
     
