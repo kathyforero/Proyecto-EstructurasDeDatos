@@ -33,6 +33,8 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 
 public class UsuarioController implements Initializable{
 
@@ -686,11 +688,12 @@ public void ordenarAutoPorXCriterio() {
         setAutos(filtrados);
         if(autos.size()!=0){
             autoNodo=autos.getHeader();
+            ordenarAutoPorXCriterio();
         }else{
             System.out.println("No hay resultados para el filtro avanzado");
         }
-        String filtro=cbOrdenar.getValue();
-        ordenarAutoPorXCriterio();
+        
+        
         cargarAutos(); 
     }
     
@@ -780,19 +783,31 @@ public void ordenarAutoPorXCriterio() {
     
     @FXML
     public void limpiarCampos(){
-        
-        cmMarca.setValue(null);
+              
+        cmMarca.setEditable(true);  
+        cmMarca.setValue(null);        
+        cmMarca.setPromptText("Marca");
+        cmMarca.setEditable(false);
+        cmModelo.setEditable(true);        
         cmModelo.setValue(null);
+        cmModelo.setPromptText("Modelo");
+        cmModelo.setEditable(false);
+        cbTipo.setEditable(true);        
         cbTipo.setValue(null);
+        cbTipo.setPromptText("Tipo");
+        cbTipo.setEditable(false);   
+        
+
         tfPrecioDesde.setText("");
         tfPrecioHasta.setText("");
         tfKMDesde.setText("");
         tfKMHasta.setText("");
         cbOrdenar.setValue("Precio");
+        
         setAutos(Archivos.leerAutos());
         ordenarAutoPorXCriterio();
-        
 
-
-    }
+    }   
+                
+    
 }

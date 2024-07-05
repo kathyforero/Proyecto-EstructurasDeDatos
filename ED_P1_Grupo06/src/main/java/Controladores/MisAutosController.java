@@ -115,18 +115,23 @@ public class MisAutosController {
     @FXML
     private ImageView mostrarAutosAdelante;
     private Label lblNoHay;
+    @FXML
     private ImageView mostrarAutosAtras;
     @FXML
     private Button btnError;
     
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-        lblUser.setText(usuario.getNombre()+" "+usuario.getApellido()+"!");        
+        lblUser.setText(usuario.getNombre()+" "+usuario.getApellido()+"!");    
+        System.out.println("1");
         settearAutosD();
+        System.out.println("2");
         if (autosDueño.size()>0){
             autoDNodo=autosDueño.getHeader();
         }        
+        System.out.println("3");
         cargarAutos();
+        System.out.println("4");
     }
     
     public Usuario getUsuario() {
@@ -147,7 +152,6 @@ public class MisAutosController {
             if(autos.size()>1){
                 DoublyCircularNode<Auto> n = autos.getHeader();
                 do{
-                    System.out.println(n.getContent().getUsuario().toString());
                     if(n.getContent().getUsuario().getNombre().equals(this.usuario.getNombre()) && n.getContent().getUsuario().getApellido().equals(this.usuario.getApellido()) && n.getContent().getUsuario().getCorreo().equals(this.usuario.getCorreo()) && n.getContent().getUsuario().getContraseña().equals(this.usuario.getContraseña())){
                         autosDueño.addLast(n.getContent());                        
                     }
@@ -159,16 +163,26 @@ public class MisAutosController {
     
     public void cargarAutos(){
         
-        if (autosDueño.size()>0){
+        if (autos.size()>0){
             mostrarAutosAdelante();
+            if(autos.size()<7){
+                mostrarAutosAdelante.setVisible(false);
+                mostrarAutosAtras.setVisible(false);
+            }else{
+                mostrarAutosAdelante.setVisible(true);
+                mostrarAutosAtras.setVisible(true);
+            }
+            
+            msgErrorOff();
         }else{
             ponerBlanco(1);
+            msgError("No hay autos que mostrar");
         }
     }
     
     @FXML
     public void mostrarAutosAdelante(){
-        if(verificarPaginas()){
+        
             int index = 1;
             do {
                 Auto auto = autoDNodo.getContent();
@@ -228,12 +242,12 @@ public class MisAutosController {
                     ponerBlanco(index);
                    
                 }
-            }
+            
     }
     
     @FXML
     public void mostrarAutosAtras() {
-        if(verificarPaginas()){
+        
             int indicePRB=0;
             if (autosDueño.getIndex(autoDNodo)==6 && (autosDueño.size()%6)!=0) {
                 int indice=autosDueño.size()-(autosDueño.size()%6);
@@ -252,16 +266,7 @@ public class MisAutosController {
                        autoDNodo=autoDNodo.getPrevious();
                 }
             mostrarAutosAdelante();
-        }
-}
-    
-    public boolean verificarPaginas(){
-        if(autos.size()==0){
-            msgError("No tienes autos publicados");
-        }else{
-            msgErrorOff();
-        }
-        return true;
+        
     }
     
     public void msgError(String msg){
