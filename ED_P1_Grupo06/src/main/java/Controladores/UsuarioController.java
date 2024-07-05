@@ -157,11 +157,11 @@ public class UsuarioController implements Initializable{
     @FXML
     private ImageView mostrarAutosAdelante;
     @FXML
-    private ComboBox<String> cmTipo;
-    @FXML
     private ImageView borrarFiltro;
     @FXML
     private ImageView filtroAvanzado;
+    @FXML
+    private ComboBox<String> cbTipo;
 
     
 
@@ -297,7 +297,7 @@ public class UsuarioController implements Initializable{
     
     @FXML
     public void mostrarAutosAdelante(){
-        if(verificarPaginas()){
+        
             int index = 1;
             do {
                 Auto auto = autoNodo.getContent();
@@ -357,12 +357,12 @@ public class UsuarioController implements Initializable{
                     ponerBlanco(index);
                    
                 }
-            }
+            
     }
     
     @FXML
     public void mostrarAutosAtras() {
-        if(verificarPaginas()){
+        
             int indicePRB=0;
             if (autos.getIndex(autoNodo)==6 && (autos.size()%6)!=0) {
                 int indice=autos.size()-(autos.size()%6);
@@ -381,17 +381,10 @@ public class UsuarioController implements Initializable{
                        autoNodo=autoNodo.getPrevious();
                 }
             mostrarAutosAdelante();
-        }
+        
 }
     
-    public boolean verificarPaginas(){
-        if(autos.size()<7){
-            msgError("No hay paginas que mostrar");
-        }else{
-            msgErrorOff();
-        }
-        return true;
-    }
+    
     
     public void msgError(String msg){
         btnError.setVisible(true);
@@ -509,6 +502,12 @@ public class UsuarioController implements Initializable{
     public void cargarMarca(){
         for (MarcaDeAuto marca : MarcaDeAuto.values()) {
             cmMarca.getItems().add(marca.getName());
+        }
+    }
+    
+    public void cargarTipo(){
+        for (Tipo tipo : Tipo.values()) {
+            cbTipo.getItems().add(tipo.getDisplayName());
         }
     }
 
@@ -633,7 +632,8 @@ public void ordenarAutoPorXCriterio() {
     public void initialize(URL location, ResourceBundle resources) {
         cbOrdenar.setValue("Precio");
         ordenarAutoPorXCriterio();
-        cargarMarca(); // Llama a cargarCampos al inicializar el controlador
+        cargarMarca(); // Llama a cargarCampos al inicializar el 
+        cargarTipo();
         cbOrdenar.getItems().addAll("Marca y Modelo", "Año del Auto", "Precio", "Kilometraje");
     }
 
@@ -673,7 +673,6 @@ public void ordenarAutoPorXCriterio() {
     public boolean marcaFiltro(Auto auto){
         boolean bandera=true;
         if(cmMarca.getValue()!=null){
-            System.out.println("Entra a la marca");
             bandera=cmMarca.getValue().equals(auto.getMarca().getName());
         }
         return bandera;
@@ -721,5 +720,28 @@ public void ordenarAutoPorXCriterio() {
             bandera=Integer.parseInt(KMHasta)>auto.getKilometraje();
         }
         return bandera;
+    }
+    
+    public void limpiarCampos(){
+        
+        cmMarca.setValue("Marca");
+        
+        
+        cmModelo.setValue("Modelo");
+        
+        
+        cbTipo.setValue("Tipo");
+        //cuando se hace 2 setvalues se pone el valor, no se porque :p
+        
+        tfPrecioDesde.setText("");
+        tfPrecioHasta.setText("");
+        tfKMDesde.setText("");
+        tfKMHasta.setText("");
+        cbOrdenar.setValue("Precio");
+        setAutos(Archivos.leerAutos());
+        ordenarAutoPorXCriterio();
+        
+
+
     }
 }
