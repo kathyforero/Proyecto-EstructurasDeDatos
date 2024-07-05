@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="txtDesc" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="969.0" style="-fx-background-color: #0D050E;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.AnadirReporteController">
+   <children>
+      <ImageView fitHeight="137.0" fitWidth="111.0" layoutX="47.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Logo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="223.0" layoutY="59.0" text="¡Bienvenido al reporte de accidentes y reparaciones," textFill="WHITE">
+         <font>
+            <Font name="Kristen ITC" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblUser" layoutX="223.0" layoutY="94.0" prefHeight="41.0" prefWidth="544.0" text="a" textFill="#a3445d">
+         <font>
+            <Font name="Kristen ITC" size="25.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnAgregar" layoutX="771.0" layoutY="224.0" mnemonicParsing="false" onAction="#subirImagen" styleClass="btnGeneral" stylesheets="@estilos.css" text="AGREGAR" />
+      <TableView fx:id="tvCatDesc" layoutX="143.0" layoutY="271.0" prefHeight="381.0" prefWidth="704.0">
+        <columns>
+          <TableColumn prefWidth="121.0" text="Categoría" />
+          <TableColumn prefWidth="582.0" text="Descripción" />
+        </columns>
+      </TableView>
+      <ComboBox fx:id="cbCategoria" layoutX="143.0" layoutY="223.0" prefWidth="150.0" />
+      <TextField fx:id="txtDesc" layoutX="318.0" layoutY="223.0" prefHeight="25.0" prefWidth="431.0" />
+      <Button fx:id="btnEliminar" layoutX="457.0" layoutY="670.0" mnemonicParsing="false" onAction="#subirImagen" styleClass="btnGeneral" stylesheets="@estilos.css" text="ELIMINAR" />
+   </children>
+</AnchorPane>
