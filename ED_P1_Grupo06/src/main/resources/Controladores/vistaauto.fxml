@@ -19,7 +19,7 @@
       <Button fx:id="btnRegresar" layoutX="860.0" layoutY="152.0" mnemonicParsing="false" onAction="#regresar" prefHeight="29.0" prefWidth="107.0" styleClass="btnInit" stylesheets="@estilos.css" text="REGRESAR" />
       <AnchorPane layoutX="532.0" layoutY="213.0" prefHeight="622.0" prefWidth="454.0" style="-fx-background-color: #2B193E;">
          <children>
-            <Button fx:id="btnReporte" layoutX="82.0" layoutY="565.0" mnemonicParsing="false" onAction="#mostrarReportes" styleClass="btnGeneral" stylesheets="@estilos.css" text="VER REPORTE DE ACCIDENTES Y REPARACIONES" />
+            <Button fx:id="btnReporte" layoutX="82.0" layoutY="565.0" mnemonicParsing="false" onAction="#abrirReporte" styleClass="btnGeneral" stylesheets="@estilos.css" text="VER REPORTE DE ACCIDENTES Y REPARACIONES" />
             <Label layoutX="50.0" layoutY="83.0" text="PRECIO:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />

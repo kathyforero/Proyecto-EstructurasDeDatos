@@ -4,6 +4,7 @@
  */
 package Controladores;
 
+import Clases.Usuario;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -37,7 +38,15 @@ public class AnadirReporteController{
     @FXML
     private ComboBox<String> cbCategoria;
     @FXML
-    private Button btnEliminar;   
+    private Button btnEliminar;
+    
+    private Usuario usuario;
+          
+    
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+        lblUser.setText(usuario.getNombre()+" "+usuario.getApellido()+"!");      
+    }
     
     @FXML
     private void alertaInfo(){

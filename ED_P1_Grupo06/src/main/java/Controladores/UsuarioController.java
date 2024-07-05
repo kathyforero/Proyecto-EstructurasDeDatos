@@ -246,6 +246,26 @@ public class UsuarioController implements Initializable{
             e.printStackTrace();
         }
     }
+    
+    @FXML
+    public void mostrarFavoritos() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("favoritos.fxml"));
+            Parent root = loader.load();
+            FavoritosController favoritosController = loader.getController();
+            favoritosController.setUsuario(usuario);            
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("GuayacoCar - Autos a tu Alcance");
+            stage.show();
+            
+            Stage miStage = (Stage) menuBar.getScene().getWindow();
+            miStage.close();
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     /*
     public void cargarControladores(){
         imagenes.addLast(imgAuto1);
@@ -461,17 +481,8 @@ public class UsuarioController implements Initializable{
             } catch (IOException e) {
                 e.printStackTrace();
             }
-    }
-    
-    @FXML
-    public void mostrarMisFavoritos() {
-        Alert alert = new Alert(AlertType.WARNING);
-        alert.setTitle("Lo sentimos");
-        alert.setHeaderText("Opción no disponible.");
-        alert.setContentText("Esta opción aún está en desarrollo! :(");
-        alert.showAndWait();
-    }
-    
+    }    
+       
     @FXML
     public void buscar() {
         Alert alert = new Alert(AlertType.WARNING);
