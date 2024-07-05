@@ -17,11 +17,9 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author Kathy
  */
-public class VistaReporteController implements Initializable {
+public class VistaReporteController{
 
 
-    @FXML
-    private AnchorPane txtDesc;
     @FXML
     private Label lblUser;
     @FXML
@@ -29,9 +27,6 @@ public class VistaReporteController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+      
     
 }

@@ -14,17 +14,18 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 /**
  * FXML Controller class
  *
  * @author Kathy
  */
-public class AnadirReporteController implements Initializable {
+public class AnadirReporteController{
 
 
     @FXML
-    private AnchorPane txtDesc;
+    private TextField txtDesc;
     @FXML
     private Label lblUser;
     @FXML
@@ -35,16 +36,13 @@ public class AnadirReporteController implements Initializable {
     private ComboBox<?> cbCategoria;
     @FXML
     private Button btnEliminar;
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+
     @FXML
     private void subirImagen(ActionEvent event) {
     }
+    /**
+     * Initializes the controller class.
+     */
+    
 
 }
