@@ -4,6 +4,7 @@
  */
 package Controladores;
 
+import Clases.Usuario;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -24,6 +25,13 @@ public class VistaReporteController{
     private Label lblUser;
     @FXML
     private TableView<String> tvCatDesc;
+    
+    private Usuario usuario;
           
+    
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+        lblUser.setText(usuario.getNombre()+" "+usuario.getApellido()+"!");      
+    }
     
 }

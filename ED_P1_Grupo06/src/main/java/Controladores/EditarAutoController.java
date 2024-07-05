@@ -140,7 +140,7 @@ public class EditarAutoController {
     }
 
     @FXML
-    private void subirImagen() {
+    public void subirImagen() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Seleccionar fotos");
         fileChooser.getExtensionFilters().addAll(
@@ -302,5 +302,21 @@ public class EditarAutoController {
         tfPeso.setText(""+auto.getPeso());
     }
     
+    @FXML
+    public void abrirReporte() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("anadirReporte.fxml"));
+            Parent root = loader.load();
+            AnadirReporteController anadirreportecontroller = loader.getController();
+            anadirreportecontroller.setUsuario(usuario);
+            Stage newStage = new Stage();
+            newStage.setScene(new Scene(root));
+            newStage.setTitle("GuayacoCar - Autos a tu Alcance");
+            newStage.show();           
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
         
 }

@@ -177,6 +177,23 @@ public class VistaAutoController {
     }
     
     @FXML
+    public void abrirReporte() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("vistaReporte.fxml"));
+            Parent root = loader.load();
+            VistaReporteController vistareportecontroller = loader.getController();
+            vistareportecontroller.setUsuario(usuario);
+            Stage newStage = new Stage();
+            newStage.setScene(new Scene(root));
+            newStage.setTitle("GuayacoCar - Autos a tu Alcance");
+            newStage.show();           
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    @FXML
     public void regresar() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("usuario.fxml"));

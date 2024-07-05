@@ -22,7 +22,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1000.0" style="-fx-background-color: #0D050E;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.UsuarioController">
    <children>
-      <Button fx:id="btnError" layoutX="136.0" layoutY="302.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="750.0" styleClass="textError" stylesheets="@estilos.css" text="No hay paginas que mostrar" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="btnError" layoutX="136.0" layoutY="302.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="750.0" styleClass="textError" stylesheets="@estilos.css" text="No hay páginas que mostrar" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="13.0" />
          </font>
@@ -69,12 +69,13 @@
             <TextField fx:id="tfKMHasta" layoutX="131.0" layoutY="134.0" prefHeight="25.0" prefWidth="122.0" promptText="Kilometraje hasta" />
             <Button fx:id="btnBuscar" layoutX="92.0" layoutY="207.0" mnemonicParsing="false" onAction="#filtroAvanzado" prefHeight="29.0" prefWidth="65.0" styleClass="btnGeneral" stylesheets="@estilos.css" text="BUSCAR" />
             <ImageView fx:id="borrarFiltro" fitHeight="34.0" fitWidth="40.0" layoutX="213.0" layoutY="205.0" onMouseClicked="#limpiarCampos" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+
                <image>
                   <Image url="@borrarfiltro.png" />
                </image>
             </ImageView>
-            <ComboBox fx:id="cbTipo" layoutX="63.0" layoutY="171.0" prefHeight="25.0" prefWidth="122.0" promptText="Tipo" />
-            <ImageView fx:id="filtroAvanzado" fitHeight="34.0" fitWidth="40.0" layoutX="8.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
+            <ComboBox fx:id="cbTipo" layoutX="63.0" layoutY="171.0" onAction="#cargarModelo" prefHeight="25.0" prefWidth="122.0" promptText="Tipo" />
+            <ImageView fx:id="filtroAvanzado" fitHeight="34.0" fitWidth="40.0" layoutX="8.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                <image>
                   <Image url="@filtroavanzado.png" />
                </image>
@@ -102,7 +103,7 @@
           <Menu mnemonicParsing="false" text="MÁS">
                <items>
                   <MenuItem fx:id="menuMisAutos" mnemonicParsing="false" onAction="#mostrarMisAutos" text="MIS VEHÍCULOS" />
-                  <MenuItem fx:id="menuFav" mnemonicParsing="false" onAction="#mostrarMisFavoritos" text="FAVORITOS" />
+                  <MenuItem fx:id="menuFav" mnemonicParsing="false" onAction="#mostrarFavoritos" text="FAVORITOS" />
                </items>
           </Menu>
         </menus>
