@@ -561,6 +561,8 @@ public class UsuarioController implements Initializable{
             return Comparator.comparingDouble(Auto::getPrecio);
         } else if (criterio.equals("Año del Auto")) {
             return Comparator.comparingInt(Auto::getAño).reversed(); // Ordenar por año en orden descendente
+        } else if (criterio.equals("Kilometraje")) {
+            return Comparator.comparingInt(Auto::getKilometraje).reversed(); // Ordenar por año en orden descendente
         }
         return null;
     }
@@ -584,6 +586,7 @@ public void ordenarAutoPorXCriterio() {
                 System.out.println("Ubicación: " + auto.getUbicacion().getDisplayName());
                 System.out.println("-----------------------");
             }
+            autoNodo=autos.getHeader();
             cargarAutos(); 
         } else {
             System.out.println("No se seleccionó un criterio de ordenación válido.");
@@ -622,7 +625,7 @@ public void ordenarAutoPorXCriterio() {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         cargarMarca(); // Llama a cargarCampos al inicializar el controlador
-        cbOrdenar.getItems().addAll("Marca y Modelo", "Año del Auto", "Precio");
+        cbOrdenar.getItems().addAll("Marca y Modelo", "Año del Auto", "Precio", "Kilometraje");
     }
     
 }
