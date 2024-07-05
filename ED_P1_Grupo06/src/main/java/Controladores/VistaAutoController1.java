@@ -181,7 +181,7 @@ public class VistaAutoController1 {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("usuario.fxml"));
             Parent root = loader.load();
-            UsuarioController usuarioController = loader.getController();
+            UsuarioController1 usuarioController = loader.getController();
             usuarioController.setUsuario(usuario);
             Stage stage = new Stage();
             stage.setScene(new Scene(root));

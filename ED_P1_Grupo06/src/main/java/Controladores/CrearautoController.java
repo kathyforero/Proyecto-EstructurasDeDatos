@@ -26,7 +26,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 
-public class CrearAutoController {
+public class CrearAutoController1 {
     private Usuario usuario;
     private DoublyCircularList<File> fotos = new DoublyCircularList<>();
     
@@ -91,7 +91,7 @@ public class CrearAutoController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("usuario.fxml"));
             Parent root = loader.load();
-            UsuarioController usuarioController = loader.getController();
+            UsuarioController1 usuarioController = loader.getController();
             usuarioController.setUsuario(usuario);
             Stage stage = new Stage();
             stage.setScene(new Scene(root));

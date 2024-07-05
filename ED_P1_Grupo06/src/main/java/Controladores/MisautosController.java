@@ -26,7 +26,7 @@ import javafx.stage.Stage;
  *
  * @author DERS
  */
-public class MisAutosController {
+public class MisAutosController1 {
     
     @FXML
     private Button btnRegresar;
@@ -318,7 +318,7 @@ public class MisAutosController {
         try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("editarauto.fxml"));
                 Parent root = loader.load();
-                EditarAutoController EditarautoController = loader.getController();
+                EditarAutoController1 EditarautoController = loader.getController();
                 EditarautoController.setAuto(auto);
                 EditarautoController.setUsuario(usuario);
                 Stage stage = new Stage();
@@ -348,7 +348,7 @@ public class MisAutosController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("usuario.fxml"));
             Parent root = loader.load();
-            UsuarioController usuarioController = loader.getController();
+            UsuarioController1 usuarioController = loader.getController();
             usuarioController.setUsuario(usuario);
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
