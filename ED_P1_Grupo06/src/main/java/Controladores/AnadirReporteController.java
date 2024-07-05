@@ -40,9 +40,7 @@ public class AnadirReporteController{
     @FXML
     private void subirImagen(ActionEvent event) {
     }
-    /**
-     * Initializes the controller class.
-     */
+    
     
 
 }

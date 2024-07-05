@@ -156,6 +156,8 @@ public class UsuarioController implements Initializable{
     private Button btnError;
     @FXML
     private ImageView mostrarAutosAdelante;
+    @FXML
+    private ComboBox<String> cmTipo;
 
     
 
@@ -506,7 +508,6 @@ public class UsuarioController implements Initializable{
         }
     }
 
-    @FXML
     public void ordenarAutoPorMarca() {
         Comparator<Auto> marcaComparator = new Comparator<Auto>() {
             @Override

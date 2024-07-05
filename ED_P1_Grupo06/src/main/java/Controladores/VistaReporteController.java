@@ -24,9 +24,6 @@ public class VistaReporteController{
     private Label lblUser;
     @FXML
     private TableView<String> tvCatDesc;
-    /**
-     * Initializes the controller class.
-     */
-      
+          
     
 }
