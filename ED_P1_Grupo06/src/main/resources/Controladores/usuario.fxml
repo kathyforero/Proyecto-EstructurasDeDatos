@@ -67,7 +67,7 @@
                   <Font name="Century Gothic" size="12.0" />
                </font></TextField>
             <TextField fx:id="tfKMHasta" layoutX="131.0" layoutY="154.0" prefHeight="25.0" prefWidth="122.0" promptText="Kilometraje hasta" />
-            <Button fx:id="btnBuscar" layoutX="95.0" layoutY="190.0" mnemonicParsing="false" onAction="#filtroAvanzado" onMouseClicked="#ordenarAutoPorMarca" prefHeight="29.0" prefWidth="65.0" styleClass="btnGeneral" stylesheets="@estilos.css" text="BUSCAR" />
+            <Button fx:id="btnBuscar" layoutX="95.0" layoutY="190.0" mnemonicParsing="false" onAction="#filtroAvanzado" prefHeight="29.0" prefWidth="65.0" styleClass="btnGeneral" stylesheets="@estilos.css" text="BUSCAR" />
          </children>
       </AnchorPane>
       <ComboBox fx:id="cbOrdenar" layoutX="753.0" layoutY="166.0" prefHeight="25.0" prefWidth="151.0" promptText="Ordenar por" />

@@ -282,8 +282,10 @@ public class UsuarioController implements Initializable{
         
         if (autos.size()>0){
             mostrarAutosAdelante();
+            msgErrorOff();
         }else{
             ponerBlanco(1);
+            msgError("No hay autos que mostrar");
         }
     }
     
@@ -624,6 +626,8 @@ public void ordenarAutoPorXCriterio() {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        cbOrdenar.setValue("Precio");
+        ordenarAutoPorXCriterio();
         cargarMarca(); // Llama a cargarCampos al inicializar el controlador
         cbOrdenar.getItems().addAll("Marca y Modelo", "Año del Auto", "Precio", "Kilometraje");
     }
@@ -631,30 +635,86 @@ public void ordenarAutoPorXCriterio() {
     @FXML
     private void filtroAvanzado() {
         DoublyCircularList<Auto> filtrados=new DoublyCircularList<>();
-        Iterator<Auto> it = autos.iterator();
+        Iterator<Auto> it = Archivos.leerAutos().iterator();
             while (it.hasNext()) {
                 Auto auto = it.next();
                 if(filtrado(auto)){
                     filtrados.addLast(auto);
                 }
             }
+        setAutos(filtrados);
+        if(autos.size()!=0){
+            autoNodo=autos.getHeader();
+        }else{
+            System.out.println("No hay resultados para el filtro avanzado");
+        }
         
+        cargarAutos(); 
     }
     
     public boolean filtrado(Auto auto){
-        boolean bandera=true;
-        bandera=bandera&&marcaFiltro(auto);
+        boolean bandera = true;
+        bandera = bandera&&marcaFiltro(auto);
+        bandera = bandera&&modeloFiltro(auto);
+        bandera = bandera&&precioDesdeFiltro(auto);
+        bandera = bandera&&precioHastaFiltro(auto);
+        bandera = bandera&&KMDesdeFiltro(auto);
+        bandera = bandera&&KMHastaFiltro(auto);
         return bandera;
     }
     
+    
+         
     public boolean marcaFiltro(Auto auto){
         boolean bandera=true;
-        System.out.println("1"+cmMarca.getValue()+"1");
-        System.out.println("2"+cmModelo.getValue()+"2");
-        System.out.println("3"+tfPrecioDesde.getText()+"3");
-        System.out.println("4"+tfPrecioHasta.getText()+"4");
-        System.out.println("5"+tfKMDesde.getText()+"5");
-        System.out.println("6"+tfKMHasta.getText()+"6");
+        if(cmMarca.getValue()!=null){
+            System.out.println("Entra a la marca");
+            bandera=cmMarca.getValue().equals(auto.getMarca().getName());
+        }
+        return bandera;
+    }
+    
+    public boolean modeloFiltro(Auto auto){
+        boolean bandera=true;
+        if(cmModelo.getValue()!=null){
+            bandera=cmModelo.getValue().equals(auto.getModelo());
+        }
+        return bandera;
+    }
+    
+    public boolean precioDesdeFiltro(Auto auto){
+        boolean bandera=true;
+        String precioDesde = tfPrecioDesde.getText();
+        if(!precioDesde.isEmpty()){
+            bandera = Float.parseFloat(precioDesde)<auto.getPrecio();
+        }
+        return bandera;
+    }
+    
+    public boolean precioHastaFiltro(Auto auto){
+        boolean bandera=true;
+        String precioHasta = tfPrecioHasta.getText();
+        if(!precioHasta.isEmpty()){
+            bandera=Float.parseFloat(precioHasta)>auto.getPrecio();
+        }
+        return bandera;
+    }
+    
+    public boolean KMDesdeFiltro(Auto auto){
+        boolean bandera=true;
+        String KMDesde = tfKMDesde.getText();
+        if(!KMDesde.isEmpty()){
+            bandera=Integer.parseInt(KMDesde)<auto.getKilometraje();
+        }
+        return bandera;
+    }
+    
+    public boolean KMHastaFiltro(Auto auto){
+        boolean bandera=true;
+        String KMHasta = tfKMHasta.getText();
+        if(!KMHasta.isEmpty()){
+            bandera=Integer.parseInt(KMHasta)>auto.getKilometraje();
+        }
         return bandera;
     }
 }
