@@ -579,7 +579,20 @@ public class UsuarioController implements Initializable{
         } else if (criterio.equals("Año del Auto")) {
             return Comparator.comparingInt(Auto::getAño).reversed(); // Ordenar por año en orden descendente
         } else if (criterio.equals("Kilometraje")) {
-            return Comparator.comparingInt(Auto::getKilometraje).reversed(); // Ordenar por año en orden descendente
+            return new Comparator<Auto>() {
+                @Override
+                public int compare(Auto auto1, Auto auto2) {
+                    int km1 = auto1.getKilometraje();
+                    int km2 = auto2.getKilometraje();
+                    if (km1==km2) {
+                        double p1=auto1.getPrecio();
+                        double p2=auto2.getPrecio();
+                        return Double.compare(p1, p2);
+                    } else {
+                        return Integer.compare(km1,km2);
+                    }
+                }
+            };
         }
         return null;
     }
@@ -664,18 +677,25 @@ public void ordenarAutoPorXCriterio() {
         }else{
             System.out.println("No hay resultados para el filtro avanzado");
         }
-        
+        String filtro=cbOrdenar.getValue();
+        ordenarAutoPorXCriterio();
         cargarAutos(); 
     }
     
     public boolean filtrado(Auto auto){
         boolean bandera = true;
         bandera = bandera&&marcaFiltro(auto);
+        System.out.println("Bandera marca: "+bandera);
         bandera = bandera&&modeloFiltro(auto);
+        System.out.println("Bandera modelo: "+bandera);
         bandera = bandera&&precioDesdeFiltro(auto);
+        System.out.println("Bandera precio Desde: "+bandera);
         bandera = bandera&&precioHastaFiltro(auto);
+        System.out.println("Bandera precio Hasta: "+bandera);
         bandera = bandera&&KMDesdeFiltro(auto);
+        System.out.println("Bandera KM DESDE: "+bandera);
         bandera = bandera&&KMHastaFiltro(auto);
+        System.out.println("Bandera KM Hasta: "+bandera);
         return bandera;
     }
     
@@ -685,15 +705,20 @@ public void ordenarAutoPorXCriterio() {
         boolean bandera=true;
         if(cmMarca.getValue()!=null){
             bandera=cmMarca.getValue().equals(auto.getMarca().getName());
+            cbOrdenar.setValue("Marca y Modelo");
         }
+        
         return bandera;
+        
     }
     
     public boolean modeloFiltro(Auto auto){
         boolean bandera=true;
         if(cmModelo.getValue()!=null){
             bandera=cmModelo.getValue().equals(auto.getModelo());
+            cbOrdenar.setValue("Marca y Modelo");
         }
+        
         return bandera;
     }
     
@@ -701,8 +726,12 @@ public void ordenarAutoPorXCriterio() {
         boolean bandera=true;
         String precioDesde = tfPrecioDesde.getText();
         if(!precioDesde.isEmpty()){
+            System.out.println("PRECIO DESDE");
+            System.out.println(Float.parseFloat(precioDesde)<auto.getPrecio());
             bandera = Float.parseFloat(precioDesde)<auto.getPrecio();
+            cbOrdenar.setValue("Precio");
         }
+        
         return bandera;
     }
     
@@ -711,7 +740,9 @@ public void ordenarAutoPorXCriterio() {
         String precioHasta = tfPrecioHasta.getText();
         if(!precioHasta.isEmpty()){
             bandera=Float.parseFloat(precioHasta)>auto.getPrecio();
+            cbOrdenar.setValue("Precio");
         }
+        
         return bandera;
     }
     
@@ -720,7 +751,9 @@ public void ordenarAutoPorXCriterio() {
         String KMDesde = tfKMDesde.getText();
         if(!KMDesde.isEmpty()){
             bandera=Integer.parseInt(KMDesde)<auto.getKilometraje();
+            cbOrdenar.setValue("Kilometraje");
         }
+        
         return bandera;
     }
     
@@ -729,20 +762,21 @@ public void ordenarAutoPorXCriterio() {
         String KMHasta = tfKMHasta.getText();
         if(!KMHasta.isEmpty()){
             bandera=Integer.parseInt(KMHasta)>auto.getKilometraje();
+            cbOrdenar.setValue("Kilometraje");
         }
+        
         return bandera;
     }
     
     public void limpiarCampos(){
         
-        cmMarca.setValue("Marca");
+        cmMarca.setValue(null);
         
         
-        cmModelo.setValue("Modelo");
+        cmModelo.setValue(null);
         
         
-        cbTipo.setValue("Tipo");
-        //cuando se hace 2 setvalues se pone el valor, no se porque :p
+        cbTipo.setValue(null);
         
         tfPrecioDesde.setText("");
         tfPrecioHasta.setText("");
