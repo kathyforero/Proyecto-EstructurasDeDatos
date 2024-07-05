@@ -13,7 +13,7 @@ import javafx.fxml.Initializable;
  *
  * @author DERS
  */
-public class FavoritosController1 implements Initializable {
+public class FavoritosController implements Initializable {
 
     /**
      * Initializes the controller class.

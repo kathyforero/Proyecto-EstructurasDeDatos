@@ -14,7 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class LoginController1 {
+public class LoginController {
     
     @FXML
     private Button btnIniciarSesion;
@@ -86,7 +86,7 @@ public class LoginController1 {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("usuario.fxml"));
             Parent root = loader.load();
-            UsuarioController1 usuarioController = loader.getController();
+            UsuarioController usuarioController = loader.getController();
             usuarioController.setUsuario(u);
             Stage stage = new Stage();
             stage.setScene(new Scene(root));

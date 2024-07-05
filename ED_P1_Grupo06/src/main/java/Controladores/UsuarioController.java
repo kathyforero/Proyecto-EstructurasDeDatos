@@ -34,7 +34,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class UsuarioController1 implements Initializable{
+public class UsuarioController implements Initializable{
 
 
     @FXML
@@ -205,7 +205,7 @@ public class UsuarioController1 implements Initializable{
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("crearauto.fxml"));
             Parent root = loader.load();
-            CrearAutoController1 CrearAutoController = loader.getController();
+            CrearAutoController CrearAutoController = loader.getController();
             CrearAutoController.setUsuario(usuario);
             CrearAutoController.cargarCampos();
             Stage stage = new Stage();
@@ -226,7 +226,7 @@ public class UsuarioController1 implements Initializable{
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("misautos.fxml"));
             Parent root = loader.load();
-            MisAutosController1 MisautosController = loader.getController();
+            MisAutosController MisautosController = loader.getController();
             MisautosController.setUsuario(usuario);            
             Stage stage = new Stage();
             stage.setScene(new Scene(root));

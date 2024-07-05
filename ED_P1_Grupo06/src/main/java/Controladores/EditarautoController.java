@@ -24,7 +24,7 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-public class EditarAutoController1 {
+public class EditarAutoController {
 
     @FXML
     private Label lblUser;
@@ -108,7 +108,7 @@ public class EditarAutoController1 {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("usuario.fxml"));
             Parent root = loader.load();
-            UsuarioController1 usuarioController = loader.getController();
+            UsuarioController usuarioController = loader.getController();
             usuarioController.setUsuario(usuario);
             Stage stage = new Stage();
             stage.setScene(new Scene(root));

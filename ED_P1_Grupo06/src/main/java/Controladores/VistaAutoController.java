@@ -28,7 +28,7 @@ import javafx.stage.Stage;
  *
  * @author DERS
  */
-public class VistaAutoController1 {
+public class VistaAutoController {
 
     @FXML
     private Button btnRegresar;
@@ -181,7 +181,7 @@ public class VistaAutoController1 {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("usuario.fxml"));
             Parent root = loader.load();
-            UsuarioController1 usuarioController = loader.getController();
+            UsuarioController usuarioController = loader.getController();
             usuarioController.setUsuario(usuario);
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
