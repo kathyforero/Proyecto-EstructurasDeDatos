@@ -226,7 +226,7 @@ public class UsuarioController implements Initializable{
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("misautos.fxml"));
             Parent root = loader.load();
-            MisAutosController1 MisautosController = loader.getController();
+            MisAutosController MisautosController = loader.getController();
             MisautosController.setUsuario(usuario);            
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
