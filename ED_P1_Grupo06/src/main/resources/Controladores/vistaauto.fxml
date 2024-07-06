@@ -161,7 +161,7 @@
             <Image url="@izquierda.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="btnFav" fitHeight="150.0" fitWidth="200.0" layoutX="176.0" layoutY="780.0" onMouseClicked="#añadirFav" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+      <ImageView fx:id="imgAñadirFav" fitHeight="150.0" fitWidth="200.0" layoutX="176.0" layoutY="780.0" onMouseClicked="#añadirFav" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
          <image>
             <Image url="@añadirafav.png" />
          </image>
@@ -195,5 +195,10 @@
             <String fx:value="links" />
          </styleClass>
       </Label>
+      <ImageView fx:id="imgQuitarFav" fitHeight="150.0" fitWidth="200.0" layoutX="175.0" layoutY="780.0" onMouseClicked="#quitarFav" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+         <image>
+            <Image url="@quitardefav.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
