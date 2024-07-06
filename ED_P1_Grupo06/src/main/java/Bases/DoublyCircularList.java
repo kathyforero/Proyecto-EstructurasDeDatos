@@ -263,8 +263,16 @@ public class DoublyCircularList<E> implements List<E>,Serializable{
         
     }
 
-    
-    
-    
-        
-    }
+    public boolean nodeExists(E e) {
+        DoublyCircularNode<E> currentNode = last.getNext();      
+        for (int i = 0; i < size(); i++) {
+                        System.out.println(e);
+                System.out.println(currentNode.getContent());
+            if(currentNode==e){
+                return true;
+            }
+            currentNode = currentNode.getNext(); // Avanzar al siguiente nodo
+        }
+        return false;
+    }        
+}

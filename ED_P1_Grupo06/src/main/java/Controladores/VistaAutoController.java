@@ -63,8 +63,6 @@ public class VistaAutoController {
     @FXML
     private ImageView btnIzquierda;
     @FXML
-    private ImageView btnFav;
-    @FXML
     private Label lblContador;
     @FXML
     private Label lblUsuario;
@@ -80,11 +78,17 @@ public class VistaAutoController {
     private DoublyCircularNode<File> Node;
     
     private DoublyCircularList<File> fotos;
+    @FXML
+    private ImageView imgAñadirFav;
+    @FXML
+    private ImageView imgQuitarFav;
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
         lblUsuario.setText(usuario.getNombre()+" "+usuario.getApellido()+"!");
         cargarAuto();
+        verificarFav();
+        System.out.println(usuario.getFavoritos().size());
     }
     
     public Usuario getUsuario() {
@@ -135,6 +139,7 @@ public class VistaAutoController {
         }
     }
     
+    @FXML
     public void adelanteImagen(){
         Node = Node.getNext();
         Image image = new Image(Node.getContent().toURI().toString());
@@ -142,6 +147,7 @@ public class VistaAutoController {
         actualizarContador();
     }
     
+    @FXML
     public void atrasImagen(){
         Node = Node.getPrevious();
         Image image = new Image(Node.getContent().toURI().toString());
@@ -158,7 +164,6 @@ public class VistaAutoController {
         }
     }
     
-    @FXML
     public void mostrarReportes() {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Lo sentimos");
@@ -169,11 +174,48 @@ public class VistaAutoController {
     
     @FXML
     public void añadirFav() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Lo sentimos");
-        alert.setHeaderText("Opción no disponible.");
-        alert.setContentText("Esta opción aún está en desarrollo! :(");
-        alert.showAndWait();
+        usuario.addFavorito(auto);
+        System.out.println(usuario.getFavoritos().size());
+        mostrarQuitarFav();
+    }
+    
+    @FXML
+    public void quitarFav() {
+        usuario.deleteFavorito(auto);
+        mostrarAñadirFav();
+    }
+    
+    public void verificarFav(){
+        DoublyCircularList<Auto> favoritos=usuario.getFavoritos();
+        if(favoritos.size()!=0){
+            System.out.println(favoritos.nodeExists(auto));
+            if(favoritos.nodeExists(auto)){
+                System.out.println("EXISTE");
+                mostrarQuitarFav();
+            }else{
+                System.out.println("NO EXISTE");
+                mostrarAñadirFav();
+            }
+        }else{
+            mostrarAñadirFav();
+            System.out.println("0");
+        }
+    }
+    
+    public void mostrarAñadirFav(){
+        //OCULTAR QUITAR MOSTRAR ANIADIR
+        imgAñadirFav.setVisible(true);
+        imgAñadirFav.setDisable(false);
+        imgQuitarFav.setVisible(false);
+        imgQuitarFav.setDisable(true);
+    }
+    
+    public void mostrarQuitarFav(){
+        //OCULTAR ANIADIR MOSTRAR QUITAR
+        imgAñadirFav.setVisible(false);
+        imgAñadirFav.setDisable(true);
+        imgQuitarFav.setVisible(true);
+        imgQuitarFav.setDisable(false);
     }
     
     @FXML

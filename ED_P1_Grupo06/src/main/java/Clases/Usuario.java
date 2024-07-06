@@ -45,6 +45,14 @@ public class Usuario implements Serializable{
     public DoublyCircularList<Auto> getFavoritos() {
         return favoritos;
     }    
+    
+    public void addFavorito(Auto auto) {
+        favoritos.addLast(auto);
+    }   
+    
+    public void deleteFavorito(Auto auto) {
+        favoritos.removeNode(new DoublyCircularNode(auto));
+    }  
         
     public void setNombre(String nombre) {
         this.nombre = nombre;
