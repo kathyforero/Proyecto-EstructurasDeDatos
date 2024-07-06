@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -76,10 +77,12 @@ public class CrearAutoController {
     @FXML
     private ImageView ivQuitarImagen;
     
+    private DoublyCircularList<Auto> autos = Archivos.leerAutos();    
+    
     
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-        lblUser.setText(usuario.getNombre()+" "+usuario.getApellido()+"!");
+        lblUser.setText(usuario.getNombre()+" "+usuario.getApellido()+"!");        
     }
     
     public Usuario getUsuario() {
@@ -280,13 +283,25 @@ public class CrearAutoController {
                 }
             }
         }
-        if(numLetras!=3 && numNum<3 && numNum>4 && placa==null){
+        if(numLetras!=3 || numNum<3 || numNum>4 || placa==null){
             msgError("Ingrese una placa válida.");
             return false;
         } else {
             msgErrorOff();
             return true;            
         }
+    }
+    
+    public boolean verificarPlacaExistente(){
+        String placa = tfPlaca.getText();
+        Iterator<Auto> it = autos.iterator();
+        while(it.hasNext()){
+            if(it.next().getPlaca().toLowerCase().equals(placa.toLowerCase())){
+                msgError("Esa placa ya existe!! Ingrese una placa válida.");
+                return false;
+            }
+        }
+        return true;
     }
     
     public boolean verificarAño(){
@@ -434,7 +449,7 @@ public class CrearAutoController {
 
     private boolean verificarTodo(){
 
-        return verificarPlaca() && verificarPrecio() && verificarAño() && verificarKilometraje() && verificarPeso() && verificarImagen() && verificarMarca() && verificarModeloII() && verificarTipo() && verificarMotor() && verificarTransmision() && verificarUbicacion() && verificarEstado();
+        return verificarPlaca() && verificarPrecio() && verificarAño() && verificarKilometraje() && verificarPeso() && verificarImagen() && verificarMarca() && verificarModeloII() && verificarTipo() && verificarMotor() && verificarTransmision() && verificarUbicacion() && verificarEstado() && verificarPlacaExistente();
         /*verificarmarca & verificarModelo() que este lleno*/ 
         /*verificar tipo*//*verificar motor & verificar transmision*/
         /*verificar ubicacion & verificarestado*/

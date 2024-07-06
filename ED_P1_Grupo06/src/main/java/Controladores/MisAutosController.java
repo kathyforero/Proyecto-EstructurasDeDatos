@@ -326,6 +326,7 @@ public class MisAutosController {
                 EditarAutoController EditarautoController = loader.getController();
                 EditarautoController.setAuto(auto);
                 EditarautoController.setUsuario(usuario);
+                EditarautoController.setPlacaPredet(auto);
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
                 stage.setTitle("GuayacoCar - Editar Auto");

@@ -66,4 +66,26 @@ public class Sistema implements Serializable{
             return false;
         }
     }
+    
+    public static boolean eliminarAuto(Auto auto){
+        try{
+            DoublyCircularList<Auto> autos = Archivos.leerAutos();            
+            for(DoublyCircularNode<Auto> n = autos.getLast().getNext(); n != autos.getLast(); n = n.getNext()){
+                if(n.getContent().getPlaca().equals(auto.getPlaca())){
+                    autos.removeNode(n);                
+            }
+            }
+            if(autos.getLast().getContent().getPlaca().equals(auto.getPlaca())){
+                autos.removeNode(autos.getLast());
+            }
+            // autos.addLast(auto);
+            System.out.println("antes de ir a Archivos.guardarAutos en Eliminar");
+            Archivos.guardarAutos(autos);
+            System.out.println("despues de ir a Archivos.guardarAutos en Eliminar");
+            return true;
+        }catch(Exception e) {
+            System.err.println("ERROR AL ELIMINAR AUTO!!! " + e.getMessage());
+            return false;
+        }
+    }
 }

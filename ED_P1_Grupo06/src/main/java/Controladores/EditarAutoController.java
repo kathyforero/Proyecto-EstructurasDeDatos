@@ -8,11 +8,14 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.Iterator;
 import java.util.Map;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -75,6 +78,10 @@ public class EditarAutoController {
     private DoublyCircularList<File> fotos = new DoublyCircularList<>();
     private DoublyCircularNode<File> Node;
     
+    private DoublyCircularList<Auto> autos = Archivos.leerAutos();
+    
+    private String placaPredet;
+    
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
         lblUser.setText(usuario.getNombre()+" "+usuario.getApellido()+"!");
@@ -88,11 +95,10 @@ public class EditarAutoController {
         actualizarImagenes();
     }
     
-    
-    @FXML
-    private void guardarAuto() {
+    public void setPlacaPredet(Auto auto){        
+        this.placaPredet = auto.getPlaca();
     }
-
+    
     @FXML
     public void regresar() {
         try {
@@ -215,7 +221,7 @@ public class EditarAutoController {
         cargarPrecio();
         cargarAnio();
         cargarKilometraje();
-        cargarPeso();
+        cargarPeso();        
     }
     
     public void cargarTipos(){
@@ -313,6 +319,265 @@ public class EditarAutoController {
     }
     
     @FXML
+    public void verificarModelo(){
+        if(cbMarca.getValue()==null){
+            msgError("Primero tienes que escoger una marca.");
+        }
+    }
+    
+    public boolean verificarPlaca(){
+        String placa = tfPlaca.getText();
+        int numLetras = 0;
+        int numNum = 0;
+        if(placa!=null){
+            for(char c: placa.toCharArray()){
+                if(Character.isLetter(c)){
+                    numLetras++;
+                } else if(Character.isDigit(c)){
+                    numNum++;
+                }
+            }
+        }
+        if(numLetras!=3 || numNum<3 || numNum>4 || placa==null){
+            msgError("Ingrese una placa válida.");
+            return false;
+        } else {
+            msgErrorOff();
+            return true;            
+        }
+    }
+    
+    public boolean verificarPlacaExistente(){
+        String placa = tfPlaca.getText();
+        Iterator<Auto> it = autos.iterator();
+        while(it.hasNext()){
+            Auto autoit = it.next();
+            System.out.println("Tf :" + placa.toLowerCase());
+            System.out.println("It: " + autoit.getPlaca().toLowerCase());
+            System.out.println("PD: " + placaPredet.toLowerCase());
+            System.out.println("");
+            if(autoit.getPlaca().toLowerCase().equals(placa.toLowerCase()) && !this.placaPredet.toLowerCase().equals(autoit.getPlaca().toLowerCase())){
+                msgError("Esa placa ya existe!! Ingrese una placa válida.");
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public boolean verificarAño(){
+        String año = tfAnio.getText();
+        int numNum = 0;
+        if(año!=null){
+            for(char c: año.toCharArray()){
+                if(Character.isLetter(c)){
+                    msgError("Ingrese un año válido.");
+                    return false;
+                } else if(Character.isDigit(c)){
+                    numNum++;
+                    continue;
+                }
+            }            
+        }
+        if(numNum!=4 || año==null){
+            msgError("Ingrese un año válido.");
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    public boolean verificarKilometraje(){
+        String kilometraje = tfKM.getText();
+        if(kilometraje!=null){
+            for(char c : kilometraje.toCharArray()){
+                if(Character.isDigit(c)){
+                    continue;
+                } else {
+                    msgError("Ingrese un kilometraje válido.");
+                    return false;
+                }
+            }
+        } else {
+            return false;
+        }
+        return true;        
+    }
+    
+    public boolean verificarPeso(){
+        String peso = tfPeso.getText();
+        if(peso!=null){
+            try {
+                Float.parseFloat(peso);                
+            } catch (NumberFormatException e){
+                msgError("Ingrese un peso válido.");
+                return false;
+            }
+        } else {
+            msgError("Ingrese un peso válido.");
+            return false;
+        }
+        return true;
+    }
+    
+    public boolean verificarPrecio(){
+        String precio = tfPrecio.getText();        
+        if(precio!=null){
+            try {
+                Float.parseFloat(precio);                
+            } catch (NumberFormatException e){
+                msgError("Ingrese un precio válido.");
+                return false;
+            }
+        } else {
+            msgError("Ingrese un precio válido.");
+            return false;
+        }
+        return true;
+    }
+    
+    public boolean verificarImagen(){        
+        if(fotos.size()==0){
+            msgError("Ingrese al menos una imagen!");
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    public boolean verificarMarca(){
+        if(cbMarca.getValue()==null){
+            msgError("Seleccione una marca.");
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    public boolean verificarModeloII(){
+        if(cbModelo.getValue()==null){
+            msgError("Seleccione un modelo.");
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    public boolean verificarTipo(){
+        if(cbTipo.getValue()==null){
+            msgError("Seleccione un tipo.");
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    public boolean verificarMotor(){
+        if(cbMotor.getValue()==null){
+            msgError("Seleccione un motor.");
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    public boolean verificarTransmision(){
+        if(cbTransmision.getValue()==null){
+            msgError("Seleccione una transmisión.");
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    public boolean verificarUbicacion(){
+        if(cbUbicacion.getValue()==null){
+            msgError("Seleccione una ubicación.");
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    public boolean verificarEstado(){
+        if(cbEstado.getValue()==null){
+            msgError("Seleccione un estado.");
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private boolean verificarTodo(){
+
+        return verificarPlaca() && verificarPrecio() && verificarAño() && verificarKilometraje() && verificarPeso() && verificarImagen() && verificarMarca() && verificarModeloII() && verificarTipo() && verificarMotor() && verificarTransmision() && verificarUbicacion() && verificarEstado() && verificarPlacaExistente();
+        /*verificarmarca & verificarModelo() que este lleno*/ 
+        /*verificar tipo*//*verificar motor & verificar transmision*/
+        /*verificar ubicacion & verificarestado*/
+    }
+    
+    // Método para obtener el valor del enum Tipo a partir del string seleccionado
+    public Tipo obtenerTipo(String tipoSeleccionado) {
+        for (Tipo tipo : Tipo.values()) {
+            if (tipo.getDisplayName().equalsIgnoreCase(tipoSeleccionado)) {
+                return tipo;
+            }
+        }
+        return null;
+    }
+
+    // Método para obtener el valor del enum MarcaDeAuto a partir del string seleccionado
+    public MarcaDeAuto obtenerMarca(String marcaSeleccionada) {
+        for (MarcaDeAuto marca : MarcaDeAuto.values()) {
+            if (marca.getName().equalsIgnoreCase(marcaSeleccionada)) {
+                return marca;
+            }
+        }
+        return null; 
+    }
+
+    // Método para obtener el valor del enum Motor a partir del string seleccionado
+    public Motor obtenerMotorDesdeString(String motorSeleccionado) {
+        for (Motor motor : Motor.values()) {
+            if (motor.getDisplayName().equalsIgnoreCase(motorSeleccionado)) {
+                return motor;
+            }
+        }
+        return null;
+    }
+
+    // Método para obtener el valor del enum Transmision a partir del string seleccionado
+    public Transmision obtenerTransmisionDesdeString(String transmisionSeleccionada) {
+        for (Transmision transmision : Transmision.values()) {
+            if (transmision.getDisplayName().equalsIgnoreCase(transmisionSeleccionada)) {
+                return transmision;
+            }
+        }
+        return null; 
+    }
+
+    // Método para obtener el valor del enum Ubicacion a partir del string seleccionado
+    public Ubicacion obtenerUbicacionDesdeString(String ubicacionSeleccionada) {
+        for (Ubicacion ubicacion : Ubicacion.values()) {
+            if (ubicacion.getDisplayName().equalsIgnoreCase(ubicacionSeleccionada)) {
+                return ubicacion;
+            }
+        }
+        // Si la ubicación seleccionada no coincide con ningún valor del enum, puedes manejarlo como desees
+        return null; // o lanzar una excepción, mostrar un mensaje, etc.
+    }
+
+    // Método para obtener el valor del enum Estado a partir del string seleccionado
+    public Estado obtenerEstadoDesdeString(String estadoSeleccionado) {
+        for (Estado estado : Estado.values()) {
+            if (estado.getDisplayName().equalsIgnoreCase(estadoSeleccionado)) {
+                return estado;
+            }
+        }
+        // Si el estado seleccionado no coincide con ningún valor del enum, puedes manejarlo como desees
+        return null; // o lanzar una excepción, mostrar un mensaje, etc.
+    }
+    
+    @FXML
     public void abrirReporte() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("anadirReporte.fxml"));
@@ -328,5 +593,76 @@ public class EditarAutoController {
             e.printStackTrace();
         }
     }
-        
+    
+    private void alertaAutoEditado(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Auto Editado");
+        alert.setHeaderText("Excelente, has editado un auto!");
+        alert.setContentText("Auto editado con éxito.");
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                regresar();            
+            }
+        });
+    
+    }
+    
+    private void alertaAutoEliminado(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Auto Eliminado");
+        alert.setHeaderText("Tu auto ha sido eliminado de la lista de ventas!");
+        alert.setContentText("Auto eliminado con éxito.");
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                regresar();            
+            }
+        });
+    
+    }
+    
+    @FXML
+    private void guardarAuto(){
+        if(verificarTodo()){
+            try{
+            float precio = Float.parseFloat(tfPrecio.getText());
+            MarcaDeAuto prueba =  obtenerMarca(cbMarca.getValue());
+            String modelo = cbModelo.getValue();
+            Tipo tipo = obtenerTipo(cbTipo.getValue());
+            int anio = Integer.parseInt(tfAnio.getText());
+            String placa = tfPlaca.getText();
+            int kilometraje = Integer.parseInt(tfKM.getText());
+            Motor motor = obtenerMotorDesdeString(cbMotor.getValue());
+            Transmision transmision = obtenerTransmisionDesdeString(cbTransmision.getValue());
+            float peso = Float.parseFloat(tfPeso.getText());
+            Ubicacion ubicacion = obtenerUbicacionDesdeString(cbUbicacion.getValue());
+            Estado estado = obtenerEstadoDesdeString(cbEstado.getValue());
+            Auto runrunAuto = Sistema.crearAuto(precio, prueba, modelo, tipo, anio, placa, kilometraje, motor, transmision, peso, ubicacion, usuario, estado, fotos);
+            System.out.println("El auto ha sido creado!");
+            System.out.println("el auto creado es "+runrunAuto.toString());
+            System.out.println("El auto se intentará guardar");
+            Boolean removed = Sistema.eliminarAuto(auto);
+            Boolean saved = false;
+            if(removed==true){
+                saved = Sistema.guardarAuto(runrunAuto);
+            }
+            System.out.println(saved);
+            alertaAutoEditado();
+            }catch(IllegalArgumentException i){
+                System.out.println("Un error ocurrio al querer guardar el auto en editarAutoController: ");
+                System.out.println(i);
+            }
+        } else{System.out.println("Algo no está completado");}
+
+    }
+    
+    @FXML
+    private void eliminarAuto(){        
+        try{
+        Boolean removed = Sistema.eliminarAuto(auto);            
+        alertaAutoEliminado();
+        }catch(IllegalArgumentException i){
+            System.out.println("Un error ocurrio al querer eliminar el auto en editarAutoController: ");
+            System.out.println(i);
+        }        
+    }
 }
