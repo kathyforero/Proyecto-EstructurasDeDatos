@@ -700,8 +700,11 @@ public class EditarAutoController {
     @FXML
     private void eliminarAuto(){        
         try{
-        Boolean removed = Sistema.eliminarAuto(auto);            
-        alertaAutoEliminado();
+            Boolean removed = Sistema.eliminarAuto(auto);            
+            alertaAutoEliminado();
+            if(usuario.getFavoritos().size()>0){
+                Boolean removedFav = Sistema.eliminarAutoFavorito(auto, usuario);
+            }
         }catch(IllegalArgumentException i){
             System.out.println("Un error ocurrio al querer eliminar el auto en editarAutoController: ");
             System.out.println(i);

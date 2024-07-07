@@ -77,10 +77,35 @@ public class Sistema implements Serializable{
             }
             if(autos.getLast().getContent().getPlaca().equals(auto.getPlaca())){
                 autos.removeNode(autos.getLast());
-            }
+            }            
             // autos.addLast(auto);
             System.out.println("antes de ir a Archivos.guardarAutos en Eliminar");
             Archivos.guardarAutos(autos);
+            System.out.println("despues de ir a Archivos.guardarAutos en Eliminar");
+            return true;
+        }catch(Exception e) {
+            System.err.println("ERROR AL ELIMINAR AUTO!!! " + e.getMessage());
+            return false;
+        }
+    }
+    
+    public static boolean eliminarAutoFavorito(Auto auto, Usuario u){
+        try{
+            DoublyCircularList<Auto> autos = Archivos.leerAutos();
+            DoublyCircularList<Auto> fav = u.getFavoritos();            
+            
+            for(DoublyCircularNode<Auto> m = fav.getLast().getNext(); ; m = m.getNext()){
+                if(m.getContent().getPlaca().equals(auto.getPlaca())){
+                    fav.removeNode(m);                
+                }
+                if(m==fav.getLast()){
+                    break;
+                }
+            }
+                                 
+            // autos.addLast(auto);
+            System.out.println("antes de ir a Archivos.guardarAutos en Eliminar");
+            u.setFavorito(fav);
             System.out.println("despues de ir a Archivos.guardarAutos en Eliminar");
             return true;
         }catch(Exception e) {
