@@ -84,7 +84,8 @@ public class VistaAutoController {
     private ImageView imgAñadirFav;
     @FXML
     private ImageView imgQuitarFav;
-
+    private String procedencia;
+    
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
         lblUsuario.setText(usuario.getNombre()+" "+usuario.getApellido()+"!");
@@ -95,6 +96,11 @@ public class VistaAutoController {
              mostrarAñadirFav();
         }
         System.out.println(usuario.getFavoritos().size());
+    }
+    
+    public void setProcedencia(String procedencia) {
+        this.procedencia = procedencia;
+        
     }
     
     public Usuario getUsuario() {
@@ -136,7 +142,7 @@ public class VistaAutoController {
             imgViewCar.setImage(image);
             actualizarContador();
         }else{
-            String rutaRelativa = "/PROYECTO/preview.png";
+            String rutaRelativa = "/Controladores/preview.png";
             String rutaCompleta = getClass().getResource(rutaRelativa).toExternalForm();
             Image image = new Image(rutaCompleta);
             imgViewCar.setImage(image);
@@ -188,10 +194,17 @@ public class VistaAutoController {
     
     @FXML
     public void quitarFav() {
-        usuario.deleteFavorito(auto);
-        System.out.println("Se elimino de favs "+usuario.getFavoritos().size());
+        
+        if(usuario.deleteFavorito(auto)){
+            System.out.println("Se elimino de favs "+usuario.getFavoritos().size());
+        }else{
+            System.out.println("ERROR AL ELIMINAR");
+        }
+        
+        
         mostrarAñadirFav();
         Sistema.actualizarUsuario(usuario);
+        
     }
         
     public boolean verificarFav(){
@@ -266,10 +279,16 @@ public class VistaAutoController {
     @FXML
     public void regresar() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("usuario.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(procedencia));
             Parent root = loader.load();
-            UsuarioController usuarioController = loader.getController();
-            usuarioController.setUsuario(usuario);
+            if(procedencia.equals("usuario.fxml")){
+                UsuarioController Controller = loader.getController();
+                Controller.setUsuario(usuario);
+            }else{
+                FavoritosController Controller = loader.getController();
+                Controller.setUsuario(usuario);
+            }
+            
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("GuayacoCar - Autos a tu Alcance");

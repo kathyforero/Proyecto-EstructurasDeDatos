@@ -220,8 +220,10 @@ public class DoublyCircularList<E> implements List<E>,Serializable{
             } else if(this.size()==1){
                 last = null;
             }
+            System.out.println("ELIMINO");
             return n.getContent();
         } else {
+            System.out.println("NO ELIMINO");
             return null;
         }        
     }

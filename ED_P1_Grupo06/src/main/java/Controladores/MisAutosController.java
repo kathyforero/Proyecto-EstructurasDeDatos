@@ -39,7 +39,6 @@ public class MisAutosController {
     private DoublyCircularList<Auto> autosDueño;
     private DoublyCircularNode<Auto> autoDNodo;
     private DoublyCircularNode<File> foto;
-    private int autosMostrados;
     @FXML
     private ImageView imgAuto1;
     @FXML
@@ -161,7 +160,7 @@ public class MisAutosController {
         
         if (autosDueño.size()>0){
             mostrarAutosAdelante();
-            if(autos.size()<7){
+            if(autosDueño.size()<7){
                 mostrarAutosAdelante.setVisible(false);
                 mostrarAutosAtras.setVisible(false);
             }else{
@@ -227,11 +226,8 @@ public class MisAutosController {
                 e.printStackTrace();
             }
                 index++; 
-                autosMostrados++; 
                 autoDNodo = autoDNodo.getNext();
-                if(autoDNodo.equals(autosDueño.getHeader())){
-                    autosMostrados=1;
-                    }
+
                 
             } while (autoDNodo != autosDueño.getHeader() && index<=6);
             if(autoDNodo.equals(autosDueño.getHeader())){

@@ -50,8 +50,13 @@ public class Usuario implements Serializable{
         favoritos.addLast(auto);
     }   
     
-    public void deleteFavorito(Auto auto) {
-        favoritos.removeNode(new DoublyCircularNode(auto));
+    public boolean deleteFavorito(Auto auto) {
+        if(!favoritos.removeNode(new DoublyCircularNode(auto)).equals(null)){
+            return true;
+        }else{
+            return false;
+        }
+        
     }  
         
     public void setNombre(String nombre) {

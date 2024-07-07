@@ -474,6 +474,7 @@ public class UsuarioController implements Initializable{
                 Parent root = loader.load();
                 VistaAutoController VistaautoController = loader.getController();
                 VistaautoController.setAuto(auto);
+                VistaautoController.setProcedencia("usuario.fxml");
                 VistaautoController.setUsuario(usuario);                
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
@@ -612,13 +613,14 @@ public class UsuarioController implements Initializable{
 public void ordenarAutoPorXCriterio() {
     Platform.runLater(()->{
         Comparator<Auto> comp = ordenarPorComp();
+        
         if (comp != null && autos.size()>0) {
             ordenar(autos, comp);
             
             Iterator<Auto> it = autos.iterator();
+            System.out.println("Hay "+autos.size()+" en la lista");
             while (it.hasNext()) {
                 Auto auto = it.next();
-                System.out.println("Hay "+autos.size()+" en la lista");
                 System.out.println("Marca: " + auto.getMarca().getName()+" Modelo: " + auto.getModelo()+"Precio: $" + auto.getPrecio());
             }
             autoNodo=autos.getHeader();
