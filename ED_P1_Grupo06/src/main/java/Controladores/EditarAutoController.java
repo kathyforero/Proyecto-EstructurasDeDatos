@@ -669,7 +669,8 @@ public class EditarAutoController {
             Ubicacion ubicacion = obtenerUbicacionDesdeString(cbUbicacion.getValue());
             Estado estado = obtenerEstadoDesdeString(cbEstado.getValue());
             Auto runrunAuto = Sistema.crearAuto(precio, prueba, modelo, tipo, anio, placa, kilometraje, motor, transmision, peso, ubicacion, usuario, estado, fotos);
-            if(auto.getReportes()!=null){
+                System.out.println("AUTO REPORTE: " + auto.getReportes());
+            if(auto.getReportes().size()>0){
                 ArrayList<Reporte> lr = auto.getReportes();
                 if(reportes!=null){
                     Iterator<Reporte> it = reportes.iterator();
@@ -685,6 +686,7 @@ public class EditarAutoController {
                 runrunAuto.setReportes(lr);
             } else {
                 if(reportes!=null){
+                    System.out.println(reportes);
                     runrunAuto.setReportes(reportes);
                 }
             }

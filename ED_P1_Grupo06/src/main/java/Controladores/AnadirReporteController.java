@@ -18,12 +18,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -119,14 +121,14 @@ public class AnadirReporteController{
         tcCat.setCellValueFactory(new PropertyValueFactory<>("categoria"));
         tcDesc.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
         if(auto!=null){
-            if(auto.getReportes()!=null){            
+            if(auto.getReportes().size()>0){            
                 Iterator<Reporte> it = auto.getReportes().iterator();
                 while(it.hasNext()){
                     reportes.add(it.next());
                 }                
             }
         }
-        if(reportesArr!=null){
+        if(reportesArr.size()>0){
             Iterator<Reporte> it = reportesArr.iterator();
             while(it.hasNext()){
                 Reporte r = it.next();
@@ -138,6 +140,8 @@ public class AnadirReporteController{
         if(tvCatDesc!=null){
             tvCatDesc.setItems(reportes);
         }
+        centrar(tcCat);
+        centrar(tcDesc);
     }
     
     public void msgError(String msg){
@@ -146,6 +150,25 @@ public class AnadirReporteController{
     }
     public void msgErrorOff(){
         btnError.setVisible(false);
+    }
+    
+    public void centrar(TableColumn<Reporte, String> c){
+        c.setCellFactory(column -> {
+            return new TableCell<Reporte, String>() {
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (item == null || empty) {
+                        setText(null);
+                        setGraphic(null);
+                    } else {
+                        setText(item);
+                        setAlignment(Pos.CENTER);
+                    }
+                }
+            };
+        });
+
     }
     
     public boolean verificarCampos(){
@@ -180,6 +203,7 @@ public class AnadirReporteController{
                 editarAutoController.setReportes(reportesArr);
                 System.out.println(reportesArr.toString());
             }
+            txtDesc.clear();
         }
     }
     
@@ -246,13 +270,21 @@ public class AnadirReporteController{
                 /*FXMLLoader loader = new FXMLLoader(getClass().getResource("crearauto.fxml"));
                 Parent root = loader.load();
                 CrearAutoController crearautocontroller = loader.getController();*/
-                crearAutoController.setReportes(reporteFinal);
+                if(reporteFinal.size()>0){
+                    crearAutoController.setReportes(reporteFinal);
+                } else {
+                    crearAutoController.setReportes(null);
+                }
                 System.out.println(reportesArr.toString());
             } else if(procedencia.equals("e")){
                 /*FXMLLoader loader = new FXMLLoader(getClass().getResource("editarauto.fxml"));
                 Parent root = loader.load();
                 EditarAutoController editarautocontroller = loader.getController();*/
-                editarAutoController.setReportes(reporteFinal);
+                if(reporteFinal.size()>0){
+                    editarAutoController.setReportes(reporteFinal);
+                } else{
+                    editarAutoController.setReportes(null);
+                }
                 System.out.println(reportesArr.toString());
             }
         }

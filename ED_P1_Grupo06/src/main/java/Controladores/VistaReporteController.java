@@ -14,8 +14,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -52,6 +54,25 @@ public class VistaReporteController{
         this.auto = auto;
     }
     
+    public void centrar(TableColumn<Reporte, String> c){
+        c.setCellFactory(column -> {
+            return new TableCell<Reporte, String>() {
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (item == null || empty) {
+                        setText(null);
+                        setGraphic(null);
+                    } else {
+                        setText(item);
+                        setAlignment(Pos.CENTER);
+                    }
+                }
+            };
+        });
+
+    }
+    
     public void cargarTabla(){
         tcCat.setCellValueFactory(new PropertyValueFactory<>("categoria"));
         tcDesc.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
@@ -68,5 +89,7 @@ public class VistaReporteController{
         if(tvCatDesc!=null){
             tvCatDesc.setItems(reportes);
         }
+        centrar(tcCat);
+        centrar(tcDesc);
     }    
 }

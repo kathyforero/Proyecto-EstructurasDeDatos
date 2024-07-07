@@ -168,7 +168,6 @@ public class UsuarioController implements Initializable{
     private ImageView mostrarAutosAtras;
 
     
-
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
         lblUser.setText(usuario.getNombre()+" "+usuario.getApellido()+"!");
