@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1000.0" style="-fx-background-color: #0D050E;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.VistaAutoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1000.0" style="-fx-background-color: #0D050E;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.VistaAutoController">
    <children>
       <ImageView fitHeight="137.0" fitWidth="111.0" layoutX="47.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -20,7 +20,7 @@
       <AnchorPane layoutX="532.0" layoutY="213.0" prefHeight="622.0" prefWidth="454.0" style="-fx-background-color: #2B193E;">
          <children>
             <Button fx:id="btnReporte" layoutX="82.0" layoutY="565.0" mnemonicParsing="false" onAction="#abrirReporte" styleClass="btnGeneral" stylesheets="@estilos.css" text="VER REPORTE DE ACCIDENTES Y REPARACIONES" />
-            <Label layoutX="50.0" layoutY="83.0" text="PRECIO:" textFill="WHITE">
+            <Label layoutX="50.0" layoutY="83.0" text="PRECIO: $" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>

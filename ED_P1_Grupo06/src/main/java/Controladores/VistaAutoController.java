@@ -122,10 +122,18 @@ public class VistaAutoController {
         lblModelo.setText(auto.getModelo());
         lblTipo.setText(auto.getTipo().getDisplayName());
         lblAño.setText(Integer.toString(auto.getAño()));
-        lblKilom.setText(Integer.toString(auto.getKilometraje()));
+        if(auto.getKilometraje() > 1){
+        lblKilom.setText(Integer.toString(auto.getKilometraje())+" kms");
+        }else{
+        lblKilom.setText(Integer.toString(auto.getKilometraje())+" km");        
+        }
         lblMotor.setText(auto.getMotor().getDisplayName());
         lblTrans.setText(auto.getTransmisión().getDisplayName());
-        lblPeso.setText(Float.toString(auto.getPeso()) + " kg");
+        if(auto.getPeso() > 1){
+        lblPeso.setText(Float.toString(auto.getPeso()) + " kgs");
+        }else{
+        lblPeso.setText(Float.toString(auto.getPeso()) + " kg");        
+        }
         lblUbi.setText(auto.getUbicacion().getDisplayName());
         lblEstado.setText(auto.getEstado().getDisplayName());
         lblVendedor.setText(auto.getUsuario().getNombre()+ " " + auto.getUsuario().getApellido());
