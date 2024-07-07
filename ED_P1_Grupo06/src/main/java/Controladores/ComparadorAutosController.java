@@ -103,15 +103,23 @@ public class ComparadorAutosController {
         Image image = new Image(foto.getContent().toURI().toString());
         imgViewCar.setImage(image);
         lblPlaca1.setText(auto.getPlaca());
-        lblPrecio1.setText(Float.toString(auto.getPrecio()));
+        lblPrecio1.setText( "$ " + Float.toString( auto.getPrecio() ) );
         lblMarca1.setText(auto.getMarca().getName());
         lblModelo1.setText(auto.getModelo());
         lblTipo1.setText(auto.getTipo().getDisplayName());
         lblAño1.setText(Integer.toString(auto.getAño()));
-        lblKilom1.setText(Integer.toString(auto.getKilometraje()));
+        if( auto.getKilometraje() >1 ){
+            lblKilom1.setText( Integer.toString( auto.getKilometraje() ) + " kms");
+        }else{
+            lblKilom1.setText( Integer.toString( auto.getKilometraje() ) + " km");
+        }
         lblMotor1.setText(auto.getMotor().getDisplayName());
         lblTrans1.setText(auto.getTransmisión().getDisplayName());
-        lblPeso1.setText(Float.toString(auto.getPeso()));
+        if( auto.getPeso() > 1 ){
+            lblPeso1.setText(Float.toString( auto.getPeso() ) + " kgs" );
+        }else{
+            lblPeso1.setText(Float.toString( auto.getPeso() ) + " kg" );
+        }
         lblUbi1.setText(auto.getUbicacion().getDisplayName());
         lblEstado1.setText(auto.getEstado().getDisplayName());
     }
@@ -121,16 +129,22 @@ public class ComparadorAutosController {
         Image image = new Image(foto.getContent().toURI().toString());
         imgViewCar1.setImage(image);
         lblPlaca11.setText(auto.getPlaca());
-        lblPrecio11.setText(Float.toString(auto.getPrecio()));
+        lblPrecio11.setText( "$ " + Float.toString(auto.getPrecio()) );
         lblMarca11.setText(auto.getMarca().getName());
         lblModelo11.setText(auto.getModelo());
         lblTipo11.setText(auto.getTipo().getDisplayName());
         lblAño11.setText(Integer.toString(auto.getAño()));
-        lblKilom11.setText(Integer.toString(auto.getKilometraje()));
-        lblMotor11.setText(auto.getMotor().getDisplayName());
+        if( auto.getKilometraje() >1 ){
+            lblKilom11.setText( Integer.toString( auto.getKilometraje() ) + " kms");
+        }else{
+            lblKilom11.setText( Integer.toString( auto.getKilometraje() ) + " km");
+        }        lblMotor11.setText(auto.getMotor().getDisplayName());
         lblTrans11.setText(auto.getTransmisión().getDisplayName());
-        lblPeso11.setText(Float.toString(auto.getPeso()));
-        lblUbi11.setText(auto.getUbicacion().getDisplayName());
+        if( auto.getPeso() > 1 ){
+            lblPeso11.setText(Float.toString( auto.getPeso() ) + " kgs" );
+        }else{
+            lblPeso11.setText(Float.toString( auto.getPeso() ) + " kg" );
+        }        lblUbi11.setText(auto.getUbicacion().getDisplayName());
         lblEstado11.setText(auto.getEstado().getDisplayName());
     }
     
