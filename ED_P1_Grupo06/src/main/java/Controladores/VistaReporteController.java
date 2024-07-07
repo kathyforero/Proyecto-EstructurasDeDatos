@@ -4,6 +4,7 @@
  */
 package Controladores;
 
+import Clases.Auto;
 import Clases.Usuario;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -27,11 +28,17 @@ public class VistaReporteController{
     private TableView<String> tvCatDesc;
     
     private Usuario usuario;
+    
+    private Auto auto;    
           
     
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
         lblUser.setText(usuario.getNombre()+" "+usuario.getApellido()+"!");      
     }
-    
+
+    public void setAuto(Auto auto) {
+        this.auto = auto;
+    }
+        
 }

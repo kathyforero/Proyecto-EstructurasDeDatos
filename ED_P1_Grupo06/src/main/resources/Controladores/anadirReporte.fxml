@@ -31,8 +31,8 @@
       <Button fx:id="btnAgregar" layoutX="771.0" layoutY="224.0" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="AGREGAR" />
       <TableView fx:id="tvCatDesc" layoutX="143.0" layoutY="271.0" prefHeight="381.0" prefWidth="704.0">
         <columns>
-          <TableColumn prefWidth="121.0" text="Categoría" />
-          <TableColumn prefWidth="582.0" text="Descripción" />
+          <TableColumn fx:id="tcCat" prefWidth="121.0" text="Categoría" />
+          <TableColumn fx:id="tcDesc" prefWidth="582.0" text="Descripción" />
         </columns>
       </TableView>
       <ComboBox fx:id="cbCategoria" layoutX="143.0" layoutY="223.0" prefWidth="150.0" promptText="Categoría" />

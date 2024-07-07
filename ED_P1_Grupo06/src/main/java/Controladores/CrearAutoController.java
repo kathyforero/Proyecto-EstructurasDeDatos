@@ -530,6 +530,22 @@ public class CrearAutoController {
         return null; // o lanzar una excepción, mostrar un mensaje, etc.
     }
     
+    @FXML
+    public void abrirReporte() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("anadirReporte.fxml"));
+            Parent root = loader.load();
+            AnadirReporteController anadirreportecontroller = loader.getController();
+            anadirreportecontroller.setUsuario(usuario);            
+            Stage newStage = new Stage();
+            newStage.setScene(new Scene(root));
+            newStage.setTitle("GuayacoCar - Autos a tu Alcance");
+            newStage.show();           
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }    
 
     @FXML
     private void guardarAuto(){

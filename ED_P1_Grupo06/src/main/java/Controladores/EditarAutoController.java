@@ -584,6 +584,7 @@ public class EditarAutoController {
             Parent root = loader.load();
             AnadirReporteController anadirreportecontroller = loader.getController();
             anadirreportecontroller.setUsuario(usuario);
+            anadirreportecontroller.setAuto(auto);
             Stage newStage = new Stage();
             newStage.setScene(new Scene(root));
             newStage.setTitle("GuayacoCar - Autos a tu Alcance");

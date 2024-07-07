@@ -122,7 +122,7 @@
             </TextField>
             <ComboBox fx:id="cbUbicacion" layoutX="164.0" layoutY="451.0" prefHeight="29.0" prefWidth="203.0" promptText="Ubicación" />
             <ComboBox fx:id="cbEstado" layoutX="135.0" layoutY="493.0" prefHeight="29.0" prefWidth="234.0" promptText="Estado" />
-            <Button layoutX="84.0" layoutY="548.0" mnemonicParsing="false" styleClass="btnGeneral" stylesheets="@estilos.css" text="REPORTE DE ACCIDENTES Y REPARACIONES" />
+            <Button layoutX="84.0" layoutY="548.0" mnemonicParsing="false" onAction="#abrirReporte" styleClass="btnGeneral" stylesheets="@estilos.css" text="REPORTE DE ACCIDENTES Y REPARACIONES" />
             <Button fx:id="btonGuardar" layoutX="179.0" layoutY="580.0" mnemonicParsing="false" onMouseClicked="#guardarAuto" styleClass="btnGeneral" stylesheets="@estilos.css" text="GUARDAR" />
             <Button fx:id="btnError" mnemonicParsing="false" prefHeight="29.0" prefWidth="422.0" styleClass="textError" stylesheets="@estilos.css" text="Correo no encontrado :C" textAlignment="CENTER" textFill="WHITE" visible="false">
                <font>

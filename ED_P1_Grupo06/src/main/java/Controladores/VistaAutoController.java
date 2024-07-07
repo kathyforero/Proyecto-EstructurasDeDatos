@@ -225,6 +225,7 @@ public class VistaAutoController {
             Parent root = loader.load();
             VistaReporteController vistareportecontroller = loader.getController();
             vistareportecontroller.setUsuario(usuario);
+            vistareportecontroller.setAuto(auto);
             Stage newStage = new Stage();
             newStage.setScene(new Scene(root));
             newStage.setTitle("GuayacoCar - Autos a tu Alcance");
