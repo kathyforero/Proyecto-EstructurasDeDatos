@@ -10,6 +10,8 @@ import Clases.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Iterator;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -87,7 +89,11 @@ public class VistaAutoController {
         this.usuario = usuario;
         lblUsuario.setText(usuario.getNombre()+" "+usuario.getApellido()+"!");
         cargarAuto();
-        verificarFav();
+        if(verificarFav()){
+            mostrarQuitarFav();
+        }else{
+             mostrarAñadirFav();
+        }
         System.out.println(usuario.getFavoritos().size());
     }
     
@@ -185,21 +191,34 @@ public class VistaAutoController {
         mostrarAñadirFav();
     }
     
-    public void verificarFav(){
+    public boolean verificarFav(){
         DoublyCircularList<Auto> favoritos=usuario.getFavoritos();
-        if(favoritos.size()!=0){
-            System.out.println(favoritos.nodeExists(auto));
-            if(favoritos.nodeExists(auto)){
-                System.out.println("EXISTE");
-                mostrarQuitarFav();
-            }else{
-                System.out.println("NO EXISTE");
-                mostrarAñadirFav();
+        if(favoritos.size()>0){
+            Iterator<Auto> it = favoritos.iterator();
+            while(it.hasNext()){
+                Auto autoNodo=it.next();
+                if(esFavorito(autoNodo)){
+                    return true;
+                }
             }
-        }else{
-            mostrarAñadirFav();
-            System.out.println("0");
         }
+        return false;
+    }
+    
+    public boolean esFavorito(Auto p){
+        return Double.compare(auto.getPrecio(), p.getPrecio()) == 0 &&
+                auto.getAño() == p.getAño() &&
+                auto.getKilometraje() == p.getKilometraje() &&
+                Double.compare(auto.getPeso(), p.getPeso()) == 0 &&
+                Objects.equals(auto.getMarca().getName(), p.getMarca().getName()) &&
+                Objects.equals(auto.getModelo(), p.getModelo()) &&
+                Objects.equals(auto.getTipo().getDisplayName(),p.getTipo().getDisplayName()) &&
+                Objects.equals(auto.getPlaca(),p.getPlaca()) &&
+                Objects.equals(auto.getMotor().getDisplayName(),p.getMotor().getDisplayName()) &&
+                Objects.equals(auto.getTransmisión().getDisplayName(),p.getTransmisión().getDisplayName()) &&
+                Objects.equals(auto.getUbicacion().getDisplayName(),p.getUbicacion().getDisplayName()) &&
+                Objects.equals(auto.getEstado().getDisplayName(),p.getEstado().getDisplayName()) ;
+                //Objects.equals(auto.getUsuario(),this.usuario);
     }
     
     public void mostrarAñadirFav(){
