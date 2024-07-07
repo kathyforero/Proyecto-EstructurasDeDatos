@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.time.LocalDate;
 import java.util.Iterator;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -319,6 +320,7 @@ public class CrearAutoController {
     public boolean verificarAño(){
         String año = tfAnio.getText();
         int numNum = 0;
+        int añoActual = LocalDate.now().getYear();
         if(año!=null){
             for(char c: año.toCharArray()){
                 if(Character.isLetter(c)){
@@ -330,7 +332,7 @@ public class CrearAutoController {
                 }
             }            
         }
-        if(numNum!=4 || año==null){
+        if(numNum!=4 || año==null || Integer.valueOf(año)<1950 || Integer.valueOf(año)>añoActual+1){
             msgError("Ingrese un año válido.");
             return false;
         } else {
