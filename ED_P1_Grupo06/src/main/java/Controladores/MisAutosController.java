@@ -149,7 +149,7 @@ public class MisAutosController {
     public void settearAutosD(){               
         if(autos!=null){
             autosDueño = new DoublyCircularList<>();
-            if(autos.size()>1){
+            if(autos.size()>=1){
                 DoublyCircularNode<Auto> n = autos.getHeader();
                 do{
                     if(n.getContent().getUsuario().getNombre().equals(this.usuario.getNombre()) && n.getContent().getUsuario().getApellido().equals(this.usuario.getApellido()) && n.getContent().getUsuario().getCorreo().equals(this.usuario.getCorreo()) && n.getContent().getUsuario().getContraseña().equals(this.usuario.getContraseña())){
@@ -163,7 +163,7 @@ public class MisAutosController {
     
     public void cargarAutos(){
         
-        if (autos.size()>0){
+        if (autosDueño.size()>0){
             mostrarAutosAdelante();
             if(autos.size()<7){
                 mostrarAutosAdelante.setVisible(false);

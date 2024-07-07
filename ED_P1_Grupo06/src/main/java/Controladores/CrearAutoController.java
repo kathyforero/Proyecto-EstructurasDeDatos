@@ -77,7 +77,9 @@ public class CrearAutoController {
     @FXML
     private ImageView ivQuitarImagen;
     
-    private DoublyCircularList<Auto> autos = Archivos.leerAutos();    
+    private DoublyCircularList<Auto> autos = Archivos.leerAutos();
+
+    private ArrayList<Reporte> reportes;
     
     
     public void setUsuario(Usuario usuario) {
@@ -87,6 +89,14 @@ public class CrearAutoController {
     
     public Usuario getUsuario() {
         return usuario;
+    }
+
+    public ArrayList<Reporte> getReportes() {
+        return reportes;
+    }        
+    
+    public void setReportes(ArrayList<Reporte> reportes){
+        this.reportes = reportes;
     }
     
     @FXML
@@ -294,11 +304,13 @@ public class CrearAutoController {
     
     public boolean verificarPlacaExistente(){
         String placa = tfPlaca.getText();
-        Iterator<Auto> it = autos.iterator();
-        while(it.hasNext()){
-            if(it.next().getPlaca().toLowerCase().equals(placa.toLowerCase())){
-                msgError("Esa placa ya existe!! Ingrese una placa válida.");
-                return false;
+        if(autos.size()>0){
+            Iterator<Auto> it = autos.iterator();
+            while(it.hasNext()){
+                if(it.next().getPlaca().toLowerCase().equals(placa.toLowerCase())){
+                    msgError("Esa placa ya existe!! Ingrese una placa válida.");
+                    return false;
+                }
             }
         }
         return true;
@@ -536,7 +548,14 @@ public class CrearAutoController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("anadirReporte.fxml"));
             Parent root = loader.load();
             AnadirReporteController anadirreportecontroller = loader.getController();
-            anadirreportecontroller.setUsuario(usuario);            
+            anadirreportecontroller.setUsuario(usuario);
+            anadirreportecontroller.setProcedencia("c");
+            if(reportes!=null){
+                anadirreportecontroller.setReportesArr(reportes);
+            }
+            anadirreportecontroller.cargarTodo();
+            anadirreportecontroller.setCrearAutoController(this);
+            System.out.println(reportes);            
             Stage newStage = new Stage();
             newStage.setScene(new Scene(root));
             newStage.setTitle("GuayacoCar - Autos a tu Alcance");
@@ -564,6 +583,9 @@ public class CrearAutoController {
             Ubicacion ubicacion = obtenerUbicacionDesdeString(cbUbicacion.getValue());
             Estado estado = obtenerEstadoDesdeString(cbEstado.getValue());
             Auto runrunAuto = Sistema.crearAuto(precio, prueba, modelo, tipo, anio, placa, kilometraje, motor, transmision, peso, ubicacion, usuario, estado, fotos);
+            if(reportes!=null){
+                runrunAuto.setReportes(reportes);
+            }
             System.out.println("El auto ha sido creado!");
             System.out.println("el auto creado es "+runrunAuto.toString());
             System.out.println("El auto se intentará guardar");

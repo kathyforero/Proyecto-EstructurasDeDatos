@@ -616,7 +616,7 @@ public class UsuarioController implements Initializable{
 public void ordenarAutoPorXCriterio() {
     Platform.runLater(()->{
         Comparator<Auto> comp = ordenarPorComp();
-        if (comp != null) {
+        if (comp != null && autos.size()>0) {
             ordenar(autos, comp);
             
             Iterator<Auto> it = autos.iterator();

@@ -82,6 +82,8 @@ public class EditarAutoController {
     
     private String placaPredet;
     
+    private ArrayList<Reporte> reportes;
+    
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
         lblUser.setText(usuario.getNombre()+" "+usuario.getApellido()+"!");
@@ -93,6 +95,14 @@ public class EditarAutoController {
         Node=fotos.getHeader();
         cargarCampos();
         actualizarImagenes();
+    }
+    
+    public ArrayList<Reporte> getReportes() {
+        return reportes;
+    }  
+    
+    public void setReportes(ArrayList<Reporte> reportes){
+        this.reportes = reportes;
     }
     
     public void setPlacaPredet(Auto auto){        
@@ -585,10 +595,17 @@ public class EditarAutoController {
             AnadirReporteController anadirreportecontroller = loader.getController();
             anadirreportecontroller.setUsuario(usuario);
             anadirreportecontroller.setAuto(auto);
+            anadirreportecontroller.setProcedencia("e");
+            if(reportes!=null){
+                anadirreportecontroller.setReportesArr(reportes);
+            }
+            anadirreportecontroller.cargarTodo();
+            anadirreportecontroller.setEditarAutoController(this);
+            System.out.println(reportes);   
             Stage newStage = new Stage();
             newStage.setScene(new Scene(root));
             newStage.setTitle("GuayacoCar - Autos a tu Alcance");
-            newStage.show();           
+            newStage.show();            
             
         } catch (IOException e) {
             e.printStackTrace();
@@ -638,6 +655,9 @@ public class EditarAutoController {
             Ubicacion ubicacion = obtenerUbicacionDesdeString(cbUbicacion.getValue());
             Estado estado = obtenerEstadoDesdeString(cbEstado.getValue());
             Auto runrunAuto = Sistema.crearAuto(precio, prueba, modelo, tipo, anio, placa, kilometraje, motor, transmision, peso, ubicacion, usuario, estado, fotos);
+            if(reportes!=null){
+                runrunAuto.setReportes(reportes);
+            }
             System.out.println("El auto ha sido creado!");
             System.out.println("el auto creado es "+runrunAuto.toString());
             System.out.println("El auto se intentará guardar");

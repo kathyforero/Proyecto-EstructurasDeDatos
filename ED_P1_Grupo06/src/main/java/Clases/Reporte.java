@@ -4,13 +4,21 @@
  */
 package Clases;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Kathy
  */
-public class Reporte {    
+public class Reporte implements Serializable{    
     private String categoria;
     private String descripcion;
+    private static final long serialVersionUID = 2004140222041502L;
+    
+    public Reporte(String categoria, String descripcion){
+        this.categoria = categoria;
+        this.descripcion = descripcion;
+    }
 
     public String getCategoria() {
         return categoria;
@@ -26,5 +34,10 @@ public class Reporte {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }        
+    }
+    
+    public String toString(){
+        String s = "[Categoría: " + categoria + ", Descripción: " + descripcion + "]";
+        return s;
+    }
 }
