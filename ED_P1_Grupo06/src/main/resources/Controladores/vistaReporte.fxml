@@ -27,8 +27,8 @@
       </Label>
       <TableView fx:id="tvCatDesc" layoutX="143.0" layoutY="254.0" prefHeight="381.0" prefWidth="704.0">
         <columns>
-          <TableColumn prefWidth="121.0" text="Categoría" />
-          <TableColumn prefWidth="582.0" text="Descripción" />
+          <TableColumn fx:id="tcCat" prefWidth="121.0" text="Categoría" />
+          <TableColumn fx:id="tcDesc" prefWidth="582.0" text="Descripción" />
         </columns>
       </TableView>
    </children>

@@ -355,6 +355,18 @@ public class CrearAutoController {
         return true;        
     }
     
+    public boolean verificarNuevo(){
+        String km = tfKM.getText();
+        Float kmF = Float.valueOf(km);
+        System.out.println(cbEstado.getValue());
+        System.out.println(kmF);
+        if(cbEstado.getValue().toLowerCase().equals("Nuevo".toLowerCase()) && kmF > 150){
+            msgError("Un auto nuevo no puede tener esa cantidad de kilometraje!!");
+            return false;
+        }
+        return true;
+    }
+    
     public boolean verificarPeso(){
         String peso = tfPeso.getText();
         if(peso!=null){
@@ -461,7 +473,7 @@ public class CrearAutoController {
 
     private boolean verificarTodo(){
 
-        return verificarPlaca() && verificarPrecio() && verificarAño() && verificarKilometraje() && verificarPeso() && verificarImagen() && verificarMarca() && verificarModeloII() && verificarTipo() && verificarMotor() && verificarTransmision() && verificarUbicacion() && verificarEstado() && verificarPlacaExistente();
+        return verificarPlaca() && verificarPrecio() && verificarAño() && verificarKilometraje() && verificarPeso() && verificarImagen() && verificarMarca() && verificarModeloII() && verificarTipo() && verificarMotor() && verificarTransmision() && verificarUbicacion() && verificarEstado() && verificarPlacaExistente() && verificarNuevo();
         /*verificarmarca & verificarModelo() que este lleno*/ 
         /*verificar tipo*//*verificar motor & verificar transmision*/
         /*verificar ubicacion & verificarestado*/
