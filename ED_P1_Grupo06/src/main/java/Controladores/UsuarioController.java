@@ -166,6 +166,8 @@ public class UsuarioController implements Initializable{
     private ComboBox<String> cbTipo;
     @FXML
     private ImageView mostrarAutosAtras;
+    @FXML
+    private Button btnComp;
 
     
     public void setUsuario(Usuario usuario) {

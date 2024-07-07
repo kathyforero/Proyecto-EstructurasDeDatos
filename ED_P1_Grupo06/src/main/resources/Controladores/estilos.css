@@ -54,6 +54,22 @@
     
 }
 
+.btnComparador{
+    -fx-background-color:  #dd6ba7;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "Century Gothic";    
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.btnComparador:hover{
+    -fx-background-color:  #ea8dbe;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "Century Gothic";    
+    -fx-font-size: 12px;
+     -fx-font-weight: bold;
+}
+
 .btnGeneral{
     -fx-background-color:  #9475D8;
     -fx-text-fill: #FFFFFF;

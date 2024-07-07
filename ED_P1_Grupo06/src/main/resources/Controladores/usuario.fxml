@@ -461,5 +461,7 @@
             </StackPane>
          </children>
       </GridPane>
+      <Button layoutX="436.0" layoutY="164.0" mnemonicParsing="false" onAction="#filtroAvanzado" prefHeight="29.0" prefWidth="151.0" styleClass="btnComparador" stylesheets="@estilos.css" text="COMPARAR AUTOS" />
+      <Button fx:id="btnComp" layoutX="436.0" layoutY="164.0" mnemonicParsing="false" onAction="#filtroAvanzado" prefHeight="29.0" prefWidth="151.0" styleClass="btnComparador" stylesheets="@estilos.css" text="COMPARAR AUTOS" visible="false" />
    </children>
 </AnchorPane>
