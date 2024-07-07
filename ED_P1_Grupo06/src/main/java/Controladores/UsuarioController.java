@@ -27,8 +27,11 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Optional;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
@@ -168,6 +171,24 @@ public class UsuarioController implements Initializable{
     private ImageView mostrarAutosAtras;
     @FXML
     private Button btnComp;
+    @FXML
+    private CheckBox c1;
+    @FXML
+    private CheckBox c2;
+    @FXML
+    private CheckBox c3;
+    @FXML
+    private CheckBox c4;
+    @FXML
+    private CheckBox c5;
+    @FXML
+    private CheckBox c6;
+    @FXML
+    private Label msg1;
+    @FXML
+    private Label msg2;
+    @FXML
+    private CheckBox checkCalidad;
 
     
     public void setUsuario(Usuario usuario) {
@@ -332,6 +353,9 @@ public class UsuarioController implements Initializable{
     public void mostrarAutosAdelante(){
         
             int index = 1;
+            if (autoNodo == null || autos.getHeader() == null) {
+            return; // No hay autos para mostrar
+            }
             do {
                 Auto auto = autoNodo.getContent();
                  try {
@@ -386,7 +410,7 @@ public class UsuarioController implements Initializable{
                     }
                 
             } while (autoNodo != autos.getHeader() && index<=6);
-            if(autoNodo.equals(autos.getHeader())){
+            if(autoNodo.equals(autos.getHeader()) || autos.size()==1){
                     ponerBlanco(index);
                    
                 }
@@ -639,7 +663,10 @@ public void ordenarAutoPorXCriterio() {
                 System.out.println("Marca: " + auto.getMarca().getName()+" Modelo: " + auto.getModelo()+"Precio: $" + auto.getPrecio());
             }
             autoNodo=autos.getHeader();
-            cargarAutos(); 
+            cargarAutos();
+            msg1.setVisible(false);
+            msg2.setVisible(false);
+            checkCalidad.setVisible(false);
         } else {
             System.out.println("No se seleccionó un criterio de ordenación válido.");
         }
@@ -672,18 +699,170 @@ public void ordenarAutoPorXCriterio() {
         } while (swapped);
     }
     
-    /*
-    public void ordenarPorReporte(){
-        Comparator<Auto> comp = new Comparator<>(){
-            int 
-            
+    
+    public Comparator<Auto> ordenarPorReporte(){
+        Comparator<Auto> comp = new Comparator<>(){                        
             @Override
             public int compare(Auto a1, Auto a2){                
-                if()
+                ArrayList<Reporte> reporte1 = a1.getReportes();
+                ArrayList<Reporte> reporte2 = a2.getReportes();
+                int mant1 = 0;
+                int rep1 = 0;
+                int accid1 = 0;
+                int mant2 = 0;
+                int rep2 = 0;
+                int accid2 = 0;
+                Iterator<Reporte> it1 = reporte1.iterator();
+                while(it1.hasNext()){
+                    String cat = it1.next().getCategoria();
+                    if(cat.toLowerCase().equals("mantenimiento".toLowerCase())){
+                        mant1+=1;
+                    } else if(cat.toLowerCase().equals("reparación".toLowerCase())){
+                        rep1+=1;
+                    } else{
+                        accid1+=1;
+                    }
+                }
+                Iterator<Reporte> it2 = reporte2.iterator();
+                while(it2.hasNext()){
+                    String cat = it2.next().getCategoria();
+                    if(cat.toLowerCase().equals("mantenimiento".toLowerCase())){
+                        mant2+=1;
+                    } else if(cat.toLowerCase().equals("reparación".toLowerCase())){
+                        rep2+=1;
+                    } else{
+                        accid2+=1;
+                    }
+                }
+                if(accid1!=accid2){
+                    return Integer.compare(accid1, accid2);
+                } else if(mant1!=mant2){
+                    return Integer.compare(mant1, mant2);
+                } else {
+                    return Integer.compare(rep1, rep2);
+                }
             }
         };
-    }*/
+        return comp;
+    }
     
+    public void ordenarAutoPorReporte() {
+               
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Filtro Avanzado Por Reportes");
+        alert.setHeaderText("El filtro avanzado por reportes filtra los autos con reportes de mejor a peor calidad basado en un análisis de los mismos. Los autos con accidentes se consideran de peor calidad.");
+        alert.setContentText("¿Filtrar autos por reportes?");
+
+        
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            System.out.println("Usuario seleccionó Sí."); 
+            
+        Platform.runLater(()->{
+        Comparator<Auto> comp = ordenarPorReporte();
+        
+        DoublyCircularList<Auto> autosConReport = new DoublyCircularList<>();
+        for(DoublyCircularNode<Auto> n = autos.getLast().getNext(); ; n = n.getNext()){
+            if(n.getContent().getReportes()!=null){
+                if(n.getContent().getReportes().size()>0){
+                    autosConReport.addLast(n.getContent());                    
+                }
+            }
+            if(n==autos.getLast()){
+                break;
+            }
+        }
+        autos = autosConReport;
+        
+        if (comp != null && autos.size()>0) {           
+            
+            ordenar(autos, comp);
+            
+            Iterator<Auto> it = autos.iterator();
+            System.out.println("Hay "+autos.size()+" en la lista");
+            while (it.hasNext()) {
+                Auto auto = it.next();
+                System.out.println("Marca: " + auto.getMarca().getName()+" Modelo: " + auto.getModelo()+"Precio: $" + auto.getPrecio());
+            }
+            autoNodo=autos.getHeader();
+            cargarAutos();
+            msg1.setVisible(true);
+            msg2.setVisible(true);
+            checkCalidad.setVisible(true);
+        } else {
+            System.out.println("No hay autos.");
+            btnError.setText("No hay autos con reportes :(");
+        }
+        }); } else {
+            System.out.println("Usuario seleccionó No o cerró el diálogo.");
+        }
+    }
+    
+    public void checkExcelenteCalidad(){
+        if(checkCalidad.isSelected()){
+            DoublyCircularList<Auto> autosExcelentes = new DoublyCircularList<>();            
+            Iterator<Auto> it = autos.iterator();
+            while(it.hasNext()){
+                boolean entra = true;
+                Auto auto = it.next();
+                if(auto.getReportes().size()>0 || auto.getReportes()!=null){
+                    ArrayList<Reporte> reportes = auto.getReportes();
+                    for(int i = 1; i<=reportes.size(); i++){
+                        if(reportes.get(i).getCategoria().equalsIgnoreCase("Accidente")){
+                            entra = false;
+                            break;
+                        }
+                    }
+                }
+                if(entra==true){
+                    autosExcelentes.addLast(auto);
+                }
+            }
+            System.out.println("Lista de AUTOS EXCELENTES: " + autosExcelentes.toString());
+            System.out.println(autosExcelentes.size() + " & " + autos.size());            
+            autos = autosExcelentes;
+            System.out.println(autos.size());
+            cargarAutos();
+        } else {
+            Platform.runLater(()->{
+            Comparator<Auto> comp = ordenarPorReporte();
+
+            DoublyCircularList<Auto> autosConReport = new DoublyCircularList<>();
+            autos = Archivos.leerAutos();
+            for(DoublyCircularNode<Auto> n = autos.getLast().getNext(); ; n = n.getNext()){
+                if(n.getContent().getReportes()!=null){
+                    if(n.getContent().getReportes().size()>0){
+                        autosConReport.addLast(n.getContent());                    
+                    }
+                }
+                if(n==autos.getLast()){
+                    break;
+                }
+            }
+            autos = autosConReport;
+
+            if (comp != null && autos.size()>0) {           
+
+                ordenar(autos, comp);
+
+                Iterator<Auto> it = autos.iterator();
+                System.out.println("Hay "+autos.size()+" en la lista");
+                while (it.hasNext()) {
+                    Auto auto = it.next();
+                    System.out.println("Marca: " + auto.getMarca().getName()+" Modelo: " + auto.getModelo()+"Precio: $" + auto.getPrecio());
+                }
+                autoNodo=autos.getHeader();
+                cargarAutos();
+                msg1.setVisible(true);
+                msg2.setVisible(true);
+                checkCalidad.setVisible(true);
+            } else {
+                System.out.println("No hay autos.");
+                btnError.setText("No hay autos con reportes :(");
+            }
+            });
+        }
+    }   
 
 
     @Override
@@ -823,6 +1002,10 @@ public void ordenarAutoPorXCriterio() {
         tfKMDesde.setText("");
         tfKMHasta.setText("");
         cbOrdenar.setValue("Precio");
+        
+        msg1.setVisible(false);
+        msg2.setVisible(false);
+        checkCalidad.setVisible(false);
         
         setAutos(Archivos.leerAutos());
         ordenarAutoPorXCriterio();

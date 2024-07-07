@@ -191,7 +191,16 @@ public class DoublyCircularList<E> implements List<E>,Serializable{
 
     @Override
     public void clear() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        DoublyCircularNode<E> actual = last.getNext(); // Comenzar desde el primer nodo
+        while(actual != last) {
+        DoublyCircularNode<E> next = actual.getNext();
+        actual.setPrevious(null);
+        actual.setNext(null);
+        actual = next;
+        }
+        last.setPrevious(null);
+        last.setNext(null);
+        last=null;
     }
 
     @Override
@@ -276,5 +285,16 @@ public class DoublyCircularList<E> implements List<E>,Serializable{
             currentNode = currentNode.getNext(); // Avanzar al siguiente nodo
         }
         return false;
-    }        
+    }
+    
+    public String toString(){
+        String s = "";
+        for(DoublyCircularNode<E> n = last.getNext(); ; n = n.getNext()){
+            s += n.getContent() + ", ";
+            if(n==last){
+                break;
+            }
+        }
+        return s;
+    }
 }
