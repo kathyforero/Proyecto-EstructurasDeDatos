@@ -232,6 +232,24 @@ public class ArrayList<E> implements List<E>{
         effectiveSize--;
         return removedElement;
     }
+    
+    public boolean removeObject(E e){
+        int ind = -1;
+        for(int i=0; i<effectiveSize;i++){
+            if(elements[i].equals(e)){
+                ind = i;
+            }            
+        }
+        if (ind < 0 || ind >= effectiveSize || isEmpty()) {
+            throw new IndexOutOfBoundsException("No se pudo encontrar el objeto");            
+        }
+        for(int i=ind; i<effectiveSize;i++){
+            elements[i]=elements[i+1];
+        }
+        elements[effectiveSize-1]=null;
+        effectiveSize--;
+        return true;
+    }
 
 
     @Override

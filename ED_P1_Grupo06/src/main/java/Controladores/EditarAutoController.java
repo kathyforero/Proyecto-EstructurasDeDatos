@@ -674,10 +674,11 @@ public class EditarAutoController {
                 Iterator<Reporte> it = reportes.iterator();
                 while(it.hasNext()){
                     r.addLast(it.next());
+                }  
+                if(reportes!=null){
+                    runrunAuto.setReportes(reportes);
                 }
-                runrunAuto.setReportes(r);
-            } else if(reportes!=null){
-                runrunAuto.setReportes(reportes);
+                
             }
             System.out.println("El auto ha sido creado!");
             System.out.println("el auto creado es "+runrunAuto.toString());

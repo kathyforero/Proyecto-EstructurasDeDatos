@@ -115,6 +115,7 @@ public class AnadirReporteController{
     }
     
     public void cargarTabla(){
+        
         tcCat.setCellValueFactory(new PropertyValueFactory<>("categoria"));
         tcDesc.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
         if(auto!=null){
@@ -122,13 +123,16 @@ public class AnadirReporteController{
                 Iterator<Reporte> it = auto.getReportes().iterator();
                 while(it.hasNext()){
                     reportes.add(it.next());
-                }            
+                }                
             }
         }
         if(reportesArr!=null){
             Iterator<Reporte> it = reportesArr.iterator();
             while(it.hasNext()){
-                reportes.add(it.next());
+                Reporte r = it.next();
+                if(!reportes.contains(r)){
+                    reportes.add(r);
+                }
             }
         }
         if(tvCatDesc!=null){
@@ -177,7 +181,83 @@ public class AnadirReporteController{
                 System.out.println(reportesArr.toString());
             }
         }
-    }   
+    }
+    
+    public void eliminarReporte(){
+        
+        Reporte select = tvCatDesc.getSelectionModel().getSelectedItem();
+        ArrayList<Reporte> reporteFinal = new ArrayList<>();
+        
+        if (select != null) {                    
+            
+            if(auto.getReportes()!=null){
+                ArrayList<Reporte> reportesExist = auto.getReportes();
+                Iterator<Reporte> it2 = reportesExist.iterator();
+                while(it2.hasNext()){
+                    Reporte r = it2.next();
+                    System.out.println(select);
+                    System.out.println(r);
+                    if(select.getCategoria().equals(r.getCategoria()) && select.getDescripcion().equals(r.getDescripcion())){
+                        reportes.remove(r);
+                        reportesExist.removeObject(r);                        
+                    }
+                }
+                Iterator<Reporte> it3 = reportesExist.iterator();
+                while(it3.hasNext()){
+                    Reporte r = it3.next();
+                    System.out.println("");                    
+                    System.out.println(r);
+                    reporteFinal.addLast(r);
+                }
+            }
+            
+            if(reportesArr!=null){
+                Iterator<Reporte> it = reportesArr.iterator();
+                while(it.hasNext()){
+                    Reporte r = it.next();
+                    System.out.println(select);
+                    System.out.println(r);
+                    if(select.getCategoria().equals(r.getCategoria()) && select.getDescripcion().equals(r.getDescripcion())){
+                        reportes.remove(r);
+                        reportesArr.removeObject(r);                        
+                    }
+                }
+
+                Iterator<Reporte> it4 = reportesArr.iterator();
+                while(it4.hasNext()){
+                    Reporte r = it4.next();
+                    System.out.println("");  
+                    System.out.println(r);
+                    if(reporteFinal!=null){
+                        Iterator<Reporte> it5 = reporteFinal.iterator();
+                        while(it5.hasNext()){
+                            Reporte r2 = it5.next();
+                            if(!r2.equals(r)){
+                                reporteFinal.addLast(r);
+                            }
+                        }
+                    } else{
+                        reporteFinal.addLast(r);
+                    }
+                }
+            }
+            tvCatDesc.setItems(reportes);
+            if(procedencia.equals("c")){
+                /*FXMLLoader loader = new FXMLLoader(getClass().getResource("crearauto.fxml"));
+                Parent root = loader.load();
+                CrearAutoController crearautocontroller = loader.getController();*/
+                crearAutoController.setReportes(reporteFinal);
+                System.out.println(reportesArr.toString());
+            } else if(procedencia.equals("e")){
+                /*FXMLLoader loader = new FXMLLoader(getClass().getResource("editarauto.fxml"));
+                Parent root = loader.load();
+                EditarAutoController editarautocontroller = loader.getController();*/
+                editarAutoController.setReportes(reporteFinal);
+                System.out.println(reportesArr.toString());
+            }
+        }
+        
+    }
     
 
 }
