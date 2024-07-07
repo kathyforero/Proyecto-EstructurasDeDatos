@@ -123,15 +123,11 @@ public class MisAutosController {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
         lblUser.setText(usuario.getNombre()+" "+usuario.getApellido()+"!");    
-        System.out.println("1");
         settearAutosD();
-        System.out.println("2");
         if (autosDueño.size()>0){
             autoDNodo=autosDueño.getHeader();
         }        
-        System.out.println("3");
         cargarAutos();
-        System.out.println("4");
     }
     
     public Usuario getUsuario() {

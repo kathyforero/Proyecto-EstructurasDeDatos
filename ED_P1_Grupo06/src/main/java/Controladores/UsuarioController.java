@@ -558,13 +558,9 @@ public class UsuarioController implements Initializable{
             Iterator<Auto> it = autos.iterator();
             while (it.hasNext()) {
                 Auto auto = it.next();
-                System.out.println("Marca: " + auto.getMarca().getName());
-                System.out.println("Modelo: " + auto.getModelo());
-                System.out.println("Año: " + auto.getAño());
-                System.out.println("Kilometraje: " + auto.getKilometraje() + " km");
-                System.out.println("Precio: $" + auto.getPrecio());
-                System.out.println("Ubicación: " + auto.getUbicacion().getDisplayName());
-                System.out.println("-----------------------");
+                System.out.println("Hay "+autos.size()+" en la lista");
+                System.out.println("Marca: " + auto.getMarca().getName()+" Modelo: " + auto.getModelo()+"Precio: $" + auto.getPrecio());
+  
             }
 
             
@@ -622,13 +618,8 @@ public void ordenarAutoPorXCriterio() {
             Iterator<Auto> it = autos.iterator();
             while (it.hasNext()) {
                 Auto auto = it.next();
-                System.out.println("Marca: " + auto.getMarca().getName());
-                System.out.println("Modelo: " + auto.getModelo());
-                System.out.println("Año: " + auto.getAño());
-                System.out.println("Kilometraje: " + auto.getKilometraje() + " km");
-                System.out.println("Precio: $" + auto.getPrecio());
-                System.out.println("Ubicación: " + auto.getUbicacion().getDisplayName());
-                System.out.println("-----------------------");
+                System.out.println("Hay "+autos.size()+" en la lista");
+                System.out.println("Marca: " + auto.getMarca().getName()+" Modelo: " + auto.getModelo()+"Precio: $" + auto.getPrecio());
             }
             autoNodo=autos.getHeader();
             cargarAutos(); 
