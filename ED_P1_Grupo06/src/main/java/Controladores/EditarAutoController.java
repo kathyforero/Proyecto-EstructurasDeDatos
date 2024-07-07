@@ -701,7 +701,10 @@ public class EditarAutoController {
     @FXML
     private void eliminarAuto(){        
         try{
-            
+            Sistema.eliminarAutoFavoritoGlobal(auto);
+            Map<String, Usuario> usuarios = Archivos.leerUsuarios();   
+            Usuario u=usuarios.get(usuario.getCorreo());
+            usuario=u;
             Boolean removed = Sistema.eliminarAuto(auto);            
             alertaAutoEliminado();
             

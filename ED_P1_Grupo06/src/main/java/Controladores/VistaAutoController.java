@@ -201,18 +201,13 @@ public class VistaAutoController {
             if(fav.size()>0){
                 DoublyCircularNode<Auto> a=fav.getHeader();
                 boolean bandera=true;
-                int index=0;
                 do{
-                    index++;
-                    System.out.println("repeticion: "+index);
                     Auto au=a.getContent();
                     if(au.getPlaca().equals(auto.getPlaca())){
                         fav.removeNode(a);
                         bandera=false;
-                        System.out.println("termino if");
                     }else{
                         a=a.getNext();
-                        System.out.println("no da error");
                     }
                 }while(a!=fav.getHeader() && bandera);
             }

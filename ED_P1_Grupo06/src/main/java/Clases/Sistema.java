@@ -7,7 +7,9 @@ import javafx.scene.image.Image;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 public class Sistema implements Serializable{
     private static final long serialVersionUID = 2004140222041502L;
@@ -89,8 +91,44 @@ public class Sistema implements Serializable{
         }
     }
     
-    public static void eliminarAutoFavorito(Auto auto){
+    public static void eliminarAutoFavoritoGlobal(Auto auto){
+        try{
+            Map<String, Usuario> usuarios = Archivos.leerUsuarios();           
+            Set correos = usuarios.keySet();
+            Iterator<String> it = correos.iterator();
+            while(it.hasNext()){
+                Usuario u=usuarios.get(it.next());
+                eliminarAutoFavorito(auto,u);
+                actualizarUsuario(u);
+            }
+            
+        }catch(Exception e) {
+            System.err.println("ERROR AL ELIMINAR FAVORITOS GLOBAL!!! " + e.getMessage());
+        }
         
+    }
+    
+    private static void eliminarAutoFavorito(Auto auto, Usuario usuario){
+        try{
+            DoublyCircularList<Auto> fav = usuario.getFavoritos();            
+            if(fav.size()>0){
+                DoublyCircularNode<Auto> a=fav.getHeader();
+                boolean bandera=true;
+                do{
+                    Auto au=a.getContent();
+                    if(au.getPlaca().equals(auto.getPlaca())){
+                        fav.removeNode(a);
+                        bandera=false;
+                    }else{
+                        a=a.getNext();
+                    }
+                }while(a!=fav.getHeader() && bandera);
+            }
+            usuario.setFavorito(fav);
+        }catch(Exception e) {
+            System.err.println("ERROR AL ELIMINAR AUTO DE FAVORITO!!! " + e.getMessage());
+        }
+    
     }
     
     public static boolean actualizarUsuario(Usuario user){
