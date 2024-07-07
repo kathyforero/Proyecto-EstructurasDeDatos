@@ -587,7 +587,21 @@ public class UsuarioController implements Initializable{
                 }
             };
         } else if (criterio.equals("Precio")) {
-            return Comparator.comparingDouble(Auto::getPrecio);
+            //return Comparator.comparingDouble(Auto::getPrecio);
+            return new Comparator<Auto>() {
+                @Override
+                public int compare(Auto auto1, Auto auto2) {
+                    float p1 = auto1.getPrecio();
+                    float p2 = auto2.getPrecio();
+                    if (p1==p2) {
+                        int km1 = auto1.getKilometraje();
+                        int km2 = auto2.getKilometraje();
+                        return Integer.compare(km1, km2);
+                    } else {
+                        return Double.compare(p1,p2);
+                    }
+                }
+            };
         } else if (criterio.equals("Año del Auto")) {
             return Comparator.comparingInt(Auto::getAño).reversed(); // Ordenar por año en orden descendente
         } else if (criterio.equals("Kilometraje")) {
