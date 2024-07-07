@@ -188,6 +188,7 @@ public class UsuarioController implements Initializable{
     private Label msg2;
     @FXML
     private CheckBox checkCalidad;
+    @FXML
     private ImageView btnCancelar;
     @FXML
     private Button btnComparar;
@@ -345,6 +346,7 @@ public class UsuarioController implements Initializable{
     public void cargarAutos(){
         
         if (autos.size()>0){
+            autoNodo=autos.getHeader();
             mostrarAutosAdelante();
             if(autos.size()<7){
                 mostrarAutosAdelante.setVisible(false);
@@ -756,6 +758,7 @@ public void ordenarAutoPorXCriterio() {
         return comp;
     }
     
+    @FXML
     public void ordenarAutoPorReporte() {
                
         Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -767,22 +770,20 @@ public void ordenarAutoPorXCriterio() {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             System.out.println("Usuario seleccionó Sí."); 
-            
-        Platform.runLater(()->{
-        Comparator<Auto> comp = ordenarPorReporte();
-        
-        DoublyCircularList<Auto> autosConReport = new DoublyCircularList<>();
-        for(DoublyCircularNode<Auto> n = autos.getLast().getNext(); ; n = n.getNext()){
-            if(n.getContent().getReportes()!=null){
-                if(n.getContent().getReportes().size()>0){
-                    autosConReport.addLast(n.getContent());                    
+            Comparator<Auto> comp = ordenarPorReporte();
+
+            DoublyCircularList<Auto> autosConReport = new DoublyCircularList<>();
+            for(DoublyCircularNode<Auto> n = autos.getLast().getNext(); ; n = n.getNext()){
+                if(n.getContent().getReportes()!=null){
+                    if(n.getContent().getReportes().size()>0){
+                        autosConReport.addLast(n.getContent());                    
+                    }
+                }
+                if(n==autos.getLast()){
+                    break;
                 }
             }
-            if(n==autos.getLast()){
-                break;
-            }
-        }
-        autos = autosConReport;
+            autos = autosConReport;
         
         if (comp != null && autos.size()>0) {           
             
@@ -803,24 +804,25 @@ public void ordenarAutoPorXCriterio() {
             System.out.println("No hay autos.");
             btnError.setText("No hay autos con reportes :(");
         }
-        }); } else {
+       }else {
             System.out.println("Usuario seleccionó No o cerró el diálogo.");
         }
     }
     
+    @FXML
     public void checkExcelenteCalidad(){
         if(checkCalidad.isSelected()){
-            DoublyCircularList<Auto> autosExcelentes = new DoublyCircularList<>();            
+            DoublyCircularList<Auto> autosExcelentes = new DoublyCircularList<>();    
             Iterator<Auto> it = autos.iterator();
             while(it.hasNext()){
                 boolean entra = true;
+                System.out.println("SE REPITE");
                 Auto auto = it.next();
-                if(auto.getReportes().size()>0 || auto.getReportes()!=null){
+                if(auto.getReportes()!=null){
                     ArrayList<Reporte> reportes = auto.getReportes();
                     for(int i = 1; i<=reportes.size(); i++){
                         if(reportes.get(i).getCategoria().equalsIgnoreCase("Accidente")){
                             entra = false;
-                            break;
                         }
                     }
                 }
@@ -830,11 +832,12 @@ public void ordenarAutoPorXCriterio() {
             }
             System.out.println("Lista de AUTOS EXCELENTES: " + autosExcelentes.toString());
             System.out.println(autosExcelentes.size() + " & " + autos.size());            
-            autos = autosExcelentes;
+            setAutos(autosExcelentes);
             System.out.println(autos.size());
             cargarAutos();
+            
         } else {
-            Platform.runLater(()->{
+            
             Comparator<Auto> comp = ordenarPorReporte();
 
             DoublyCircularList<Auto> autosConReport = new DoublyCircularList<>();
@@ -870,7 +873,7 @@ public void ordenarAutoPorXCriterio() {
                 System.out.println("No hay autos.");
                 btnError.setText("No hay autos con reportes :(");
             }
-            });
+            
         }
     }   
 
@@ -1082,7 +1085,6 @@ public void ordenarAutoPorXCriterio() {
         
     }
     
-    @FXML
     private void abrirComparar(Auto a1, Auto a2) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("comparadorAutos.fxml"));

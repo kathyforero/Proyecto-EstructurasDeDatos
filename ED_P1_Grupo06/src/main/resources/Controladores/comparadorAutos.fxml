@@ -149,15 +149,11 @@
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <StackPane layoutX="100.0" layoutY="20.0" prefHeight="224.0" prefWidth="252.0">
-               <children>
-                  <ImageView fx:id="imgViewCar" fitHeight="224.0" fitWidth="252.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@preview.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </StackPane>
+            <ImageView fx:id="imgViewCar" fitHeight="224.0" fitWidth="252.0" layoutX="101.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@preview.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="523.0" layoutY="214.0" prefHeight="622.0" prefWidth="454.0" style="-fx-background-color: #443059;">
@@ -282,15 +278,11 @@
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <StackPane layoutX="102.0" layoutY="20.0" prefHeight="224.0" prefWidth="252.0">
-               <children>
-                  <ImageView fx:id="imgViewCar1" fitHeight="224.0" fitWidth="252.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@preview.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </StackPane>
+            <ImageView fx:id="imgViewCar1" fitHeight="224.0" fitWidth="252.0" layoutX="101.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@preview.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>
