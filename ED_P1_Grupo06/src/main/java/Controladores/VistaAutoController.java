@@ -176,13 +176,6 @@ public class VistaAutoController {
         }
     }
     
-    public void mostrarReportes() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Lo sentimos");
-        alert.setHeaderText("Opción no disponible.");
-        alert.setContentText("Esta opción aún está en desarrollo! :(");
-        alert.showAndWait();
-    }
     
     @FXML
     public void añadirFav() {
@@ -194,17 +187,42 @@ public class VistaAutoController {
     
     @FXML
     public void quitarFav() {
-        
-        if(usuario.deleteFavorito(auto)){
-            System.out.println("Se elimino de favs "+usuario.getFavoritos().size());
-        }else{
-            System.out.println("ERROR AL ELIMINAR");
-        }
-        
-        
+        if(eliminarAutoFavorito()){
+            System.out.println("Auto eliminado");
+        }      
         mostrarAñadirFav();
         Sistema.actualizarUsuario(usuario);
         
+    }
+    
+    public boolean eliminarAutoFavorito(){
+        try{
+            DoublyCircularList<Auto> fav = usuario.getFavoritos();            
+            if(fav.size()>0){
+                DoublyCircularNode<Auto> a=fav.getHeader();
+                boolean bandera=true;
+                int index=0;
+                do{
+                    index++;
+                    System.out.println("repeticion: "+index);
+                    Auto au=a.getContent();
+                    if(au.getPlaca().equals(auto.getPlaca())){
+                        fav.removeNode(a);
+                        bandera=false;
+                        System.out.println("termino if");
+                    }else{
+                        a=a.getNext();
+                        System.out.println("no da error");
+                    }
+                }while(a!=fav.getHeader() && bandera);
+            }
+            usuario.setFavorito(fav);
+
+            return true;
+        }catch(Exception e) {
+            System.err.println("ERROR AL ELIMINAR AUTO DE FAVORITO!!! " + e.getMessage());
+            return false;
+        }
     }
         
     public boolean verificarFav(){

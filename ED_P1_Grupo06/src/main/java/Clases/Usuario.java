@@ -49,16 +49,7 @@ public class Usuario implements Serializable{
     public void addFavorito(Auto auto) {
         favoritos.addLast(auto);
     }   
-    
-    public boolean deleteFavorito(Auto auto) {
-        if(!favoritos.removeNode(new DoublyCircularNode(auto)).equals(null)){
-            return true;
-        }else{
-            return false;
-        }
-        
-    }  
-        
+                
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
