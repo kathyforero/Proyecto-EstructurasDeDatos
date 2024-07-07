@@ -2,6 +2,7 @@
 
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -145,11 +146,16 @@
          <children>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <ImageView fx:id="imgAuto1" fitHeight="124.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@preview.png" />
-                     </image>
-                  </ImageView>
+                  <HBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <CheckBox fx:id="c1" mnemonicParsing="false" />
+                        <ImageView fx:id="imgAuto1" fitHeight="124.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                           <image>
+                              <Image url="@preview.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="1">
@@ -186,11 +192,16 @@
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                  <ImageView fx:id="imgAuto2" fitHeight="132.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@preview.png" />
-                     </image>
-                  </ImageView>
+                  <HBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <CheckBox fx:id="c2" mnemonicParsing="false" />
+                        <ImageView fx:id="imgAuto2" fitHeight="132.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                           <image>
+                              <Image url="@preview.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -214,11 +225,16 @@
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2">
                <children>
-                  <ImageView fx:id="imgAuto3" fitHeight="128.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@preview.png" />
-                     </image>
-                  </ImageView>
+                  <HBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <CheckBox fx:id="c3" mnemonicParsing="false" />
+                        <ImageView fx:id="imgAuto3" fitHeight="128.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                           <image>
+                              <Image url="@preview.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="3">
@@ -311,11 +327,16 @@
          <children>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <ImageView fx:id="imgAuto4" fitHeight="124.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@preview.png" />
-                     </image>
-                  </ImageView>
+                  <HBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <CheckBox fx:id="c4" mnemonicParsing="false" />
+                        <ImageView fx:id="imgAuto4" fitHeight="124.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                           <image>
+                              <Image url="@preview.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="1">
@@ -352,11 +373,16 @@
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                  <ImageView fx:id="imgAuto5" fitHeight="132.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@preview.png" />
-                     </image>
-                  </ImageView>
+                  <HBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <CheckBox fx:id="c5" mnemonicParsing="false" />
+                        <ImageView fx:id="imgAuto5" fitHeight="132.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                           <image>
+                              <Image url="@preview.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -380,11 +406,16 @@
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2">
                <children>
-                  <ImageView fx:id="imgAuto6" fitHeight="128.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                     <image>
-                        <Image url="@preview.png" />
-                     </image>
-                  </ImageView>
+                  <HBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <CheckBox fx:id="c6" mnemonicParsing="false" />
+                        <ImageView fx:id="imgAuto6" fitHeight="128.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                           <image>
+                              <Image url="@preview.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="3">

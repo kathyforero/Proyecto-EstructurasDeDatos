@@ -658,6 +658,18 @@ public void ordenarAutoPorXCriterio() {
         } while (swapped);
     }
     
+    /*
+    public void ordenarPorReporte(){
+        Comparator<Auto> comp = new Comparator<>(){
+            int 
+            
+            @Override
+            public int compare(Auto a1, Auto a2){                
+                if()
+            }
+        };
+    }*/
+    
 
 
     @Override
