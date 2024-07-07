@@ -88,4 +88,17 @@ public class Sistema implements Serializable{
             return false;
         }
     }
+    
+    public static boolean actualizarUsuario(Usuario user){
+        try{
+            Map<String, Usuario> Usuarios = Archivos.leerUsuarios();           
+            Usuarios.remove(user.getCorreo());
+            Usuarios.put(user.getCorreo(), user);
+            Archivos.guardarUsuarios(Usuarios);
+            return true;
+        }catch(Exception e) {
+            System.err.println("ERROR AL ELIMINAR Usuario!!! " + e.getMessage());
+            return false;
+        }
+    }
 }
