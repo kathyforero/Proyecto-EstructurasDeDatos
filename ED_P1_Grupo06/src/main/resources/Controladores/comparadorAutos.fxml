@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1000.0" style="-fx-background-color: #0D050E;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.VistaAutoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1000.0" style="-fx-background-color: #0D050E;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.ComparadorAutosController">
    <children>
       <ImageView fitHeight="137.0" fitWidth="111.0" layoutX="47.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -149,11 +149,15 @@
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <ImageView fx:id="imgViewCar" fitHeight="224.0" fitWidth="252.0" layoutX="101.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@preview.png" />
-               </image>
-            </ImageView>
+            <StackPane layoutX="100.0" layoutY="20.0" prefHeight="224.0" prefWidth="252.0">
+               <children>
+                  <ImageView fx:id="imgViewCar" fitHeight="224.0" fitWidth="252.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@preview.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </StackPane>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="523.0" layoutY="214.0" prefHeight="622.0" prefWidth="454.0" style="-fx-background-color: #443059;">
@@ -278,11 +282,15 @@
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <ImageView fx:id="imgViewCar1" fitHeight="224.0" fitWidth="252.0" layoutX="101.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@preview.png" />
-               </image>
-            </ImageView>
+            <StackPane layoutX="102.0" layoutY="20.0" prefHeight="224.0" prefWidth="252.0">
+               <children>
+                  <ImageView fx:id="imgViewCar1" fitHeight="224.0" fitWidth="252.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@preview.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </StackPane>
          </children>
       </AnchorPane>
    </children>

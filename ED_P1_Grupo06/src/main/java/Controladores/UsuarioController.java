@@ -26,6 +26,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import javafx.scene.control.Alert;
@@ -170,8 +171,6 @@ public class UsuarioController implements Initializable{
     @FXML
     private ImageView mostrarAutosAtras;
     @FXML
-    private Button btnComp;
-    @FXML
     private CheckBox c1;
     @FXML
     private CheckBox c2;
@@ -189,7 +188,19 @@ public class UsuarioController implements Initializable{
     private Label msg2;
     @FXML
     private CheckBox checkCalidad;
+    private ImageView btnCancelar;
+    @FXML
+    private Button btnComparar;
+    @FXML
+    private Button btnListo;
+    private Map<CheckBox,Auto> checksAutos;
+    public Map<CheckBox, Auto> getChecksAutos() {
+        return checksAutos;
+    }
 
+    public void setChecksAutos(Map<CheckBox, Auto> autosSeleccionados) {
+        this.checksAutos = autosSeleccionados;
+    }
     
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
@@ -199,6 +210,7 @@ public class UsuarioController implements Initializable{
             autoNodo=autos.getHeader();
         }
         cargarAutos();
+        quitarChecks();
     }
 
     public Usuario getUsuario() {
@@ -353,9 +365,7 @@ public class UsuarioController implements Initializable{
     public void mostrarAutosAdelante(){
         
             int index = 1;
-            if (autoNodo == null || autos.getHeader() == null) {
-            return; // No hay autos para mostrar
-            }
+            Map<CheckBox,Auto> checksAutos= new LinkedHashMap();
             do {
                 Auto auto = autoNodo.getContent();
                  try {
@@ -399,16 +409,16 @@ public class UsuarioController implements Initializable{
                 precioAuto1.setText("$"+auto.getPrecio());
                 precioAuto1.setOpacity(1);
                 
+                Field check = getClass().getDeclaredField("c" + index);
+                check.setAccessible(true);
+                CheckBox checkBox = (CheckBox) check.get(this); 
+                checksAutos.put(checkBox, auto);
+                setChecksAutos(checksAutos);
             } catch (NoSuchFieldException | IllegalAccessException e) {
                 e.printStackTrace();
             }
                 index++; 
-                autosMostrados++; 
                 autoNodo = autoNodo.getNext();
-                if(autoNodo.equals(autos.getHeader())){
-                    autosMostrados=1;
-                    }
-                
             } while (autoNodo != autos.getHeader() && index<=6);
             if(autoNodo.equals(autos.getHeader()) || autos.size()==1){
                     ponerBlanco(index);
@@ -1011,6 +1021,108 @@ public void ordenarAutoPorXCriterio() {
         ordenarAutoPorXCriterio();
 
     }   
+
+    @FXML
+    private void mostrarCheck() {
+        if(imgAuto1.getOpacity()!=0){
+            c1.setVisible(true);
+        }
+        if(imgAuto2.getOpacity()!=0){
+            c2.setVisible(true);
+        }
+        if(imgAuto3.getOpacity()!=0){
+            c3.setVisible(true);
+        }
+        if(imgAuto4.getOpacity()!=0){
+            c4.setVisible(true);
+        }
+        if(imgAuto5.getOpacity()!=0){
+            c5.setVisible(true);
+        }
+        if(imgAuto6.getOpacity()!=0){
+            c6.setVisible(true);
+        }
+        
+        btnListo.setVisible(true);
+        btnListo.setDisable(false);
+        btnCancelar.setVisible(true);
+        btnCancelar.setDisable(false);
+        btnComparar.setVisible(false);
+        btnComparar.setDisable(true);
+        
+    }
+    
+    
+
+    @FXML
+    private void mostrarComparar() {
+        Map<CheckBox,Auto> mapaCheckAutos=getChecksAutos();
+        ArrayList<Auto> seleccionados=new ArrayList<>();
+        int seleccs = 0;
+        try{
+            for (int i=1;i<7;i++){
+                Field checkField = getClass().getDeclaredField("c" + i);
+                checkField.setAccessible(true);
+                CheckBox checkBox = (CheckBox) checkField.get(this); 
+                if(checkBox.isSelected()){
+                    seleccs++;
+                    seleccionados.addLast(mapaCheckAutos.get(checkBox));
+                }
+            }
+        }catch(Exception e){
+            System.out.println("HUBO UN PROBLEMA AL CONTAR LOS CHECKBOXS"+e.getMessage());
+        }
+        if(seleccs!=2){
+             msgError("Debes seleccionar 2 vehiculos para comparar!");
+         }else{
+             msgErrorOff();
+             abrirComparar(seleccionados.get(1),seleccionados.get(2));
+         }
+        
+        
+    }
+    
+    @FXML
+    private void abrirComparar(Auto a1, Auto a2) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("comparadorAutos.fxml"));
+            Parent root = loader.load();
+            ComparadorAutosController comparadorController = loader.getController();
+            comparadorController.setUsuario(usuario,a1,a2);    
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("GuayacoCar - Comparador de Autos");
+            stage.show();
+
+            Stage miStage = (Stage) btnListo.getScene().getWindow();
+            miStage.close();
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void quitarChecks() {
+        c1.setVisible(false);
+        c1.setSelected(false);
+        c2.setVisible(false);
+        c2.setSelected(false);
+        c3.setVisible(false);
+        c3.setSelected(false);
+        c4.setVisible(false);
+        c4.setSelected(false);
+        c5.setVisible(false);
+        c5.setSelected(false);
+        c6.setVisible(false);
+        c6.setSelected(false);
+        btnListo.setVisible(false);
+        btnListo.setDisable(true);
+        btnCancelar.setVisible(false);
+        btnCancelar.setDisable(true);
+        btnComparar.setVisible(true);
+        btnComparar.setDisable(false);
+    }
                 
     
 }
