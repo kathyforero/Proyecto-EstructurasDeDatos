@@ -56,9 +56,13 @@ public class RegisterController {
     if(verificarCorreo(correo)){
         if(verificarContraseña(contraseña, confContraseña)){
             if(verificarCampos(nombre,apellido)){
-                Usuario u = Sistema.crearUsuario(nombre, apellido, correo, contraseña);
-                Sistema.guardarUsuario(u);
-                alertaCuentaCreada();
+                if(verificarNombre(nombre)){
+                    if(verificarApellido(apellido)){
+                        Usuario u = Sistema.crearUsuario(nombre, apellido, correo, contraseña);
+                        Sistema.guardarUsuario(u);
+                        alertaCuentaCreada();
+                    }
+                }
             }
         }else{
             pfContraseña.requestFocus();
@@ -106,7 +110,7 @@ public class RegisterController {
             tfApellido.requestFocus();
            return false; 
         }else if(!cbTerminos.isSelected()){
-            msgError("Debes aceptar los terminos y condiciones");
+            msgError("Debes aceptar los términos y condiciones.");
             cbTerminos.requestFocus();
            return false; 
         }
@@ -115,10 +119,10 @@ public class RegisterController {
     
     public boolean verificarCorreo(String correo){
         if(!(correo.contains("@")) || correo.length()<3){
-            msgError("Ingresa un correo valido :( ");
+            msgError("Ingresa un correo válido :( ");
             return false;
         }else if(Sistema.existeUser(correo)){
-            msgError("¡El correo ya esta registrado!");
+            msgError("¡El correo ya está registrado!");
             return false;
         }
         return true;
@@ -133,6 +137,26 @@ public class RegisterController {
             return false;
         }
         return true;
+    }
+    
+    public boolean verificarNombre(String nombre){                
+        for(char c: nombre.toCharArray()){
+            if(!Character.isLetter(c)){
+                msgError("Ingrese un nombre válido.");
+                return false;
+            }        
+        }
+        return true;
+    }
+    
+    public boolean verificarApellido(String apellido){
+        for(char c: apellido.toCharArray()){
+            if(!Character.isLetter(c)){
+                msgError("Ingrese un apellido válido.");
+                return false;
+            }        
+        }
+        return true;        
     }
     
     public void msgError(String msg){
