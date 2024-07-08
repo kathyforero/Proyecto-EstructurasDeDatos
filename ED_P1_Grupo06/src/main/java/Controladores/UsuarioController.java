@@ -601,7 +601,7 @@ public class UsuarioController implements Initializable{
             while (it.hasNext()) {
                 Auto auto = it.next();
                 System.out.println("Hay "+autos.size()+" en la lista");
-                System.out.println("Marca: " + auto.getMarca().getName()+" Modelo: " + auto.getModelo()+"Precio: $" + auto.getPrecio());
+                System.out.println("Marca: " + auto.getMarca().getName()+" Modelo: " + auto.getModelo()+" Precio: $" + auto.getPrecio());
   
             }
 
