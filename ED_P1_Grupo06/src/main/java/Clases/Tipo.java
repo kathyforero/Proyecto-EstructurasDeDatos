@@ -1,13 +1,15 @@
 package Clases;
 
 public enum Tipo {
-    SEDÁN("Sedán"),
-    COUPÉ("Coupé"),
+    SEDAN("Sedán"),
+    COUPE("Coupé"),
     CONVERTIBLE("Convertible"),
-    HATCHBACK("Hatchback"),
+    HATCHBACK("Hatch-Back"),
     SUV("SUV"),
-    PICK_UP("Pick Up"),
-    HÍBRIDO("Híbrido");
+    PICK_UP("Pick-Up"),
+    HIBRIDO("Híbrido"),
+    LIMOSINA("Limosina"),
+    ELECTRICO("Eléctrico");
     
     private final String displayName;
 
