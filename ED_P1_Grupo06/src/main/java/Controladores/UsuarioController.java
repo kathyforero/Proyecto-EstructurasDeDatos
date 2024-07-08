@@ -905,12 +905,13 @@ public void ordenarAutoPorXCriterio() {
         if(autos.size()!=0){
             autoNodo=autos.getHeader();
             ordenarAutoPorXCriterio();
+            cargarAutos(); 
         }else{
             System.out.println("No hay resultados para el filtro avanzado");
         }
         
         
-        cargarAutos(); 
+        
     }
     
     public boolean filtrado(Auto auto){
@@ -958,7 +959,7 @@ public void ordenarAutoPorXCriterio() {
                 cbOrdenar.setValue("Precio");
                 msgErrorOff();
             }catch(NumberFormatException nfe){
-                msgError("Precio desde en formato incorrecto");
+                msgError("\"Precio desde\" en formato incorrecto.");
                 System.out.println("error formato precio");
                 return false;
             }
@@ -981,7 +982,7 @@ public void ordenarAutoPorXCriterio() {
                  cbOrdenar.setValue("Precio");
                 msgErrorOff();
             }catch(NumberFormatException nfe){
-                msgError("Precio hasta en formato incorrecto");
+                msgError("\"Precio hasta\" en formato incorrecto.");
                 System.out.println("error formato precio");
                 return false;
             }
@@ -998,7 +999,7 @@ public void ordenarAutoPorXCriterio() {
             bandera=Integer.parseInt(KMDesde)<auto.getKilometraje();
             cbOrdenar.setValue("Kilometraje");
             }catch(NumberFormatException nfe){
-                msgError("Kilometraje desde en formato incorrecto");
+                msgError("\"Kilometraje desde\" en formato incorrecto.");
                 System.out.println("error kilometraje formato");
                 return false;
             }
@@ -1014,7 +1015,7 @@ public void ordenarAutoPorXCriterio() {
             bandera=Integer.parseInt(KMHasta)>auto.getKilometraje();
             cbOrdenar.setValue("Kilometraje");
             }catch(NumberFormatException nfe){
-                msgError("Kilometraje hasta en formato incorrecto");
+                msgError("\"Kilometraje hasta\" en formato incorrecto.");
                 System.out.println("error kilometraje formato");
                 return false;
             }
@@ -1114,16 +1115,13 @@ public void ordenarAutoPorXCriterio() {
             System.out.println("HUBO UN PROBLEMA AL CONTAR LOS CHECKBOXS"+e.getMessage());
         }
         if(seleccs<1){
-             msgError("No haz seleccionado ningún vehículo, debes seleccionar 2 vehículos para compararlos!");
+             msgError("No has seleccionado ningún vehículo, debes seleccionar 2 vehículos para compararlos!");
          }
-        else if(seleccs==1 ){
+        else if(seleccs==1){
              msgError("Debes seleccionar más de un vehículo para compararlo con otro!");
         }else if(seleccs >2){
-            msgError("Sólo puedes comparar dos vehículos, selecciona sólo dos por favor!");
-
+            msgError("Solo puedes comparar dos vehículos, ¡selecciona solo dos por favor!");
         }
-    
-        
         else{
              msgErrorOff();
              abrirComparar(seleccionados.get(1),seleccionados.get(2));

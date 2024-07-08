@@ -108,18 +108,10 @@ public class ComparadorAutosController {
         lblModelo1.setText(auto.getModelo());
         lblTipo1.setText(auto.getTipo().getDisplayName());
         lblAño1.setText(Integer.toString(auto.getAño()));
-        if( auto.getKilometraje() >1 ){
-            lblKilom1.setText( Integer.toString( auto.getKilometraje() ) + " kms");
-        }else{
-            lblKilom1.setText( Integer.toString( auto.getKilometraje() ) + " km");
-        }
+        lblKilom1.setText( Integer.toString( auto.getKilometraje() ) + " km");
         lblMotor1.setText(auto.getMotor().getDisplayName());
         lblTrans1.setText(auto.getTransmisión().getDisplayName());
-        if( auto.getPeso() > 1 ){
-            lblPeso1.setText(Float.toString( auto.getPeso() ) + " kgs" );
-        }else{
-            lblPeso1.setText(Float.toString( auto.getPeso() ) + " kg" );
-        }
+        lblPeso1.setText(Float.toString( auto.getPeso() ) + " kg" );
         lblUbi1.setText(auto.getUbicacion().getDisplayName());
         lblEstado1.setText(auto.getEstado().getDisplayName());
     }
