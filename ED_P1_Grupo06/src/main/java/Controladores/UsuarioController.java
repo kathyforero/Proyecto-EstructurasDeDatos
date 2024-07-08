@@ -769,14 +769,16 @@ public void ordenarAutoPorXCriterio() {
         alert.setTitle("Filtro Avanzado Por Reportes");
         alert.setHeaderText("El filtro avanzado por reportes filtra los autos con reportes de mejor a peor calidad basado en un análisis de los mismos. Los autos con accidentes se consideran de peor calidad.");
         alert.setContentText("¿Filtrar autos por reportes?");
-
+        
         
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
+            System.out.println(autos.size());
             System.out.println("Usuario seleccionó Sí."); 
             Comparator<Auto> comp = ordenarPorReporte();
 
             DoublyCircularList<Auto> autosConReport = new DoublyCircularList<>();
+            autos = Archivos.leerAutos();
             for(DoublyCircularNode<Auto> n = autos.getLast().getNext(); ; n = n.getNext()){
                 if(n.getContent().getReportes()!=null){
                     if(n.getContent().getReportes().size()>0){
@@ -806,7 +808,10 @@ public void ordenarAutoPorXCriterio() {
             checkCalidad.setVisible(true);
         } else {
             System.out.println("No hay autos.");
-            btnError.setText("No hay autos con reportes :(");
+            cargarAutos();
+            msgError("No hay autos con reportes :(");
+            
+            
         }
        }else {
             System.out.println("Usuario seleccionó No o cerró el diálogo.");

@@ -133,7 +133,7 @@ public class RegisterController {
             msgError("¡Las contraseñas no son iguales!");
             return false;
         }else if(ccntraseña.length()<3){
-            msgError("La ccntraseña debe ser de más de 3 caracteres");
+            msgError("La contraseña debe ser de más de 3 caracteres");
             return false;
         }
         return true;

@@ -121,7 +121,7 @@ public class AnadirReporteController{
         tcCat.setCellValueFactory(new PropertyValueFactory<>("categoria"));
         tcDesc.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
         if(auto!=null){
-            if(auto.getReportes().size()>0){            
+            if(auto.getReportes()!=null){            
                 Iterator<Reporte> it = auto.getReportes().iterator();
                 while(it.hasNext()){
                     reportes.add(it.next());
