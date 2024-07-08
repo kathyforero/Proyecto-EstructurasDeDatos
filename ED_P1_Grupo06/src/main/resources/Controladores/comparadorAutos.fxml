@@ -16,7 +16,6 @@
          </image>
       </ImageView>
       <Button fx:id="btnRegresar" layoutX="860.0" layoutY="152.0" mnemonicParsing="false" onAction="#regresar" prefHeight="29.0" prefWidth="107.0" styleClass="btnInit" stylesheets="@estilos.css" text="REGRESAR" />
-      <StackPane layoutX="38.0" layoutY="285.0" prefHeight="417.0" prefWidth="470.0" />
       <Label layoutX="228.0" layoutY="60.0" text="¡Bienvenido al comparador de vehículos," textFill="WHITE">
          <font>
             <Font name="Kristen ITC" size="25.0" />
@@ -27,262 +26,272 @@
             <Font name="Kristen ITC" size="25.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="40.0" layoutY="214.0" prefHeight="622.0" prefWidth="454.0" style="-fx-background-color: #2B193E;">
+      <AnchorPane layoutX="40.0" layoutY="214.0" prefHeight="633.0" prefWidth="454.0" style="-fx-background-color: #2B193E;">
          <children>
-            <Label layoutX="47.0" layoutY="288.0" text="PRECIO:" textFill="WHITE">
+            <Label layoutX="47.0" layoutY="272.0" text="PRECIO:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="47.0" layoutY="317.0" text="MARCA:" textFill="WHITE">
+            <Label layoutX="47.0" layoutY="301.0" text="MARCA:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="47.0" layoutY="346.0" text="MODELO:" textFill="WHITE">
+            <Label layoutX="47.0" layoutY="330.0" text="MODELO:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="47.0" layoutY="375.0" text="TIPO:" textFill="WHITE">
+            <Label layoutX="47.0" layoutY="359.0" text="TIPO:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="47.0" layoutY="404.0" text="AÑO:" textFill="WHITE">
+            <Label layoutX="47.0" layoutY="388.0" text="AÑO:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="47.0" layoutY="433.0" text="KILOMETRAJE:" textFill="WHITE">
+            <Label layoutX="47.0" layoutY="417.0" text="KILOMETRAJE:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="47.0" layoutY="462.0" text="MOTOR:" textFill="WHITE">
+            <Label layoutX="47.0" layoutY="446.0" text="MOTOR:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="47.0" layoutY="491.0" text="TRANSMISIÓN:" textFill="WHITE">
+            <Label layoutX="47.0" layoutY="475.0" text="TRANSMISIÓN:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="47.0" layoutY="520.0" text="PESO:" textFill="WHITE">
+            <Label layoutX="47.0" layoutY="504.0" text="PESO:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="47.0" layoutY="549.0" text="UBICACIÓN:" textFill="WHITE">
+            <Label layoutX="47.0" layoutY="533.0" text="UBICACIÓN:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lblPlaca1" layoutX="123.0" layoutY="259.0" prefHeight="20.0" prefWidth="275.0" text="A" textFill="WHITE">
+            <Label fx:id="lblPlaca1" layoutX="123.0" layoutY="243.0" prefHeight="20.0" prefWidth="275.0" text="A" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lblPrecio1" layoutX="123.0" layoutY="288.0" prefHeight="20.0" prefWidth="275.0" text="A" textFill="WHITE">
+            <Label fx:id="lblPrecio1" layoutX="123.0" layoutY="272.0" prefHeight="20.0" prefWidth="275.0" text="A" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lblMarca1" layoutX="133.0" layoutY="317.0" prefHeight="20.0" prefWidth="275.0" text="A" textFill="WHITE">
+            <Label fx:id="lblMarca1" layoutX="133.0" layoutY="301.0" prefHeight="20.0" prefWidth="275.0" text="A" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lblModelo1" layoutX="133.0" layoutY="346.0" prefHeight="20.0" prefWidth="299.0" text="A" textFill="WHITE">
+            <Label fx:id="lblModelo1" layoutX="133.0" layoutY="330.0" prefHeight="20.0" prefWidth="299.0" text="A" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lblTipo1" layoutX="97.0" layoutY="375.0" prefHeight="20.0" prefWidth="312.0" text="A" textFill="WHITE">
+            <Label fx:id="lblTipo1" layoutX="97.0" layoutY="359.0" prefHeight="20.0" prefWidth="312.0" text="A" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lblKilom1" layoutX="163.0" layoutY="433.0" prefHeight="20.0" prefWidth="241.0" text="A" textFill="WHITE">
+            <Label fx:id="lblKilom1" layoutX="163.0" layoutY="417.0" prefHeight="20.0" prefWidth="241.0" text="A" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lblMotor1" layoutX="118.0" layoutY="462.0" prefHeight="20.0" prefWidth="293.0" text="A" textFill="WHITE">
+            <Label fx:id="lblMotor1" layoutX="118.0" layoutY="446.0" prefHeight="20.0" prefWidth="293.0" text="A" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lblTrans1" layoutX="163.0" layoutY="491.0" prefHeight="20.0" prefWidth="241.0" text="A" textFill="WHITE">
+            <Label fx:id="lblTrans1" layoutX="163.0" layoutY="475.0" prefHeight="20.0" prefWidth="241.0" text="A" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lblPeso1" layoutX="100.0" layoutY="520.0" prefHeight="20.0" prefWidth="312.0" text="A" textFill="WHITE">
+            <Label fx:id="lblPeso1" layoutX="100.0" layoutY="504.0" prefHeight="20.0" prefWidth="312.0" text="A" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lblUbi1" layoutX="153.0" layoutY="549.0" prefHeight="20.0" prefWidth="252.0" text="A" textFill="WHITE">
+            <Label fx:id="lblUbi1" layoutX="153.0" layoutY="533.0" prefHeight="20.0" prefWidth="252.0" text="A" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="47.0" layoutY="578.0" text="ESTADO:" textFill="WHITE">
+            <Label layoutX="47.0" layoutY="562.0" text="ESTADO:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lblEstado1" layoutX="121.0" layoutY="578.0" prefHeight="20.0" prefWidth="285.0" text="A" textFill="WHITE">
+            <Label fx:id="lblEstado1" layoutX="121.0" layoutY="562.0" prefHeight="20.0" prefWidth="285.0" text="A" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="50.0" layoutY="259.0" text="PLACA:" textFill="WHITE">
+            <Label layoutX="47.0" layoutY="243.0" text="PLACA:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lblAño1" layoutX="97.0" layoutY="404.0" prefHeight="20.0" prefWidth="312.0" text="A" textFill="WHITE">
+            <Label fx:id="lblAño1" layoutX="97.0" layoutY="388.0" prefHeight="20.0" prefWidth="312.0" text="A" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <ImageView fx:id="imgViewCar" fitHeight="224.0" fitWidth="252.0" layoutX="101.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@preview.png" />
-               </image>
-            </ImageView>
+            <StackPane layoutX="101.0" layoutY="10.0">
+               <children>
+                  <ImageView fx:id="imgViewCar" fitHeight="224.0" fitWidth="252.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@preview.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </StackPane>
+            <Button fx:id="btnReporte1" layoutX="82.0" layoutY="600.0" mnemonicParsing="false" onAction="#abrirReporte1" styleClass="btnGeneral" stylesheets="@estilos.css" text="VER REPORTE DE ACCIDENTES Y REPARACIONES" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="523.0" layoutY="214.0" prefHeight="622.0" prefWidth="454.0" style="-fx-background-color: #443059;">
+      <AnchorPane layoutX="523.0" layoutY="214.0" prefHeight="633.0" prefWidth="454.0" style="-fx-background-color: #443059;">
          <children>
-            <Label layoutX="47.0" layoutY="288.0" text="PRECIO:" textFill="WHITE">
+            <Label layoutX="47.0" layoutY="273.0" text="PRECIO:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="47.0" layoutY="317.0" text="MARCA:" textFill="WHITE">
+            <Label layoutX="47.0" layoutY="302.0" text="MARCA:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="47.0" layoutY="346.0" text="MODELO:" textFill="WHITE">
+            <Label layoutX="47.0" layoutY="331.0" text="MODELO:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="47.0" layoutY="375.0" text="TIPO:" textFill="WHITE">
+            <Label layoutX="47.0" layoutY="360.0" text="TIPO:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="47.0" layoutY="404.0" text="AÑO:" textFill="WHITE">
+            <Label layoutX="47.0" layoutY="389.0" text="AÑO:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="47.0" layoutY="433.0" text="KILOMETRAJE:" textFill="WHITE">
+            <Label layoutX="47.0" layoutY="418.0" text="KILOMETRAJE:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="47.0" layoutY="462.0" text="MOTOR:" textFill="WHITE">
+            <Label layoutX="47.0" layoutY="447.0" text="MOTOR:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="47.0" layoutY="491.0" text="TRANSMISIÓN:" textFill="WHITE">
+            <Label layoutX="47.0" layoutY="476.0" text="TRANSMISIÓN:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="47.0" layoutY="520.0" text="PESO:" textFill="WHITE">
+            <Label layoutX="47.0" layoutY="505.0" text="PESO:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="47.0" layoutY="549.0" text="UBICACIÓN:" textFill="WHITE">
+            <Label layoutX="47.0" layoutY="534.0" text="UBICACIÓN:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lblPlaca11" layoutX="123.0" layoutY="259.0" prefHeight="20.0" prefWidth="275.0" text="A" textFill="WHITE">
+            <Label fx:id="lblPlaca11" layoutX="123.0" layoutY="244.0" prefHeight="20.0" prefWidth="275.0" text="A" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lblPrecio11" layoutX="123.0" layoutY="288.0" prefHeight="20.0" prefWidth="275.0" text="A" textFill="WHITE">
+            <Label fx:id="lblPrecio11" layoutX="123.0" layoutY="273.0" prefHeight="20.0" prefWidth="275.0" text="A" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lblMarca11" layoutX="133.0" layoutY="317.0" prefHeight="20.0" prefWidth="275.0" text="A" textFill="WHITE">
+            <Label fx:id="lblMarca11" layoutX="133.0" layoutY="302.0" prefHeight="20.0" prefWidth="275.0" text="A" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lblModelo11" layoutX="133.0" layoutY="346.0" prefHeight="20.0" prefWidth="299.0" text="A" textFill="WHITE">
+            <Label fx:id="lblModelo11" layoutX="133.0" layoutY="331.0" prefHeight="20.0" prefWidth="299.0" text="A" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lblTipo11" layoutX="97.0" layoutY="375.0" prefHeight="20.0" prefWidth="312.0" text="A" textFill="WHITE">
+            <Label fx:id="lblTipo11" layoutX="97.0" layoutY="360.0" prefHeight="20.0" prefWidth="312.0" text="A" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lblKilom11" layoutX="163.0" layoutY="433.0" prefHeight="20.0" prefWidth="241.0" text="A" textFill="WHITE">
+            <Label fx:id="lblKilom11" layoutX="163.0" layoutY="418.0" prefHeight="20.0" prefWidth="241.0" text="A" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lblMotor11" layoutX="118.0" layoutY="462.0" prefHeight="20.0" prefWidth="293.0" text="A" textFill="WHITE">
+            <Label fx:id="lblMotor11" layoutX="118.0" layoutY="447.0" prefHeight="20.0" prefWidth="293.0" text="A" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lblTrans11" layoutX="163.0" layoutY="491.0" prefHeight="20.0" prefWidth="241.0" text="A" textFill="WHITE">
+            <Label fx:id="lblTrans11" layoutX="163.0" layoutY="476.0" prefHeight="20.0" prefWidth="241.0" text="A" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lblPeso11" layoutX="100.0" layoutY="520.0" prefHeight="20.0" prefWidth="312.0" text="A" textFill="WHITE">
+            <Label fx:id="lblPeso11" layoutX="100.0" layoutY="505.0" prefHeight="20.0" prefWidth="312.0" text="A" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lblUbi11" layoutX="153.0" layoutY="549.0" prefHeight="20.0" prefWidth="252.0" text="A" textFill="WHITE">
+            <Label fx:id="lblUbi11" layoutX="153.0" layoutY="534.0" prefHeight="20.0" prefWidth="252.0" text="A" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="47.0" layoutY="578.0" text="ESTADO:" textFill="WHITE">
+            <Label layoutX="47.0" layoutY="563.0" text="ESTADO:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lblEstado11" layoutX="121.0" layoutY="578.0" prefHeight="20.0" prefWidth="285.0" text="A" textFill="WHITE">
+            <Label fx:id="lblEstado11" layoutX="121.0" layoutY="563.0" prefHeight="20.0" prefWidth="285.0" text="A" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="50.0" layoutY="259.0" text="PLACA:" textFill="WHITE">
+            <Label layoutX="47.0" layoutY="244.0" text="PLACA:" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lblAño11" layoutX="97.0" layoutY="404.0" prefHeight="20.0" prefWidth="312.0" text="A" textFill="WHITE">
+            <Label fx:id="lblAño11" layoutX="97.0" layoutY="389.0" prefHeight="20.0" prefWidth="312.0" text="A" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Label>
-            <ImageView fx:id="imgViewCar1" fitHeight="224.0" fitWidth="252.0" layoutX="101.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@preview.png" />
-               </image>
-            </ImageView>
+            <StackPane layoutX="101.0" layoutY="10.0">
+               <children>
+                  <ImageView fx:id="imgViewCar1" fitHeight="224.0" fitWidth="252.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@preview.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </StackPane>
+            <Button fx:id="btnReporte2" layoutX="82.0" layoutY="600.0" mnemonicParsing="false" onAction="#abrirReporte2" styleClass="btnGeneral" stylesheets="@estilos.css" text="VER REPORTE DE ACCIDENTES Y REPARACIONES" />
          </children>
       </AnchorPane>
    </children>

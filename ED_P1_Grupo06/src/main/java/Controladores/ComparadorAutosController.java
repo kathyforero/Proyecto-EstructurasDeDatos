@@ -124,6 +124,25 @@ public class ComparadorAutosController {
         lblEstado1.setText(auto.getEstado().getDisplayName());
     }
     
+    @FXML
+    public void abrirReporte1() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("vistaReporte.fxml"));
+            Parent root = loader.load();
+            VistaReporteController vistareportecontroller = loader.getController();
+            vistareportecontroller.setUsuario(usuario);
+            vistareportecontroller.setAuto(auto1);
+            vistareportecontroller.cargarTabla();
+            Stage newStage = new Stage();
+            newStage.setScene(new Scene(root));
+            newStage.setTitle("GuayacoCar - Autos a tu Alcance");
+            newStage.show();           
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     public void cargarAuto2(Auto auto) {
         foto = auto.getFotos().getHeader();
         Image image = new Image(foto.getContent().toURI().toString());
@@ -146,6 +165,25 @@ public class ComparadorAutosController {
             lblPeso11.setText(Float.toString( auto.getPeso() ) + " kg" );
         }        lblUbi11.setText(auto.getUbicacion().getDisplayName());
         lblEstado11.setText(auto.getEstado().getDisplayName());
+    }
+    
+    @FXML
+    public void abrirReporte2() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("vistaReporte.fxml"));
+            Parent root = loader.load();
+            VistaReporteController vistareportecontroller = loader.getController();
+            vistareportecontroller.setUsuario(usuario);
+            vistareportecontroller.setAuto(auto2);
+            vistareportecontroller.cargarTabla();
+            Stage newStage = new Stage();
+            newStage.setScene(new Scene(root));
+            newStage.setTitle("GuayacoCar - Autos a tu Alcance");
+            newStage.show();           
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
     public void setAuto1(Auto auto) {
