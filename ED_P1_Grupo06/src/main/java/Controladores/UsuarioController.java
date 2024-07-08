@@ -1113,9 +1113,18 @@ public void ordenarAutoPorXCriterio() {
         }catch(Exception e){
             System.out.println("HUBO UN PROBLEMA AL CONTAR LOS CHECKBOXS"+e.getMessage());
         }
-        if(seleccs!=2){
-             msgError("Debes seleccionar 2 vehiculos para comparar!");
-         }else{
+        if(seleccs<1){
+             msgError("No haz seleccionado ningún vehículo, debes seleccionar 2 vehículos para compararlos!");
+         }
+        else if(seleccs==1 ){
+             msgError("Debes seleccionar más de un vehículo para compararlo con otro!");
+        }else if(seleccs >2){
+            msgError("Sólo puedes comparar dos vehículos, selecciona sólo dos por favor!");
+
+        }
+    
+        
+        else{
              msgErrorOff();
              abrirComparar(seleccionados.get(1),seleccionados.get(2));
          }
