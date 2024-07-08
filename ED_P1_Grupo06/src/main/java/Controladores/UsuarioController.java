@@ -42,7 +42,9 @@ import javafx.scene.input.MouseEvent;
 
 public class UsuarioController implements Initializable{
 
-
+    @FXML
+    private Text txtEncuentreAutoSuenios;
+    
     @FXML
     private TextField tfBusqueda;
     @FXML
@@ -540,6 +542,8 @@ public class UsuarioController implements Initializable{
     public void VerificarModelo(){
         if(cmMarca.getValue()==null){
             msgError("Primero tienes que escoger una marca.");
+            cmMarca.requestFocus();
+            
         }
     }
 
@@ -946,11 +950,22 @@ public void ordenarAutoPorXCriterio() {
         boolean bandera=true;
         String precioDesde = tfPrecioDesde.getText();
         if(!precioDesde.isEmpty()){
-            System.out.println("PRECIO DESDE");
-            System.out.println(Float.parseFloat(precioDesde)<auto.getPrecio());
-            bandera = Float.parseFloat(precioDesde)<auto.getPrecio();
-            cbOrdenar.setValue("Precio");
-        }
+            try{
+                float preciodesde = Float.parseFloat(precioDesde);
+                System.out.println("PRECIO DESDE"+preciodesde);
+                System.out.println(Float.parseFloat(precioDesde)<auto.getPrecio());
+                bandera = Float.parseFloat(precioDesde)<auto.getPrecio();
+                cbOrdenar.setValue("Precio");
+                msgErrorOff();
+            }catch(NumberFormatException nfe){
+                msgError("Precio desde en formato incorrecto");
+                System.out.println("error formato precio");
+                return false;
+            }
+            return bandera;
+         }
+
+        
         return bandera;
     }
     
@@ -958,8 +973,19 @@ public void ordenarAutoPorXCriterio() {
         boolean bandera=true;
         String precioHasta = tfPrecioHasta.getText();
         if(!precioHasta.isEmpty()){
-            bandera=Float.parseFloat(precioHasta)>auto.getPrecio();
-            cbOrdenar.setValue("Precio");
+            try{
+                float preciohasta = Float.parseFloat(precioHasta);
+                System.out.println("PRECIO HASTA"+precioHasta);
+                System.out.println(Float.parseFloat(precioHasta)>auto.getPrecio());
+                  bandera=Float.parseFloat(precioHasta)>auto.getPrecio();
+                 cbOrdenar.setValue("Precio");
+                msgErrorOff();
+            }catch(NumberFormatException nfe){
+                msgError("Precio hasta en formato incorrecto");
+                System.out.println("error formato precio");
+                return false;
+            }
+
         }
         return bandera;
     }
@@ -968,8 +994,14 @@ public void ordenarAutoPorXCriterio() {
         boolean bandera=true;
         String KMDesde = tfKMDesde.getText();
         if(!KMDesde.isEmpty()){
+            try{
             bandera=Integer.parseInt(KMDesde)<auto.getKilometraje();
             cbOrdenar.setValue("Kilometraje");
+            }catch(NumberFormatException nfe){
+                msgError("Kilometraje desde en formato incorrecto");
+                System.out.println("error kilometraje formato");
+                return false;
+            }
         }
         return bandera;
     }
@@ -978,8 +1010,14 @@ public void ordenarAutoPorXCriterio() {
         boolean bandera=true;
         String KMHasta = tfKMHasta.getText();
         if(!KMHasta.isEmpty()){
+            try{
             bandera=Integer.parseInt(KMHasta)>auto.getKilometraje();
             cbOrdenar.setValue("Kilometraje");
+            }catch(NumberFormatException nfe){
+                msgError("Kilometraje hasta en formato incorrecto");
+                System.out.println("error kilometraje formato");
+                return false;
+            }
         }
         return bandera;
     }

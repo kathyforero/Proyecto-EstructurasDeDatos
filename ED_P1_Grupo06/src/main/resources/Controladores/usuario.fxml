@@ -21,7 +21,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1000.0" style="-fx-background-color: #0D050E;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.UsuarioController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1000.0" style="-fx-background-color: #0D050E;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.UsuarioController">
    <children>
       <Button fx:id="btnError" layoutX="136.0" layoutY="302.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="750.0" styleClass="textError" stylesheets="@estilos.css" text="No hay páginas que mostrar" textAlignment="CENTER" textFill="WHITE">
          <font>
@@ -48,7 +48,7 @@
       </Label>
       <AnchorPane layoutX="13.0" layoutY="41.0" prefHeight="245.0" prefWidth="257.0" style="-fx-background-color: #2B193E;">
          <children>
-            <Text fill="WHITE" layoutX="17.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¡Encuentre un auto según sus necesidades!" textAlignment="CENTER" wrappingWidth="213.0859375">
+            <Text fx:id="txtEncuentreAutoSuenios" fill="WHITE" layoutX="17.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¡Encuentre un auto según sus necesidades!" textAlignment="CENTER" wrappingWidth="213.0859375">
                <font>
                   <Font name="Kristen ITC" size="17.0" />
                </font>
