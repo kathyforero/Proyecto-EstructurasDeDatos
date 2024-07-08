@@ -670,7 +670,7 @@ public class EditarAutoController {
             Estado estado = obtenerEstadoDesdeString(cbEstado.getValue());
             Auto runrunAuto = Sistema.crearAuto(precio, prueba, modelo, tipo, anio, placa, kilometraje, motor, transmision, peso, ubicacion, usuario, estado, fotos);
                 System.out.println("AUTO REPORTE: " + auto.getReportes());
-            if(auto.getReportes().size()>0){
+            if(auto.getReportes()!=null){
                 ArrayList<Reporte> lr = auto.getReportes();
                 if(reportes!=null){
                     Iterator<Reporte> it = reportes.iterator();
