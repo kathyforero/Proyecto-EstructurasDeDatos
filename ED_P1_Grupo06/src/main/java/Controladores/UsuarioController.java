@@ -913,6 +913,7 @@ public void ordenarAutoPorXCriterio() {
             cargarAutos(); 
         }else{
             System.out.println("No hay resultados para el filtro avanzado");
+            cargarAutos(); 
         }
         
         
