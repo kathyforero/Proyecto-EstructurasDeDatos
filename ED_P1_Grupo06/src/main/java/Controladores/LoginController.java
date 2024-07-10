@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import Bases.*;
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.Map;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -28,33 +29,39 @@ public class LoginController {
     @FXML
     private Button btCrearCuenta;    
     @FXML
-    private Button btnError;
+    private Button btnError;   
+    Comparator<String> compString=Sistema.comparadorString();
     
     @FXML
     public void iniciarSesion() {
         String correo = tfCorreo.getText();
         String contraseña = pfContraseña.getText();
-        if(correo!="" && correo.contains("@")){
+        if(compString.compare(correo,"")!=0 && correo.contains("@")){
             if(!(contraseña.isEmpty())){
                 if (!(Sistema.existeUser(correo))) {
                     msgError("Correo no encontrado");
+                    System.out.println("Esa clave(Correo) no existe en el Mapa Usuarios!");
                     tfCorreo.requestFocus();
                 } else {
                     if (!Sistema.logearUser(correo, contraseña)) {
                         msgError("Contraseña incorrecta");
+                        System.out.println("Esa no es la contrasenia correcta del Usuarios!");
                         pfContraseña.requestFocus();
                     } else {
                         System.out.println("Inicio de sesión exitoso para " + correo+"!");
+                        System.out.println("Usuario existe en Mapa y la contrasenia es correcta!");
                         Usuario u = Sistema.getUsuario(correo);
                         mostrarGUI(u);
                     }
                 }
             }else{
                 msgError("Ingrese una contraseña :/");
+                System.out.println("El campo de contrasenia no es valido");
                 pfContraseña.requestFocus();
             }    
         }else{
             msgError("Ingrese un correo valido");
+            System.out.println("El campo de correo no es valido");
             tfCorreo.requestFocus();
         }
     }

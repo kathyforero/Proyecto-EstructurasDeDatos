@@ -20,18 +20,18 @@ public class Archivos {
             // Crear el archivo si no existe
             if (!archivo.exists()) {
                 archivo.createNewFile();
-                System.out.println("ARCHIVO DE USUARIOS CREADO CON EXITO");
+                System.out.println("ARCHIVOS: El archivo \"Usuarios\" fue creado con exito");
             }
 
             // Escribir el mapa de usuarios en el archivo
             try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(archivo))) {
                 out.writeObject(usuarios);
-                System.out.println("USUARIOS GUARDADOS CON EXITO!");
+                System.out.println("ARCHIVOS: Usuario guardados con exito");
             } catch (IOException e) {
-                System.err.println("ERROR AL GUARDAR!!!: "+ e.getMessage());
+                System.err.println("ARCHIVOS: Error al guardar Mapa Usuarios "+ e.getMessage());
             }
         } catch (IOException e) {
-            System.err.println("NO SE CREO EL ARCHIVO " + e.getMessage());
+            System.err.println("ARCHIVOS: El archivo \"Usuarios\" NO fue creado: " + e.getMessage());
         }
     }    
     
@@ -44,12 +44,12 @@ public class Archivos {
             // Leer el mapa de usuarios del archivo
             try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(archivo))) {
                 usuarios = (Map<String, Usuario>) in.readObject();
-                System.out.println("USUARIOS LEIDOS CON EXITO!");
+                System.out.println("ARCHIVOS: Mapa Usuarios leido con exito");
             } catch (IOException | ClassNotFoundException e) {
-                System.err.println("ERROR AL LEER!!! " + e.getMessage());
+                System.err.println("ARCHIVOS: Error al leer Mapa Usuarios: " + e.getMessage());
             }
         } catch (Exception e) {
-            System.err.println("ERROR AL PROCESAR" + e.getMessage());
+            System.err.println("ARCHIVOS: Error al leer Mapa Usuarios: " + e.getMessage());
         }
 
         if (usuarios == null) {
@@ -65,18 +65,18 @@ public class Archivos {
             // Crear el archivo si no existe
             if (!archivo.exists()) {
                 archivo.createNewFile();
-                System.out.println("ARCHIVO DE AUTOS CREADO CON EXITO");
+                System.out.println("ARCHIVOS: El archivo \"Autos\" fue creado con exito");
             }
 
             // Escribir el mapa de Autos en el archivo
             try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(archivo))) {
                 out.writeObject(autos);
-                System.out.println("Autos GUARDADOS CON EXITO!");
+                System.out.println("ARCHIVOS: Autos guardados con exito");
             } catch (IOException e) {
-                System.err.println("ERROR AL GUARDAR!!!: "+ e.getMessage()+ " ocurrio en clase archivos, metodo guardarAutos");
+                System.err.println("ARCHIVOS: Error al guardar DCLL Autos: "+ e.getMessage());
             }
         } catch (IOException e) {
-            System.err.println("NO SE CREO EL ARCHIVO " + e.getMessage()+" ocurrio en clase archivos, metodo guardarAutos");
+            System.err.println("ARCHIVOS: El archivo \"Usuarios\" NO fue creado: " + e.getMessage());
         }
     }    
 
@@ -88,12 +88,12 @@ public class Archivos {
             // Leer el mapa de usuarios del archivo
             try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(archivo))) {
                 autos = (DoublyCircularList<Auto>) in.readObject();
-                System.out.println("AUTOS LEIDOS CON EXITO!");
+                System.out.println("ARCHIVOS: DCLL Autos leida con exito");
             } catch (IOException | ClassNotFoundException e) {
-                System.err.println("ERROR AL LEER!!! " + e.getMessage()+" ocurrio en clase archivos, metodo leerAutos");
+                System.err.println("ARCHIVOS: Error al leer DCLL Autos: " + e.getMessage());
             }
         } catch (Exception e) {
-            System.err.println("ERROR AL PROCESAR" + e.getMessage()+" ocurrio en clase archivos, metodo leerAutos");
+            System.err.println("ARCHIVOS: Error al leer DCLL Autos: " + e.getMessage());
         }
 
         if (autos == null) {
