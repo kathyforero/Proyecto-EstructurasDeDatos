@@ -101,11 +101,11 @@ public class RegisterController {
     }
     
     public boolean verificarCampos(String nombre,String apellido){
-        if(nombre.equals("")){
+        if(Sistema.comparadorString().compare(nombre, "")==0){
            msgError("El nombre no debe estar vacio!");
            tfNombre.requestFocus();
            return false; 
-        }else if(apellido.equals("")){
+        }else if(Sistema.comparadorString().compare(nombre, "")==0){
             msgError("El apellido no debe estar vacio!");
             tfApellido.requestFocus();
            return false; 
@@ -129,7 +129,7 @@ public class RegisterController {
     }
     
     public boolean verificarContraseña(String ccntraseña, String confContraseña){
-        if(! ccntraseña.equals(confContraseña)){
+        if(Sistema.comparadorString().compare(ccntraseña, confContraseña)!=0){
             msgError("¡Las contraseñas no son iguales!");
             return false;
         }else if(ccntraseña.length()<3){

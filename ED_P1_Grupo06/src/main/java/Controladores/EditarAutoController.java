@@ -677,7 +677,7 @@ public class EditarAutoController {
                     while(it.hasNext()){
                         Reporte reporte = it.next();
                         for(int i = 1; i<=lr.size(); i++){
-                            if(!lr.get(i).equals(reporte)){
+                            if(Sistema.comparadorString().compare(lr.get(i).getCategoria(), reporte.getCategoria())!=0 || Sistema.comparadorString().compare(lr.get(i).getDescripcion(), reporte.getDescripcion())!=0){
                                 lr.addLast(reporte);
                             }
                         }

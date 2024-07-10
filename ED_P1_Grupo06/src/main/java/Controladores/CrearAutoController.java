@@ -155,7 +155,7 @@ public class CrearAutoController {
             cbModelo.setValue(null);
             String txtMarca = cbMarca.getValue();
             for(MarcaDeAuto marca:MarcaDeAuto.values()){
-                if(marca.getName().equals(txtMarca)){
+                if(Sistema.comparadorString().compare(marca.getName(), txtMarca)==0){
                     ArrayList<String> modelos = marca.getModels();
                     for (int i=1; i<=modelos.size(); i++){
                         cbModelo.getItems().add(modelos.get(i));
@@ -308,7 +308,7 @@ public class CrearAutoController {
         if(autos.size()>0){
             Iterator<Auto> it = autos.iterator();
             while(it.hasNext()){
-                if(it.next().getPlaca().toLowerCase().equals(placa.toLowerCase())){
+                if(Sistema.comparadorString().compare(it.next().getPlaca().toLowerCase(), placa.toLowerCase())==0){
                     msgError("Esa placa ya existe!! Ingrese una placa válida.");
                     return false;
                 }
@@ -362,7 +362,7 @@ public class CrearAutoController {
         Float kmF = Float.valueOf(km);
         System.out.println(cbEstado.getValue());
         System.out.println(kmF);
-        if(cbEstado.getValue().toLowerCase().equals("Nuevo".toLowerCase()) && kmF > 150){
+        if(Sistema.comparadorString().compare(cbEstado.getValue().toLowerCase(), "Nuevo".toLowerCase())==0 && kmF > 150){
             msgError("Un auto nuevo no puede tener esa cantidad de kilometraje!!");
             return false;
         }
@@ -497,7 +497,7 @@ public class CrearAutoController {
     // Método para obtener el valor del enum Tipo a partir del string seleccionado
     public Tipo obtenerTipo(String tipoSeleccionado) {
         for (Tipo tipo : Tipo.values()) {
-            if (tipo.getDisplayName().equalsIgnoreCase(tipoSeleccionado)) {
+            if (Sistema.comparadorString().compare(tipo.getDisplayName().toLowerCase(), tipoSeleccionado.toLowerCase())==0) {
                 return tipo;
             }
         }
@@ -507,7 +507,7 @@ public class CrearAutoController {
     // Método para obtener el valor del enum MarcaDeAuto a partir del string seleccionado
     public MarcaDeAuto obtenerMarca(String marcaSeleccionada) {
         for (MarcaDeAuto marca : MarcaDeAuto.values()) {
-            if (marca.getName().equalsIgnoreCase(marcaSeleccionada)) {
+            if (Sistema.comparadorString().compare(marca.getName().toLowerCase(), marcaSeleccionada.toLowerCase())==0) {
                 return marca;
             }
         }
@@ -517,7 +517,7 @@ public class CrearAutoController {
     // Método para obtener el valor del enum Motor a partir del string seleccionado
     public Motor obtenerMotorDesdeString(String motorSeleccionado) {
         for (Motor motor : Motor.values()) {
-            if (motor.getDisplayName().equalsIgnoreCase(motorSeleccionado)) {
+            if (Sistema.comparadorString().compare(motor.getDisplayName().toLowerCase(), motorSeleccionado.toLowerCase())==0) {
                 return motor;
             }
         }
@@ -527,7 +527,7 @@ public class CrearAutoController {
     // Método para obtener el valor del enum Transmision a partir del string seleccionado
     public Transmision obtenerTransmisionDesdeString(String transmisionSeleccionada) {
         for (Transmision transmision : Transmision.values()) {
-            if (transmision.getDisplayName().equalsIgnoreCase(transmisionSeleccionada)) {
+            if (Sistema.comparadorString().compare(transmision.getDisplayName().toLowerCase(), transmisionSeleccionada.toLowerCase())==0) {
                 return transmision;
             }
         }
@@ -537,7 +537,7 @@ public class CrearAutoController {
     // Método para obtener el valor del enum Ubicacion a partir del string seleccionado
     public Ubicacion obtenerUbicacionDesdeString(String ubicacionSeleccionada) {
         for (Ubicacion ubicacion : Ubicacion.values()) {
-            if (ubicacion.getDisplayName().equalsIgnoreCase(ubicacionSeleccionada)) {
+            if (Sistema.comparadorString().compare(ubicacion.getDisplayName().toLowerCase(), ubicacionSeleccionada.toLowerCase())==0) {
                 return ubicacion;
             }
         }
@@ -548,7 +548,7 @@ public class CrearAutoController {
     // Método para obtener el valor del enum Estado a partir del string seleccionado
     public Estado obtenerEstadoDesdeString(String estadoSeleccionado) {
         for (Estado estado : Estado.values()) {
-            if (estado.getDisplayName().equalsIgnoreCase(estadoSeleccionado)) {
+            if (Sistema.comparadorString().compare(estado.getDisplayName().toLowerCase(), estadoSeleccionado.toLowerCase())==0) {
                 return estado;
             }
         }

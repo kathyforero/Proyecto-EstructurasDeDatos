@@ -203,7 +203,7 @@ public class VistaAutoController {
                 boolean bandera=true;
                 do{
                     Auto au=a.getContent();
-                    if(au.getPlaca().equals(auto.getPlaca())){
+                    if(Sistema.comparadorString().compare(au.getPlaca().toLowerCase(), auto.getPlaca().toLowerCase())==0){
                         fav.removeNode(a);
                         bandera=false;
                     }else{
@@ -243,7 +243,7 @@ public class VistaAutoController {
                 Objects.equals(auto.getModelo(), p.getModelo()) &&
                 Objects.equals(auto.getTipo().getDisplayName(),p.getTipo().getDisplayName()) &&
                 */
-                Objects.equals(auto.getPlaca(),p.getPlaca());
+                Sistema.comparadorString().compare(auto.getPlaca().toLowerCase(), p.getPlaca().toLowerCase())==0;                
                 /*
                 &&
                 Objects.equals(auto.getMotor().getDisplayName(),p.getMotor().getDisplayName()) &&
@@ -294,7 +294,7 @@ public class VistaAutoController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(procedencia));
             Parent root = loader.load();
-            if(procedencia.equals("usuario.fxml")){
+            if(Sistema.comparadorString().compare(procedencia.toLowerCase(), "usuario.fxml".toLowerCase())==0){
                 UsuarioController Controller = loader.getController();
                 Controller.setUsuario(usuario);
             }else{
