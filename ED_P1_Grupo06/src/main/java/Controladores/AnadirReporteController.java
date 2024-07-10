@@ -7,6 +7,7 @@ package Controladores;
 import Bases.ArrayList;
 import Clases.Auto;
 import Clases.Reporte;
+import Clases.Sistema;
 import Clases.Usuario;
 import java.io.IOException;
 import java.net.URL;
@@ -71,7 +72,7 @@ public class AnadirReporteController{
     
     private CrearAutoController crearAutoController;
     
-    private EditarAutoController editarAutoController;
+    private EditarAutoController editarAutoController;  
     
     public void setCrearAutoController(CrearAutoController controller) {
         this.crearAutoController = controller;
@@ -184,19 +185,19 @@ public class AnadirReporteController{
     }    
     
     
-    public void agregarReporte() throws IOException{
+    public void agregarReporte() throws IOException{        
         if(verificarCampos()==true){
             Reporte r = new Reporte(cbCategoria.getValue(), txtDesc.getText());
             reportesArr.addLast(r);
             reportes.add(r);
             tvCatDesc.setItems(reportes);
-            if(procedencia.equals("c")){
+            if(Sistema.comparadorString().compare(procedencia, "c")==0){
                 /*FXMLLoader loader = new FXMLLoader(getClass().getResource("crearauto.fxml"));
                 Parent root = loader.load();
                 CrearAutoController crearautocontroller = loader.getController();*/
                 crearAutoController.setReportes(reportesArr);
                 System.out.println(reportesArr.toString());
-            } else if(procedencia.equals("e")){
+            } else if(Sistema.comparadorString().compare(procedencia, "e")==0){
                 /*FXMLLoader loader = new FXMLLoader(getClass().getResource("editarauto.fxml"));
                 Parent root = loader.load();
                 EditarAutoController editarautocontroller = loader.getController();*/
@@ -221,7 +222,7 @@ public class AnadirReporteController{
                     Reporte r = it2.next();
                     System.out.println(select);
                     System.out.println(r);
-                    if(select.getCategoria().equals(r.getCategoria()) && select.getDescripcion().equals(r.getDescripcion())){
+                    if(Sistema.comparadorString().compare(select.getCategoria(), r.getCategoria())==0 && Sistema.comparadorString().compare(select.getDescripcion(), r.getDescripcion())==0){
                         reportes.remove(r);
                         reportesExist.removeObject(r);                        
                     }
@@ -241,7 +242,7 @@ public class AnadirReporteController{
                     Reporte r = it.next();
                     System.out.println(select);
                     System.out.println(r);
-                    if(select.getCategoria().equals(r.getCategoria()) && select.getDescripcion().equals(r.getDescripcion())){
+                    if(Sistema.comparadorString().compare(select.getCategoria(), r.getCategoria())==0 && Sistema.comparadorString().compare(select.getDescripcion(), r.getDescripcion())==0){
                         reportes.remove(r);
                         reportesArr.removeObject(r);                        
                     }
@@ -256,7 +257,7 @@ public class AnadirReporteController{
                         Iterator<Reporte> it5 = reporteFinal.iterator();
                         while(it5.hasNext()){
                             Reporte r2 = it5.next();
-                            if(!r2.equals(r)){
+                            if(Sistema.comparadorString().compare(r2.getCategoria(), r.getCategoria())!=0 || Sistema.comparadorString().compare(r2.getDescripcion(), r.getDescripcion())!=0){
                                 reporteFinal.addLast(r);
                             }
                         }
@@ -266,7 +267,7 @@ public class AnadirReporteController{
                 }
             }
             tvCatDesc.setItems(reportes);
-            if(procedencia.equals("c")){
+            if(Sistema.comparadorString().compare(procedencia, "c")==0){
                 /*FXMLLoader loader = new FXMLLoader(getClass().getResource("crearauto.fxml"));
                 Parent root = loader.load();
                 CrearAutoController crearautocontroller = loader.getController();*/
@@ -276,7 +277,7 @@ public class AnadirReporteController{
                     crearAutoController.setReportes(null);
                 }
                 System.out.println(reportesArr.toString());
-            } else if(procedencia.equals("e")){
+            } else if(Sistema.comparadorString().compare(procedencia, "e")==0){
                 /*FXMLLoader loader = new FXMLLoader(getClass().getResource("editarauto.fxml"));
                 Parent root = loader.load();
                 EditarAutoController editarautocontroller = loader.getController();*/

@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -142,5 +143,16 @@ public class Sistema implements Serializable{
             System.err.println("ERROR AL ELIMINAR Usuario!!! " + e.getMessage());
             return false;
         }
+    }
+    
+    public static Comparator<String> comparadorString(){
+        Comparator<String> comp = new Comparator<>(){
+            @Override
+            public int compare(String s1, String s2){
+                return s1.compareTo(s2);
+            }
+        };        
+        
+        return comp;
     }
 }
