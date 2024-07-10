@@ -197,6 +197,9 @@ public class UsuarioController implements Initializable{
     @FXML
     private Button btnListo;
     private Map<CheckBox,Auto> checksAutos;
+    
+    private Comparator<String> compString = Sistema.comparadorString();
+    
     public Map<CheckBox, Auto> getChecksAutos() {
         return checksAutos;
     }
@@ -555,7 +558,7 @@ public class UsuarioController implements Initializable{
             cmModelo.setValue(null);
             String txtMarca = cmMarca.getValue();
             for(MarcaDeAuto marca:MarcaDeAuto.values()){
-                if(marca.getName().equals(txtMarca)){
+                if(compString.compare(marca.getName(), txtMarca)==0){
                     ArrayList<String> modelos = marca.getModels();
                     for (int i=1; i<=modelos.size(); i++){
                         cmModelo.getItems().add(modelos.get(i));
@@ -611,22 +614,22 @@ public class UsuarioController implements Initializable{
     }
     public Comparator<Auto> ordenarPorComp() {
         String criterio = cbOrdenar.getValue();
-        if (criterio.equals("Marca y Modelo")) {
+        if (compString.compare(criterio, "Marca y Modelo")==0) {
             return new Comparator<Auto>() {
                 @Override
                 public int compare(Auto auto1, Auto auto2) {
                     String marca1 = auto1.getMarca().getName();
                     String marca2 = auto2.getMarca().getName();
-                    if (!marca1.equals(marca2)) {
+                    if (compString.compare(marca1, marca2)!=0) {
                         return marca1.compareTo(marca2);
-                    } else if(!auto1.getModelo().equals(auto2.getModelo())) {
+                    } else if(compString.compare(auto1.getModelo(), auto2.getModelo())!=0) {
                         return auto1.getModelo().compareTo(auto2.getModelo());
                     }else{
                         return Double.compare(auto1.getPrecio(), auto2.getPrecio());
                     }
                 }
             };
-        } else if (criterio.equals("Precio")) {
+        } else if (compString.compare(criterio, "Precio")==0) {
             //return Comparator.comparingDouble(Auto::getPrecio);
             return new Comparator<Auto>() {
                 @Override
@@ -642,9 +645,9 @@ public class UsuarioController implements Initializable{
                     }
                 }
             };
-        } else if (criterio.equals("Año del Auto")) {
+        } else if (compString.compare(criterio, "Año del Auto")==0) {
             return Comparator.comparingInt(Auto::getAño).reversed(); // Ordenar por año en orden descendente
-        } else if (criterio.equals("Kilometraje")) {
+        } else if (compString.compare(criterio, "Kilometraje")==0) {
             return new Comparator<Auto>() {
                 @Override
                 public int compare(Auto auto1, Auto auto2) {
@@ -731,9 +734,9 @@ public void ordenarAutoPorXCriterio() {
                 Iterator<Reporte> it1 = reporte1.iterator();
                 while(it1.hasNext()){
                     String cat = it1.next().getCategoria();
-                    if(cat.toLowerCase().equals("mantenimiento".toLowerCase())){
+                    if(compString.compare(cat.toLowerCase(), "mantenimiento".toLowerCase())==0){
                         mant1+=1;
-                    } else if(cat.toLowerCase().equals("reparación".toLowerCase())){
+                    } else if(compString.compare(cat.toLowerCase(), "reparación".toLowerCase())==0){
                         rep1+=1;
                     } else{
                         accid1+=1;
@@ -742,9 +745,9 @@ public void ordenarAutoPorXCriterio() {
                 Iterator<Reporte> it2 = reporte2.iterator();
                 while(it2.hasNext()){
                     String cat = it2.next().getCategoria();
-                    if(cat.toLowerCase().equals("mantenimiento".toLowerCase())){
+                    if(compString.compare(cat.toLowerCase(), "mantenimiento".toLowerCase())==0){
                         mant2+=1;
-                    } else if(cat.toLowerCase().equals("reparación".toLowerCase())){
+                    } else if(compString.compare(cat.toLowerCase(), "reparación".toLowerCase())==0){
                         rep2+=1;
                     } else{
                         accid2+=1;
@@ -830,7 +833,7 @@ public void ordenarAutoPorXCriterio() {
                 if(auto.getReportes()!=null){
                     ArrayList<Reporte> reportes = auto.getReportes();
                     for(int i = 1; i<=reportes.size(); i++){
-                        if(reportes.get(i).getCategoria().equalsIgnoreCase("Accidente")){
+                        if(compString.compare(reportes.get(i).getCategoria().toLowerCase(), "Accidente".toLowerCase())==0){
                             entra = false;
                         }
                     }
@@ -937,7 +940,7 @@ public void ordenarAutoPorXCriterio() {
     public boolean marcaFiltro(Auto auto){
         boolean bandera=true;
         if(cmMarca.getValue()!=null){
-            bandera=cmMarca.getValue().equals(auto.getMarca().getName());
+            bandera=compString.compare(cmMarca.getValue(), auto.getMarca().getName())==0;
             cbOrdenar.setValue("Marca y Modelo");
         }
         return bandera;
@@ -947,7 +950,7 @@ public void ordenarAutoPorXCriterio() {
     public boolean modeloFiltro(Auto auto){
         boolean bandera=true;
         if(cmModelo.getValue()!=null){
-            bandera=cmModelo.getValue().equals(auto.getModelo());
+            bandera=compString.compare(cmModelo.getValue(), auto.getModelo())==0;
             cbOrdenar.setValue("Marca y Modelo");
         }
         return bandera;
@@ -1032,7 +1035,7 @@ public void ordenarAutoPorXCriterio() {
     public boolean tipoFiltro(Auto auto){
         boolean bandera=true;
         if(cbTipo.getValue()!=null){
-            bandera=cbTipo.getValue().equals(auto.getTipo().getDisplayName());
+            bandera=compString.compare(cbTipo.getValue(), auto.getTipo().getDisplayName())==0;
             cbOrdenar.setValue("Marca y Modelo");
         }
         return bandera;

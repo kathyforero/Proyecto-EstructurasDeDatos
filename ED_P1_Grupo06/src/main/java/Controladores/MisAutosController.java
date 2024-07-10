@@ -10,6 +10,7 @@ import Bases.DoublyCircularList;
 import Bases.DoublyCircularNode;
 import java.io.File;
 import java.lang.reflect.Field;
+import java.util.Comparator;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -118,6 +119,8 @@ public class MisAutosController {
     private ImageView mostrarAutosAtras;
     @FXML
     private Button btnError;
+    
+    private Comparator<String> compString = Sistema.comparadorString();
     
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;

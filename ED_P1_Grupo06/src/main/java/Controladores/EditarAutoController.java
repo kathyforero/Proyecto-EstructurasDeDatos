@@ -366,7 +366,7 @@ public class EditarAutoController {
             System.out.println("It: " + autoit.getPlaca().toLowerCase());
             System.out.println("PD: " + placaPredet.toLowerCase());
             System.out.println("");
-            if(autoit.getPlaca().toLowerCase().equals(placa.toLowerCase()) && !this.placaPredet.toLowerCase().equals(autoit.getPlaca().toLowerCase())){
+            if(compString.compare(autoit.getPlaca().toLowerCase(), placa.toLowerCase())==0 && compString.compare(this.placaPredet.toLowerCase(), autoit.getPlaca().toLowerCase())!=0){
                 msgError("Esa placa ya existe!! Ingrese una placa válida.");
                 return false;
             }
@@ -419,7 +419,7 @@ public class EditarAutoController {
         Float kmF = Float.valueOf(km);
         System.out.println(cbEstado.getValue());
         System.out.println(kmF);
-        if(cbEstado.getValue().toLowerCase().equals("Nuevo".toLowerCase()) && kmF > 150){
+        if(compString.compare(cbEstado.getValue().toLowerCase(), "Nuevo".toLowerCase())==0 && kmF > 150){
             msgError("Un auto nuevo no puede tener esa cantidad de kilometraje!!");
             return false;
         }
@@ -541,7 +541,7 @@ public class EditarAutoController {
     // Método para obtener el valor del enum Tipo a partir del string seleccionado
     public Tipo obtenerTipo(String tipoSeleccionado) {
         for (Tipo tipo : Tipo.values()) {
-            if (tipo.getDisplayName().equalsIgnoreCase(tipoSeleccionado)) {
+            if (compString.compare(tipo.getDisplayName().toLowerCase(), tipoSeleccionado.toLowerCase())==0) {
                 return tipo;
             }
         }
@@ -551,7 +551,7 @@ public class EditarAutoController {
     // Método para obtener el valor del enum MarcaDeAuto a partir del string seleccionado
     public MarcaDeAuto obtenerMarca(String marcaSeleccionada) {
         for (MarcaDeAuto marca : MarcaDeAuto.values()) {
-            if (marca.getName().equalsIgnoreCase(marcaSeleccionada)) {
+            if (compString.compare(marca.getName().toLowerCase(), marcaSeleccionada.toLowerCase())==0) {
                 return marca;
             }
         }
@@ -561,7 +561,7 @@ public class EditarAutoController {
     // Método para obtener el valor del enum Motor a partir del string seleccionado
     public Motor obtenerMotorDesdeString(String motorSeleccionado) {
         for (Motor motor : Motor.values()) {
-            if (motor.getDisplayName().equalsIgnoreCase(motorSeleccionado)) {
+            if (compString.compare(motor.getDisplayName().toLowerCase(), motorSeleccionado.toLowerCase())==0) {
                 return motor;
             }
         }
@@ -571,7 +571,7 @@ public class EditarAutoController {
     // Método para obtener el valor del enum Transmision a partir del string seleccionado
     public Transmision obtenerTransmisionDesdeString(String transmisionSeleccionada) {
         for (Transmision transmision : Transmision.values()) {
-            if (transmision.getDisplayName().equalsIgnoreCase(transmisionSeleccionada)) {
+            if (compString.compare(transmision.getDisplayName().toLowerCase(), transmisionSeleccionada.toLowerCase())==0) {
                 return transmision;
             }
         }
@@ -581,7 +581,7 @@ public class EditarAutoController {
     // Método para obtener el valor del enum Ubicacion a partir del string seleccionado
     public Ubicacion obtenerUbicacionDesdeString(String ubicacionSeleccionada) {
         for (Ubicacion ubicacion : Ubicacion.values()) {
-            if (ubicacion.getDisplayName().equalsIgnoreCase(ubicacionSeleccionada)) {
+            if (compString.compare(ubicacion.getDisplayName().toLowerCase(), ubicacionSeleccionada.toLowerCase())==0) {
                 return ubicacion;
             }
         }
@@ -592,7 +592,7 @@ public class EditarAutoController {
     // Método para obtener el valor del enum Estado a partir del string seleccionado
     public Estado obtenerEstadoDesdeString(String estadoSeleccionado) {
         for (Estado estado : Estado.values()) {
-            if (estado.getDisplayName().equalsIgnoreCase(estadoSeleccionado)) {
+            if (compString.compare(estado.getDisplayName().toLowerCase(), estadoSeleccionado.toLowerCase())==0) {
                 return estado;
             }
         }
