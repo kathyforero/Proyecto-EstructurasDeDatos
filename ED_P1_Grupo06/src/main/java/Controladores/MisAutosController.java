@@ -120,7 +120,7 @@ public class MisAutosController {
     @FXML
     private Button btnError;
     
-    private Comparator<String> compString = Sistema.comparadorString();
+    private Comparator<String> compString = Sistema.comparadorString();    
     
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
@@ -150,7 +150,7 @@ public class MisAutosController {
             if(autos.size()>=1){
                 DoublyCircularNode<Auto> n = autos.getHeader();
                 do{
-                    if(n.getContent().getUsuario().getNombre().equals(this.usuario.getNombre()) && n.getContent().getUsuario().getApellido().equals(this.usuario.getApellido()) && n.getContent().getUsuario().getCorreo().equals(this.usuario.getCorreo()) && n.getContent().getUsuario().getContraseña().equals(this.usuario.getContraseña())){
+                    if(compString.compare(n.getContent().getUsuario().getNombre(), this.usuario.getNombre())==0 && compString.compare(n.getContent().getUsuario().getApellido(), this.usuario.getApellido())==0 && compString.compare(n.getContent().getUsuario().getCorreo(), this.usuario.getCorreo())==0 && compString.compare(n.getContent().getUsuario().getContraseña(), this.usuario.getContraseña())==0){
                         autosDueño.addLast(n.getContent());                        
                     }
                     n=n.getNext();
