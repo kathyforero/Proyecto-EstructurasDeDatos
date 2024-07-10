@@ -210,11 +210,9 @@ public class UsuarioController implements Initializable{
     
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+        System.out.println("USUARIO CONTROLLER: Usuario seteado!");
         lblUser.setText(usuario.getNombre()+" "+usuario.getApellido()+"!");
         //cargarControladores();
-        if (autos.size()>0){
-            autoNodo=autos.getHeader();
-        }
         cargarAutos();
         quitarChecks();
     }
@@ -310,44 +308,7 @@ public class UsuarioController implements Initializable{
             e.printStackTrace();
         }
     }
-    /*
-    public void cargarControladores(){
-        imagenes.addLast(imgAuto1);
-        imagenes.addLast(imgAuto2);
-        imagenes.addLast(imgAuto3);
-    }
-    
-    
-<<<<<<< Updated upstream
-    
-=======
-    public void controladoresAnios(){
-        anios.addLast(anioAuto1);
-        anios.addLast(anioAuto2);
-        anios.addLast(anioAuto3);
-        anios.addLast(anioAuto4);
-        anios.addLast(anioAuto5);
-        anios.addLast(anioAuto6);
-    }
-    
-    public void controladoresKM(){
-        KMS.addLast(kmAutos1);
-        KMS.addLast(kmAutos2);
-        KMS.addLast(kmAutos3);
-        KMS.addLast(kmAutos4);
-        KMS.addLast(kmAutos5);
-        KMS.addLast(kmAutos6);
-    }
-    
-    public void controladoresProvincia(){
-        KMS.addLast(provAuto1);
-        KMS.addLast(provAuto1);
-        KMS.addLast(provAuto1);
-        KMS.addLast(provAuto1);
-        KMS.addLast(provAuto1);
-        KMS.addLast(provAuto1);
-    }
-    */
+
     public void cargarAutos(){
         
         if (autos.size()>0){
@@ -365,6 +326,7 @@ public class UsuarioController implements Initializable{
         }else{
             ponerBlanco(1);
             msgError("No hay autos que mostrar");
+            System.out.println("USUARIO CONTROLLER: no hay autos en la lista actual");
         }
     }
     
@@ -375,62 +337,67 @@ public class UsuarioController implements Initializable{
             Map<CheckBox,Auto> checksAutos= new LinkedHashMap();
             do {
                 Auto auto = autoNodo.getContent();
-                 try {
-                // Obtener y configurar ImageView
-                Field imgField = getClass().getDeclaredField("imgAuto" + index);
-                imgField.setAccessible(true);
-                ImageView imgView = (ImageView) imgField.get(this);   
-                foto = auto.getFotos().getHeader();
-                Image image = new Image(foto.getContent().toURI().toString());
-                imgView.setImage(image);
-                imgView.setOpacity(1);
-                imgView.setOnMouseClicked(event -> mostrarAuto(auto));
-                
-                Field FtituloAuto = getClass().getDeclaredField("tituloAuto" + index);
-                FtituloAuto.setAccessible(true);
-                Label tituloAuto = (Label) FtituloAuto.get(this); 
-                tituloAuto.setText(auto.getMarca().getName()+" - "+auto.getModelo());
-                tituloAuto.setOpacity(1);
-                
-                Field FanioAuto1 = getClass().getDeclaredField("anioAuto" + index);
-                FanioAuto1.setAccessible(true);
-                Label anioAuto1 = (Label) FanioAuto1.get(this); 
-                anioAuto1.setText(Integer.toString(auto.getAño())+" •");
-                anioAuto1.setOpacity(1);
-                
-                Field FkmAutos = getClass().getDeclaredField("kmAutos" + index);
-                FkmAutos.setAccessible(true);
-                Label kmAutos = (Label) FkmAutos.get(this); 
-                kmAutos.setText(Integer.toString(auto.getKilometraje())+" km");
-                kmAutos.setOpacity(1);
-                
-                Field FprovAuto = getClass().getDeclaredField("provAuto" + index);
-                FprovAuto.setAccessible(true);
-                Label provAuto = (Label) FprovAuto.get(this); 
-                provAuto.setText(auto.getUbicacion().getDisplayName());
-                provAuto.setOpacity(1);
-                
-                Field FprecioAuto1 = getClass().getDeclaredField("precioAuto" + index);
-                FprecioAuto1.setAccessible(true);
-                Label precioAuto1 = (Label) FprecioAuto1.get(this); 
-                precioAuto1.setText("$"+auto.getPrecio());
-                precioAuto1.setOpacity(1);
-                
-                Field check = getClass().getDeclaredField("c" + index);
-                check.setAccessible(true);
-                CheckBox checkBox = (CheckBox) check.get(this); 
-                checksAutos.put(checkBox, auto);
-                setChecksAutos(checksAutos);
-            } catch (NoSuchFieldException | IllegalAccessException e) {
+                try {
+                    /*
+                    Esta fue la mejor forma que se encontró para poder hacer que los campos se oculten/muestren de manera dinamica
+                    basicamente el metodo obtiene los campos segun un string declarado y los ira iterando ya que el primer ImageView
+                    se llama imgAuto1, el segundo imgAuto2, asi sucesivamente hasta llegar al 6 y con los titulos, precios, etc.
+
+                    */
+                    Field imgField = getClass().getDeclaredField("imgAuto" + index);
+                    imgField.setAccessible(true);
+                    ImageView imgView = (ImageView) imgField.get(this);   
+                    foto = auto.getFotos().getHeader();
+                    Image image = new Image(foto.getContent().toURI().toString());
+                    imgView.setImage(image);
+                    imgView.setOpacity(1);
+                    imgView.setOnMouseClicked(event -> mostrarAuto(auto));
+
+                    Field FtituloAuto = getClass().getDeclaredField("tituloAuto" + index);
+                    FtituloAuto.setAccessible(true);
+                    Label tituloAuto = (Label) FtituloAuto.get(this); 
+                    tituloAuto.setText(auto.getMarca().getName()+" - "+auto.getModelo());
+                    tituloAuto.setOpacity(1);
+
+                    Field FanioAuto1 = getClass().getDeclaredField("anioAuto" + index);
+                    FanioAuto1.setAccessible(true);
+                    Label anioAuto1 = (Label) FanioAuto1.get(this); 
+                    anioAuto1.setText(Integer.toString(auto.getAño())+" •");
+                    anioAuto1.setOpacity(1);
+
+                    Field FkmAutos = getClass().getDeclaredField("kmAutos" + index);
+                    FkmAutos.setAccessible(true);
+                    Label kmAutos = (Label) FkmAutos.get(this); 
+                    kmAutos.setText(Integer.toString(auto.getKilometraje())+" km");
+                    kmAutos.setOpacity(1);
+
+                    Field FprovAuto = getClass().getDeclaredField("provAuto" + index);
+                    FprovAuto.setAccessible(true);
+                    Label provAuto = (Label) FprovAuto.get(this); 
+                    provAuto.setText(auto.getUbicacion().getDisplayName());
+                    provAuto.setOpacity(1);
+
+                    Field FprecioAuto1 = getClass().getDeclaredField("precioAuto" + index);
+                    FprecioAuto1.setAccessible(true);
+                    Label precioAuto1 = (Label) FprecioAuto1.get(this); 
+                    precioAuto1.setText("$"+auto.getPrecio());
+                    precioAuto1.setOpacity(1);
+
+                    Field check = getClass().getDeclaredField("c" + index);
+                    check.setAccessible(true);
+                    CheckBox checkBox = (CheckBox) check.get(this); 
+                    checksAutos.put(checkBox, auto);
+                    setChecksAutos(checksAutos);
+                } catch (NoSuchFieldException | IllegalAccessException e) {
                 e.printStackTrace();
-            }
-                index++; 
-                autoNodo = autoNodo.getNext();
-            } while (autoNodo != autos.getHeader() && index<=6);
-            if(autoNodo.equals(autos.getHeader()) || autos.size()==1){
-                    ponerBlanco(index);
-                   
                 }
+            index++; 
+            autoNodo = autoNodo.getNext();
+        } while (autoNodo != autos.getHeader() && index<=6);
+        if(autoNodo.equals(autos.getHeader()) || autos.size()==1){
+            System.out.println("USUARIO CONTROLLER: se muestran "+index+" autos en la pestaña actual");
+            ponerBlanco(index);           
+        }
             
     }
     
@@ -455,7 +422,6 @@ public class UsuarioController implements Initializable{
                        autoNodo=autoNodo.getPrevious();
                 }
             mostrarAutosAdelante();
-        
 }
     
     

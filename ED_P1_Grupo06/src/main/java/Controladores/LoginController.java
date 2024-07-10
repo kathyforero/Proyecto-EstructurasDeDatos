@@ -40,28 +40,27 @@ public class LoginController {
             if(!(contraseña.isEmpty())){
                 if (!(Sistema.existeUser(correo))) {
                     msgError("Correo no encontrado");
-                    System.out.println("Esa clave(Correo) no existe en el Mapa Usuarios!");
+                    System.out.println("LOGIN CONTROLLER: Esa clave(Correo) no existe en el Mapa Usuarios!");
                     tfCorreo.requestFocus();
                 } else {
                     if (!Sistema.logearUser(correo, contraseña)) {
                         msgError("Contraseña incorrecta");
-                        System.out.println("Esa no es la contrasenia correcta del Usuarios!");
+                        System.out.println("LOGIN CONTROLLER: Esa no es la contrasenia correcta del Usuarios!");
                         pfContraseña.requestFocus();
                     } else {
-                        System.out.println("Inicio de sesión exitoso para " + correo+"!");
-                        System.out.println("Usuario existe en Mapa y la contrasenia es correcta!");
+                        System.out.println("LOGIN CONTROLLER: Usuario existe en Mapa y la contrasenia es correcta!");
                         Usuario u = Sistema.getUsuario(correo);
                         mostrarGUI(u);
                     }
                 }
             }else{
                 msgError("Ingrese una contraseña :/");
-                System.out.println("El campo de contrasenia no es valido");
+                System.out.println("LOGIN CONTROLLER: El campo de contrasenia no es valido");
                 pfContraseña.requestFocus();
             }    
         }else{
             msgError("Ingrese un correo valido");
-            System.out.println("El campo de correo no es valido");
+            System.out.println("LOGIN CONTROLLER: El campo de correo no es valido");
             tfCorreo.requestFocus();
         }
     }
