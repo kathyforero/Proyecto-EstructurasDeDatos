@@ -395,8 +395,10 @@ public class UsuarioController implements Initializable{
             autoNodo = autoNodo.getNext();
         } while (autoNodo != autos.getHeader() && index<=6);
         if(autoNodo.equals(autos.getHeader()) || autos.size()==1){
-            System.out.println("USUARIO CONTROLLER: se muestran "+index+" autos en la pestaña actual");
-            ponerBlanco(index);           
+            if(index<7){
+                System.out.println("USUARIO CONTROLLER: se ocultan "+index+" espacios");
+                ponerBlanco(index);
+            }
         }
             
     }
@@ -407,20 +409,25 @@ public class UsuarioController implements Initializable{
             int indicePRB=0;
             if (autos.getIndex(autoNodo)==6 && (autos.size()%6)!=0) {
                 int indice=autos.size()-(autos.size()%6);
-                autoNodo=autos.getNodo(indice);  // Asegurar que el índice sea válido en la lista circular
+                //Se calcula el indice de los carros que hace falta mostrar
+                autoNodo=autos.getNodo(indice);
+                System.out.println(autos.getIndex(autoNodo)+"pag incompleta");
             } else if(autoNodo.equals(autos.getHeader())){
                 if(autos.size()%6==0){
                     indicePRB=6+6;
+                    System.out.println(autos.getIndex(autoNodo)+"??");
                 }else{
                     indicePRB=6+(autos.size()%6);
+                    System.out.println(autos.getIndex(autoNodo)+"Pag!!");
                     }
-                } else{
-                    indicePRB=12;
-                    System.out.println(autos.getIndex(autoNodo));
-                }
-                    for(int i =1;i<=indicePRB;i++){
-                       autoNodo=autoNodo.getPrevious();
-                }
+            } else{
+                indicePRB=12;
+                System.out.println(autos.getIndex(autoNodo));
+            }
+            //retrocedo los nodos necesarios!
+            for(int i =1;i<=indicePRB;i++){
+                autoNodo=autoNodo.getPrevious();
+            }
             mostrarAutosAdelante();
 }
     

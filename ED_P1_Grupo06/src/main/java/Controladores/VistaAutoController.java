@@ -88,6 +88,7 @@ public class VistaAutoController {
     
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+        System.out.println("VISTA AUTO: Usuario seteado");
         lblUsuario.setText(usuario.getNombre()+" "+usuario.getApellido()+"!");
         cargarAuto();
         if(verificarFav()){
@@ -95,7 +96,6 @@ public class VistaAutoController {
         }else{
              mostrarAñadirFav();
         }
-        System.out.println(usuario.getFavoritos().size());
     }
     
     public void setProcedencia(String procedencia) {
@@ -180,7 +180,7 @@ public class VistaAutoController {
     @FXML
     public void añadirFav() {
         usuario.addFavorito(auto);
-        System.out.println("Se agrego a favs "+usuario.getFavoritos().size());
+        System.out.println("Se agrego a auto a favoritos ");
         mostrarQuitarFav();
         Sistema.actualizarUsuario(usuario);
     }
