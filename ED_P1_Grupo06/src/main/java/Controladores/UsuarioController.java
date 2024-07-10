@@ -394,10 +394,10 @@ public class UsuarioController implements Initializable{
             index++; 
             autoNodo = autoNodo.getNext();
         } while (autoNodo != autos.getHeader() && index<=6);
-        if(autoNodo.equals(autos.getHeader()) || autos.size()==1){
+        if(compString.compare(autoNodo.getContent().getPlaca(), autos.getHeader().getContent().getPlaca())==0 || autos.size()==1){
             if(index<7){
-                System.out.println("USUARIO CONTROLLER: se ocultan "+index+" espacios");
-                ponerBlanco(index);
+            System.out.println("USUARIO CONTROLLER: se ocultan "+(6-index)+" espacios");
+            ponerBlanco(index);
             }
         }
             
@@ -405,22 +405,25 @@ public class UsuarioController implements Initializable{
     
     @FXML
     public void mostrarAutosAtras() {
-        
+            /*
+            Este metodo controla el nodo cabecera
+            */
             int indicePRB=0;
             if (autos.getIndex(autoNodo)==6 && (autos.size()%6)!=0) {
                 int indice=autos.size()-(autos.size()%6);
-                //Se calcula el indice de los carros que hace falta mostrar
+                //Se establece el nodo para mostrar los ultimos autos
                 autoNodo=autos.getNodo(indice);
-                System.out.println(autos.getIndex(autoNodo)+"pag incompleta");
-            } else if(autoNodo.equals(autos.getHeader())){
+            } else if(compString.compare(autoNodo.getContent().getPlaca(), autos.getHeader().getContent().getPlaca())==0){
+                //si el auto mostrado es el ultimo, calculara la pagina anterior
                 if(autos.size()%6==0){
+                    //si no tiene paginas incompletas, retrocederá 12 nodos
                     indicePRB=6+6;
-                    System.out.println(autos.getIndex(autoNodo)+"??");
                 }else{
+                    //si tiene una pag incompleta calculara los 6 de la pag + el residuo del tamaño de la lista
                     indicePRB=6+(autos.size()%6);
-                    System.out.println(autos.getIndex(autoNodo)+"Pag!!");
                     }
             } else{
+                //si es una pag x retrocedera 12 nodos
                 indicePRB=12;
                 System.out.println(autos.getIndex(autoNodo));
             }
@@ -428,6 +431,7 @@ public class UsuarioController implements Initializable{
             for(int i =1;i<=indicePRB;i++){
                 autoNodo=autoNodo.getPrevious();
             }
+            //Este metodo esta adaptado para funcionar con una cantidad N de nodos
             mostrarAutosAdelante();
 }
     
@@ -450,6 +454,7 @@ public class UsuarioController implements Initializable{
                 imgField.setAccessible(true);
                 ImageView imgView = (ImageView) imgField.get(this);
                 imgView.setOpacity(0);
+                imgView.setDisable(true);
                 
                 Field FtituloAuto = getClass().getDeclaredField("tituloAuto" + index);
                 FtituloAuto.setAccessible(true);
@@ -479,8 +484,8 @@ public class UsuarioController implements Initializable{
             } catch (NoSuchFieldException | IllegalAccessException e) {
                 e.printStackTrace();
             }
-                index++; 
-            }
+            index++; 
+        }
     }
     
     public void mostrarAuto(Auto auto){
@@ -1048,6 +1053,9 @@ public void ordenarAutoPorXCriterio() {
 
     @FXML
     private void mostrarCheck() {
+        mostrarAutosAtras.setVisible(false);
+        mostrarAutosAdelante.setVisible(false);
+        
         if(imgAuto1.getOpacity()!=0){
             c1.setVisible(true);
         }
@@ -1080,9 +1088,11 @@ public void ordenarAutoPorXCriterio() {
 
     @FXML
     private void mostrarComparar() {
+        
         Map<CheckBox,Auto> mapaCheckAutos=getChecksAutos();
         ArrayList<Auto> seleccionados=new ArrayList<>();
         int seleccs = 0;
+        
         try{
             for (int i=1;i<7;i++){
                 Field checkField = getClass().getDeclaredField("c" + i);
@@ -1133,6 +1143,11 @@ public void ordenarAutoPorXCriterio() {
 
     @FXML
     private void quitarChecks() {
+        if(autos.size()>6){
+            mostrarAutosAtras.setVisible(true);
+            mostrarAutosAdelante.setVisible(true);
+        }
+        
         c1.setVisible(false);
         c1.setSelected(false);
         c2.setVisible(false);

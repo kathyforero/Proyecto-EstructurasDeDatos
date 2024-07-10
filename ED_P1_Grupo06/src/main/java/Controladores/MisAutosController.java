@@ -233,7 +233,8 @@ public class MisAutosController {
 
                 
             } while (autoDNodo != autosDueño.getHeader() && index<=6);
-            if(autoDNodo.equals(autosDueño.getHeader())){
+            
+            if(compString.compare(autoDNodo.getContent().getPlaca(), autosDueño.getHeader().getContent().getPlaca())==0){
                     ponerBlanco(index);
                    
                 }
@@ -247,7 +248,7 @@ public class MisAutosController {
             if (autosDueño.getIndex(autoDNodo)==6 && (autosDueño.size()%6)!=0) {
                 int indice=autosDueño.size()-(autosDueño.size()%6);
                 autoDNodo=autosDueño.getNodo(indice);  // Asegurar que el índice sea válido en la lista circular
-            } else if(autoDNodo.equals(autosDueño.getHeader())){
+            } else if(compString.compare(autoDNodo.getContent().getPlaca(), autosDueño.getHeader().getContent().getPlaca())==0){
                 if(autosDueño.size()%6==0){
                     indicePRB=6+6;
                 }else{
@@ -281,6 +282,7 @@ public class MisAutosController {
                 imgField.setAccessible(true);
                 ImageView imgView = (ImageView) imgField.get(this);
                 imgView.setOpacity(0);
+                imgView.setDisable(true);
                 
                 Field FtituloAuto = getClass().getDeclaredField("tituloAuto" + index);
                 FtituloAuto.setAccessible(true);
