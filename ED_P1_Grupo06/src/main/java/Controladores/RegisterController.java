@@ -2,14 +2,9 @@ package Controladores;
 
 import Clases.*;
 import java.io.IOException;
-import java.net.URL;
-import java.util.Map;
-import java.util.Optional;
-import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
+import java.util.Comparator;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -42,6 +37,7 @@ public class RegisterController {
     private Button btnError;
     @FXML
     private CheckBox cbTerminos;
+    private Comparator<String> compString=Sistema.comparadorString();
     /**
      * Initializes the controller class.
      */
@@ -101,11 +97,11 @@ public class RegisterController {
     }
     
     public boolean verificarCampos(String nombre,String apellido){
-        if(Sistema.comparadorString().compare(nombre, "")==0){
+        if(compString.compare(nombre, "")==0){
            msgError("El nombre no debe estar vacio!");
            tfNombre.requestFocus();
            return false; 
-        }else if(Sistema.comparadorString().compare(nombre, "")==0){
+        }else if(compString.compare(nombre, "")==0){
             msgError("El apellido no debe estar vacio!");
             tfApellido.requestFocus();
            return false; 
@@ -129,7 +125,7 @@ public class RegisterController {
     }
     
     public boolean verificarContraseña(String ccntraseña, String confContraseña){
-        if(Sistema.comparadorString().compare(ccntraseña, confContraseña)!=0){
+        if(compString.compare(ccntraseña, confContraseña)!=0){
             msgError("¡Las contraseñas no son iguales!");
             return false;
         }else if(ccntraseña.length()<3){
@@ -147,6 +143,7 @@ public class RegisterController {
             }        
         }
         return true;
+        //Se intento usar Iteradores para verificar cada letra pero tenia demasiadas complicaciones
     }
     
     public boolean verificarApellido(String apellido){
@@ -157,6 +154,7 @@ public class RegisterController {
             }        
         }
         return true;        
+        //Se intento usar Iteradores para verificar cada letra pero tenia demasiadas complicaciones
     }
     
     public void msgError(String msg){

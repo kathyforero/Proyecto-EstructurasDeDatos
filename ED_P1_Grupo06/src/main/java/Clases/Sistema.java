@@ -14,6 +14,8 @@ import java.util.Set;
 
 public class Sistema implements Serializable{
     private static final long serialVersionUID = 2004140222041502L;
+    //Aqui se cambio todos los equals por comparadores naturales.
+    
     public static Usuario crearUsuario(String nombre, String apellido, String correo, String contraseña){
         Usuario u = new Usuario(nombre, apellido, correo, contraseña);
         return u;
@@ -47,7 +49,7 @@ public class Sistema implements Serializable{
     public static boolean logearUser(String correo,String contraseña){
         Map<String, Usuario> Usuarios = Archivos.leerUsuarios();
         Usuario u = Usuarios.get(correo);
-        return u.getContraseña().equals(contraseña);
+        return u.getContraseña().compareTo(contraseña)==0;
     }
     
     public static Usuario getUsuario(String correo){
@@ -74,11 +76,11 @@ public class Sistema implements Serializable{
         try{
             DoublyCircularList<Auto> autos = Archivos.leerAutos();            
             for(DoublyCircularNode<Auto> n = autos.getLast().getNext(); n != autos.getLast(); n = n.getNext()){
-                if(n.getContent().getPlaca().equals(auto.getPlaca())){
+                if(n.getContent().getPlaca().compareTo(auto.getPlaca())==0){
                     autos.removeNode(n);                
             }
             }
-            if(autos.getLast().getContent().getPlaca().equals(auto.getPlaca())){
+            if(autos.getLast().getContent().getPlaca().compareTo(auto.getPlaca())==0){
                 autos.removeNode(autos.getLast());
             }            
             // autos.addLast(auto);
@@ -117,7 +119,7 @@ public class Sistema implements Serializable{
                 boolean bandera=true;
                 do{
                     Auto au=a.getContent();
-                    if(au.getPlaca().equals(auto.getPlaca())){
+                    if(au.getPlaca().compareTo(auto.getPlaca())==0){
                         fav.removeNode(a);
                         bandera=false;
                     }else{

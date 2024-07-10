@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Map;
 import javafx.event.ActionEvent;
@@ -78,12 +79,10 @@ public class EditarAutoController {
     private Auto auto;
     private DoublyCircularList<File> fotos = new DoublyCircularList<>();
     private DoublyCircularNode<File> Node;
-    
     private DoublyCircularList<Auto> autos = Archivos.leerAutos();
-    
     private String placaPredet;
-    
     private ArrayList<Reporte> reportes;
+    private Comparator<String> compString = Sistema.comparadorString();
     
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
@@ -256,7 +255,7 @@ public class EditarAutoController {
         cbModelo.setValue(null);
         String txtMarca = cbMarca.getValue();
         for(MarcaDeAuto marca:MarcaDeAuto.values()){
-            if(marca.getName().equals(txtMarca)){
+            if(compString.compare(marca.getName(), txtMarca)==0){
                 ArrayList<String> modelos = marca.getModels();
                 for (int i=1; i<=modelos.size(); i++){
                     cbModelo.getItems().add(modelos.get(i));
@@ -269,7 +268,7 @@ public class EditarAutoController {
     public void cargarModeloInicio(){
         String txtMarca = cbMarca.getValue();
         for(MarcaDeAuto marca:MarcaDeAuto.values()){
-            if(marca.getName().equals(txtMarca)){
+            if(compString.compare(txtMarca,marca.getName())==0){
                 ArrayList<String> modelos = marca.getModels();
                 for (int i=1; i<=modelos.size(); i++){
                     cbModelo.getItems().add(modelos.get(i));
