@@ -180,7 +180,7 @@ public class Sistema implements Serializable{
                     }else{
                         a=a.getNext();
                     }
-                }while(bandera || a!=fav.getHeader());
+                }while(bandera && a!=fav.getHeader());
             }
             usuario.setFavorito(fav);
         }catch(Exception e) {
