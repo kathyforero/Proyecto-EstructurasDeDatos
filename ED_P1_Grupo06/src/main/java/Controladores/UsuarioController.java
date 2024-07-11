@@ -213,7 +213,6 @@ public class UsuarioController implements Initializable{
         System.out.println("USUARIO CONTROLLER: Usuario seteado!");
         lblUser.setText(usuario.getNombre()+" "+usuario.getApellido()+"!");
         //cargarControladores();
-        cargarAutos();
         quitarChecks();
     }
 
@@ -312,6 +311,7 @@ public class UsuarioController implements Initializable{
     public void cargarAutos(){
         
         if (autos.size()>0){
+            System.out.println("Hay "+autos.size()+" autos en la DCLL actual");
             autoNodo=autos.getHeader();
             mostrarAutosAdelante();
             if(autos.size()<7){
@@ -349,6 +349,7 @@ public class UsuarioController implements Initializable{
                     ImageView imgView = (ImageView) imgField.get(this);   
                     foto = auto.getFotos().getHeader();
                     Image image = new Image(foto.getContent().toURI().toString());
+                    imgView.setDisable(false);
                     imgView.setImage(image);
                     imgView.setOpacity(1);
                     imgView.setOnMouseClicked(event -> mostrarAuto(auto));
@@ -396,7 +397,6 @@ public class UsuarioController implements Initializable{
         } while (autoNodo != autos.getHeader() && index<=6);
         if(compString.compare(autoNodo.getContent().getPlaca(), autos.getHeader().getContent().getPlaca())==0 || autos.size()==1){
             if(index<7){
-            System.out.println("USUARIO CONTROLLER: se ocultan "+(6-index)+" espacios");
             ponerBlanco(index);
             }
         }
@@ -447,8 +447,9 @@ public class UsuarioController implements Initializable{
 
     
     public void ponerBlanco(int index){
-        
+        System.out.println("USUARIO CONTROLLER: se ocultan "+(7-index)+" espacios");
         while(index<=6) {
+            
             try {
                 Field imgField = getClass().getDeclaredField("imgAuto" + index);
                 imgField.setAccessible(true);
@@ -528,6 +529,7 @@ public class UsuarioController implements Initializable{
         }
     }
 
+    
     @FXML
     public void cargarModelo(){
             msgErrorOff();
@@ -535,61 +537,56 @@ public class UsuarioController implements Initializable{
             cmModelo.getItems().clear();
             cmModelo.setValue(null);
             String txtMarca = cmMarca.getValue();
-            for(MarcaDeAuto marca:MarcaDeAuto.values()){
-                if(compString.compare(marca.getName(), txtMarca)==0){
+            //esto lo debo hacer con iterator
+            Iterator<MarcaDeAuto> iterator = MarcaDeAuto.iteratorMarcaDeAuto();
+        while (iterator.hasNext()) {
+            MarcaDeAuto marca = iterator.next();
+            if(Sistema.comparadorString().compare(marca.getName(), txtMarca)==0){
                     ArrayList<String> modelos = marca.getModels();
                     for (int i=1; i<=modelos.size(); i++){
                         cmModelo.getItems().add(modelos.get(i));
                     }
-                }
-            
-        }
+                }        }
+           
     }
     public void cargarMarca(){
-        for (MarcaDeAuto marca : MarcaDeAuto.values()) {
-            cmMarca.getItems().add(marca.getName());
+        Iterator<String> iterator = MarcaDeAuto.iterator();
+        while (iterator.hasNext()) {
+            cmMarca.getItems().add(iterator.next());
         }
+
     }
     
-    public void cargarTipo(){
-        for (Tipo tipo : Tipo.values()) {
-            cbTipo.getItems().add(tipo.getDisplayName());
+        public void cargarTipo() {
+        Iterator<String> iterator = Tipo.iterator();
+        while (iterator.hasNext()) {
+            cbTipo.getItems().add(iterator.next());
         }
     }
 
-    public void ordenarAutoPorMarca() {
+   /* public void ordenarAutoPorMarca() {
         Comparator<Auto> marcaComparator = new Comparator<Auto>() {
             @Override
             public int compare(Auto auto1, Auto auto2) {
                 String marca1 = auto1.getMarca().getName();
                 String marca2 = auto2.getMarca().getName();
-                if(marca1.compareTo(marca2)!=0 ){
-                return marca1.compareTo(marca2);
-                }else{
+                if(marca1.compareTo(marca2)!=0 ){//esto valida que los autos no sean de la misma marca
+                return marca1.compareTo(marca2);//se ordena alfabeticamente a b c ...
+                }else{//si los autos tienen la misma marca
                     String modelo1 = auto1.getModelo();
                     String modelo2 = auto2.getModelo();
                     System.out.println(modelo1+"    "+modelo2);
-                    return  modelo1.compareTo(modelo2);
+                    return  modelo1.compareTo(modelo2);//se ordenan alfabeticamente por sus modelos
                 }
             }
         };
 
         Platform.runLater(() -> {
-
             ordenar(autos, marcaComparator);
-
-            Iterator<Auto> it = autos.iterator();
-            while (it.hasNext()) {
-                Auto auto = it.next();
-                System.out.println("Hay "+autos.size()+" en la lista");
-                System.out.println("Marca: " + auto.getMarca().getName()+" Modelo: " + auto.getModelo()+" Precio: $" + auto.getPrecio());
-  
-            }
-
-            
         });
+    
 
-    }
+    }*/
     public Comparator<Auto> ordenarPorComp() {
         String criterio = cbOrdenar.getValue();
         if (compString.compare(criterio, "Marca y Modelo")==0) {
@@ -608,7 +605,6 @@ public class UsuarioController implements Initializable{
                 }
             };
         } else if (compString.compare(criterio, "Precio")==0) {
-            //return Comparator.comparingDouble(Auto::getPrecio);
             return new Comparator<Auto>() {
                 @Override
                 public int compare(Auto auto1, Auto auto2) {
@@ -652,13 +648,7 @@ public void ordenarAutoPorXCriterio() {
         
         if (comp != null && autos.size()>0) {
             ordenar(autos, comp);
-            
-            Iterator<Auto> it = autos.iterator();
-            System.out.println("Hay "+autos.size()+" en la lista");
-            while (it.hasNext()) {
-                Auto auto = it.next();
-                System.out.println("Marca: " + auto.getMarca().getName()+" Modelo: " + auto.getModelo()+"Precio: $" + auto.getPrecio());
-            }
+                       
             autoNodo=autos.getHeader();
             cargarAutos();
             msg1.setVisible(false);
@@ -671,7 +661,7 @@ public void ordenarAutoPorXCriterio() {
 
 }
 
-
+/*
     private void ordenar(DoublyCircularList<Auto> lista, Comparator<Auto> comp) {
         if (lista.getLast() == null || lista.getLast().getNext() == lista.getLast()) {
             // Si la lista está vacía o tiene un solo elemento, no se hace nada
@@ -695,6 +685,46 @@ public void ordenarAutoPorXCriterio() {
             } while (current != lista.getLast());
         } while (swapped);
     }
+    */
+    
+
+private void ordenar(DoublyCircularList<Auto> lista, Comparator<Auto> comp) {
+    // Si la lista está vacía o tiene un solo elemento, no se hace nada
+    if (lista.getLast() == null || lista.getLast().getNext() == lista.getLast()) {
+        return;
+    }
+
+    // Inicializamos 'current' en el primer nodo de la lista.
+    DoublyCircularNode<Auto> current = lista.getLast().getNext();
+ // DoublyCircularNode<Auto> current = lista.getHeader(); tambien sirve
+
+    // Iteramos sobre la lista desde el primer nodo hasta que volvemos al nodo cabecera
+    while (current != lista.getLast()) {
+        // Guardamos el siguiente nodo 
+        DoublyCircularNode<Auto> next = current.getNext();
+        // Guardamos el contenido del nodo actual 
+        Auto currentValue = current.getContent();
+        // Empezamos a comparar desde el nodo anterior al nodo actual
+        DoublyCircularNode<Auto> sortedNode = current;
+
+        // Movemos nodos en la parte ordenada hacia la derecha para hacer espacio
+        // para 'currentValue' en la posición correcta
+        while (sortedNode.getPrevious() != lista.getLast() && comp.compare(sortedNode.getPrevious().getContent(), currentValue) > 0) {
+            // Desplazamos el contenido del nodo ordenado al siguiente nodo
+            sortedNode.setContent(sortedNode.getPrevious().getContent());
+            // Retrocedemos al nodo anterior en la lista ordenada
+            sortedNode = sortedNode.getPrevious();
+        }
+
+        // Insertamos 'currentValue' en la posición correcta encontrada
+        sortedNode.setContent(currentValue);
+        // Avanzamos al siguiente nodo en la lista original
+        current = next;
+    }
+}
+
+
+    
     
     
     public Comparator<Auto> ordenarPorReporte(){
@@ -775,13 +805,6 @@ public void ordenarAutoPorXCriterio() {
         if (comp != null && autos.size()>0) {           
             
             ordenar(autos, comp);
-            
-            Iterator<Auto> it = autos.iterator();
-            System.out.println("Hay "+autos.size()+" en la lista");
-            while (it.hasNext()) {
-                Auto auto = it.next();
-                System.out.println("Marca: " + auto.getMarca().getName()+" Modelo: " + auto.getModelo()+"Precio: $" + auto.getPrecio());
-            }
             autoNodo=autos.getHeader();
             cargarAutos();
             msg1.setVisible(true);
@@ -823,7 +846,6 @@ public void ordenarAutoPorXCriterio() {
             System.out.println("Lista de AUTOS EXCELENTES: " + autosExcelentes.toString());
             System.out.println(autosExcelentes.size() + " & " + autos.size());            
             setAutos(autosExcelentes);
-            System.out.println(autos.size());
             cargarAutos();
             
         } else {
@@ -848,12 +870,6 @@ public void ordenarAutoPorXCriterio() {
 
                 ordenar(autos, comp);
 
-                Iterator<Auto> it = autos.iterator();
-                System.out.println("Hay "+autos.size()+" en la lista");
-                while (it.hasNext()) {
-                    Auto auto = it.next();
-                    System.out.println("Marca: " + auto.getMarca().getName()+" Modelo: " + auto.getModelo()+"Precio: $" + auto.getPrecio());
-                }
                 autoNodo=autos.getHeader();
                 cargarAutos();
                 msg1.setVisible(true);

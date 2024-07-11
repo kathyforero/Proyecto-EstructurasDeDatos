@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -99,6 +100,9 @@ public class Archivos {
         if (autos == null) {
             autos = new DoublyCircularList<>(); // Si no se pudo leer, retornar circularlist vacío
         }
+        /*
+                    Comparator<Auto> comp = Sistema.ordenarPrecioKilometraje();
+            Sistema.ordenar(autos, comp );*/
         return autos;
     }
 
