@@ -185,4 +185,19 @@ public enum MarcaDeAuto {
             }
         };
     }
+     public static Iterator<MarcaDeAuto> iteratorMarcaDeAuto() {
+        return new Iterator<MarcaDeAuto>() {
+            private int index = 0;
+
+            @Override
+            public boolean hasNext() {
+                return index < MarcaDeAuto.values().length;
+            }
+
+            @Override
+            public MarcaDeAuto next() {
+                return MarcaDeAuto.values()[index++];
+            }
+        };
+    }
 }

@@ -529,6 +529,7 @@ public class UsuarioController implements Initializable{
         }
     }
 
+    
     @FXML
     public void cargarModelo(){
             msgErrorOff();
@@ -536,26 +537,30 @@ public class UsuarioController implements Initializable{
             cmModelo.getItems().clear();
             cmModelo.setValue(null);
             String txtMarca = cmMarca.getValue();
-            if(!(txtMarca==null)){
-            for(MarcaDeAuto marca:MarcaDeAuto.values()){
-                if(compString.compare(marca.getName(), txtMarca)==0){
+            //esto lo debo hacer con iterator
+            Iterator<MarcaDeAuto> iterator = MarcaDeAuto.iteratorMarcaDeAuto();
+        while (iterator.hasNext()) {
+            MarcaDeAuto marca = iterator.next();
+            if(Sistema.comparadorString().compare(marca.getName(), txtMarca)==0){
                     ArrayList<String> modelos = marca.getModels();
                     for (int i=1; i<=modelos.size(); i++){
                         cmModelo.getItems().add(modelos.get(i));
                     }
-                }
-            }
-        }
+                }        }
+           
     }
     public void cargarMarca(){
-        for (MarcaDeAuto marca : MarcaDeAuto.values()) {
-            cmMarca.getItems().add(marca.getName());
+        Iterator<String> iterator = MarcaDeAuto.iterator();
+        while (iterator.hasNext()) {
+            cmMarca.getItems().add(iterator.next());
         }
+
     }
     
-    public void cargarTipo(){
-        for (Tipo tipo : Tipo.values()) {
-            cbTipo.getItems().add(tipo.getDisplayName());
+        public void cargarTipo() {
+        Iterator<String> iterator = Tipo.iterator();
+        while (iterator.hasNext()) {
+            cbTipo.getItems().add(iterator.next());
         }
     }
 

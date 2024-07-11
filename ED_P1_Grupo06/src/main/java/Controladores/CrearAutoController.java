@@ -159,16 +159,16 @@ public class CrearAutoController {
             cbModelo.setValue(null);
             String txtMarca = cbMarca.getValue();
             //esto lo debo hacer con iterator
-            for(MarcaDeAuto marca:MarcaDeAuto.values()){
-                
-                if(Sistema.comparadorString().compare(marca.getName(), txtMarca)==0){
+            Iterator<MarcaDeAuto> iterator = MarcaDeAuto.iteratorMarcaDeAuto();
+        while (iterator.hasNext()) {
+            MarcaDeAuto marca = iterator.next();
+            if(Sistema.comparadorString().compare(marca.getName(), txtMarca)==0){
                     ArrayList<String> modelos = marca.getModels();
                     for (int i=1; i<=modelos.size(); i++){
                         cbModelo.getItems().add(modelos.get(i));
                     }
-                }
-            
-            }
+                }        }
+           
     }
     
     @FXML
@@ -517,14 +517,16 @@ public class CrearAutoController {
             }        
         }
         
-        
-
         return null;
     }
 
     // Método para obtener el valor del enum MarcaDeAuto a partir del string seleccionado
     public MarcaDeAuto obtenerMarca(String marcaSeleccionada) {
-        for (MarcaDeAuto marca : MarcaDeAuto.values()) {
+        Iterator<MarcaDeAuto> iterator = MarcaDeAuto.iteratorMarcaDeAuto();
+        while (iterator.hasNext()) {
+            MarcaDeAuto marca = iterator.next();
+        
+       
             if (Sistema.comparadorString().compare(marca.getName().toLowerCase(), marcaSeleccionada.toLowerCase())==0) {
                 return marca;
             }

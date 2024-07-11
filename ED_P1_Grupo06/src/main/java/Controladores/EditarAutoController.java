@@ -235,74 +235,82 @@ public class EditarAutoController {
     }
     
     public void cargarTipos(){
-        for (Tipo tipo : Tipo.values()) {
-            cbTipo.getItems().add(tipo.getDisplayName());
+        Iterator<String> iterator = Tipo.iterator();
+        while (iterator.hasNext()) {
+            cbTipo.getItems().add(iterator.next());
         }
         cbTipo.setValue(auto.getTipo().getDisplayName());
     }
     
     public void cargarMarca(){
-        for (MarcaDeAuto marca : MarcaDeAuto.values()) {
-            cbMarca.getItems().add(marca.getName());
+         Iterator<String> iterator = MarcaDeAuto.iterator();
+        while (iterator.hasNext()) {
+            cbMarca.getItems().add(iterator.next());
         }
         cbMarca.setValue(auto.getMarca().getName());
     }
     
     public void cargarModelo(){
         msgErrorOff();
-        cbModelo.getSelectionModel().clearSelection();
-        cbModelo.getItems().clear();
-        cbModelo.setValue(null);
-        String txtMarca = cbMarca.getValue();
-        for(MarcaDeAuto marca:MarcaDeAuto.values()){
-            if(compString.compare(marca.getName(), txtMarca)==0){
-                ArrayList<String> modelos = marca.getModels();
-                for (int i=1; i<=modelos.size(); i++){
-                    cbModelo.getItems().add(modelos.get(i));
-                }
-            }
-            
-        }
+            cbModelo.getSelectionModel().clearSelection();
+            cbModelo.getItems().clear();
+            cbModelo.setValue(null);
+            String txtMarca = cbMarca.getValue();
+            //esto lo debo hacer con iterator
+            Iterator<MarcaDeAuto> iterator = MarcaDeAuto.iteratorMarcaDeAuto();
+        while (iterator.hasNext()) {
+            MarcaDeAuto marca = iterator.next();
+            if(Sistema.comparadorString().compare(marca.getName(), txtMarca)==0){
+                    ArrayList<String> modelos = marca.getModels();
+                    for (int i=1; i<=modelos.size(); i++){
+                        cbModelo.getItems().add(modelos.get(i));
+                    }
+                }        }
     }
     
     public void cargarModeloInicio(){
-        String txtMarca = cbMarca.getValue();
-        for(MarcaDeAuto marca:MarcaDeAuto.values()){
-            if(compString.compare(txtMarca,marca.getName())==0){
-                ArrayList<String> modelos = marca.getModels();
-                for (int i=1; i<=modelos.size(); i++){
-                    cbModelo.getItems().add(modelos.get(i));
-                }
-            }
-            
-        }
+           String txtMarca = cbMarca.getValue();
+            //esto lo debo hacer con iterator
+            Iterator<MarcaDeAuto> iterator = MarcaDeAuto.iteratorMarcaDeAuto();
+        while (iterator.hasNext()) {
+            MarcaDeAuto marca = iterator.next();
+            if(Sistema.comparadorString().compare(marca.getName(), txtMarca)==0){
+                    ArrayList<String> modelos = marca.getModels();
+                    for (int i=1; i<=modelos.size(); i++){
+                        cbModelo.getItems().add(modelos.get(i));
+                    }
+                }        }
         cbModelo.setValue(auto.getModelo());
     }
     
     public void cargarMotor(){
-        for (Motor motor : Motor.values()) {
-            cbMotor.getItems().add(motor.getDisplayName());
+        Iterator<String> iterator = Motor.iterator();
+        while (iterator.hasNext()) {
+            cbMotor.getItems().add(iterator.next());
         }
         cbMotor.setValue(auto.getMotor().getDisplayName());
     }
     
     public void cargarTransmision(){
-        for (Transmision transmision : Transmision.values()) {
-            cbTransmision.getItems().add(transmision.getDisplayName());
+        Iterator<String> iterator = Transmision.iterator();
+        while (iterator.hasNext()) {
+            cbTransmision.getItems().add(iterator.next());
         }
         cbTransmision.setValue(auto.getTransmisión().getDisplayName());
     }
     
     public void cargarUbicacion(){
-        for (Ubicacion ubicacion : Ubicacion.values()) {
-            cbUbicacion.getItems().add(ubicacion.getDisplayName());
+        Iterator<String> iterator = Ubicacion.iterator();
+        while (iterator.hasNext()) {
+            cbUbicacion.getItems().add(iterator.next());
         }
         cbUbicacion.setValue(auto.getUbicacion().getDisplayName());
     }
     
     public void cargarEstado(){
-        for (Estado estado : Estado.values()) {
-            cbEstado.getItems().add(estado.getDisplayName());
+        Iterator<String> iterator = Estado.iterator();
+        while (iterator.hasNext()) {
+            cbEstado.getItems().add(iterator.next());
         }
         cbEstado.setValue(auto.getEstado().getDisplayName());
         
@@ -540,64 +548,72 @@ public class EditarAutoController {
     
     // Método para obtener el valor del enum Tipo a partir del string seleccionado
     public Tipo obtenerTipo(String tipoSeleccionado) {
-        for (Tipo tipo : Tipo.values()) {
-            if (compString.compare(tipo.getDisplayName().toLowerCase(), tipoSeleccionado.toLowerCase())==0) {
+        Iterator<Tipo> iterator = Tipo.iteratorTipo();
+        while (iterator.hasNext()) {
+            Tipo tipo = iterator.next();
+            if (Sistema.comparadorString().compare(tipo.getDisplayName().toLowerCase(), tipoSeleccionado.toLowerCase())==0) {
                 return tipo;
-            }
+            }        
         }
+        
         return null;
     }
 
     // Método para obtener el valor del enum MarcaDeAuto a partir del string seleccionado
     public MarcaDeAuto obtenerMarca(String marcaSeleccionada) {
-        for (MarcaDeAuto marca : MarcaDeAuto.values()) {
-            if (compString.compare(marca.getName().toLowerCase(), marcaSeleccionada.toLowerCase())==0) {
+        Iterator<MarcaDeAuto> iterator = MarcaDeAuto.iteratorMarcaDeAuto();
+        while (iterator.hasNext()) {
+            MarcaDeAuto marca = iterator.next();
+        
+       
+            if (Sistema.comparadorString().compare(marca.getName().toLowerCase(), marcaSeleccionada.toLowerCase())==0) {
                 return marca;
-            }
-        }
-        return null; 
-    }
-
-    // Método para obtener el valor del enum Motor a partir del string seleccionado
-    public Motor obtenerMotorDesdeString(String motorSeleccionado) {
-        for (Motor motor : Motor.values()) {
-            if (compString.compare(motor.getDisplayName().toLowerCase(), motorSeleccionado.toLowerCase())==0) {
-                return motor;
             }
         }
         return null;
     }
 
+    // Método para obtener el valor del enum Motor a partir del string seleccionado
+    public Motor obtenerMotorDesdeString(String motorSeleccionado) {
+         Iterator<Motor> iterator = Motor.iteratorMotor();
+        while (iterator.hasNext()) {
+            Motor motor = iterator.next();
+            if (Sistema.comparadorString().compare(motor.getDisplayName().toLowerCase(), motorSeleccionado.toLowerCase())==0) {
+                return motor;
+            }
+        }return null;
+    }
+
     // Método para obtener el valor del enum Transmision a partir del string seleccionado
     public Transmision obtenerTransmisionDesdeString(String transmisionSeleccionada) {
-        for (Transmision transmision : Transmision.values()) {
-            if (compString.compare(transmision.getDisplayName().toLowerCase(), transmisionSeleccionada.toLowerCase())==0) {
+       Iterator<Transmision> iterator = Transmision.iteratorTransmision();
+        while (iterator.hasNext()) {
+            Transmision transmision = iterator.next();
+            if (Sistema.comparadorString().compare(transmision.getDisplayName().toLowerCase(), transmisionSeleccionada.toLowerCase())==0) {
                 return transmision;
             }
-        }
-        return null; 
+        }return null;
     }
 
     // Método para obtener el valor del enum Ubicacion a partir del string seleccionado
     public Ubicacion obtenerUbicacionDesdeString(String ubicacionSeleccionada) {
-        for (Ubicacion ubicacion : Ubicacion.values()) {
-            if (compString.compare(ubicacion.getDisplayName().toLowerCase(), ubicacionSeleccionada.toLowerCase())==0) {
+        Iterator<Ubicacion> iterator = Ubicacion.iteratorUbicacion();
+        while (iterator.hasNext()) {
+            Ubicacion ubicacion = iterator.next();
+            if (Sistema.comparadorString().compare(ubicacion.getDisplayName().toLowerCase(), ubicacionSeleccionada.toLowerCase())==0) {
                 return ubicacion;
             }
-        }
-        // Si la ubicación seleccionada no coincide con ningún valor del enum, puedes manejarlo como desees
-        return null; // o lanzar una excepción, mostrar un mensaje, etc.
-    }
+        }return null;}
 
     // Método para obtener el valor del enum Estado a partir del string seleccionado
     public Estado obtenerEstadoDesdeString(String estadoSeleccionado) {
-        for (Estado estado : Estado.values()) {
-            if (compString.compare(estado.getDisplayName().toLowerCase(), estadoSeleccionado.toLowerCase())==0) {
+        Iterator<Estado> iterator = Estado.iteratorEstado();
+        while (iterator.hasNext()) {
+            Estado estado = iterator.next();
+            if (Sistema.comparadorString().compare(estado.getDisplayName().toLowerCase(), estadoSeleccionado.toLowerCase())==0) {
                 return estado;
             }
-        }
-        // Si el estado seleccionado no coincide con ningún valor del enum, puedes manejarlo como desees
-        return null; // o lanzar una excepción, mostrar un mensaje, etc.
+        }return null;
     }
     
     @FXML
