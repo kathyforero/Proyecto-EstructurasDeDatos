@@ -1,5 +1,7 @@
 package Clases;
 
+import java.util.Iterator;
+
 public enum Motor {
     GASOLINA("Gasolina"),
     DIESEL("Diésel"),
@@ -15,5 +17,37 @@ public enum Motor {
 
     public String getDisplayName() {
         return displayName;
+    }
+
+    public static Iterator<String> iterator() {
+        return new Iterator<String>() {
+            private int index = 0;
+
+            @Override
+            public boolean hasNext() {
+                return index < Motor.values().length;
+            }
+
+            @Override
+            public String next() {
+                return Motor.values()[index++].getDisplayName();
+            }
+        };
+    }
+    
+        public static Iterator<Motor> iteratorMotor() {
+        return new Iterator<Motor>() {
+            private int index = 0;
+
+            @Override
+            public boolean hasNext() {
+                return index < Motor.values().length;
+            }
+
+            @Override
+            public Motor next() {
+                return Motor.values()[index++];
+            }
+        };
     }
 }

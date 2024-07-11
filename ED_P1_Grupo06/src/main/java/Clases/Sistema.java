@@ -62,15 +62,70 @@ public class Sistema implements Serializable{
         try{
             DoublyCircularList<Auto> autos = Archivos.leerAutos();
             autos.addLast(auto);
-            System.out.println("antes de ir a Archivos.guardarAutos");
+            /*
+            Comparator<Auto> comp = Sistema.ordenarPrecioKilometraje();
+            Sistema.ordenar(autos, comp );
+*/
             Archivos.guardarAutos(autos);
-            System.out.println("despues de ir a Archivos.guardarAutos");
+            System.out.println("se guardó el auto de Archivos.guardarAutos");
             return true;
         }catch(Exception e) {
             System.err.println("ERROR AL GUARDAR AUTO!!! " + e.getMessage());
             return false;
         }
     }
+    
+    public static Comparator<Auto> ordenarPrecioKilometraje(){
+            Comparator<Auto> comparator = new Comparator<Auto>() {
+            @Override
+            public int compare(Auto auto1, Auto auto2) {
+                float p1 = auto1.getPrecio();
+                float p2 = auto2.getPrecio();
+                if (p1 == p2) {
+                    int km1 = auto1.getKilometraje();
+                    int km2 = auto2.getKilometraje();
+                    return Integer.compare(km1, km2);
+                } else {
+                    return Float.compare(p1, p2);
+                }
+            }
+        };return comparator;
+    }
+    
+    public static void ordenar(DoublyCircularList<Auto> lista, Comparator<Auto> comp) {
+    // Si la lista está vacía o tiene un solo elemento, no se hace nada
+    if (lista.getLast() == null || lista.getLast().getNext() == lista.getLast()) {
+        return;
+    }
+
+    // Inicializamos 'current' en el primer nodo de la lista.
+    DoublyCircularNode<Auto> current = lista.getLast().getNext();
+ // DoublyCircularNode<Auto> current = lista.getHeader(); tambien sirve
+
+    // Iteramos sobre la lista desde el primer nodo hasta que volvemos al nodo cabecera
+    while (current != lista.getLast()) {
+        // Guardamos el siguiente nodo 
+        DoublyCircularNode<Auto> next = current.getNext();
+        // Guardamos el contenido del nodo actual 
+        Auto currentValue = current.getContent();
+        // Empezamos a comparar desde el nodo anterior al nodo actual
+        DoublyCircularNode<Auto> sortedNode = current;
+
+        // Movemos nodos en la parte ordenada hacia la derecha para hacer espacio
+        // para 'currentValue' en la posición correcta
+        while (sortedNode.getPrevious() != lista.getLast() && comp.compare(sortedNode.getPrevious().getContent(), currentValue) > 0) {
+            // Desplazamos el contenido del nodo ordenado al siguiente nodo
+            sortedNode.setContent(sortedNode.getPrevious().getContent());
+            // Retrocedemos al nodo anterior en la lista ordenada
+            sortedNode = sortedNode.getPrevious();
+        }
+
+        // Insertamos 'currentValue' en la posición correcta encontrada
+        sortedNode.setContent(currentValue);
+        // Avanzamos al siguiente nodo en la lista original
+        current = next;
+    }
+}
     
     public static boolean eliminarAuto(Auto auto){
         try{
