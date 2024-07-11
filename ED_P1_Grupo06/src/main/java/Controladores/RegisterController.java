@@ -57,6 +57,7 @@ public class RegisterController {
                         Usuario u = Sistema.crearUsuario(nombre, apellido, correo, contraseña);
                         Sistema.guardarUsuario(u);
                         alertaCuentaCreada();
+                        System.out.println("REGISTER: usuario creado con existo");
                     }
                 }
             }

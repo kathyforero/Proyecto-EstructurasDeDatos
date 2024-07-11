@@ -372,8 +372,6 @@ public class CrearAutoController {
     public boolean verificarNuevo(){
         String km = tfKM.getText();
         Float kmF = Float.valueOf(km);
-        System.out.println(cbEstado.getValue());
-        System.out.println(kmF);
         if(Sistema.comparadorString().compare(cbEstado.getValue().toLowerCase(), "Nuevo".toLowerCase())==0 && kmF > 150){
             msgError("Un auto nuevo no puede tener esa cantidad de kilometraje!!");
             return false;
@@ -633,17 +631,14 @@ public class CrearAutoController {
             if(reportes!=null){
                 runrunAuto.setReportes(reportes);
             }
-            System.out.println("El auto ha sido creado!");
-            System.out.println("el auto creado es "+runrunAuto.toString());
-            System.out.println("El auto se intentará guardar");
             Boolean saved = Sistema.guardarAuto(runrunAuto);
-            System.out.println(saved);
             alertaAutoGuardado();
+                System.out.println("CREAR AUTO: Auto creado con exito");
             }catch(IllegalArgumentException i){
-                System.out.println("Un error ocurrio al querer guardar el auto en crearAutoController: ");
+                System.out.println("CREAR AUTO: Un error ocurrio al querer guardar el auto en crearAutoController: ");
                 System.out.println(i);
             }
-        }else{System.out.println("Algo no está completado");}
+        }else{System.out.println("CREAR AUTO: Algo no está completado");}
 
     }
 }

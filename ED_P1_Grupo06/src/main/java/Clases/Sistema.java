@@ -34,6 +34,7 @@ public class Sistema implements Serializable{
             Map<String, Usuario> usuarios = Archivos.leerUsuarios();
             usuarios.put(u.getCorreo(),u);
             Archivos.guardarUsuarios(usuarios);
+            System.out.println("SISTEMA: se guardó usuario "+u.getCorreo());
             return true;
         }catch(Exception e) {
             System.err.println("ERROR AL GUARDAR USUARIO!!! " + e.getMessage());
@@ -67,7 +68,7 @@ public class Sistema implements Serializable{
             Sistema.ordenar(autos, comp );
 */
             Archivos.guardarAutos(autos);
-            System.out.println("se guardó el auto de Archivos.guardarAutos");
+            System.out.println("SISTEMA: se guardó el auto de Archivos.guardarAutos");
             return true;
         }catch(Exception e) {
             System.err.println("ERROR AL GUARDAR AUTO!!! " + e.getMessage());
