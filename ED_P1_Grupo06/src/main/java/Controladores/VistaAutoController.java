@@ -209,7 +209,7 @@ public class VistaAutoController {
                     }else{
                         a=a.getNext();
                     }
-                }while(a!=fav.getHeader() && bandera);
+                }while(bandera && a!=fav.getHeader() );
             }
             usuario.setFavorito(fav);
 
