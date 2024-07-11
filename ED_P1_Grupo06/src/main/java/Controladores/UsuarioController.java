@@ -311,7 +311,7 @@ public class UsuarioController implements Initializable{
     public void cargarAutos(){
         
         if (autos.size()>0){
-            System.out.println("Hay "+autos.size()+" autos en la DCLL actual");
+            System.out.println("USUARIO CONTROLLER: Hay "+autos.size()+" autos en la DCLL actual");
             autoNodo=autos.getHeader();
             mostrarAutosAdelante();
             if(autos.size()<7){
@@ -784,8 +784,6 @@ private void ordenar(DoublyCircularList<Auto> lista, Comparator<Auto> comp) {
         
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
-            System.out.println(autos.size());
-            System.out.println("Usuario seleccionó Sí."); 
             Comparator<Auto> comp = ordenarPorReporte();
 
             DoublyCircularList<Auto> autosConReport = new DoublyCircularList<>();
@@ -811,14 +809,14 @@ private void ordenar(DoublyCircularList<Auto> lista, Comparator<Auto> comp) {
             msg2.setVisible(true);
             checkCalidad.setVisible(true);
         } else {
-            System.out.println("No hay autos.");
+            System.out.println("USUARIO CONTROLLER: No hay autos con reportes");
             cargarAutos();
             msgError("No hay autos con reportes :(");
             
             
         }
        }else {
-            System.out.println("Usuario seleccionó No o cerró el diálogo.");
+            System.out.println("USUARIO CONTROLLER: Usuario seleccionó No o cerró el diálogo.");
         }
     }
     
@@ -907,7 +905,6 @@ private void ordenar(DoublyCircularList<Auto> lista, Comparator<Auto> comp) {
         if(autos.size()!=0){
             autoNodo=autos.getHeader();
             ordenarAutoPorXCriterio();
-            cargarAutos(); 
         }else{
             System.out.println("No hay resultados para el filtro avanzado");
             cargarAutos(); 

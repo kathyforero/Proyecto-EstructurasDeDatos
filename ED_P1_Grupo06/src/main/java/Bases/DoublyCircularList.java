@@ -229,10 +229,10 @@ public class DoublyCircularList<E> implements List<E>,Serializable{
             } else if(this.size()==1){
                 last = null;
             }
-            System.out.println("ELIMINO NODO");
+            System.out.println("DCCL: ELIMINO NODO");
             return n.getContent();
         } else {
-            System.out.println("NO ELIMINO NODO");
+            System.out.println("DCCL: NO ELIMINO NODO");
             return null;
         }        
     }

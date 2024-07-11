@@ -188,7 +188,7 @@ public class VistaAutoController {
     @FXML
     public void quitarFav() {
         if(eliminarAutoFavorito()){
-            System.out.println("Auto eliminado");
+            System.out.println("Se elimino a auto a favoritos ");
         }      
         mostrarAñadirFav();
         Sistema.actualizarUsuario(usuario);

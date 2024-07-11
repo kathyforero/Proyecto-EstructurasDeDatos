@@ -732,7 +732,7 @@ public class EditarAutoController {
             usuario=u;
             Boolean removed = Sistema.eliminarAuto(auto);            
             alertaAutoEliminado();
-            
+            System.out.println("EDITARAUTO CONTROLLER: Auto eliminado con exito");
         }catch(Exception e){
             System.out.println("Un error ocurrio al querer eliminar el auto en editarAutoController: ");
             System.out.println(e);

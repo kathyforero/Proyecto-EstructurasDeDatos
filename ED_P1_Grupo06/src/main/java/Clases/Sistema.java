@@ -139,9 +139,8 @@ public class Sistema implements Serializable{
                 autos.removeNode(autos.getLast());
             }            
             // autos.addLast(auto);
-            System.out.println("antes de ir a Archivos.guardarAutos en Eliminar");
             Archivos.guardarAutos(autos);
-            System.out.println("despues de ir a Archivos.guardarAutos en Eliminar");
+            System.out.println("SISTEMA: AUTO ELIMINADO CON EXITO");
             return true;
         }catch(Exception e) {
             System.err.println("ERROR AL ELIMINAR AUTO!!! " + e.getMessage());
@@ -157,9 +156,8 @@ public class Sistema implements Serializable{
             while(it.hasNext()){
                 Usuario u=usuarios.get(it.next());
                 eliminarAutoFavorito(auto,u);
-                actualizarUsuario(u);
             }
-            
+            System.out.println("SISTEMA: Se elimino el auto de TODAS las listas de favoritos");
         }catch(Exception e) {
             System.err.println("ERROR AL ELIMINAR FAVORITOS GLOBAL!!! " + e.getMessage());
         }
@@ -176,11 +174,13 @@ public class Sistema implements Serializable{
                     Auto au=a.getContent();
                     if(au.getPlaca().compareTo(auto.getPlaca())==0){
                         fav.removeNode(a);
+                        System.out.println("SISTEMA: Auto con placa "+auto.getPlaca()+" eliminado de favoritos del usuario "+usuario.getCorreo());
                         bandera=false;
+                        actualizarUsuario(usuario);
                     }else{
                         a=a.getNext();
                     }
-                }while(a!=fav.getHeader() && bandera);
+                }while(bandera || a!=fav.getHeader());
             }
             usuario.setFavorito(fav);
         }catch(Exception e) {
@@ -195,6 +195,7 @@ public class Sistema implements Serializable{
             Usuarios.remove(user.getCorreo());
             Usuarios.put(user.getCorreo(), user);
             Archivos.guardarUsuarios(Usuarios);
+            System.out.println("SISTEMA: USUARIO ACTUALIZADO "+user.getCorreo());
             return true;
         }catch(Exception e) {
             System.err.println("ERROR AL ELIMINAR Usuario!!! " + e.getMessage());
