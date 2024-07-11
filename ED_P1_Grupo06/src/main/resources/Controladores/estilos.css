@@ -104,12 +104,38 @@
         
 }
 
-.scroll-bar:vertical{
-    -fx-background-color: #392B58;
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color :derive(#725096,90.0%);
+    -fx-background-insets : 2.0, 0.0, 0.0;
+    -fx-background-radius : 2.0em;
 }
 
-.scroll-bar:horizontal{
-    -fx-background-color: transparent;
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color :derive(#725096,80.0%);    
+}
+
+.scroll-bar:vertical .track{
+    -fx-background-color :derive(#28152b, 10.0%);
+    -fx-border-color :transparent;
+    -fx-background-radius : 0.0em;
+    -fx-border-radius :2.0em;
+}
+
+.scroll-bar:vertical .increment-button,
+.scroll-bar:vertical .decrement-button {
+    -fx-background-color: derive(#28152b, 10.0%); /* Color de fondo de los botones */      
+    -fx-background-radius: 0.0em; /* Sin bordes redondeados */
+    -fx-border-color: transparent; /* Elimina el borde del botón */
+    -fx-border-width: 0.0; /* Asegura que no haya ancho de borde */    
+}
+
+ .scroll-bar:vertical .increment-arrow{
+    -fx-background-color :derive(#FFFFFF,70.0%);         
+}
+
+ .scroll-bar:vertical .decrement-arrow{
+    -fx-background-color :derive(#FFFFFF,70.0%);         
 }
 
 .text-area {

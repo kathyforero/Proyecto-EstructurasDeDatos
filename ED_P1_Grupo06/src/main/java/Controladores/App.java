@@ -21,7 +21,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("login"), 1000, 870);
+        scene = new Scene(loadFXML("login"), 1000, 730);
         scene.getStylesheets().add(getClass().getResource("estilos.css").toExternalForm());
         stage.setScene(scene);
         stage.setTitle("GuayacoCar - Iniciar Sesión");
