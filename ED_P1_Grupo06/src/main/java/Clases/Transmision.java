@@ -4,6 +4,8 @@
  */
 package Clases;
 
+import java.util.Iterator;
+
 /**
  *
  * @author Kathy
@@ -26,5 +28,37 @@ public enum Transmision {
 
     public String getDisplayName() {
         return displayName;
+    }
+    
+    public static Iterator<String> iterator() {
+        return new Iterator<String>() {
+            private int index = 0;
+
+            @Override
+            public boolean hasNext() {
+                return index < Transmision.values().length;
+            }
+
+            @Override
+            public String next() {
+                return Transmision.values()[index++].getDisplayName();
+            }
+        };
+    }
+    
+     public static Iterator<Transmision> iteratorTransmision() {
+        return new Iterator<Transmision>() {
+            private int index = 0;
+
+            @Override
+            public boolean hasNext() {
+                return index < Transmision.values().length;
+            }
+
+            @Override
+            public Transmision next() {
+                return Transmision.values()[index++];
+            }
+        };
     }
 }

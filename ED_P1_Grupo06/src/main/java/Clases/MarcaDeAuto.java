@@ -1,6 +1,8 @@
 package Clases;
 
 import Bases.*;
+import java.util.Iterator;
+import java.util.Map;
 
 public enum MarcaDeAuto {
         AUDI("Audi", new ArrayList<String>() {{
@@ -166,5 +168,21 @@ public enum MarcaDeAuto {
     @Override
     public String toString() {
         return name + " models: " + models.toString();
+    }
+    
+    public static Iterator<String> iterator() {
+        return new Iterator<String>() {
+            private int index = 0;
+
+            @Override
+            public boolean hasNext() {
+                return index < MarcaDeAuto.values().length;
+            }
+
+            @Override
+            public String next() {
+                return MarcaDeAuto.values()[index++].getName();
+            }
+        };
     }
 }

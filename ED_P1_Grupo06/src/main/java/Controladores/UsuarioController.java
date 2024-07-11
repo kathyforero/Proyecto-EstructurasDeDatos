@@ -559,19 +559,19 @@ public class UsuarioController implements Initializable{
         }
     }
 
-    public void ordenarAutoPorMarca() {
+   /* public void ordenarAutoPorMarca() {
         Comparator<Auto> marcaComparator = new Comparator<Auto>() {
             @Override
             public int compare(Auto auto1, Auto auto2) {
                 String marca1 = auto1.getMarca().getName();
                 String marca2 = auto2.getMarca().getName();
-                if(marca1.compareTo(marca2)!=0 ){
-                return marca1.compareTo(marca2);
-                }else{
+                if(marca1.compareTo(marca2)!=0 ){//esto valida que los autos no sean de la misma marca
+                return marca1.compareTo(marca2);//se ordena alfabeticamente a b c ...
+                }else{//si los autos tienen la misma marca
                     String modelo1 = auto1.getModelo();
                     String modelo2 = auto2.getModelo();
                     System.out.println(modelo1+"    "+modelo2);
-                    return  modelo1.compareTo(modelo2);
+                    return  modelo1.compareTo(modelo2);//se ordenan alfabeticamente por sus modelos
                 }
             }
         };
@@ -579,8 +579,9 @@ public class UsuarioController implements Initializable{
         Platform.runLater(() -> {
             ordenar(autos, marcaComparator);
         });
+    
 
-    }
+    }*/
     public Comparator<Auto> ordenarPorComp() {
         String criterio = cbOrdenar.getValue();
         if (compString.compare(criterio, "Marca y Modelo")==0) {
@@ -599,7 +600,6 @@ public class UsuarioController implements Initializable{
                 }
             };
         } else if (compString.compare(criterio, "Precio")==0) {
-            //return Comparator.comparingDouble(Auto::getPrecio);
             return new Comparator<Auto>() {
                 @Override
                 public int compare(Auto auto1, Auto auto2) {
@@ -656,7 +656,7 @@ public void ordenarAutoPorXCriterio() {
 
 }
 
-
+/*
     private void ordenar(DoublyCircularList<Auto> lista, Comparator<Auto> comp) {
         if (lista.getLast() == null || lista.getLast().getNext() == lista.getLast()) {
             // Si la lista está vacía o tiene un solo elemento, no se hace nada
@@ -680,6 +680,46 @@ public void ordenarAutoPorXCriterio() {
             } while (current != lista.getLast());
         } while (swapped);
     }
+    */
+    
+
+private void ordenar(DoublyCircularList<Auto> lista, Comparator<Auto> comp) {
+    // Si la lista está vacía o tiene un solo elemento, no se hace nada
+    if (lista.getLast() == null || lista.getLast().getNext() == lista.getLast()) {
+        return;
+    }
+
+    // Inicializamos 'current' en el primer nodo de la lista.
+    DoublyCircularNode<Auto> current = lista.getLast().getNext();
+ // DoublyCircularNode<Auto> current = lista.getHeader(); tambien sirve
+
+    // Iteramos sobre la lista desde el primer nodo hasta que volvemos al nodo cabecera
+    while (current != lista.getLast()) {
+        // Guardamos el siguiente nodo 
+        DoublyCircularNode<Auto> next = current.getNext();
+        // Guardamos el contenido del nodo actual 
+        Auto currentValue = current.getContent();
+        // Empezamos a comparar desde el nodo anterior al nodo actual
+        DoublyCircularNode<Auto> sortedNode = current;
+
+        // Movemos nodos en la parte ordenada hacia la derecha para hacer espacio
+        // para 'currentValue' en la posición correcta
+        while (sortedNode.getPrevious() != lista.getLast() && comp.compare(sortedNode.getPrevious().getContent(), currentValue) > 0) {
+            // Desplazamos el contenido del nodo ordenado al siguiente nodo
+            sortedNode.setContent(sortedNode.getPrevious().getContent());
+            // Retrocedemos al nodo anterior en la lista ordenada
+            sortedNode = sortedNode.getPrevious();
+        }
+
+        // Insertamos 'currentValue' en la posición correcta encontrada
+        sortedNode.setContent(currentValue);
+        // Avanzamos al siguiente nodo en la lista original
+        current = next;
+    }
+}
+
+
+    
     
     
     public Comparator<Auto> ordenarPorReporte(){
