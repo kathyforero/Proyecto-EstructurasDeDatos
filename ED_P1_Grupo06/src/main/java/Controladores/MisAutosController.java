@@ -159,11 +159,15 @@ public class MisAutosController {
                 } while (n != autos.getHeader());
             }
         }
-    }
-
-    public void cargarAutos() {
-
-        if (autosDueño.size() > 0) {
+    }    
+    
+    public void cargarAutos(){
+        
+        if (autosDueño.size()>0){
+            mostrarAutosAdelante.setVisible(true);
+            mostrarAutosAtras.setVisible(true);
+            System.out.println("USUARIO CONTROLLER: Hay "+autos.size()+" autos en la DCLL actual");
+            autoDNodo=autosDueño.getHeader();
             mostrarAutosAdelante();
             if (autosDueño.size() < 7) {
                 mostrarAutosAdelante.setVisible(false);
@@ -175,8 +179,11 @@ public class MisAutosController {
 
             msgErrorOff();
         } else {
+            mostrarAutosAdelante.setVisible(false);
+            mostrarAutosAtras.setVisible(false);
             ponerBlanco(1);
             msgError("No hay autos que mostrar");
+            System.out.println("USUARIO CONTROLLER: no hay autos en la lista actual");
         }
     }
 
@@ -193,6 +200,7 @@ public class MisAutosController {
                 ImageView imgView = (ImageView) imgField.get(this);
                 foto = auto.getFotos().getHeader();
                 Image image = new Image(foto.getContent().toURI().toString());
+                imgView.setDisable(false);
                 imgView.setImage(image);
                 imgView.setOpacity(1);
                 imgView.setOnMouseClicked(event -> mostrarEditor(auto));
