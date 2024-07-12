@@ -355,7 +355,6 @@ public class UsuarioController implements Initializable{
                     imgView.setImage(image);
                     imgView.setOpacity(1);
                     imgView.setOnMouseClicked(event -> mostrarAuto(auto));
-                    System.out.println(auto.getPrecio());
 
                     Field FtituloAuto = getClass().getDeclaredField("tituloAuto" + index);
                     FtituloAuto.setAccessible(true);
