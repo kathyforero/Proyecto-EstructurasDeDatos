@@ -537,8 +537,9 @@ public class UsuarioController implements Initializable{
             cmModelo.getItems().clear();
             cmModelo.setValue(null);
             String txtMarca = cmMarca.getValue();
-            //esto lo debo hacer con iterator
+            //esto lo debo hacer con iteratorya
             Iterator<MarcaDeAuto> iterator = MarcaDeAuto.iteratorMarcaDeAuto();
+            
         while (iterator.hasNext()) {
             MarcaDeAuto marca = iterator.next();
             if(Sistema.comparadorString().compare(marca.getName(), txtMarca)==0){
