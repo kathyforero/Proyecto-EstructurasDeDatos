@@ -313,6 +313,8 @@ public class UsuarioController implements Initializable{
     public void cargarAutos(){
         
         if (autos.size()>0){
+            mostrarAutosAdelante.setVisible(true);
+            mostrarAutosAtras.setVisible(true);
             System.out.println("USUARIO CONTROLLER: Hay "+autos.size()+" autos en la DCLL actual");
             autoNodo=autos.getHeader();
             mostrarAutosAdelante();
