@@ -214,6 +214,8 @@ public class UsuarioController implements Initializable{
         lblUser.setText(usuario.getNombre()+" "+usuario.getApellido()+"!");
         //cargarControladores();
         quitarChecks();
+        cbOrdenar.setValue("Precio");
+        ordenarAutoPorXCriterio();
     }
 
     public Usuario getUsuario() {
@@ -353,6 +355,7 @@ public class UsuarioController implements Initializable{
                     imgView.setImage(image);
                     imgView.setOpacity(1);
                     imgView.setOnMouseClicked(event -> mostrarAuto(auto));
+                    System.out.println(auto.getPrecio());
 
                     Field FtituloAuto = getClass().getDeclaredField("tituloAuto" + index);
                     FtituloAuto.setAccessible(true);
@@ -538,16 +541,20 @@ public class UsuarioController implements Initializable{
             cmModelo.setValue(null);
             String txtMarca = cmMarca.getValue();
             //esto lo debo hacer con iteratorya
-            Iterator<MarcaDeAuto> iterator = MarcaDeAuto.iteratorMarcaDeAuto();
             
-        while (iterator.hasNext()) {
-            MarcaDeAuto marca = iterator.next();
-            if(Sistema.comparadorString().compare(marca.getName(), txtMarca)==0){
-                    ArrayList<String> modelos = marca.getModels();
-                    for (int i=1; i<=modelos.size(); i++){
-                        cmModelo.getItems().add(modelos.get(i));
-                    }
-                }        }
+            if(txtMarca!=null){
+                Iterator<MarcaDeAuto> iterator = MarcaDeAuto.iteratorMarcaDeAuto();
+
+                while (iterator.hasNext()) {
+                    MarcaDeAuto marca = iterator.next();
+                    if(Sistema.comparadorString().compare(marca.getName(), txtMarca)==0){
+                            ArrayList<String> modelos = marca.getModels();
+                            for (int i=1; i<=modelos.size(); i++){
+                                cmModelo.getItems().add(modelos.get(i));
+                            }
+                        }        
+                }
+            }
            
     }
     public void cargarMarca(){
@@ -611,6 +618,7 @@ public class UsuarioController implements Initializable{
                 public int compare(Auto auto1, Auto auto2) {
                     float p1 = auto1.getPrecio();
                     float p2 = auto2.getPrecio();
+                    System.out.println("Comparador precio");
                     if (p1==p2) {
                         int km1 = auto1.getKilometraje();
                         int km2 = auto2.getKilometraje();
@@ -618,6 +626,7 @@ public class UsuarioController implements Initializable{
                     } else {
                         return Double.compare(p1,p2);
                     }
+                    
                 }
             };
         } else if (compString.compare(criterio, "Año del Auto")==0) {
@@ -644,7 +653,6 @@ public class UsuarioController implements Initializable{
 
     @FXML
 public void ordenarAutoPorXCriterio() {
-    Platform.runLater(()->{
         Comparator<Auto> comp = ordenarPorComp();
         
         if (comp != null && autos.size()>0) {
@@ -658,7 +666,6 @@ public void ordenarAutoPorXCriterio() {
         } else {
             System.out.println("No se seleccionó un criterio de ordenación válido.");
         }
-    });
 
 }
 
@@ -885,8 +892,6 @@ private void ordenar(DoublyCircularList<Auto> lista, Comparator<Auto> comp) {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        cbOrdenar.setValue("Precio");
-        ordenarAutoPorXCriterio();
         cargarMarca(); // Llama a cargarCampos al inicializar el 
         cargarTipo();
         cbOrdenar.getItems().addAll("Marca y Modelo", "Año del Auto", "Precio", "Kilometraje");
