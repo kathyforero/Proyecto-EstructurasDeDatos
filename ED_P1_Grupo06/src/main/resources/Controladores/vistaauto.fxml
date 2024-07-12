@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
 <ScrollPane hbarPolicy="NEVER" prefHeight="730.0" prefWidth="1010.0" stylesheets="@estilos.css" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.VistaAutoController">
    <content>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1000.0" style="-fx-background-color: #0D050E;">
@@ -24,7 +23,7 @@
             <AnchorPane layoutX="532.0" layoutY="213.0" prefHeight="622.0" prefWidth="454.0" style="-fx-background-color: #2B193E;">
                <children>
                   <Button fx:id="btnReporte" layoutX="82.0" layoutY="565.0" mnemonicParsing="false" onAction="#abrirReporte" styleClass="btnGeneral" stylesheets="@estilos.css" text="VER REPORTE DE ACCIDENTES Y REPARACIONES" />
-                  <Label layoutX="50.0" layoutY="83.0" text="PRECIO: $" textFill="WHITE">
+                  <Label layoutX="50.0" layoutY="83.0" text="PRECIO:   $" textFill="WHITE">
                      <font>
                         <Font name="Century Gothic" size="16.0" />
                      </font>
@@ -79,12 +78,12 @@
                         <Font name="Century Gothic" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblPrecio" layoutX="126.0" layoutY="83.0" prefHeight="20.0" prefWidth="275.0" text="A" textFill="WHITE">
+                  <Label fx:id="lblPrecio" layoutX="139.0" layoutY="83.0" prefHeight="20.0" prefWidth="275.0" text="A" textFill="WHITE">
                      <font>
                         <Font name="Century Gothic" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblMarca" layoutX="136.0" layoutY="127.0" prefHeight="20.0" prefWidth="275.0" text="A" textFill="WHITE">
+                  <Label fx:id="lblMarca" layoutX="128.0" layoutY="127.0" prefHeight="20.0" prefWidth="275.0" text="A" textFill="WHITE">
                      <font>
                         <Font name="Century Gothic" size="16.0" />
                      </font>
