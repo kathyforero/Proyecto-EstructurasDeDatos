@@ -7,13 +7,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class Archivos {
-   
+
     public static void guardarUsuarios(Map<String, Usuario> usuarios) {
         File archivo = new File("Usuarios.dat");
 
@@ -29,14 +27,13 @@ public class Archivos {
                 out.writeObject(usuarios);
                 System.out.println("ARCHIVOS: Usuario guardados con exito");
             } catch (IOException e) {
-                System.err.println("ARCHIVOS: Error al guardar Mapa Usuarios "+ e.getMessage());
+                System.err.println("ARCHIVOS: Error al guardar Mapa Usuarios " + e.getMessage());
             }
         } catch (IOException e) {
             System.err.println("ARCHIVOS: El archivo \"Usuarios\" NO fue creado: " + e.getMessage());
         }
-    }    
-    
-    
+    }
+
     public static Map<String, Usuario> leerUsuarios() {
         Map<String, Usuario> usuarios = null;
         File archivo = new File("Usuarios.dat");
@@ -74,12 +71,12 @@ public class Archivos {
                 out.writeObject(autos);
                 System.out.println("ARCHIVOS: Autos guardados con exito");
             } catch (IOException e) {
-                System.err.println("ARCHIVOS: Error al guardar DCLL Autos: "+ e.getMessage());
+                System.err.println("ARCHIVOS: Error al guardar DCLL Autos: " + e.getMessage());
             }
         } catch (IOException e) {
             System.err.println("ARCHIVOS: El archivo \"Usuarios\" NO fue creado: " + e.getMessage());
         }
-    }    
+    }
 
     public static DoublyCircularList<Auto> leerAutos() {
         DoublyCircularList<Auto> autos = null;
@@ -100,11 +97,8 @@ public class Archivos {
         if (autos == null) {
             autos = new DoublyCircularList<>(); // Si no se pudo leer, retornar circularlist vacío
         }
-        /*
-                    Comparator<Auto> comp = Sistema.ordenarPrecioKilometraje();
-            Sistema.ordenar(autos, comp );*/
+
         return autos;
     }
-
 
 }

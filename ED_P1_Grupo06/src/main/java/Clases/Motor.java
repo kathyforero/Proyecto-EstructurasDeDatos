@@ -8,7 +8,7 @@ public enum Motor {
     ELÉCTRICO("Eléctrico"),
     HÍBRIDO("Híbrido"),
     GAS("Gas");
-    
+
     private final String displayName;
 
     Motor(String displayName) {
@@ -34,8 +34,8 @@ public enum Motor {
             }
         };
     }
-    
-        public static Iterator<Motor> iteratorMotor() {
+
+    public static Iterator<Motor> iteratorMotor() {
         return new Iterator<Motor>() {
             private int index = 0;
 

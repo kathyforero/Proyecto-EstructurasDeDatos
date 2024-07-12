@@ -3,25 +3,25 @@ package Clases;
 import Bases.*;
 import java.io.Serializable;
 
-public class Usuario implements Serializable{
+public class Usuario implements Serializable {
     private static final long serialVersionUID = 2004140222041502L;
     private String nombre;
     private String apellido;
     private String correo;
     private String contraseña;
     private DoublyCircularList<Auto> favoritos = new DoublyCircularList<>();
-    
-    public Usuario(String nombre, String apellido, String correo, String contraseña){        
+
+    public Usuario(String nombre, String apellido, String correo, String contraseña) {
         this.nombre = nombre;
-        this.apellido = apellido;        
+        this.apellido = apellido;
         this.correo = correo;
         this.contraseña = contraseña;
     }
-    
-    public boolean validarUsuario(String correo, String contraseña){
-        if(correo.equals(this.correo) && contraseña.equals(this.contraseña)){
+
+    public boolean validarUsuario(String correo, String contraseña) {
+        if (correo.equals(this.correo) && contraseña.equals(this.contraseña)) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -44,12 +44,12 @@ public class Usuario implements Serializable{
 
     public DoublyCircularList<Auto> getFavoritos() {
         return favoritos;
-    }    
-    
+    }
+
     public void addFavorito(Auto auto) {
         favoritos.addLast(auto);
-    }   
-                
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -68,9 +68,10 @@ public class Usuario implements Serializable{
 
     public void setFavorito(DoublyCircularList<Auto> favoritos) {
         this.favoritos = favoritos;
-    }  
-    
-    public String toString(){
-        return nombre+" "+apellido+" con correo electronico: "+correo+" y tiene "+favoritos.size()+" carros favoritos"; 
+    }
+
+    public String toString() {
+        return nombre + " " + apellido + " con correo electronico: " + correo + " y tiene " + favoritos.size()
+                + " carros favoritos";
     }
 }

@@ -12,7 +12,7 @@ public enum Tipo {
     HIBRIDO("Híbrido"),
     LIMOSINA("Limosina"),
     ELECTRICO("Eléctrico");
-    
+
     private final String displayName;
 
     Tipo(String displayName) {
@@ -22,7 +22,7 @@ public enum Tipo {
     public String getDisplayName() {
         return displayName;
     }
-    
+
     public static Iterator<String> iterator() {
         return new Iterator<String>() {
             private int index = 0;
@@ -38,8 +38,8 @@ public enum Tipo {
             }
         };
     }
-    
-        public static Iterator<Tipo> iteratorTipo() {
+
+    public static Iterator<Tipo> iteratorTipo() {
         return new Iterator<Tipo>() {
             private int index = 0;
 
@@ -54,6 +54,5 @@ public enum Tipo {
             }
         };
     }
-    
-    
+
 }

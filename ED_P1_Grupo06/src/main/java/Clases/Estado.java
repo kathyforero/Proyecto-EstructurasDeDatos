@@ -6,7 +6,7 @@ import java.util.Iterator;
 public enum Estado {
     NUEVO("Nuevo"),
     USADO("Usado");
-    
+
     private final String displayName;
 
     Estado(String displayName) {
@@ -16,8 +16,8 @@ public enum Estado {
     public String getDisplayName() {
         return displayName;
     }
-    
-     public static Iterator<String> iterator() {
+
+    public static Iterator<String> iterator() {
         return new Iterator<String>() {
             private int index = 0;
 
@@ -32,8 +32,8 @@ public enum Estado {
             }
         };
     }
-     
-      public static Iterator<Estado> iteratorEstado() {
+
+    public static Iterator<Estado> iteratorEstado() {
         return new Iterator<Estado>() {
             private int index = 0;
 
@@ -49,5 +49,3 @@ public enum Estado {
         };
     }
 }
-
-

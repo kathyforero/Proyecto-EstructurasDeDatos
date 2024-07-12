@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Clases;
 
 import java.util.Iterator;
@@ -19,7 +15,7 @@ public enum Transmision {
     MANUAL_SECUENCIAL("Manual Secuencial"),
     EVT("Electrónica Variable"),
     HIDRÁULICA("Hidráulica");
-    
+
     private final String displayName;
 
     Transmision(String displayName) {
@@ -29,7 +25,7 @@ public enum Transmision {
     public String getDisplayName() {
         return displayName;
     }
-    
+
     public static Iterator<String> iterator() {
         return new Iterator<String>() {
             private int index = 0;
@@ -45,8 +41,8 @@ public enum Transmision {
             }
         };
     }
-    
-     public static Iterator<Transmision> iteratorTransmision() {
+
+    public static Iterator<Transmision> iteratorTransmision() {
         return new Iterator<Transmision>() {
             private int index = 0;
 

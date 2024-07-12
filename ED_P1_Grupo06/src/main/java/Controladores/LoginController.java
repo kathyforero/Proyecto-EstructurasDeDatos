@@ -3,41 +3,38 @@ package Controladores;
 import Clases.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import Bases.*;
 import java.io.IOException;
 import java.util.Comparator;
-import java.util.Map;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class LoginController {
-    
+
     @FXML
     private Button btnIniciarSesion;
 
     @FXML
-   private PasswordField pfContraseña;
+    private PasswordField pfContraseña;
 
     @FXML
     private TextField tfCorreo;
 
     @FXML
-    private Button btCrearCuenta;    
+    private Button btCrearCuenta;
     @FXML
-    private Button btnError;   
-    Comparator<String> compString=Sistema.comparadorString();
-    
+    private Button btnError;
+    Comparator<String> compString = Sistema.comparadorString();
+
     @FXML
     public void iniciarSesion() {
         String correo = tfCorreo.getText();
         String contraseña = pfContraseña.getText();
-        if(compString.compare(correo,"")!=0 && correo.contains("@")){
-            if(!(contraseña.isEmpty())){
+        if (compString.compare(correo, "") != 0 && correo.contains("@")) {
+            if (!(contraseña.isEmpty())) {
                 if (!(Sistema.existeUser(correo))) {
                     msgError("Correo no encontrado");
                     System.out.println("LOGIN CONTROLLER: Esa clave(Correo) no existe en el Mapa Usuarios!");
@@ -53,23 +50,23 @@ public class LoginController {
                         mostrarGUI(u);
                     }
                 }
-            }else{
+            } else {
                 msgError("Ingrese una contraseña :/");
                 System.out.println("LOGIN CONTROLLER: El campo de contrasenia no es valido");
                 pfContraseña.requestFocus();
-            }    
-        }else{
+            }
+        } else {
             msgError("Ingrese un correo valido");
             System.out.println("LOGIN CONTROLLER: El campo de correo no es valido");
             tfCorreo.requestFocus();
         }
     }
-    
-    public void msgError(String msg){
+
+    public void msgError(String msg) {
         btnError.setVisible(true);
         btnError.setText(msg);
     }
-    
+
     @FXML
     public void mostrarRegister() {
         try {
@@ -82,12 +79,12 @@ public class LoginController {
 
             Stage miStage = (Stage) btCrearCuenta.getScene().getWindow();
             miStage.close();
-            
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
+
     public void mostrarGUI(Usuario u) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("usuario.fxml"));
@@ -101,10 +98,10 @@ public class LoginController {
 
             Stage miStage = (Stage) btCrearCuenta.getScene().getWindow();
             miStage.close();
-            
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-        
+
 }

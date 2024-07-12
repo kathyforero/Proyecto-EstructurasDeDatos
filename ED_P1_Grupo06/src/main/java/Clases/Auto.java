@@ -1,17 +1,16 @@
 package Clases;
 
-import javafx.scene.image.Image;
 import Bases.*;
 import java.io.File;
 import java.io.Serializable;
 
-public class Auto implements Serializable{
+public class Auto implements Serializable {
     private float precio;
     private MarcaDeAuto marca;
     private String modelo;
     private Tipo tipo;
     private int año;
-    private String placa;    
+    private String placa;
     private int kilometraje;
     private Motor motor;
     private Transmision transmisión;
@@ -22,16 +21,18 @@ public class Auto implements Serializable{
     private DoublyCircularList<File> fotos;
     private ArrayList<Reporte> reportes;
     private static final long serialVersionUID = 2004140222041502L;
-    
-    public Auto(float precio, MarcaDeAuto marca, String modelo, Tipo tipo, int año, String placa, int kilometraje, Motor motor, Transmision transmisión, float peso, Ubicacion ubicacion, Usuario usuario, Estado estado, DoublyCircularList<File> fotos){
+
+    public Auto(float precio, MarcaDeAuto marca, String modelo, Tipo tipo, int año, String placa, int kilometraje,
+            Motor motor, Transmision transmisión, float peso, Ubicacion ubicacion, Usuario usuario, Estado estado,
+            DoublyCircularList<File> fotos) {
         this.precio = precio;
         this.marca = marca;
-        this.modelo = modelo;        
+        this.modelo = modelo;
         this.tipo = tipo;
         this.año = año;
         this.kilometraje = kilometraje;
         this.motor = motor;
-        this.transmisión = transmisión;        
+        this.transmisión = transmisión;
         this.peso = peso;
         this.ubicacion = ubicacion;
         this.usuario = usuario;
@@ -87,15 +88,15 @@ public class Auto implements Serializable{
     public Estado getEstado() {
         return estado;
     }
-    
+
     public DoublyCircularList<File> getFotos() {
         return fotos;
     }
 
     public ArrayList<Reporte> getReportes() {
         return reportes;
-    }       
-    
+    }
+
     public void setPrecio(float precio) {
         this.precio = precio;
     }
@@ -143,8 +144,8 @@ public class Auto implements Serializable{
     public void setEstado(Estado estado) {
         this.estado = estado;
     }
-    
-    public void setFotos(DoublyCircularList<File> fotos){
+
+    public void setFotos(DoublyCircularList<File> fotos) {
         this.fotos = fotos;
     }
 
@@ -159,7 +160,7 @@ public class Auto implements Serializable{
     public void setReportes(ArrayList<Reporte> reportes) {
         this.reportes = reportes;
     }
-        
+
     @Override
     public String toString() {
         return "Auto [precio=" + precio + ", marca=" + marca + ", modelo=" + modelo + ", tipo=" + tipo + ", año=" + año
@@ -168,6 +169,4 @@ public class Auto implements Serializable{
                 + usuario + "]";
     }
 
-    
-    
 }

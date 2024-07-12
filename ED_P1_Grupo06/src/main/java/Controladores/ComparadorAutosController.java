@@ -1,16 +1,11 @@
 package Controladores;
 
-import java.net.URL;
 import Bases.*;
 import Clases.*;
-import Controladores.UsuarioController;
 import java.io.File;
 import java.io.IOException;
-import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -18,13 +13,13 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+
 /**
  * FXML Controller class
  *
  * @author DERS
  */
 public class ComparadorAutosController {
-
 
     @FXML
     private Button btnRegresar;
@@ -87,35 +82,33 @@ public class ComparadorAutosController {
     private Usuario usuario;
     DoublyCircularNode<File> foto;
 
-        
-    
-    public void setUsuario(Usuario usuario,Auto a1, Auto a2) {
+    public void setUsuario(Usuario usuario, Auto a1, Auto a2) {
         this.usuario = usuario;
         this.auto1 = a1;
         this.auto2 = a2;
-        lblUsuario.setText(usuario.getNombre()+" "+usuario.getApellido()+"!");     
+        lblUsuario.setText(usuario.getNombre() + " " + usuario.getApellido() + "!");
         cargarAuto1(a1);
         cargarAuto2(a2);
     }
-    
+
     public void cargarAuto1(Auto auto) {
         foto = auto.getFotos().getHeader();
         Image image = new Image(foto.getContent().toURI().toString());
         imgViewCar.setImage(image);
         lblPlaca1.setText(auto.getPlaca());
-        lblPrecio1.setText( "$ " + Float.toString( auto.getPrecio() ) );
+        lblPrecio1.setText("$ " + Float.toString(auto.getPrecio()));
         lblMarca1.setText(auto.getMarca().getName());
         lblModelo1.setText(auto.getModelo());
         lblTipo1.setText(auto.getTipo().getDisplayName());
         lblAño1.setText(Integer.toString(auto.getAño()));
-        lblKilom1.setText( Integer.toString( auto.getKilometraje() ) + " km");
+        lblKilom1.setText(Integer.toString(auto.getKilometraje()) + " km");
         lblMotor1.setText(auto.getMotor().getDisplayName());
         lblTrans1.setText(auto.getTransmisión().getDisplayName());
-        lblPeso1.setText(Float.toString( auto.getPeso() ) + " kg" );
+        lblPeso1.setText(Float.toString(auto.getPeso()) + " kg");
         lblUbi1.setText(auto.getUbicacion().getDisplayName());
         lblEstado1.setText(auto.getEstado().getDisplayName());
     }
-    
+
     @FXML
     public void abrirReporte1() {
         try {
@@ -128,37 +121,39 @@ public class ComparadorAutosController {
             Stage newStage = new Stage();
             newStage.setScene(new Scene(root));
             newStage.setTitle("GuayacoCar - Autos a tu Alcance");
-            newStage.show();           
-            
+            newStage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
+
     public void cargarAuto2(Auto auto) {
         foto = auto.getFotos().getHeader();
         Image image = new Image(foto.getContent().toURI().toString());
         imgViewCar1.setImage(image);
         lblPlaca11.setText(auto.getPlaca());
-        lblPrecio11.setText( "$ " + Float.toString(auto.getPrecio()) );
+        lblPrecio11.setText("$ " + Float.toString(auto.getPrecio()));
         lblMarca11.setText(auto.getMarca().getName());
         lblModelo11.setText(auto.getModelo());
         lblTipo11.setText(auto.getTipo().getDisplayName());
         lblAño11.setText(Integer.toString(auto.getAño()));
-        if( auto.getKilometraje() >1 ){
-            lblKilom11.setText( Integer.toString( auto.getKilometraje() ) + " kms");
-        }else{
-            lblKilom11.setText( Integer.toString( auto.getKilometraje() ) + " km");
-        }        lblMotor11.setText(auto.getMotor().getDisplayName());
+        if (auto.getKilometraje() > 1) {
+            lblKilom11.setText(Integer.toString(auto.getKilometraje()) + " kms");
+        } else {
+            lblKilom11.setText(Integer.toString(auto.getKilometraje()) + " km");
+        }
+        lblMotor11.setText(auto.getMotor().getDisplayName());
         lblTrans11.setText(auto.getTransmisión().getDisplayName());
-        if( auto.getPeso() > 1 ){
-            lblPeso11.setText(Float.toString( auto.getPeso() ) + " kgs" );
-        }else{
-            lblPeso11.setText(Float.toString( auto.getPeso() ) + " kg" );
-        }        lblUbi11.setText(auto.getUbicacion().getDisplayName());
+        if (auto.getPeso() > 1) {
+            lblPeso11.setText(Float.toString(auto.getPeso()) + " kgs");
+        } else {
+            lblPeso11.setText(Float.toString(auto.getPeso()) + " kg");
+        }
+        lblUbi11.setText(auto.getUbicacion().getDisplayName());
         lblEstado11.setText(auto.getEstado().getDisplayName());
     }
-    
+
     @FXML
     public void abrirReporte2() {
         try {
@@ -171,23 +166,22 @@ public class ComparadorAutosController {
             Stage newStage = new Stage();
             newStage.setScene(new Scene(root));
             newStage.setTitle("GuayacoCar - Autos a tu Alcance");
-            newStage.show();           
-            
+            newStage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
+
     public void setAuto1(Auto auto) {
         this.auto1 = auto1;
-        
+
     }
 
     public void setAuto2(Auto auto2) {
         this.auto2 = auto2;
     }
-    
-    
+
     @FXML
     public void regresar() {
         try {
@@ -202,7 +196,7 @@ public class ComparadorAutosController {
 
             Stage miStage = (Stage) btnRegresar.getScene().getWindow();
             miStage.close();
-            
+
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Clases;
 
 import java.util.Iterator;
@@ -10,7 +6,7 @@ import java.util.Iterator;
  *
  * @author Kathy
  */
-public enum Ubicacion{
+public enum Ubicacion {
     AZUAY("Azuay"),
     BOLIVAR("Bolivar"),
     CAÑAR("Cañar"),
@@ -35,7 +31,7 @@ public enum Ubicacion{
     SUCUMBIOS("Sucumbíos"),
     TUNGURAHUA("Tungurahua"),
     ZAMORA_CHINCHIPE("Zamora Chinchipe");
-    
+
     private final String displayName;
 
     Ubicacion(String displayName) {
@@ -45,7 +41,8 @@ public enum Ubicacion{
     public String getDisplayName() {
         return displayName;
     }
-     public static Iterator<String> iterator() {
+
+    public static Iterator<String> iterator() {
         return new Iterator<String>() {
             private final Ubicacion[] ubicaciones = Ubicacion.values();
             private int index = 0;
@@ -61,8 +58,8 @@ public enum Ubicacion{
             }
         };
     }
-     
-          public static Iterator<Ubicacion> iteratorUbicacion() {
+
+    public static Iterator<Ubicacion> iteratorUbicacion() {
         return new Iterator<Ubicacion>() {
             private int index = 0;
 
