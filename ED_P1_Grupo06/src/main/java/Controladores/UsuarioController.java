@@ -837,12 +837,12 @@ public class UsuarioController implements Initializable {
             }
         }
         setAutos(filtrados);
-        if (autos.size() != 0) {
+        if (autos.size() > 0) {
             autoNodo = autos.getHeader();
             ordenarAutoPorXCriterio();
         } else {
             System.out.println("No hay resultados para el filtro avanzado");
-            cargarAutos();
+            ponerBlanco(1);
         }
 
     }
@@ -891,7 +891,6 @@ public class UsuarioController implements Initializable {
                 msgErrorOff();
             } catch (NumberFormatException nfe) {
                 msgError("\"Precio desde\" en formato incorrecto.");
-                System.out.println("error formato precio");
                 return false;
             }
             return bandera;
@@ -913,7 +912,6 @@ public class UsuarioController implements Initializable {
                 msgErrorOff();
             } catch (NumberFormatException nfe) {
                 msgError("\"Precio hasta\" en formato incorrecto.");
-                System.out.println("error formato precio");
                 return false;
             }
 
@@ -930,7 +928,6 @@ public class UsuarioController implements Initializable {
                 cbOrdenar.setValue("Kilometraje");
             } catch (NumberFormatException nfe) {
                 msgError("\"Kilometraje desde\" en formato incorrecto.");
-                System.out.println("error kilometraje formato");
                 return false;
             }
         }
@@ -946,7 +943,6 @@ public class UsuarioController implements Initializable {
                 cbOrdenar.setValue("Kilometraje");
             } catch (NumberFormatException nfe) {
                 msgError("\"Kilometraje hasta\" en formato incorrecto.");
-                System.out.println("error kilometraje formato");
                 return false;
             }
         }
