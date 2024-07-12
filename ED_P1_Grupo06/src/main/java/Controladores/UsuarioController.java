@@ -326,6 +326,8 @@ public class UsuarioController implements Initializable{
             
             msgErrorOff();
         }else{
+            mostrarAutosAdelante.setVisible(false);
+            mostrarAutosAtras.setVisible(false);
             ponerBlanco(1);
             msgError("No hay autos que mostrar");
             System.out.println("USUARIO CONTROLLER: no hay autos en la lista actual");
