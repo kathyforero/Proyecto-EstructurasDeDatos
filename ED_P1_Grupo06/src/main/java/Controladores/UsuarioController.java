@@ -669,7 +669,7 @@ public void ordenarAutoPorXCriterio() {
 
 }
 
-/*
+
     private void ordenar(DoublyCircularList<Auto> lista, Comparator<Auto> comp) {
         if (lista.getLast() == null || lista.getLast().getNext() == lista.getLast()) {
             // Si la lista está vacía o tiene un solo elemento, no se hace nada
@@ -693,47 +693,6 @@ public void ordenarAutoPorXCriterio() {
             } while (current != lista.getLast());
         } while (swapped);
     }
-    */
-    
-
-private void ordenar(DoublyCircularList<Auto> lista, Comparator<Auto> comp) {
-    // Si la lista está vacía o tiene un solo elemento, no se hace nada
-    if (lista.getLast() == null || lista.getLast().getNext() == lista.getLast()) {
-        return;
-    }
-
-    // Inicializamos 'current' en el primer nodo de la lista.
-    DoublyCircularNode<Auto> current = lista.getLast().getNext();
- // DoublyCircularNode<Auto> current = lista.getHeader(); tambien sirve
-
-    // Iteramos sobre la lista desde el primer nodo hasta que volvemos al nodo cabecera
-    while (current != lista.getLast()) {
-        // Guardamos el siguiente nodo 
-        DoublyCircularNode<Auto> next = current.getNext();
-        // Guardamos el contenido del nodo actual 
-        Auto currentValue = current.getContent();
-        // Empezamos a comparar desde el nodo anterior al nodo actual
-        DoublyCircularNode<Auto> sortedNode = current;
-
-        // Movemos nodos en la parte ordenada hacia la derecha para hacer espacio
-        // para 'currentValue' en la posición correcta
-        while (sortedNode.getPrevious() != lista.getLast() && comp.compare(sortedNode.getPrevious().getContent(), currentValue) > 0) {
-            // Desplazamos el contenido del nodo ordenado al siguiente nodo
-            sortedNode.setContent(sortedNode.getPrevious().getContent());
-            // Retrocedemos al nodo anterior en la lista ordenada
-            sortedNode = sortedNode.getPrevious();
-        }
-
-        // Insertamos 'currentValue' en la posición correcta encontrada
-        sortedNode.setContent(currentValue);
-        // Avanzamos al siguiente nodo en la lista original
-        current = next;
-    }
-}
-
-
-    
-    
     
     public Comparator<Auto> ordenarPorReporte(){
         Comparator<Auto> comp = new Comparator<>(){                        
