@@ -339,6 +339,8 @@ public class EditarAutoController {
             msgError("Primero tienes que escoger una marca.");
         }
     }
+    
+    // EN ALGUNAS VERIFICACIONES SE USA UN FOR-EACH, NO SE USA ITERADOR YA QUE SE USA UN char[] (Char Array), EL CUAL NO IMPLEMENTE ITERABLE Y NO SE PUEDE ITERAR CON LA CLASE ITERATOR QUE PROPORCIONA JAVA.
 
     public boolean verificarPlaca() {
         String placa = tfPlaca.getText();

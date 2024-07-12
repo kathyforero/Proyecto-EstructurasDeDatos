@@ -286,6 +286,8 @@ public class CrearAutoController {
             lblImagenes.setText("0/0");
         }
     }
+    
+    // EN ALGUNAS VERIFICACIONES SE USA UN FOR-EACH, NO SE USA ITERADOR YA QUE SE USA UN char[] (Char Array), EL CUAL NO IMPLEMENTE ITERABLE Y NO SE PUEDE ITERAR CON LA CLASE ITERATOR QUE PROPORCIONA JAVA.
 
     public boolean verificarPlaca() {
         String placa = tfPlaca.getText();

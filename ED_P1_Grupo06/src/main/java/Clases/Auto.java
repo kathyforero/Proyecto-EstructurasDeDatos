@@ -19,7 +19,7 @@ public class Auto implements Serializable {
     private Estado estado;
     private Usuario usuario;
     private DoublyCircularList<File> fotos;
-    private ArrayList<Reporte> reportes;
+    private ArrayList<Reporte> reportes; // Se usa un ArrayList de la clase Reporte que creamos para almacenar los múltiples reportes que puede tener un auto.
     private static final long serialVersionUID = 2004140222041502L;
 
     public Auto(float precio, MarcaDeAuto marca, String modelo, Tipo tipo, int año, String placa, int kilometraje,
