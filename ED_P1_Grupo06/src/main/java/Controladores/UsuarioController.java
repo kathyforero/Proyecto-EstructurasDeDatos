@@ -431,7 +431,6 @@ public class UsuarioController implements Initializable{
             } else{
                 //si es una pag x retrocedera 12 nodos
                 indicePRB=12;
-                System.out.println(autos.getIndex(autoNodo));
             }
             //retrocedo los nodos necesarios!
             for(int i =1;i<=indicePRB;i++){
@@ -621,7 +620,6 @@ public class UsuarioController implements Initializable{
                 public int compare(Auto auto1, Auto auto2) {
                     float p1 = auto1.getPrecio();
                     float p2 = auto2.getPrecio();
-                    System.out.println("Comparador precio");
                     if (p1==p2) {
                         int km1 = auto1.getKilometraje();
                         int km2 = auto2.getKilometraje();

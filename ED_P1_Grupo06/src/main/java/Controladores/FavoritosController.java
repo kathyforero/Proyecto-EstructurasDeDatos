@@ -125,10 +125,7 @@ public class FavoritosController {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
         lblUser.setText(usuario.getNombre()+" "+usuario.getApellido()+"!");    
-        favoritos = usuario.getFavoritos();
-        if (favoritos.size()>0){
-            autoDNodo=favoritos.getHeader();
-        }        
+        favoritos = usuario.getFavoritos();     
         cargarAutos();
     }
     
@@ -166,6 +163,7 @@ public class FavoritosController {
                 foto = auto.getFotos().getHeader();
                 Image image = new Image(foto.getContent().toURI().toString());
                 imgView.setImage(image);
+                imgView.setDisable(false);
                 imgView.setOpacity(1);
                 imgView.setOnMouseClicked(event -> mostrarAuto(auto));
                 
@@ -248,7 +246,6 @@ public class FavoritosController {
                     }
                 } else{
                     indicePRB=12;
-                    System.out.println(favoritos.getIndex(autoDNodo));
                 }
                     for(int i =1;i<=indicePRB;i++){
                        autoDNodo=autoDNodo.getPrevious();
@@ -260,6 +257,10 @@ public class FavoritosController {
     public void cargarAutos(){
         
         if (favoritos.size()>0){
+            mostrarAutosAdelante.setVisible(true);
+            mostrarAutosAtras.setVisible(true);
+            System.out.println("USUARIO CONTROLLER: Hay "+autos.size()+" autos en la DCLL actual");
+            autoDNodo=favoritos.getHeader();
             mostrarAutosAdelante();
             if(favoritos.size()<7){
                 mostrarAutosAdelante.setVisible(false);
@@ -271,8 +272,11 @@ public class FavoritosController {
             
             msgErrorOff();
         }else{
+            mostrarAutosAdelante.setVisible(false);
+            mostrarAutosAtras.setVisible(false);
             ponerBlanco(1);
             msgError("No hay autos que mostrar");
+            System.out.println("USUARIO CONTROLLER: no hay autos en la lista actual");
         }
     }
     
@@ -293,6 +297,7 @@ public class FavoritosController {
                 ImageView imgView = (ImageView) imgField.get(this);
                 imgView.setOpacity(0);
                 imgView.setDisable(true);
+                
                 
                 Field FtituloAuto = getClass().getDeclaredField("tituloAuto" + index);
                 FtituloAuto.setAccessible(true);
